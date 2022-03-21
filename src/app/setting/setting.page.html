@@ -1,0 +1,38 @@
+<ion-content >
+  <div class="main">
+    <div class="container">
+      <div class="header">
+        <ion-icon name="chevron-back-outline" style="float: left;" (click)="back()"></ion-icon>
+        <span class="headertxt">{{ 'setting.tetapan' | translate }}</span>
+      </div>
+      <div style="padding-top: 40px;">
+        <ion-img src="../../assets/icon/tetapan.png" class="icontetapan"></ion-img>
+      </div>
+    </div>
+  </div>
+  <div class="main2">
+    <div class="container2">
+      <div class="boxgrey">
+        <div class="tetapanword">{{ 'setting.tetapan' | translate }}</div>
+      </div>
+      <div class="boxwhite" style="border-bottom: 0.7px solid #E8E8E8">
+        {{ 'setting.noti' | translate }}
+      </div>
+      <div class="boxwhite">
+        {{ 'setting.bahasa' | translate }}
+      </div>
+      <div class="boxgrey">
+        <div class="tetapanword">{{ 'setting.bantuan' | translate }}</div>
+      </div>
+      <div class="boxwhite" style="border-bottom: 0.7px solid #E8E8E8">
+        {{ 'setting.faq' | translate }}
+      </div>
+      <div class="boxwhite">
+        {{ 'setting.terma' | translate }}
+      </div>
+    </div>
+    <div class="lower-content">
+      <button ion-button class="button" (click)="logout()">{{ 'logout' | translate }}</button>
+    </div>
+  </div>
+</ion-content>

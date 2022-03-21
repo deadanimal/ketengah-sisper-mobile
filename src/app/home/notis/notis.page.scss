@@ -1,0 +1,78 @@
+.container2 {
+    padding-top: 50px;
+    padding: 50px 25px 20px 10px;
+    height: 180px;
+}
+
+.container3 {
+    padding: 30px 10px 20px 10px;
+    height: 700px;
+}
+
+.icondeletehist {
+    height: 21px;
+    width: 21px;
+    display: inline-block;
+    margin-right: 0;
+    // float: right;
+}
+
+.icondelete {
+    height: 25px;
+    width: 25px;
+    display: inline-block;
+}
+
+.notistitleactive {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 14px;
+    letter-spacing: 0.02em;
+    color: #D23330;
+}
+
+.notisbodyactive {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+    letter-spacing: 0.02em;
+    color: #494949;
+    opacity: 0.5;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1; /* number of lines to show */
+            line-clamp: 1; 
+    -webkit-box-orient: vertical;
+    // padding-bottom: 30px;
+}
+
+.notisdate {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 14px;
+    letter-spacing: 0.02em;
+    color: #494949;
+    opacity: 0.5;
+    padding-left: 10px;
+}
+
+ion-checkbox {
+    --background: #C5C4C4;
+    --checkmark-color: #3D2C7C;
+    --background-checked: #3D2C7C;
+    opacity: 1;
+}
+
+.semua {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 19px;
+    line-height: 14px;
+    letter-spacing: 0.02em;
+    color: #494949;
+    padding: 20px 10px 40px 30px !important;
+}

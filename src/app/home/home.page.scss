@@ -1,0 +1,121 @@
+.homemain {
+    background: linear-gradient(180deg, #3D2C7C 0%, #750504 100%);
+    height: 300px;
+}
+
+.iconsisper {
+    height: 25px;
+    width: 20px;
+}
+
+.iconnoti {
+    height: 30px;
+    width: 28px;
+    // float: right;
+    display: inline-block;
+    margin-right: 0;
+}
+
+.selamat {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 27px;
+    letter-spacing: -0.165px;
+    color: #FFFF00;
+    padding-top: 20px;
+}
+
+.name {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 33px;
+    letter-spacing: -0.165px;
+    color: #FFFFFF;
+}
+
+.iconketengah{
+    height: 63px;
+    width: 48px;
+    display: inline-block;
+    margin-right: 0;
+}
+
+.inline {
+    display: inline-block;
+}
+
+.akaunsaya {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: -0.165px;
+    color: #FFFFFF;
+}
+
+.buttontambah {
+    width: 100px;
+    height: 35px;
+    background: #7054D9;
+    font-weight: 500;
+    font-size: 16px;
+    border-radius: 4px;
+    margin-right: 0;
+}
+
+.homemaintwo {
+    margin-top: -50px;
+    background-color: white;
+    border-radius: 40px 40px 0px 0px;
+}
+
+.container2 {
+    padding: 30px 15px 30px 15px;
+}
+
+.card {
+    background: #FFFFFF;
+    box-shadow: 4px 0px 8px rgba(73, 87, 184, 0.2), 0px 4px 8px rgba(73, 87, 184, 0.2);
+    border-radius: 10px;
+}
+
+.card2 {
+    display: inline-block;
+    background: #FFFFFF;
+    border: 1px solid #F7FAFD;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 8px rgba(73, 87, 184, 0.2);
+    border-radius: 10px;
+    width: 100%;
+    height: 135px;
+    
+}
+
+.slider {
+    height: 350px;
+    padding: 10px;
+}
+
+.cardimg {
+    text-align: center;
+    display: block;
+    margin: auto;
+    margin-top:15%;
+}
+
+.cardname {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    text-align: center;
+    letter-spacing: -0.165px;
+    color: #000000;
+    padding-top: 10px;
+    text-align: center;
+    width:90px;
+    display: block;
+    margin: auto;
+}

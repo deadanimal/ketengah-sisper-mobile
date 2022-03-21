@@ -1,0 +1,30 @@
+<ion-content>
+  <div class="main">
+    <div class="container">
+      <div class="header">
+        <ion-icon name="chevron-back-outline" style="float: left;" (click)="back()"></ion-icon>
+        <span class="headertxt">{{ 'forgot.pass' | translate }}</span>
+      </div>
+      <div style="padding-top: 40px;">
+        <ion-img src="../../assets/icon/forgotpass.png" class="icontetapan"></ion-img>
+      </div>
+    </div>
+  </div>
+  <div class="main2">
+    <div class="container2">
+      <div class="word1">
+        {{ 'forgot.word1' | translate }}
+      </div>
+      <div class="word2">
+        {{ 'forgot.word2' | translate }}.
+      </div>
+      <div class="boxwhite" style="border-bottom: 0.7px solid #E8E8E8">
+        Nombor Telefon <br>
+        <ion-input type="number" class="input" placeholder="000000000">+60 </ion-input>
+      </div>
+      <div style="padding-top:150px">
+        <button ion-button class="button" (click)="sent()">Hantar</button>
+      </div>
+    </div>  
+  </div>  
+</ion-content>

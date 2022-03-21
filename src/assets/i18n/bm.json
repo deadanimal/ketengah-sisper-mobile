@@ -1,0 +1,67 @@
+{
+    "home": {
+      "selamat": "Selamat Datang",
+      "akaun-saya": "Akaun Saya",
+      "tambah": "Tambah",
+      "bayar-sewa": "Bayar Sewa",
+      "lejar":"Lejar",
+      "tender":"Sebutharga/ Tender",
+      "tempahkemudahan":"Tempah Kemudahan",
+      "aduan":"Aduan",
+      "lain":"Lain-Lain"
+    },
+    "setting": {
+      "tetapan": "Tetapan",
+      "noti": "Notifikasi",
+      "bahasa": "Tetapan Bahasa Aplikasi",
+      "bantuan": "Bantuan dan Sokongan",
+      "faq": "FAQ",
+      "terma": "Terma dan Syarat"
+    },
+    "logout": "Log Keluar",
+    "profile": {
+      "profile": "Profil",
+      "nama": "Nama Penuh",
+      "nokp": "Nombor Kad Pengenalan",
+      "emel": "E-mel",
+      "notel": "Nombor Telefon",
+      "pass": "Kata Laluan",
+      "akaun": "Akaun Rumah/ Premis",
+      "lupakatalaluan": "Lupa Kata Laluan"
+    },
+    "semak": {
+      "main": "Semak Bayaran",
+      "akaun": "Nama Akaun",
+      "ok": "Okay",
+      "cancel": "Kembali",
+      "sejbayaran": "Sejarah Pembayaran"
+    },
+    "forgot": {
+      "pass": "Lupa Kata Laluan",
+      "word1": "Sila Masukkan Nombor Telefon",
+      "word2": "Pautan Set Semula Kata Laluan Akan Dihantar Melalui SMS. Sila Semak Peti Mesej Anda"
+    },
+    "notis": {
+      "notis": "Notis"
+    },
+    "aduan": {
+      "aduan": "Aduan",
+      "penghargaan": "Perhargaan",
+      "tambah": "Tambah",
+      "tambahdesc": "Tambah Aduan Baru Dan Hantar Terus Ke Jabatan",
+      "aduandesc": "Senarai Aduan Yang Telah Dihantar",
+      "kategori": "Kategori",
+      "status": "Status",
+      "tambahaduan": "Tambah Aduan",
+      "silaisi": "Sila Isi Maklumat Kerosakan Anda",
+      "pilihkate": "Pilih Kategori",
+      "pilihrosak": "Pilih Kerosakan",
+      "catatan": "Catatan",
+      "hantar": "Hantar",
+      "senarai": "Senarai Aduan"
+    },
+    "penghargaan": {
+      "penghargaan": "Penghargaan",
+      "silaisi": "Sila Isi Penghargaan Anda"
+    }
+}

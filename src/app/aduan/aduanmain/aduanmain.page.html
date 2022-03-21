@@ -1,0 +1,35 @@
+<ion-content>
+  <div class="main">
+    <div class="container">
+      <div class="header">
+        <ion-icon name="chevron-back-outline" style="float: left;" (click)="back()"></ion-icon>
+        <span class="headertxt">{{ 'aduan.aduan' | translate }}</span>
+      </div>
+      <div style="padding-top: 40px;">
+        <ion-img src="../../assets/icon/aduan.png" class="icontetapan"></ion-img>
+      </div>
+    </div>
+  </div>
+  <div class="main2">
+    <div class="container2">
+      <div class="cardaduan" (click)="tambah()">
+        <ion-img src="../../assets/icon/tambahaduan.png" class="tambah"></ion-img>
+        <div class="cardword">{{ 'aduan.tambah' | translate }}</div>
+        <div class="tambahdesc">{{ 'aduan.tambahdesc' | translate }}</div>
+      </div>
+      <span style="padding:0px 10px;"></span>
+      <div class="cardaduan" (click)="senaraiaduan()">
+        <div class="count">{{aduancount}}</div>
+        <div class="cardword">{{ 'aduan.aduan' | translate }}</div>
+        <div class="tambahdesc">{{ 'aduan.aduandesc' | translate }}</div>
+      </div>
+      <div style="height: 20px;"></div>
+      <div class="cardaduan2">
+        <div class="cardhead">{{ 'aduan.kategori' | translate }}</div>
+        <div class="carddetail">08</div>
+        <div class="cardhead">{{ 'aduan.status' | translate }}</div>
+        <div class="carddetail">Total Loss <span style="float: right;">></span></div>
+      </div>
+    </div>
+  </div>
+</ion-content>

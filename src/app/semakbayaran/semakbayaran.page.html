@@ -1,0 +1,41 @@
+<ion-content>
+  <div class="main">
+    <div class="container2">
+      <div class="header">
+        <ion-icon name="chevron-back-outline" style="float: left;" (click)="back()"></ion-icon>
+        <span class="headertxt">{{ 'semak.main' | translate }}</span>
+      </div>
+    </div>
+  </div>
+  <div class="main2">
+    <div class="container3">
+      <div class="headerbox">
+        <div class="labelakaun">{{ 'semak.akaun' | translate }}</div>
+        <ion-select okText="{{ 'semak.ok' | translate }}" cancelText="{{ 'semak.cancel' | translate }}" class="select">
+          <ion-select-option></ion-select-option>
+        </ion-select>
+      </div>
+      <div class="bodybox">
+        <div class="title">{{ 'semak.sejbayaran' | translate }}</div>
+        <div style="padding: 10px 0px 10px 0px">
+          <div class="card">
+            <div class="cardhead">
+              Mac
+            </div>
+            <div class="cardbody">
+              <div class="body1">7 Mac 2022</div>
+              <div class="body1" style="text-align: right;">RM 100</div>
+              
+            </div>
+          </div>
+        </div>
+        <div style="padding: 10px 0px 10px 0px">
+          <div class="card"></div>
+        </div>
+        <div style="padding: 10px 0px 10px 0px">
+          <div class="card"></div>
+        </div>
+      </div>
+    </div>  
+  </div>
+</ion-content>

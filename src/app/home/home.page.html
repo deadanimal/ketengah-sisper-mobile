@@ -1,0 +1,99 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>home</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content>
+    <div class="homemain"style="padding-top: 50px;padding-bottom: 70px;">
+      <div style="padding-left: 40px;padding-right: 50px;">
+        <div style="display: inline-block; width: 70%;">
+          <ion-img src="../../assets/icon/sisper.png" class="iconsisper"></ion-img>
+        </div>
+        <div style="display: inline-block;width: 30%;text-align: right;">
+          <ion-img src="../../assets/icon/noti.png" class="iconnoti" (click)="notis()"></ion-img>
+        </div>
+        <div>
+          <div style="display: inline-block; width: 70%;" class="selamat">{{ 'home.selamat' | translate }}, <br>
+            <span class="inline name">{{username}}</span>
+          </div>
+          <div style="display: inline-block;width: 30%;text-align: right;">
+            <ion-img src="../../assets/icon/ketengah.png" class="iconketengah"></ion-img>
+          </div>
+        </div>
+        <div style="display: inline-block;width: 70%;padding-top: 30px;">
+          <span class="akaunsaya">{{ 'home.akaun-saya' | translate }}</span>
+        </div>
+        <div style="display: inline-block;width: 30%;text-align: right;">
+          <button ion-button class="buttontambah" (click)="tambah()">
+            <ion-icon name="add-outline" style="align-items: baseline;"></ion-icon>
+            <span style="padding-left: 5px;">{{ 'home.tambah' | translate }}</span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="homemaintwo">
+      <div class="container2">
+        <ion-card class="card">
+          <ion-card-content>
+            Keep close to Nature's heart... and break clear away, once in awhile,
+            and climb a mountain or spend a week in the woods. Wash your spirit clean.
+          </ion-card-content>
+        </ion-card>
+        <ion-grid style="padding-right: 30px;">
+          <ion-row>
+            <ion-col>
+              <ion-card class="card2">
+                  <ion-img class="cardimg" style="width:56px;height:50px;" src="../../assets/icon/main1.png"></ion-img>
+                  <div class="cardname">{{ 'home.bayar-sewa' | translate }}</div>
+              </ion-card>
+            </ion-col>
+            <ion-col>
+              <ion-card class="card2">
+                <ion-img class="cardimg" style="width: 43px;height: 50px;" src="../../assets/icon/main2.png"></ion-img>
+                <div class="cardname">{{ 'home.lejar' | translate }}</div>
+              </ion-card>
+            </ion-col>
+            <ion-col>
+              <ion-card class="card2">
+                <ion-img class="cardimg" style="width: 45px;height: 50px;" src="../../assets/icon/main3.png"></ion-img>
+                <div class="cardname">{{ 'home.tender' | translate }}</div>
+              </ion-card>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-card class="card2">
+                <ion-img class="cardimg" style="width: 50px;height: 50px;" src="../../assets/icon/main4.png"></ion-img>
+                <div class="cardname">{{ 'home.tempahkemudahan' | translate }}</div>
+              </ion-card>
+            </ion-col>
+            <ion-col>
+              <ion-card class="card2" (click)="Aduan();">
+                <ion-img class="cardimg" style="width: 49.76px;height: 50px;" src="../../assets/icon/main5.png"></ion-img>
+                <div class="cardname">{{ 'home.aduan' | translate }}</div>
+              </ion-card>
+            </ion-col>
+            <ion-col>
+              <ion-card class="card2" >
+                <ion-img class="cardimg" style="width: 53px;height: 50px;" src="../../assets/icon/main6.png"></ion-img>
+                <div class="cardname">{{ 'home.lain' | translate }}</div>
+              </ion-card>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+        <ion-slides pager="true" [options]="slideOpts">
+          <ion-slide class="slider">
+            <ion-img src="../../assets/icon/ketengah.png"></ion-img>
+          </ion-slide>
+          <ion-slide class="slider">
+            <ion-img src="../../assets/icon/ketengah.png"></ion-img>
+          </ion-slide>
+          <ion-slide class="slider">
+            <ion-img src="../../assets/icon/ketengah.png"></ion-img>
+          </ion-slide>
+        </ion-slides>
+      </div>
+    </div>
+     
+</ion-content>

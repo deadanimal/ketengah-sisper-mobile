@@ -1,0 +1,16 @@
+{
+    "home": {
+      "selamat": "Welcome",
+      "akaun-saya": "My Account",
+      "tambah": "Add",
+      "bayar-sewa": "Pay Rent",
+      "lejar":"Lejar",
+      "tender":"Sebutharga/ Tender",
+      "tempahkemudahan":"Tempah Kemudahan",
+      "aduan":"Aduan",
+      "lain":"Lain-Lain"
+    },
+    "setting": {
+        "tetapan": "Setting"
+    }
+}
