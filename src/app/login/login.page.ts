@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AuthenticationService } from '../shared/services/authentication.service';
+import { AuthenticationService } from '../shared/services/auth/authentication.service';
 import { AlertController, LoadingController } from '@ionic/angular';
 
 @Component({
@@ -34,8 +34,18 @@ export class LoginPage implements OnInit {
     this.authService.login(this.credentials.value.no_telefon, this.credentials.value.password).subscribe(
       async (res) => {
         console.log(res);
-        await loading.dismiss();        
-        this.router.navigate(['/main']);
+        await loading.dismiss();  
+        if(res != 'false'){      
+          this.router.navigate(['/main']);
+        }else{
+          const alert = await this.alertController.create({
+            header: 'Login failed',
+            message: 'Tiada Pengguna Dijumpai',
+            buttons: ['OK'],
+          });
+
+          await alert.present();
+        }
       },
       async (res) => {
         console.log(res);

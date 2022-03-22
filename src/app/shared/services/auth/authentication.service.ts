@@ -1,12 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map, tap, switchMap, take } from 'rxjs/operators';
-import { BehaviorSubject, from, Observable, Subject } from 'rxjs';
+import { tap, take } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 import { NativeStorage } from '@awesome-cordova-plugins/native-storage/ngx';
 import { environment } from "src/environments/environment";
-import { Router } from '@angular/router';
 
-const TOKEN_KEY = 'my-token';
+const TOKEN_KEY = 'user';
 
 @Injectable({
   providedIn: 'root'
@@ -15,11 +14,7 @@ export class AuthenticationService {
 
   public urlLogin: string = environment.baseUrl + "user";
 
-  isAuthenticated: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(null);
-  token = '';
-
   constructor(
-    private router: Router,
     private nativeStorage: NativeStorage,
     private http: HttpClient
   ) { 
@@ -31,13 +26,21 @@ export class AuthenticationService {
     return this.http.post(loginURL,{no_telefon,password}).pipe(
       take(1),
       tap((res) => {
-        this.nativeStorage.setItem(TOKEN_KEY, {value: res[0]});
+        console.log(res);
+        if(res != 'false'){
+          this.nativeStorage.setItem(TOKEN_KEY, {value: res});
+        }
+        
       })
     )
   }
+
+  register(register: any): Observable<any> {
+    var registerURL = environment.baseUrl + "UserRegister";
+    return this.http.post<any>(registerURL, register);
+  }
  
   logout(): Promise<void> {
-    this.isAuthenticated.next(false);
     return this.nativeStorage.remove(TOKEN_KEY);
   }
 

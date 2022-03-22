@@ -15,35 +15,35 @@
       <div class="boxgrey">
         <div class="tetapanword">{{ 'home.akaun-saya' | translate }}</div>
       </div>
-      <div class="boxwhite" style="border-bottom: 0.7px solid #E8E8E8">
-        {{ 'profile.nama' | translate }} <br>
-        <ion-input type="text" class="input" readonly value="{{username}}"></ion-input>
-      </div>
-      <div class="boxwhite" style="border-bottom: 0.7px solid #E8E8E8">
-        {{ 'profile.nokp' | translate }} <br>
-        <ion-input type="text" class="input" readonly value="{{nokp}}"></ion-input>
-      </div>
-      <div class="boxwhite" style="border-bottom: 0.7px solid #E8E8E8">
-        {{ 'profile.emel' | translate }} <br>
-        <ion-input type="text" class="input"></ion-input><span style="width: 30%;">Kemaskini</span>
-      </div>
-      <div class="boxwhite" style="border-bottom: 0.7px solid #E8E8E8">
-        {{ 'profile.notel' | translate }} <br>
-        <ion-input type="text" class="input"></ion-input><span style="width: 30%;">Kemaskini</span>
-      </div>
-      <div class="boxwhite" style="border-bottom: 0.7px solid #E8E8E8">
-        {{ 'profile.pass' | translate }} <br>
-        <ion-input type="text" class="input"></ion-input><span style="width: 30%;">Kemaskini</span>
-      </div>
-      <div class="boxwhite" style="border-bottom: 0.7px solid #E8E8E8">
-        {{ 'profile.akaun' | translate }} <br>
-        <ion-input type="text" class="input"></ion-input><span style="width: 30%;">Kemaskini</span>
-      </div>
-      <div style="padding:50px 0px 20px 0px;text-align: center;">
-        <button ion-button class="button2" (click)="lupapass()">{{ 'profile.lupakatalaluan' | translate }}</button>
-        <div style="height: 10px;"></div>
-        <button ion-button class="button" (click)="logout()">{{ 'logout' | translate }}</button>
-      </div>
+        <div class="boxwhite" style="border-bottom: 0.7px solid #E8E8E8">
+          {{ 'profile.nama' | translate }} <br>
+          <ion-input type="text" class="input" readonly value="{{username}}"></ion-input>
+        </div>
+        <div class="boxwhite" style="border-bottom: 0.7px solid #E8E8E8">
+          {{ 'profile.nokp' | translate }} <br>
+          <ion-input type="text" class="input" readonly value="{{nokp}}"></ion-input>
+        </div>
+        <div class="boxwhite" style="border-bottom: 0.7px solid #E8E8E8">
+          {{ 'profile.emel' | translate }} <br>
+          <ion-input type="text" class="input" [(ngModel)]="email"></ion-input><span style="width: 30%;" (click)="save('email')">Kemaskini</span>
+        </div>
+        <div class="boxwhite" style="border-bottom: 0.7px solid #E8E8E8">
+          {{ 'profile.notel' | translate }} <br>
+          <ion-input type="text" class="input" [(ngModel)]="nohp"></ion-input><span style="width: 30%;" (click)="save('nohp')">Kemaskini</span>
+        </div>
+        <div class="boxwhite" style="border-bottom: 0.7px solid #E8E8E8">
+          {{ 'profile.pass' | translate }} <br>
+          <ion-input type="password" class="input" [(ngModel)]="pass"></ion-input><span style="width: 30%;" (click)="save('pass')">Kemaskini</span>
+        </div>
+        <div class="boxwhite" style="border-bottom: 0.7px solid #E8E8E8">
+          {{ 'profile.akaun' | translate }} <br>
+          <ion-input type="text" class="input"></ion-input><span style="width: 30%;">Kemaskini</span>
+        </div>
+        <div style="padding:50px 0px 20px 0px;text-align: center;">
+          <!-- <button ion-button class="button2" (click)="lupapass()">{{ 'profile.lupakatalaluan' | translate }}</button> -->
+          <div style="height: 10px;"></div>
+          <button ion-button class="button" (click)="logout()">{{ 'logout' | translate }}</button>
+        </div>
     </div>
   </div>
 </ion-content>
