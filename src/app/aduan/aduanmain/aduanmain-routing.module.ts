@@ -7,6 +7,10 @@ const routes: Routes = [
   {
     path: '',
     component: AduanmainPage
+  },
+  {
+    path: 'aduanview',
+    loadChildren: () => import('./aduanview/aduanview.module').then( m => m.AduanviewPageModule)
   }
 ];
 

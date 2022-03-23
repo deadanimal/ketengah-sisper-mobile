@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NativeStorage } from '@awesome-cordova-plugins/native-storage/ngx';
+import { AlertController, LoadingController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -16,13 +17,20 @@ export class HomePage implements OnInit {
     },
   };
 
+  noti = false;
+
   username : any;
   constructor(
     private router: Router,
     private nativeStorage: NativeStorage,
+    private alertController: AlertController,
+    private loadingController: LoadingController,
   ) { }
 
-  ngOnInit() {
+  async ngOnInit() {
+    const loading = await this.loadingController.create();
+    await loading.present();
+
     this.nativeStorage.getItem('user').then(
       data => {
         console.log(data);
@@ -30,6 +38,8 @@ export class HomePage implements OnInit {
       },
       error => console.error(error)
     );
+
+    await loading.dismiss();
   }
 
   ionViewWillEnter () {

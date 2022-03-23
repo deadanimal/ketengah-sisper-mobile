@@ -58,7 +58,11 @@
       "pilihrosak": "Pilih Kerosakan",
       "catatan": "Catatan",
       "hantar": "Hantar",
-      "senarai": "Senarai Aduan"
+      "senarai": "Senarai Aduan",
+      "tarikh": "Tarikh Aduan",
+      "katerosak": "Kategori Kerosakan",
+      "jenisrosak": "Jenis Kerosakan",
+      "butiranaduan": "Butiran Aduan"
     },
     "penghargaan": {
       "penghargaan": "Penghargaan",

@@ -11,7 +11,8 @@
           <ion-img src="../../assets/icon/sisper.png" class="iconsisper"></ion-img>
         </div>
         <div style="display: inline-block;width: 30%;text-align: right;">
-          <ion-img src="../../assets/icon/noti.png" class="iconnoti" (click)="notis()"></ion-img>
+          <ion-img *ngIf="noti==true" src="../../assets/icon/noti.png" class="iconnoti" (click)="notis()"></ion-img>
+          <ion-img *ngIf="noti==false" src="../../assets/icon/notifalse.png" class="iconnotifalse" (click)="notis()"></ion-img>
         </div>
         <div>
           <div style="display: inline-block; width: 70%;" class="selamat">{{ 'home.selamat' | translate }}, <br>

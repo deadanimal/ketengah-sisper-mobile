@@ -74,6 +74,10 @@ const routes: Routes = [
               {
                 path: 'senarai',
                 loadChildren: () => import('../aduan/aduanmain/senaraiaduan/senaraiaduan.module').then( m => m.SenaraiaduanPageModule)
+              },
+              {
+                path: 'view',
+                loadChildren: () => import('../aduan/aduanmain/aduanview/aduanview.module').then( m => m.AduanviewPageModule)
               }
             ]
           },

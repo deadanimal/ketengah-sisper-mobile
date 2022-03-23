@@ -24,11 +24,11 @@
         <div class="tambahdesc">{{ 'aduan.aduandesc' | translate }}</div>
       </div>
       <div style="height: 20px;"></div>
-      <div class="cardaduan2">
+      <div class="cardaduan2" (click)="aduanview()">
         <div class="cardhead">{{ 'aduan.kategori' | translate }}</div>
-        <div class="carddetail">08</div>
+        <div class="carddetail">{{lattKateAduan}}</div>
         <div class="cardhead">{{ 'aduan.status' | translate }}</div>
-        <div class="carddetail">Total Loss <span style="float: right;">></span></div>
+        <div class="carddetail">{{lattStatusAduan}}<span style="float: right;">></span></div>
       </div>
     </div>
   </div>

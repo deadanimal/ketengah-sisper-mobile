@@ -15,9 +15,9 @@
       <div class="headerbox">
         <div class="label">{{ 'aduan.senarai' | translate }}</div>
         <div *ngFor="let item of AduanList">
-          <div class="cardaduan2">
+          <div class="cardaduan2" (click)="viewaduan(item)">
             <div class="cardhead">{{ 'aduan.kategori' | translate }}</div>
-            <div class="carddetail">{{item.kategori}}</div>
+            <div class="carddetail">{{item.kategori}} - {{item.kategorilist.kategori}}</div>
             <div class="cardhead">{{ 'aduan.status' | translate }}</div>
             <div class="carddetail">{{item.status}}<span style="float: right;">></span></div>
           </div>
