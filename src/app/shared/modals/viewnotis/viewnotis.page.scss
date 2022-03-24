@@ -1,0 +1,43 @@
+.card {
+    background: #FFFFFF;
+    border: 1px solid #F7FAFD;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 8px rgba(73, 87, 184, 0.2);
+    border-radius: 10px;
+    padding: 35px 15px;
+    height: 230px;
+}
+
+.header {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 27px;
+    letter-spacing: -0.165px;
+    color: #3D2C7C;
+    text-align: left;
+}
+
+.body {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 27px;
+    letter-spacing: -0.165px;
+    color: #3D2C7C;
+    text-align: left;
+}
+
+.button {
+    width: 134px;
+    height: 49px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: center;
+    align-items: center;
+    color: #FFFFFF;
+    background: #3D2C7C;
+    border-radius: 10px;
+}

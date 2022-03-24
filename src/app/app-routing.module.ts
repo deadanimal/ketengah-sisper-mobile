@@ -63,6 +63,10 @@ const routes: Routes = [
     path: 'senaraiaduan',
     loadChildren: () => import('./aduan/aduanmain/senaraiaduan/senaraiaduan.module').then( m => m.SenaraiaduanPageModule)
   },
+  {
+    path: 'viewnotis',
+    loadChildren: () => import('./shared/modals/viewnotis/viewnotis.module').then( m => m.ViewnotisPageModule)
+  },
 ];
 
 @NgModule({

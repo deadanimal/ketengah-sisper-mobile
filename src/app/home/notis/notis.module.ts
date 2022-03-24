@@ -12,6 +12,8 @@ import {  HttpClient } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
+import { ViewnotisPageModule } from '../../shared/modals/viewnotis/viewnotis.module';
+
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, "./assets/i18n/", ".json");
 }
@@ -22,6 +24,7 @@ export function createTranslateLoader(http: HttpClient) {
     FormsModule,
     IonicModule,
     NotisPageRoutingModule,
+    ViewnotisPageModule,
     TranslateModule.forChild({
       loader: {
         provide: TranslateLoader,

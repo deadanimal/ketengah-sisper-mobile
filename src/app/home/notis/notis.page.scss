@@ -67,6 +67,20 @@ ion-checkbox {
     opacity: 1;
 }
 
+input[type=checkbox]::before, input[type=checkbox]::after {
+    background: #C5C4C4;
+    background-color: #C5C4C4;
+    color: #C5C4C4;
+}
+
+input[type=checkbox]:checked {
+    background: #3D2C7C;
+    color: #3D2C7C;
+    background-color: #3D2C7C;
+    content: "";
+    background-image: none;
+}
+
 .semua {
     font-style: normal;
     font-weight: 500;
@@ -75,4 +89,17 @@ ion-checkbox {
     letter-spacing: 0.02em;
     color: #494949;
     padding: 20px 10px 40px 30px !important;
+}
+
+.button {
+    background-color: #3D2C7C;
+    border: 1pt solid #3D2C7C;
+    height: 48px;
+    width: 70%;
+    border-radius: 10px;
+    margin:auto;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 21px;
 }
