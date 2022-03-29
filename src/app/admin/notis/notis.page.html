@@ -1,0 +1,27 @@
+<ion-content>
+  <div class="main">
+    <div class="container2">
+      <div class="header">
+        <ion-icon name="chevron-back-outline" style="float: left;" (click)="back()"></ion-icon>
+        <span class="headertxt">{{ 'notis.notis' | translate }}</span>
+      </div>
+    </div>
+  </div>
+  <div class="main2">
+    <div class="container3">
+      <div class="headerbox">
+        <div class="descbox">
+          <div class="label">{{ 'notis.tajuk' | translate }}</div>
+          <input class="select" [(ngModel)]="tajuknotis">
+          <div style="height: 50px;"></div>
+          <div class="label">{{ 'pengumuman.kandungan' | translate }}</div>
+          <textarea class="textarea" rows="7" cols="50" [(ngModel)]="kandungannotis"></textarea>
+        </div>
+        <div style="padding: 30px 30px;">
+          <button ion-button class="button" (click)="hantar()">{{ 'aduan.hantar' | translate }}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</ion-content>

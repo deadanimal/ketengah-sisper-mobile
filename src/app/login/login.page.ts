@@ -22,8 +22,10 @@ export class LoginPage implements OnInit {
 
   ngOnInit() {
     this.credentials = this.fb.group({
-      no_telefon: ['123', [Validators.required, Validators.email]],
-      password: ['password', [Validators.required, Validators.minLength(6)]],
+      // no_telefon: ['123', [Validators.required]],
+      // password: ['password', [Validators.required, Validators.minLength(6)]],
+      no_telefon: ['11', [Validators.required]],
+      password: ['pass', [Validators.required, Validators.minLength(6)]],
     });
   }
 
@@ -35,8 +37,12 @@ export class LoginPage implements OnInit {
       async (res) => {
         console.log(res);
         await loading.dismiss();  
-        if(res != 'false'){      
-          this.router.navigate(['/main']);
+        if(res != 'false'){     
+          if(res.role == 1){
+            this.router.navigate(['/main']);
+          }else if(res.role == 2){
+            this.router.navigate(['/main/admin']);
+          }
         }else{
           const alert = await this.alertController.create({
             header: 'Login failed',

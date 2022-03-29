@@ -1,0 +1,51 @@
+<ion-content>
+  <div class="main">
+    <div class="container2">
+      <div class="header">
+        <ion-icon name="chevron-back-outline" style="float: left;" (click)="back()"></ion-icon>
+        <span class="headertxt" style="width:70%;margin: auto;display: inline-block;">{{ 'penghargaan.penghargaan' | translate }}</span>
+      </div>
+    </div>
+  </div>
+  <div class="main2">
+    <div class="container3">
+      <div *ngFor="let item of PenghargaanList" style="padding-bottom:20px">
+          <ion-item *ngIf="item.view == false" style="background-color: white;">  
+            <table style="border-bottom: 0.7px solid #E8E8E8; height: 58px;width: 100%;">
+              <colgroup>
+                <col style="width: 10%;">
+                <col style="width: 60%;">
+                <col style="width: 30%;">
+              </colgroup>
+              <tr>
+                <td (click)="openModal(item)" rowspan="2" style="padding:30px 20px"><ion-img src="../../assets/icon/notinew.png" class="icondelete"></ion-img></td>
+                <td (click)="openModal(item)" class="notistitleactive">{{item.user_name}}</td>
+                <td rowspan="2" class="notisdate">{{item.date}}
+              </tr>
+              <tr>
+                <td (click)="openModal(item)" class="notisbodyactive">{{item.penghargaan}}</td>
+              </tr>
+            </table>
+          </ion-item>
+          <ion-item *ngIf="item.view == true" style="background-color: white;">  
+            <table style="border-bottom: 0.7px solid #E8E8E8; height: 58px;width: 100%;">
+              <colgroup>
+                <col style="width: 10%;">
+                <col style="width: 60%;">
+                <col style="width: 30%;">
+              </colgroup>
+              <tr>
+                <td (click)="openModal(item)" rowspan="2" style="padding:30px 20px; height:100%;"><ion-img src="../../assets/icon/notiold.png" class="icondelete" ></ion-img></td>
+                <td (click)="openModal(item)" class="notistitleactive" style="opacity: 0.3; height:100%;">{{item.user_name}}</td>
+                <td rowspan="2" class="notisdate" >{{item.date}}
+                </td>
+              </tr>
+              <tr>
+                <td (click)="openModal(item)" class="notisbodyactive" style="height:100%;">{{item.penghargaan}}</td>
+              </tr>
+            </table>
+          </ion-item>   
+      </div>
+    </div> 
+  </div>
+</ion-content>

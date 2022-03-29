@@ -98,6 +98,42 @@ const routes: Routes = [
     path: '',
     redirectTo: 'tabs/home',
     pathMatch: 'full'
+  },
+  {
+    path: 'admin',
+    children: [
+      {
+        path: '',
+        loadChildren: () => import('../home/home.module').then( m => m.HomePageModule)
+      },
+      {
+        path: 'notis',
+        children: [
+          {
+            path: '',
+            loadChildren: () => import('../admin/notis/notis.module').then( m => m.NotisPageModule)
+          }
+        ]
+      },
+      {
+        path: 'pengumuman',
+        children: [
+          {
+            path: '',
+            loadChildren: () => import('../admin/pengumuman/pengumuman.module').then( m => m.PengumumanPageModule)
+          }
+        ]
+      },
+      {
+        path: 'penghargaan',
+        children: [
+          {
+            path: '',
+            loadChildren: () => import('../admin/penghargaan/penghargaan.module').then( m => m.PenghargaanPageModule)
+          }
+        ]
+      }
+    ]
   }
 ];
 

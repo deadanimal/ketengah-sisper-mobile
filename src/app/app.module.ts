@@ -11,6 +11,8 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { NativeStorage } from '@awesome-cordova-plugins/native-storage/ngx';
+import { CalendarModule } from 'ion2-calendar';
+import { DatePipe } from '@angular/common';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -27,9 +29,13 @@ export function createTranslateLoader(http: HttpClient) {
         useFactory: (createTranslateLoader),  
         deps: [HttpClient] 
       } 
-    }) 
+    }),
+    CalendarModule.forRoot({
+      doneLabel: 'Save',
+      closeIcon: true
+    })
   ],
-  providers: [NativeStorage,{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [NativeStorage,{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },DatePipe],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

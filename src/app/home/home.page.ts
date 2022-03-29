@@ -22,6 +22,7 @@ export class HomePage implements OnInit {
 
   username : any;
   user : any;
+  role : any;
   notiarr = [];
 
   constructor(
@@ -38,48 +39,54 @@ export class HomePage implements OnInit {
 
       await this.nativeStorage.getItem('user').then(
         data => {
-          // console.log(data);
           this.username = data.value.name;
           this.user = data.value;
+          this.role = data.value.role;
+          console.log(this.user);
         },
         error => console.error(error)
       );
-
-      var userid = this.user.user_id;
-      var noti = false;
-      await this.notisService.getbyid(this.user.user_id).subscribe(
-        async (res) => {
-          // console.log(res);
-          await res.forEach(async function (value) {
-            let obj = JSON.parse(value.viewed);
-            value.view = false;
-            value.selected = false;
-            await obj.forEach(function (value2) {
-              if(value2.id == userid){
-                value.view = true;
+      if(this.user.role == 1){
+        var userid = this.user.user_id;
+        var noti = false;
+        await this.notisService.getbyid(this.user.user_id).subscribe(
+          async (res) => {
+            // console.log(res);
+            await res.forEach(async function (value) {
+              let obj = JSON.parse(value.viewed);
+              value.view = false;
+              value.selected = false;
+              await obj.forEach(function (value2) {
+                if(value2.id == userid){
+                  value.view = true;
+                }
+              });
+              if(value.view == false){
+                noti = true;
               }
             });
-            if(value.view == false){
-              noti = true;
-            }
-          });
-          this.notiarr = res;
-          this.noti = noti;
-          console.log('notis',this.notiarr);
-          await loading.dismiss();
-        },
-        async (res) => {
-          console.log(res);
-          await loading.dismiss();
-          const alert = await this.alertController.create({
-            header: 'Loading failed',
-            message: res.message,
-            buttons: ['OK'],
-          });
-  
-          await alert.present();
-        }
-      );
+            this.notiarr = res;
+            this.noti = noti;
+            console.log('notis',this.notiarr);
+            await loading.dismiss();
+          },
+          async (res) => {
+            console.log(res);
+            await loading.dismiss();
+            const alert = await this.alertController.create({
+              header: 'Loading failed',
+              message: res.message,
+              buttons: ['OK'],
+            });
+    
+            await alert.present();
+          }
+        );
+      }else if (this.user.role == 2){
+        await loading.dismiss();
+      }
+      
+      
     });
   }
 
@@ -104,5 +111,17 @@ export class HomePage implements OnInit {
 
   Aduan(){
     this.router.navigate(['main/tabs/aduan']);
+  }
+
+  notisadmin(){
+    this.router.navigate(['main/admin/notis']);
+  }
+
+  pengumumanadmin(){
+    this.router.navigate(['main/admin/pengumuman']);
+  }
+
+  penghargaanadmin(){
+    this.router.navigate(['main/admin/penghargaan']);
   }
 }

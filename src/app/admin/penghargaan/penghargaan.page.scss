@@ -1,0 +1,75 @@
+.container2 {
+    padding-top: 50px;
+    padding: 50px 25px 20px 10px;
+    height: 180px;
+}
+
+.container3 {
+    padding: 30px 10px 20px 10px;
+    height: 700px;
+}
+
+.icondelete {
+    height: 25px;
+    width: 25px;
+    display: inline-block;
+}
+
+.notistitleactive {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 14px;
+    letter-spacing: 0.02em;
+    color: #D23330;
+}
+
+.notistitleactive {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 14px;
+    letter-spacing: 0.02em;
+    color: #D23330;
+}
+
+.notisbodyactive {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+    letter-spacing: 0.02em;
+    color: #494949;
+    opacity: 0.5;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1; /* number of lines to show */
+            line-clamp: 1; 
+    -webkit-box-orient: vertical;
+    // padding-bottom: 30px;
+}
+
+.notisdate {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 14px;
+    letter-spacing: 0.02em;
+    color: #494949;
+    opacity: 0.5;
+    padding-left: 10px;
+}
+
+.button {
+    background-color: #3D2C7C;
+    border: 1pt solid #3D2C7C;
+    height: 48px;
+    width: 70%;
+    border-radius: 10px;
+    margin:auto;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 21px;
+}

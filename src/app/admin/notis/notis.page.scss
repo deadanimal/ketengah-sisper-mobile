@@ -1,0 +1,61 @@
+.container2 {
+    padding-top: 50px;
+    padding: 50px 25px 20px 10px;
+    height: 180px;
+}
+
+.container3 {
+    padding: 30px 10px 20px 10px;
+    height: 700px;
+}
+
+.headerbox {
+    padding: 0px 20px 0px 20px;
+}
+
+.select {
+    width: 100%;
+    background: #FFFFFF;
+    border: 1px solid #3D2C7C;
+    box-shadow: inset -4px -4px 9px rgba(255, 255, 255, 0.6), inset 4px 4px 14px #C5D7EE;
+    border-radius: 9px;
+    padding:20px;
+    color: black;
+    --placeholder-color:#494949;
+}
+
+.label {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 0.02em;
+    text-transform: capitalize;
+    color: #494949;
+    padding-bottom: 15px;
+}
+
+.descbox {
+    padding: 20px 60px 40px 60px;
+}
+
+.textarea {
+    width: 100%;
+    background: #FFFFFF;
+    border: 1px solid #3D2C7C;
+    box-shadow: inset -4px -4px 9px rgba(255, 255, 255, 0.6), inset 4px 4px 14px #C5D7EE;
+    border-radius: 9px;
+    padding:20px;
+    color: black;
+}
+
+.button {
+    background-color: #3D2C7C;
+    height: 48px;
+    width: 100%;
+    border-radius: 10px;
+    margin:auto;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 21px;
+}

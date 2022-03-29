@@ -27,4 +27,9 @@ export class NotisService {
     var notisdeleteURL = environment.baseUrl + "softdelete";
     return this.http.post<any>(notisdeleteURL, [notisid,userid]);
   }
+
+  add(data:any): Observable<any> {
+    var AddnotisURL = environment.baseUrl + "notis";
+    return this.http.post<any>(AddnotisURL, data);
+  }
 }

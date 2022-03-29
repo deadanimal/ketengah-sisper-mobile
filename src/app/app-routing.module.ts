@@ -67,6 +67,22 @@ const routes: Routes = [
     path: 'viewnotis',
     loadChildren: () => import('./shared/modals/viewnotis/viewnotis.module').then( m => m.ViewnotisPageModule)
   },
+  {
+    path: 'notis',
+    loadChildren: () => import('./admin/notis/notis.module').then( m => m.NotisPageModule)
+  },
+  {
+    path: 'penghargaan',
+    loadChildren: () => import('./admin/penghargaan/penghargaan.module').then( m => m.PenghargaanPageModule)
+  },
+  {
+    path: 'pengumuman',
+    loadChildren: () => import('./admin/pengumuman/pengumuman.module').then( m => m.PengumumanPageModule)
+  },
+  {
+    path: 'calendar',
+    loadChildren: () => import('./shared/modals/calendar/calendar.module').then( m => m.CalendarPageModule)
+  }
 ];
 
 @NgModule({

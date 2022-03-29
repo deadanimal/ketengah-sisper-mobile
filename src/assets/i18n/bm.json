@@ -8,7 +8,12 @@
       "tender":"Sebutharga/ Tender",
       "tempahkemudahan":"Tempah Kemudahan",
       "aduan":"Aduan",
-      "lain":"Lain-Lain"
+      "lain":"Lain-Lain",
+      "notis":"Notis",
+      "pengumuman":"Pengumuman",
+      "pengguna":"Pengguna",
+      "penghargaan":"Penghargaan",
+      "tarikh":"Sekatan Tarikh"
     },
     "setting": {
       "tetapan": "Tetapan",
@@ -43,7 +48,8 @@
     },
     "notis": {
       "notis": "Notis",
-      "buang": "Buang"
+      "buang": "Buang",
+      "tajuk": "Tajuk Notis"
     },
     "aduan": {
       "aduan": "Aduan",
@@ -68,5 +74,10 @@
     "penghargaan": {
       "penghargaan": "Penghargaan",
       "silaisi": "Sila Isi Penghargaan Anda"
+    },
+    "pengumuman": {
+      "tajukpengumuman": "Tajuk Pengumuman",
+      "kandungan": "Kandungan",
+      "tempohpengumuman": "Tempoh Pengumuman"
     }
 }
