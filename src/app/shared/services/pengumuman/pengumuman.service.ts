@@ -17,4 +17,9 @@ export class PengumumanService {
     var AddumumURL = environment.baseUrl + "pengumuman";
     return this.http.post<any>(AddumumURL, data);
   }
+
+  gettempoh(): Observable<any> {
+    var penghargaanURL = environment.baseUrl + "pengumumantempoh";
+    return this.http.get<any>(penghargaanURL);
+  }
 }

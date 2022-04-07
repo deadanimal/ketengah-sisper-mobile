@@ -96,14 +96,26 @@
     box-sizing: border-box;
     box-shadow: 0px 4px 8px rgba(73, 87, 184, 0.2);
     border-radius: 10px;
-    width: 13vh;
+    width: 90%;
     height: 135px;
     padding-top: 10px;
 }
 
 .slider {
-    height: 350px;
-    padding: 10px;
+    height: 230px;
+    padding: 10px 20px;
+    background: url('/assets/icon/pengumumanback.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    text-align: left;
+    display: block;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 130%;
+    letter-spacing: -0.165px;
+    color: #FFFFFF;
 }
 
 .cardimg {
@@ -126,4 +138,18 @@
     width:90px;
     display: block;
     margin: auto;
+}
+
+.headerslide {
+    background: #E31F21;
+    border-radius: 5px;
+    width:50%;
+    text-align: center;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 130%;
+    text-align: center;
+    letter-spacing: -0.165px;
+    color: #FFFFFF;
 }

@@ -1,16 +1,125 @@
 {
-    "home": {
-      "selamat": "Welcome",
-      "akaun-saya": "My Account",
-      "tambah": "Add",
-      "bayar-sewa": "Pay Rent",
-      "lejar":"Lejar",
-      "tender":"Sebutharga/ Tender",
-      "tempahkemudahan":"Tempah Kemudahan",
-      "aduan":"Aduan",
-      "lain":"Lain-Lain"
-    },
-    "setting": {
-        "tetapan": "Setting"
-    }
+  "home": {
+    "selamat": "Welcome",
+    "akaun-saya": "My Account",
+    "tambah": "Add",
+    "bayar-sewa": "Pay Rent",
+    "lejar":"Ledger",
+    "tender":"Quotation/ Tender",
+    "tempahkemudahan":"Bookings",
+    "aduan":"Complaint",
+    "lain":"Others",
+    "notis":"Notice",
+    "pengumuman":"Announcement",
+    "pengguna":"User",
+    "penghargaan":"Appreciation",
+    "tarikh":"Blocked Bookings"
+  },
+  "setting": {
+    "tetapan": "Setting",
+    "noti": "Notification",
+    "bahasa": "Application Language Setting",
+    "bantuan": "Help and Support",
+    "faq": "FAQ",
+    "terma": "Terms and Condition"
+ },
+  "logout": "Log Keluar",
+  "profile": {
+    "profile": "Profile",
+    "nama": "Full Name",
+    "nokp": "Identification Number",
+    "emel": "E-mail",
+    "notel": "Phone Number",
+    "pass": "Password",
+    "akaun": "House / Premise Account",
+    "lupakatalaluan": "Forgot Password"
+  },
+  "semak": {
+    "main": "Check Payment",
+    "akaun": "Account Name",
+    "ok": "Okay",
+    "cancel": "Back",
+    "sejbayaran": "Payment History"
+  },
+  "forgot": {
+    "pass": "Forgot Password",
+    "word1": "Please Enter Your Phone Number",
+    "word2": "The Password Reset Link Will Be Sent via SMS. Please Check Your SMS Inbox"
+  },
+  "notis": {
+    "notis": "Notice",
+    "buang": "Delete",
+    "tajuk": "Notice Title"
+  },
+  "aduan": {
+    "aduan": "Complaint",
+    "penghargaan": "Appreciation",
+    "tambah": "Add",
+    "tambahdesc": "Add New Complaint And Send Straight To The Department",
+    "aduandesc": "List Of Complaints",
+    "kategori": "Category",
+    "status": "Status",
+    "tambahaduan": "Add Complaint",
+    "silaisi": "Please Fill In The Damage Information",
+    "pilihkate": "Choose a Category",
+    "pilihrosak": "Choose Damage",
+    "catatan": "Description",
+    "hantar": "Send",
+    "senarai": "Complaint List",
+    "tarikh": "Complaint Date",
+    "katerosak": "Damage Category",
+    "jenisrosak": "Type of Damage",
+    "butiranaduan": "Complaint Detail"
+  },
+  "penghargaan": {
+    "penghargaan": "Appreciation",
+    "silaisi": "Fill In Your Appreciation Message"
+  },
+  "pengumuman": {
+    "tajukpengumuman": "Announcement Title",
+    "kandungan": "Content",
+    "tempohpengumuman": "Announcement Period"
+  },
+  "lain": {
+    "catatan": "Description",
+    "urusan": "Affairs",
+    "lain":"Others"
+  },
+  "lejar": {
+    "lejar": "Ledger",
+    "sewarumah": "House Loans",
+    "sewapremis": "Premise Loans"
+  },
+  "sewa": {
+    "bayarsewa": "Loan Payments",
+    "jumlah": "Total",
+    "jumkeseluruhan": "GRAND TOTAL",
+    "bayar": "Pay"
+  },
+  "tempat_kemudahan": {
+    "dewan": "Hall",
+    "tempahK": "Bookings",
+    "alatan": "Tools",
+    "fasiliti": "Facility",
+    "sejarahTempahan": "Booking History"
+  },
+  "tender": {
+    "tender": "Quotation / Tender",
+    "namasyarikat": "Name of Company / Buyer",
+    "norujsyarikat": "Company Reference Number",
+    "alamat": "Address",
+    "poskod": "Postcode",
+    "bandar": "City",
+    "negeri": "State"
+  },
+  "hantar": "Send",
+  "dewan": {
+    "tempah": "Book",
+    "dewan": "Hall",
+    "lokasi": "Location",
+    "placelokasi": "Choose Location",
+    "placedewan": "Choose Hall",
+    "tarikh": "Date",
+    "masa": "Time"
+  }
 }

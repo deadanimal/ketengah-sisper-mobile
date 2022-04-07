@@ -1,0 +1,46 @@
+
+
+<ion-content>
+  <div class="main">
+    <div class="container">
+      <div class="header">
+        <ion-icon name="chevron-back-outline" style="float: left;" (click)="back()"></ion-icon>
+        <span class="headertxt">{{ 'lejar.lejar' | translate }}</span>
+        <span class="headertxt2">({{ 'lejar.sewapremis' | translate }})</span>
+      </div>
+      <div style="padding-top: 10px;">
+        <ion-img src="../../assets/icon/ssewapremis.png" class="icontetapan"></ion-img>
+      </div>
+    </div>
+  </div>
+  <div class="main2">
+    <div class="container2">
+      <div class="headerbox">
+        <div class="descbox">
+          <div class="label1" >{{ 'lejar.nama' | translate }}</div>
+            <div style="height: 10px;"></div>
+            <ion-select okText="{{ 'semak.ok' | translate }}" cancelText="{{ 'semak.cancel' | translate }}" class="select" placeholder="{{ 'lejar.nama' | translate }}">
+              <ion-select-option></ion-select-option>
+            </ion-select>
+            <div style="height: 10px;"></div>
+          <div class="label1" >{{ 'lejar.tahun' | translate }}</div>
+            <div style="height: 10px;"></div>
+            <ion-select okText="{{ 'semak.ok' | translate }}" cancelText="{{ 'semak.cancel' | translate }}" class="select" placeholder="{{ 'lejar.2022' | translate }}">
+            <ion-select-option></ion-select-option>
+          </ion-select>
+          <div style="height: 10px;"></div>
+          <div class="label1" >{{ 'lejar.bulan' | translate }}</div>
+          <div style="height: 10px;"></div>
+          <ion-select okText="{{ 'semak.ok' | translate }}" cancelText="{{ 'semak.cancel' | translate }}" class="select" placeholder="{{ 'lejar.jan' | translate }}">
+          <ion-select-option></ion-select-option>
+        </ion-select>
+
+        <div style="padding: 30px 30px;">
+          <button ion-button class="button cetak" (click)="cetak()">{{ 'lejar.cetak' | translate }}</button>
+        </div>
+          </div>
+
+      </div>
+    </div>
+  </div>
+</ion-content>

@@ -19,6 +19,7 @@ export class ProfilPage implements OnInit {
   email:any;
   nohp:any;
   pass:any;
+  showPass = true;
   
   constructor(
     private location: Location,
@@ -84,32 +85,68 @@ export class ProfilPage implements OnInit {
     const loading = await this.loadingController.create();
     await loading.present();
     var data = '';
+    var validation = true;
     var id = this.userid;
     if(type == 'email'){
       data = this.email;
+      if(data.includes('@') == true){
+        validation = true;
+      }else{
+        validation = false;
+      }
     }else if(type == 'nohp'){
       data = this.nohp;
     }else if(type == 'pass'){
       data = this.pass;
     }
+    console.log(validation);
+    if(data == '' || validation == false){
+      await loading.dismiss();
+      const alert = await this.alertController.create({
+        header: 'Update failed',
+        message: 'Sila Isi Maklumat Yang Sah',
+        buttons: ['OK'],
+      });
 
-    this.userService.update(type,data,id).subscribe(
-      async (res) => {
-        console.log(res);
-        await loading.dismiss();  
-      },
-      async (res) => {
-        console.log(res);
-        await loading.dismiss();
-        const alert = await this.alertController.create({
-          header: 'Update failed',
-          message: res.message,
-          buttons: ['OK'],
-        });
- 
-        await alert.present();
-      }
-    );
+      await alert.present();
+    }else{
+      this.userService.update(type,data,id).subscribe(
+        async (res) => {
+          console.log(res);
+          res.role=1;
+          this.nativeStorage.setItem('user', {value: res});
+          await loading.dismiss();  
+          const alert = await this.alertController.create({
+            header: 'Berjaya',
+            message: 'Maklumat Berjaya Dikemaskini',
+            buttons: ['OK'],
+          });
+   
+          await alert.present();
+        },
+        async (res) => {
+          console.log(res);
+          await loading.dismiss();
+          const alert = await this.alertController.create({
+            header: 'Update failed',
+            message: res.message,
+            buttons: ['OK'],
+          });
+   
+          await alert.present();
+        }
+      );
+    }
+
   }
 
+  hideShowPassword() {
+    this.showPass = !this.showPass;
+  }
+
+  numericOnly(event): boolean {
+    let pattern = /^([0-9])$/;
+    let result = pattern.test(event.key);
+    return result;
+  }
 }

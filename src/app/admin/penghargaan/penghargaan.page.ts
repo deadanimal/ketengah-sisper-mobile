@@ -4,6 +4,7 @@ import { AlertController, LoadingController, ModalController } from '@ionic/angu
 import { PenghargaanService } from '../../shared/services/penghargaan/penghargaan.service';
 import { NativeStorage } from '@awesome-cordova-plugins/native-storage/ngx';
 import { ViewnotisPage } from '../../shared/modals/viewnotis/viewnotis.page';
+import { AdminmenuPage } from '../../shared/modals/adminmenu/adminmenu.page';
 
 @Component({
   selector: 'app-penghargaan',
@@ -112,6 +113,16 @@ export class PenghargaanPage implements OnInit {
     });
 
     await loading.dismiss();
+    return await modal.present();
+  }
+
+  async adminmenu(){
+    const modal = await this.modalController.create({
+      component: AdminmenuPage,
+      cssClass: 'menu-modal',
+      backdropDismiss: true
+    });
+
     return await modal.present();
   }
 }

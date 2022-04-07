@@ -1,0 +1,34 @@
+<ion-content>
+  <div class="main">
+    <div class="container">
+      <div class="header">
+        <ion-icon name="chevron-back-outline" style="float: left;" (click)="back()"></ion-icon>
+        <span class="headertxt">
+          <div style="width:100px;margin: auto;">
+            {{ 'dewan.tempah' | translate }}<br>({{ 'dewan.dewan' | translate }})</div></span>
+      </div>
+      <div style="padding-top: 40px;">
+        <ion-img src="../../assets/icon/DewanHead.png" class="icontetapan"></ion-img>
+      </div>
+    </div>
+  </div>
+  <div class="main2">
+    <div class="container2">
+      <div style="padding:0px 40px;">
+        <div class="label">{{ 'dewan.lokasi' | translate }}.</div>
+        <input class="select" placeholder="{{ 'dewan.placelokasi' | translate }}">
+        <div style="height: 10px;"></div>
+        <div class="label">{{ 'dewan.dewan' | translate }}.</div>
+        <input class="select" placeholder="{{ 'dewan.placedewan' | translate }}">
+        <div style="height: 10px;"></div>
+        <div class="label">{{ 'dewan.tarikh' | translate }}.</div>
+        <input class="select" placeholder="00/00/0000">
+        <div style="height: 10px;"></div>
+        <div class="label">{{ 'dewan.masa' | translate }}.</div>
+        <input class="select" placeholder="00:00 - 00:00">
+        <div style="height: 40px;"></div>
+        <button ion-button class="button">{{ 'hantar' | translate }}</button>
+      </div>
+    </div>
+  </div>
+</ion-content>

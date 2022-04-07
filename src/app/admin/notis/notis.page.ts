@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from "@angular/common";
-import { AlertController, LoadingController } from '@ionic/angular';
+import { AlertController, LoadingController, ModalController } from '@ionic/angular';
 import { NotisService } from '../../shared/services/notis/notis.service';
 import { Router } from '@angular/router';
 import { NativeStorage } from '@awesome-cordova-plugins/native-storage/ngx';
+import { AdminmenuPage } from '../../shared/modals/adminmenu/adminmenu.page';
 
 @Component({
   selector: 'app-notis',
@@ -23,6 +24,7 @@ export class NotisPage implements OnInit {
     private alertController: AlertController,
     private notisService: NotisService,
     private nativeStorage: NativeStorage,
+    public modalController: ModalController
   ) { }
 
   async ngOnInit() {
@@ -78,4 +80,17 @@ export class NotisPage implements OnInit {
       }
     );
   }
+
+  async adminmenu(){
+    const modal = await this.modalController.create({
+      component: AdminmenuPage,
+      cssClass: 'menu-modal',
+      // breakpoints: [0, 0.3, 0.5, 0.8],
+      // initialBreakpoint: 0.5,
+      backdropDismiss: true
+    });
+
+    return await modal.present();
+  }
+
 }

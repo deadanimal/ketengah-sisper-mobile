@@ -79,5 +79,47 @@
       "tajukpengumuman": "Tajuk Pengumuman",
       "kandungan": "Kandungan",
       "tempohpengumuman": "Tempoh Pengumuman"
+    },
+    "lain": {
+      "catatan": "Catatan",
+      "urusan": "Urusan",
+      "lain":"Lain-lain"
+    },
+    "lejar": {
+      "lejar": "Lejar",
+      "sewarumah": "Sewa Rumah",
+      "sewapremis": "Sewa Premis"
+    },
+    "sewa": {
+      "bayarsewa": "Bayar Sewa",
+      "jumlah": "Jumlah",
+      "jumkeseluruhan": "JUMLAH KESELURUHAN",
+      "bayar": "Bayar"
+    },
+    "tempat_kemudahan": {
+      "dewan": "Dewan",
+      "tempahK": "Tempah Kemudahan",
+      "alatan": "Alatan",
+      "fasiliti": "Fasiliti",
+      "sejarahTempahan": "Sejarah Tempahan"
+    },
+    "tender": {
+      "tender": "Sebutharga / Tender",
+      "namasyarikat": "Nama Syarikat / Pembeli",
+      "norujsyarikat": "Nombor Rujukan Syarikat",
+      "alamat": "Alamat",
+      "poskod": "Poskod",
+      "bandar": "Bandar",
+      "negeri": "Negeri"
+    },
+    "hantar": "Hantar",
+    "dewan": {
+      "tempah": "Tempah",
+      "dewan": "Dewan",
+      "lokasi": "Lokasi",
+      "placelokasi": "Pilih Lokasi",
+      "placedewan": "Pilih Dewan",
+      "tarikh": "Tarikh",
+      "masa": "Masa"
     }
 }

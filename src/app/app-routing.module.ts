@@ -82,6 +82,46 @@ const routes: Routes = [
   {
     path: 'calendar',
     loadChildren: () => import('./shared/modals/calendar/calendar.module').then( m => m.CalendarPageModule)
+  },
+  {
+    path: 'adminmenu',
+    loadChildren: () => import('./shared/modals/adminmenu/adminmenu.module').then( m => m.AdminmenuPageModule)
+  },
+  {
+    path: 'lainlain',
+    loadChildren: () => import('./lain-lain/lain-lain.module').then( m => m.LainLainPageModule)
+  },
+  {
+    path: 'lejar',
+    loadChildren: () => import('./lejar/lejar.module').then( m => m.LejarPageModule)
+  },
+  {
+    path: 'sewapremis',
+    loadChildren: () => import('./lejar/sewapremis/sewapremis.module').then( m => m.SewapremisPageModule)
+  },
+  {
+    path: 'sewarumah',
+    loadChildren: () => import('./lejar/sewarumah/sewarumah.module').then( m => m.SewarumahPageModule)
+  },
+  {
+    path: 'tempahkemudahan',
+    loadChildren: () => import('./tempahkemudahan/tempahkemudahan.module').then( m => m.TempahkemudahanPageModule)
+  },
+  {
+    path: 'bayarsewa',
+    loadChildren: () => import('./bayarsewa/bayarsewa.module').then( m => m.BayarsewaPageModule)
+  },
+  {
+    path: 'tender',
+    loadChildren: () => import('./tender/tender.module').then( m => m.TenderPageModule)
+  },
+  {
+    path: 'language',
+    loadChildren: () => import('./shared/modals/language/language.module').then( m => m.LanguagePageModule)
+  },
+  {
+    path: 'firstime',
+    loadChildren: () => import('./firstime/firstime.module').then( m => m.FirstimePageModule)
   }
 ];
 

@@ -55,6 +55,28 @@
     }
 }
 
+.menu-modal{
+    .modal-wrapper {
+        width: 100%;
+        height: 45%;
+        border-radius: 32px 32px 0px 0px;
+        position: absolute;
+        bottom: 0;
+        background: #E5E5E5;
+    }
+}
+
+.language-modal{
+    .modal-wrapper {
+        width: 100%;
+        height: 35%;
+        border-radius: 32px 32px 0px 0px;
+        position: absolute;
+        bottom: 0;
+        background: #E5E5E5;
+    }
+}
+
 .month-packer-item button{
     color: black;
 }

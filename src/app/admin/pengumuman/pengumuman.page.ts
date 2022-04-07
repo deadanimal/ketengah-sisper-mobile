@@ -4,6 +4,7 @@ import { AlertController, LoadingController, ModalController } from '@ionic/angu
 import { CalendarPage } from '../../shared/modals/calendar/calendar.page';
 import { NativeStorage } from '@awesome-cordova-plugins/native-storage/ngx';
 import { PengumumanService } from '../../shared/services/pengumuman/pengumuman.service';
+import { AdminmenuPage } from '../../shared/modals/adminmenu/adminmenu.page';
 
 @Component({
   selector: 'app-pengumuman',
@@ -96,5 +97,15 @@ export class PengumumanPage implements OnInit {
       this.tempohumum = frommonth+', '+ fromdate.getDate() +' - '+ tomonth+', '+ todate.getDate();
     });
     await modal.present();
+  }
+
+  async adminmenu(){
+    const modal = await this.modalController.create({
+      component: AdminmenuPage,
+      cssClass: 'menu-modal',
+      backdropDismiss: true
+    });
+
+    return await modal.present();
   }
 }

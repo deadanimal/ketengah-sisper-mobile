@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from "@angular/common";
-import { Router, NavigationExtras } from '@angular/router';
+import { Router, NavigationExtras, ActivatedRoute } from '@angular/router';
 import { AduanService } from '../../shared/services/aduan/aduan.service';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { NativeStorage } from '@awesome-cordova-plugins/native-storage/ngx';
@@ -11,6 +11,12 @@ import { NativeStorage } from '@awesome-cordova-plugins/native-storage/ngx';
   styleUrls: ['./aduanmain.page.scss'],
 })
 export class AduanmainPage implements OnInit {
+  
+  aduancount = 0;
+  userid : any;
+  lattKateAduan: any;
+  lattStatusAduan: any;
+  latestaduan: any;
 
   constructor(
     private location: Location,
@@ -19,47 +25,45 @@ export class AduanmainPage implements OnInit {
     private alertController: AlertController,
     private loadingController: LoadingController,
     private nativeStorage: NativeStorage,
-  ) { }
+    route:ActivatedRoute
+  ) {
+    route.params.subscribe(async val => {
+      const loading = await this.loadingController.create();
+      await loading.present();
 
-  aduancount = 0;
-  userid : any;
-  lattKateAduan: any;
-  lattStatusAduan: any;
-  latestaduan: any;
+      await this.nativeStorage.getItem('user').then(
+        data => {
+          this.userid = data.value.user_id;
+        },
+        error => console.error(error)
+      );
+
+      console.log(this.userid);
+      await this.aduanService.first(this.userid).subscribe(
+        async (res) => {
+          console.log(res);
+          await loading.dismiss();
+          this.aduancount = res[1];
+          this.lattKateAduan = res[0].kategori +' - '+ res[0].kategorilist.kategori;
+          this.lattStatusAduan = res[0].status;
+          this.latestaduan = res[0];
+        },
+        async (res) => {
+          console.log(res);
+          await loading.dismiss();
+          const alert = await this.alertController.create({
+            header: 'Loading failed',
+            message: res.message,
+            buttons: ['OK'],
+          });
+  
+          await alert.present();
+        }
+      );
+    });
+  }
 
   async ngOnInit() {
-    const loading = await this.loadingController.create();
-    await loading.present();
-
-    await this.nativeStorage.getItem('user').then(
-      data => {
-        this.userid = data.value.user_id;
-      },
-      error => console.error(error)
-    );
-
-    console.log(this.userid);
-    await this.aduanService.first(this.userid).subscribe(
-      async (res) => {
-        console.log(res);
-        await loading.dismiss();
-        this.aduancount = res[1];
-        this.lattKateAduan = res[0].kategori +' - '+ res[0].kategorilist.kategori;
-        this.lattStatusAduan = res[0].status;
-        this.latestaduan = res[0];
-      },
-      async (res) => {
-        console.log(res);
-        await loading.dismiss();
-        const alert = await this.alertController.create({
-          header: 'Loading failed',
-          message: res.message,
-          buttons: ['OK'],
-        });
- 
-        await alert.present();
-      }
-    );
   }
 
   back(){

@@ -29,11 +29,13 @@
         </div>
         <div class="boxwhite" style="border-bottom: 0.7px solid #E8E8E8">
           {{ 'profile.notel' | translate }} <br>
-          <ion-input type="text" class="input" [(ngModel)]="nohp"></ion-input><span style="width: 30%;" (click)="save('nohp')">Kemaskini</span>
+          +60 <ion-input type="tel" maxlength="9" class="input" style="width: 60%;" [(ngModel)]="nohp" (keypress)="numericOnly($event)"></ion-input>
+          <span style="width: 30%;" (click)="save('nohp')">Kemaskini</span>
         </div>
         <div class="boxwhite" style="border-bottom: 0.7px solid #E8E8E8">
-          {{ 'profile.pass' | translate }} <br>
-          <ion-input type="password" class="input" [(ngModel)]="pass"></ion-input><span style="width: 30%;" (click)="save('pass')">Kemaskini</span>
+          {{ 'profile.pass' | translate }} <span style="width: 20px;"></span> <ion-icon (click)='hideShowPassword()' name="{{showPass ? 'eye-outline' : 'eye-off-outline' }}"></ion-icon><br>
+          <ion-input type="{{showPass ? 'password' : 'text' }}" class="input" [(ngModel)]="pass"></ion-input>
+          <span style="width: 30%;" (click)="save('pass')">Kemaskini</span>
         </div>
         <div class="boxwhite" style="border-bottom: 0.7px solid #E8E8E8">
           {{ 'profile.akaun' | translate }} <br>

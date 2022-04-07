@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationExtras, ActivatedRoute } from '@angular/router';
 import { NativeStorage } from '@awesome-cordova-plugins/native-storage/ngx';
-import { AlertController, LoadingController } from '@ionic/angular';
+import { AlertController, LoadingController, ModalController } from '@ionic/angular';
 import { NotisService } from '../shared/services/notis/notis.service';
+import { AdminmenuPage } from '../shared/modals/adminmenu/adminmenu.page';
+import { PengumumanService } from '../shared/services/pengumuman/pengumuman.service';
 
 @Component({
   selector: 'app-home',
@@ -24,6 +26,7 @@ export class HomePage implements OnInit {
   user : any;
   role : any;
   notiarr = [];
+  pengumumanlist : any;
 
   constructor(
     private router: Router,
@@ -31,10 +34,43 @@ export class HomePage implements OnInit {
     private alertController: AlertController,
     private loadingController: LoadingController,
     private notisService: NotisService,
-    route:ActivatedRoute
+    private pengumumanService: PengumumanService,
+    route:ActivatedRoute,
+    public modalController: ModalController
   ) {
     route.params.subscribe(async val => {
-      const loading = await this.loadingController.create();
+      
+      
+      
+    });
+  }
+
+  async ngOnInit() {
+    const loading = await this.loadingController.create();
+    await loading.present();
+
+    await this.pengumumanService.gettempoh().subscribe(
+      async (res) => {
+        console.log(res);
+        this.pengumumanlist = res;
+        await loading.dismiss();
+      },
+      async (res) => {
+        console.log(res);
+        await loading.dismiss();
+        const alert = await this.alertController.create({
+          header: 'Loading failed',
+          message: res.message,
+          buttons: ['OK'],
+        });
+
+        await alert.present();
+      }
+    );
+  }
+
+  async ionViewDidEnter() {
+    const loading = await this.loadingController.create();
       await loading.present();
 
       await this.nativeStorage.getItem('user').then(
@@ -85,19 +121,20 @@ export class HomePage implements OnInit {
       }else if (this.user.role == 2){
         await loading.dismiss();
       }
-      
-      
-    });
   }
-
-  ngOnInit() {}
 
   ionViewWillEnter () {
 
   }
 
-  tambah(){
-    
+  async tambah(){
+    // const modal = await this.modalController.create({
+    //   component: AdminmenuPage,
+    //   cssClass: 'menu-modal',
+    //   backdropDismiss: true
+    // });
+
+    // return await modal.present();
   }
 
   notis(){
@@ -123,5 +160,37 @@ export class HomePage implements OnInit {
 
   penghargaanadmin(){
     this.router.navigate(['main/admin/penghargaan']);
+  }
+
+  Lain(){
+    this.router.navigate(['main/tabs/lain']);
+  }
+
+  Lejar(){
+    this.router.navigate(['main/tabs/lejar']);
+  }
+
+  Sewa(){
+    this.router.navigate(['main/tabs/bayarsewa']);
+  }
+  
+  Tender(){
+    this.router.navigate(['main/tabs/tender']);
+  }
+
+  TempahKemudahan(){
+    this.router.navigate(['main/tabs/tempahkemudahan']);
+  }
+
+  async adminmenu(){
+    const modal = await this.modalController.create({
+      component: AdminmenuPage,
+      cssClass: 'menu-modal',
+      // breakpoints: [0, 0.3, 0.5, 0.8],
+      // initialBreakpoint: 0.5,
+      backdropDismiss: true
+    });
+
+    return await modal.present();
   }
 }

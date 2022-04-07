@@ -44,5 +44,8 @@ export class AuthenticationService {
     return this.nativeStorage.remove(TOKEN_KEY);
   }
 
-
+  forgetpass(phone: any): Observable<any> {
+    var forgetpassURL = environment.baseUrl + "ForgotPass";
+    return this.http.post<any>(forgetpassURL, {phone});
+  }
 }

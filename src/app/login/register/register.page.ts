@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { AuthenticationService } from '../../shared/services/auth/authentication.service';
 import { AlertController, LoadingController } from '@ionic/angular';
 
@@ -11,6 +11,7 @@ import { AlertController, LoadingController } from '@ionic/angular';
 })
 export class RegisterPage implements OnInit {
   registerForm: FormGroup;
+  showPass = true;
 
   constructor(
     private router: Router,
@@ -22,16 +23,20 @@ export class RegisterPage implements OnInit {
 
   ngOnInit() {
     this.registerForm = this.fb.group({
-      name: ['nama',[Validators.required]],
-      no_telefon: ['12345',[Validators.required, Validators.minLength(6)]],
-      no_ic: ['123',[Validators.required, Validators.minLength(6)]],
-      alamat: ['test',[Validators.required]],
-      poskod: '123',
-      bandar: 'test',
-      negeri: 'test',
-      email: 'test',
-      password: 'pass'
+      name: ['',[Validators.required]],
+      no_telefon: ['',[Validators.required, Validators.minLength(9),Validators.maxLength(9)]],
+      no_ic: ['',[Validators.required, Validators.minLength(12),Validators.maxLength(12)]],
+      alamat: ['',[Validators.required]],
+      poskod: ['',[Validators.required]],
+      bandar: ['',[Validators.required]],
+      negeri: ['',[Validators.required]],
+      email: ['',[Validators.required, Validators.email]],
+      password: ['',[Validators.required]]
     });
+  }
+
+  ionViewDidEnter() {
+    this.registerForm.reset()
   }
 
   back(){
@@ -64,5 +69,15 @@ export class RegisterPage implements OnInit {
 
   login(){
     this.router.navigate(['/login']);
+  }
+
+  numericOnly(event): boolean {
+    let pattern = /^([0-9])$/;
+    let result = pattern.test(event.key);
+    return result;
+  }
+
+  hideShowPassword() {
+    this.showPass = !this.showPass;
   }
 }

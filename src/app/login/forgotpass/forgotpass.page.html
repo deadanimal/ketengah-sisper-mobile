@@ -20,7 +20,7 @@
       </div>
       <div class="boxwhite" style="border-bottom: 0.7px solid #E8E8E8">
         Nombor Telefon <br>
-        <ion-input type="number" class="input" placeholder="000000000">+60 </ion-input>
+        <ion-input type="tel" maxlength="9" class="input" placeholder="000000000" clearInput [(ngModel)]="phone" (keypress)="numericOnly($event)">+60 </ion-input>
       </div>
       <div style="padding-top:150px">
         <button ion-button class="button" (click)="sent()">Hantar</button>

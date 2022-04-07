@@ -14,6 +14,9 @@
           <ion-img *ngIf="noti==true" src="../../assets/icon/noti.png" class="iconnoti" (click)="notis()"></ion-img>
           <ion-img *ngIf="noti==false" src="../../assets/icon/notifalse.png" class="iconnotifalse" (click)="notis()"></ion-img>
         </div>
+        <!-- <div *ngIf="role == 2" style="display: inline-block;width: 30%;text-align: right;"> -->
+          <ion-img *ngIf="role == 2" src="../../assets/icon/adminmenu.png" style="position: absolute;top: 50px;right: 25px;" class="iconnoti" (click)="adminmenu()"></ion-img>
+        <!-- </div> -->
         <div>
           <div style="display: inline-block; width: 70%;" class="selamat">{{ 'home.selamat' | translate }}, <br>
             <span class="inline name">{{username}}</span>
@@ -45,83 +48,102 @@
               and climb a mountain or spend a week in the woods. Wash your spirit clean.
             </ion-card-content>
           </ion-card>
-          <ion-grid style="padding-right: 30px;">
-            <ion-row>
-              <ion-col>
-                <ion-card class="card2">
-                    <ion-img class="cardimg" style="width:56px;height:50px;" src="../../assets/icon/main1.png"></ion-img>
-                    <div class="cardname">{{ 'home.bayar-sewa' | translate }}</div>
+          <table style="width: 100%;padding-right: 20px;">
+            <colgroup>
+              <col style="width: 33%;">
+              <col style="width: 33%;">
+              <col style="width: 33%;">
+            </colgroup>
+            <tr>
+              <td>
+                <ion-card class="card2" (click)="Sewa();">
+                  <ion-img class="cardimg" style="width:56px;height:50px;" src="../../assets/icon/main1.png"></ion-img>
+                  <div class="cardname">{{ 'home.bayar-sewa' | translate }}</div>
                 </ion-card>
-              </ion-col>
-              <ion-col>
-                <ion-card class="card2">
+              </td>
+              <td>
+                <ion-card class="card2" (click)="Lejar();">
                   <ion-img class="cardimg" style="width: 43px;height: 50px;" src="../../assets/icon/main2.png"></ion-img>
                   <div class="cardname">{{ 'home.lejar' | translate }}</div>
                 </ion-card>
-              </ion-col>
-              <ion-col>
-                <ion-card class="card2">
+              </td>
+              <td>
+                <ion-card class="card2" (click)="Tender();">
                   <ion-img class="cardimg" style="width: 45px;height: 50px;" src="../../assets/icon/main3.png"></ion-img>
                   <div class="cardname">{{ 'home.tender' | translate }}</div>
                 </ion-card>
-              </ion-col>
-            </ion-row>
-            <ion-row>
-              <ion-col>
-                <ion-card class="card2">
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <ion-card class="card2" (click)="TempahKemudahan();">
                   <ion-img class="cardimg" style="width: 50px;height: 50px;" src="../../assets/icon/main4.png"></ion-img>
                   <div class="cardname">{{ 'home.tempahkemudahan' | translate }}</div>
                 </ion-card>
-              </ion-col>
-              <ion-col>
+              </td>
+              <td>
                 <ion-card class="card2" (click)="Aduan();">
                   <ion-img class="cardimg" style="width: 49.76px;height: 50px;" src="../../assets/icon/main5.png"></ion-img>
                   <div class="cardname">{{ 'home.aduan' | translate }}</div>
                 </ion-card>
-              </ion-col>
-              <ion-col>
-                <ion-card class="card2" >
+              </td>
+              <td>
+                <ion-card class="card2" (click)="Lain();">
                   <ion-img class="cardimg" style="width: 53px;height: 50px;" src="../../assets/icon/main6.png"></ion-img>
                   <div class="cardname">{{ 'home.lain' | translate }}</div>
                 </ion-card>
-              </ion-col>
-            </ion-row>
-          </ion-grid>
+              </td>
+            </tr>
+          </table>
           <ion-slides pager="true" [options]="slideOpts">
-            <ion-slide class="slider">
+            <ion-slide *ngFor="let item of pengumumanlist" class="slider">
+              <table style="width: 100%;">
+                <tr>
+                  <td style="padding:30px 0px 10px 0px;">
+                    <div class="headerslide">{{item.tajuk}}</div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>{{item.keterangan}}</td>
+                </tr>
+              </table>
+            </ion-slide>
+            <!-- <ion-slide class="slider">
               <ion-img src="../../assets/icon/ketengah.png"></ion-img>
             </ion-slide>
             <ion-slide class="slider">
               <ion-img src="../../assets/icon/ketengah.png"></ion-img>
-            </ion-slide>
-            <ion-slide class="slider">
-              <ion-img src="../../assets/icon/ketengah.png"></ion-img>
-            </ion-slide>
+            </ion-slide> -->
           </ion-slides>
         </div>
         <div *ngIf="role == 2">
-          <ion-grid style="padding-right: 30px;">
-            <ion-row>
-              <ion-col>
+          <table style="width: 100%;padding-right: 20px;">
+            <colgroup>
+              <col style="width: 33%;">
+              <col style="width: 33%;">
+              <col style="width: 33%;">
+            </colgroup>
+            <tr>
+              <td>
                 <ion-card class="card2" (click)="notisadmin()">
-                    <ion-img class="cardimg" style="width:46px;height:42px;" src="../../assets/icon/adminnotis.png"></ion-img>
-                    <div class="cardname">{{ 'home.notis' | translate }}</div>
+                  <ion-img class="cardimg" style="width:46px;height:42px;" src="../../assets/icon/adminnotis.png"></ion-img>
+                  <div class="cardname">{{ 'home.notis' | translate }}</div>
                 </ion-card>
-              </ion-col>
-              <ion-col>
+              </td>
+              <td>
                 <ion-card class="card2" (click)="pengumumanadmin()">
                   <ion-img class="cardimg" style="width: 48px;height: 38px;" src="../../assets/icon/adminpengumuman.png"></ion-img>
                   <div class="cardname">{{ 'home.pengumuman' | translate }}</div>
                 </ion-card>
-              </ion-col>
-              <ion-col>
+              </td>
+              <td>
                 <ion-card class="card2">
                   <ion-img class="cardimg" style="width: 42px;height: 42px;" src="../../assets/icon/adminpengguna.png"></ion-img>
                   <div class="cardname">{{ 'home.pengguna' | translate }}</div>
                 </ion-card>
-              </ion-col>
-            </ion-row>
-          </ion-grid>
+              </td>
+            </tr>
+          </table>
           <ion-grid>
             <ion-row>
               <ion-col></ion-col>

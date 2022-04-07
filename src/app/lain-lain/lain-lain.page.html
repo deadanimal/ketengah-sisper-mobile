@@ -1,0 +1,35 @@
+<ion-content>
+  <div class="main">
+    <div class="container">
+      <div class="header">
+        <ion-icon name="chevron-back-outline" style="float: left;" (click)="back()"></ion-icon>
+        <span class="headertxt">{{ 'lain.lain' | translate }}</span>
+      </div>
+      <div style="padding-top: 40px;">
+        <ion-img src="../../assets/icon/lain.png" class="icontetapan "></ion-img>
+      </div>
+    </div>
+  </div>
+  <div class="main2">
+    <div class="container2">
+      <div class="main2">
+        <div class="container2">
+          <div class="headerbox">
+            <div class="label" style="padding-left: 60px;" >{{ 'lain.urusan' | translate }}</div>
+            <div class="descbox">
+              <ion-select okText="{{ 'semak.ok' | translate }}" cancelText="{{ 'semak.cancel' | translate }}" class="select">
+                <ion-select-option></ion-select-option>
+              </ion-select>
+              <div style="height: 10px;"></div>
+
+              <div style="height: 50px;"></div>
+              <div class="label1">{{ 'lain.catatan' | translate }}</div>
+              <div style="height: 10px;"></div>
+              <textarea class="textarea" rows="7" cols="50"></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

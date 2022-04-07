@@ -54,6 +54,62 @@ const routes: Routes = [
         pathMatch: 'full'
       },
       {
+        path: 'bayarsewa',
+        children: [
+          {
+            path: '',
+            loadChildren: () => import('../bayarsewa/bayarsewa.module').then( m => m.BayarsewaPageModule)
+          }
+        ]
+      },
+      {
+        path: 'lejar',
+        children: [
+          {
+            path: '',
+            loadChildren: () => import('../lejar/lejar.module').then( m => m.LejarPageModule)
+          },
+          {
+            path: 'sewapremis',
+            loadChildren: () => import('../lejar/sewapremis/sewapremis.module').then( m => m.SewapremisPageModule)
+          },
+          {
+            path: 'sewarumah',
+            loadChildren: () => import('../lejar/sewarumah/sewarumah.module').then( m => m.SewarumahPageModule)
+          }
+        ]
+      },
+      {
+        path: 'tender',
+        children: [
+          {
+            path: '',
+            loadChildren: () => import('../tender/tender.module').then( m => m.TenderPageModule)
+          }
+        ]
+      },
+      {
+        path: 'tempahkemudahan',
+        children: [
+          {
+            path: '',
+            loadChildren: () => import('../tempahkemudahan/tempahkemudahan.module').then( m => m.TempahkemudahanPageModule)
+          },
+          {
+            path: 'dewan',
+            loadChildren: () => import('../tempahkemudahan/dewan/dewan.module').then( m => m.DewanPageModule)
+          },
+          {
+            path: 'alatan',
+            loadChildren: () => import('../tempahkemudahan/alatan/alatan.module').then( m => m.AlatanPageModule)
+          },
+          {
+            path: 'fasiliti',
+            loadChildren: () => import('../tempahkemudahan/fasiliti/fasiliti.module').then( m => m.FasilitiPageModule)
+          }
+        ]
+      },
+      {
         path: 'aduan',
         children: [
           {
@@ -89,6 +145,15 @@ const routes: Routes = [
                 loadChildren: () => import('../aduan/penghargaanmain/penghargaanmain.module').then( m => m.PenghargaanmainPageModule)
               }
             ]
+          }
+        ]
+      },
+      {
+        path: 'lain',
+        children: [
+          {
+            path: '',
+            loadChildren: () => import('../lain-lain/lain-lain.module').then( m => m.LainLainPageModule)
           }
         ]
       }

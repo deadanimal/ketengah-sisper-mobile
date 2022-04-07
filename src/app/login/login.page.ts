@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationExtras, Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthenticationService } from '../shared/services/auth/authentication.service';
-import { AlertController, LoadingController } from '@ionic/angular';
+import { AlertController, LoadingController, Platform } from '@ionic/angular';
+import { Keyboard } from '@awesome-cordova-plugins/keyboard/ngx';
 
 @Component({
   selector: 'app-login',
@@ -17,15 +18,22 @@ export class LoginPage implements OnInit {
     private fb: FormBuilder,
     private authService: AuthenticationService,
     private alertController: AlertController,
-    private loadingController: LoadingController
+    private loadingController: LoadingController,
+    public platform: Platform, 
+    public keyboard: Keyboard
   ) { }
 
   ngOnInit() {
+    this.platform.ready().then(() => {
+      this.keyboard.disableScroll(true);
+    });
     this.credentials = this.fb.group({
-      // no_telefon: ['123', [Validators.required]],
-      // password: ['password', [Validators.required, Validators.minLength(6)]],
+      // no_telefon: ['122436753', [Validators.required]],
+      // password: ['pass', [Validators.required, Validators.minLength(6)]],
       no_telefon: ['11', [Validators.required]],
       password: ['pass', [Validators.required, Validators.minLength(6)]],
+      // no_telefon: ['', [Validators.required]],
+      // password: ['', [Validators.required, Validators.minLength(8)]]
     });
   }
 
@@ -35,15 +43,24 @@ export class LoginPage implements OnInit {
     
     this.authService.login(this.credentials.value.no_telefon, this.credentials.value.password).subscribe(
       async (res) => {
-        console.log(res);
+        console.log('auth',res);
         await loading.dismiss();  
-        if(res != 'false'){     
+        if(res != 'false' && res.active != 0){     
           if(res.role == 1){
             this.router.navigate(['/main']);
           }else if(res.role == 2){
             this.router.navigate(['/main/admin']);
           }
-        }else{
+        }
+        if(res.active == 0){
+          let navigationExtras: NavigationExtras = {
+            state: {
+              user: res
+            }
+          };
+          this.router.navigate(['/firstime'], navigationExtras);
+        }
+        if(res == 'false'){
           const alert = await this.alertController.create({
             header: 'Login failed',
             message: 'Tiada Pengguna Dijumpai',

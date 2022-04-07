@@ -1,14 +1,14 @@
-<ion-content padding class="background">
-  <div class="background divall scroll-content">
+<ion-content padding>
+  <div class="divall scroll-content">
     <ion-grid >
       <ion-row>
-        <div class="loginhead" style="height:250px;">
+        <div class="loginhead" style="height:200px;">
           <ion-img class="iconsisper" src="../../assets/icon/sisperlogin.png"></ion-img>
           <ion-img class="iconsisper2" src="../../assets/icon/sisperlogin2.png"></ion-img>
         </div>
       </ion-row>
       <ion-row>
-          <div style="padding: 0px 50px;width: 100%;">
+          <div style="padding: 10px 50px;width: 100%;">
             <form [formGroup]="credentials">
               <div class="input-div">
                 <label class="label">Nombor Telefon</label>
@@ -32,13 +32,14 @@
             </form>
           </div>
       </ion-row>  
-      <ion-row>
+    </ion-grid>
+
         <div class="lower-content">
           <ion-img src="../../assets/icon/ketengah.png" style="width: 46.51px;height: 61px;margin-left: auto;
           margin-right: auto;padding-bottom: 10px;"></ion-img>
           <div class="ketengahword">LEMBAGA KEMAJUAN TERENGGANU TENGAH</div>
         </div>
-      </ion-row>
-    </ion-grid>
+        
   </div>
+  
 </ion-content>

@@ -18,7 +18,8 @@ export class AduanviewPage implements OnInit {
       if (this.router.getCurrentNavigation().extras.state) {
         this.aduan = this.router.getCurrentNavigation().extras.state.aduan;
         var date = new Date(this.aduan.created_at);
-        this.aduan.date = date.getDate()+'/'+date.getMonth()+'/'+date.getFullYear();
+        var month = date.getMonth() + 1;
+        this.aduan.date = date.getDate()+'/'+month+'/'+date.getFullYear();
       }
     });
   }

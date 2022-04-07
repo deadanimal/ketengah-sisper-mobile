@@ -1,0 +1,33 @@
+<ion-content padding>
+  <div class="divall scroll-content">
+    <ion-grid >
+      <ion-row>
+        <div class="loginhead" style="height:200px;">
+          <ion-img class="iconsisper" src="../../assets/icon/sisperlogin.png"></ion-img>
+          <ion-img class="iconsisper2" src="../../assets/icon/sisperlogin2.png"></ion-img>
+        </div>
+      </ion-row>
+      <ion-row>
+          <div style="padding: 50px 50px 10px 50px;width: 100%;">
+            <div class="input-div">
+              <label class="label">Kod Pengaktifan</label>
+                <div style="padding-top: 10px;">
+                  <ion-input type="tel" maxlength="6" minlength="6" class="input" [(ngModel)]="code"></ion-input>
+                </div>
+            </div>
+            <div style="padding-top: 35px;">
+              <button ion-button class="button" (click)="verifycode()">Sahkan Akaun</button>
+            </div>
+          </div>
+      </ion-row>  
+    </ion-grid>
+
+        <div class="lower-content">
+          <ion-img src="../../assets/icon/ketengah.png" style="width: 46.51px;height: 61px;margin-left: auto;
+          margin-right: auto;padding-bottom: 10px;"></ion-img>
+          <div class="ketengahword">LEMBAGA KEMAJUAN TERENGGANU TENGAH</div>
+        </div>
+        
+  </div>
+  
+</ion-content>

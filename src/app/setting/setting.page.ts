@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Location } from "@angular/common";
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../shared/services/auth/authentication.service';
-import { AlertController, LoadingController } from '@ionic/angular';
+import { AlertController, LoadingController, ModalController } from '@ionic/angular';
+import { LanguagePage } from '../shared/modals/language/language.page';
 
 @Component({
   selector: 'app-setting',
@@ -17,6 +18,7 @@ export class SettingPage implements OnInit {
     private alertController: AlertController,
     private loadingController: LoadingController,
     private authService: AuthenticationService,
+    public modalController: ModalController,
   ) { }
 
   ngOnInit() {
@@ -48,5 +50,18 @@ export class SettingPage implements OnInit {
         await alert.present();
       }
     );
+  }
+
+  async bahasa(){
+    const loading = await this.loadingController.create();
+    await loading.present();
+    const modal = await this.modalController.create({
+      component: LanguagePage,
+      cssClass: 'language-modal',
+      backdropDismiss: true
+    });
+
+    await loading.dismiss();
+    return await modal.present();
   }
 }
