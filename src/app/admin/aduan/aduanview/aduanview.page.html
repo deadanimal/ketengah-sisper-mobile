@@ -1,0 +1,45 @@
+<ion-content>
+  <div class="main">
+    <div class="container2">
+      <div class="header">
+        <ion-icon name="chevron-back-outline" style="float: left;" (click)="back()"></ion-icon>
+        <span class="headertxt">{{ 'aduan.aduan' | translate }}</span>
+        <ion-img src="../../assets/icon/adminmenu.png" style="position: absolute;top: 50px;right: 20px;" class="iconnoti" (click)="adminmenu()"></ion-img>
+      </div>
+    </div>
+  </div>
+  <div class="main2">
+    <div class="container3">
+      <div class="detail">
+        <div class="card">
+          <div class="cardhead">{{ 'aduan.tarikh' | translate }}</div>
+          <div class="carddetail">{{aduan.date}}</div>
+        </div>
+        <div class="card">
+          <div class="cardhead">{{ 'aduan.katerosak' | translate }}</div>
+          <div class="carddetail">{{aduan.katedet.kategori_id}} - {{aduan.katedet.kategori}}</div>
+        </div>
+        <div class="card">
+          <div class="cardhead">{{ 'aduan.jenisrosak' | translate }}</div>
+          <div class="carddetail">{{aduan.katedet.kerosakan_id}} - {{aduan.katedet.kerosakan}}</div>
+        </div>
+        <div class="card">
+          <div class="cardhead">{{ 'aduan.catatan' | translate }}</div>
+          <div class="carddetail">{{aduan.catatan}}</div>
+        </div>
+        <div class="card">
+          <div class="cardhead">{{ 'aduan.status' | translate }}</div>
+          <div class="carddetail">
+            <ion-select okText="{{ 'semak.ok' | translate }}" cancelText="{{ 'semak.cancel' | translate }}" class="select" placeholder="{{ 'aduan.pilihrosak' | translate }}" [(ngModel)]="aduan.status">
+              <ion-select-option *ngFor="let status of ddStatus; let i = index" [value]="status.id">
+                {{status.text}}
+              </ion-select-option>
+          </ion-select>
+        </div>
+        </div>
+      </div>
+      <div style="padding-top: 40px;text-align: center;"><button ion-button class="button" (click)="hantar(aduan.id,aduan.status)">{{ 'aduan.hantar' | translate }}</button></div>
+      
+    </div>
+  </div>
+</ion-content>

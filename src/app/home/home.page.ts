@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationExtras, ActivatedRoute } from '@angular/router';
 import { NativeStorage } from '@awesome-cordova-plugins/native-storage/ngx';
-import { AlertController, LoadingController, ModalController } from '@ionic/angular';
+import { AlertController, LoadingController, ModalController, Platform } from '@ionic/angular';
 import { NotisService } from '../shared/services/notis/notis.service';
 import { AdminmenuPage } from '../shared/modals/adminmenu/adminmenu.page';
 import { PengumumanService } from '../shared/services/pengumuman/pengumuman.service';
@@ -36,12 +36,15 @@ export class HomePage implements OnInit {
     private notisService: NotisService,
     private pengumumanService: PengumumanService,
     route:ActivatedRoute,
-    public modalController: ModalController
+    public modalController: ModalController,
+    private platform: Platform
   ) {
+    this.platform.backButton.subscribeWithPriority(10, () => {
+      console.log('none');
+    });
+
     route.params.subscribe(async val => {
-      
-      
-      
+
     });
   }
 
@@ -180,6 +183,10 @@ export class HomePage implements OnInit {
 
   TempahKemudahan(){
     this.router.navigate(['main/tabs/tempahkemudahan']);
+  }
+
+  aduanadmin(){
+    this.router.navigate(['main/admin/aduan']);
   }
 
   async adminmenu(){

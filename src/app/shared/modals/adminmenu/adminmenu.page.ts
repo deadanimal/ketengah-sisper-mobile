@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertController, LoadingController, ModalController } from '@ionic/angular';
 import { AuthenticationService } from '../../../shared/services/auth/authentication.service';
+import { LanguagePage } from '../language/language.page';
 
 @Component({
   selector: 'app-adminmenu',
@@ -55,5 +56,23 @@ export class AdminmenuPage implements OnInit {
         modal.dismiss();
     }
     this.router.navigate(['main/admin']);
+  }
+
+  async tetapanbahasa() {
+    const modal1 = await this.modalController.getTop();
+    if (modal1) {
+        modal1.dismiss();
+    }
+
+    const loading = await this.loadingController.create();
+    await loading.present();
+    const modal = await this.modalController.create({
+      component: LanguagePage,
+      cssClass: 'language-modal',
+      backdropDismiss: true
+    });
+
+    await loading.dismiss();
+    return await modal.present();
   }
 }

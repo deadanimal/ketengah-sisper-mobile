@@ -122,6 +122,10 @@ const routes: Routes = [
   {
     path: 'firstime',
     loadChildren: () => import('./firstime/firstime.module').then( m => m.FirstimePageModule)
+  },
+  {
+    path: 'aduan',
+    loadChildren: () => import('./admin/aduan/aduan.module').then( m => m.AduanPageModule)
   }
 ];
 

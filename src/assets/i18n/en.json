@@ -69,7 +69,8 @@
     "tarikh": "Complaint Date",
     "katerosak": "Damage Category",
     "jenisrosak": "Type of Damage",
-    "butiranaduan": "Complaint Detail"
+    "butiranaduan": "Complaint Detail",
+    "pilihstatus": "Choose Status"
   },
   "penghargaan": {
     "penghargaan": "Appreciation",

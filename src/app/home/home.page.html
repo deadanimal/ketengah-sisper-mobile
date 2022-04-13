@@ -143,25 +143,27 @@
                 </ion-card>
               </td>
             </tr>
-          </table>
-          <ion-grid>
-            <ion-row>
-              <ion-col></ion-col>
-              <ion-col>
+            <tr>
+              <td>
                 <ion-card class="card2" (click)="penghargaanadmin()">
                   <ion-img class="cardimg" style="width: 40px;height: 40px;" src="../../assets/icon/adminpenghargaan.png"></ion-img>
                   <div class="cardname">{{ 'home.penghargaan' | translate }}</div>
                 </ion-card>
-              </ion-col>
-              <ion-col>
+              </td>
+              <td>
                 <ion-card class="card2" >
                   <ion-img class="cardimg" style="width: 41px;height: 42px;" src="../../assets/icon/admintarikh.png"></ion-img>
                   <div class="cardname">{{ 'home.tarikh' | translate }}</div>
                 </ion-card>
-              </ion-col>
-              <ion-col></ion-col>
-            </ion-row>
-          </ion-grid>
+              </td>
+              <td>
+                <ion-card class="card2" (click)="aduanadmin();">
+                  <ion-img class="cardimg" style="width: 49.76px;height: 40px;" src="../../assets/icon/main5.png"></ion-img>
+                  <div class="cardname">{{ 'home.aduan' | translate }}</div>
+                </ion-card>
+              </td>
+            </tr>
+          </table>
         </div>
       </div>
     </div>

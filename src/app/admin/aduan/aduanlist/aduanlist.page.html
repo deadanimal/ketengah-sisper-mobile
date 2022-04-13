@@ -1,0 +1,27 @@
+<ion-content>
+  <div class="main">
+    <div class="container2">
+      <div class="header">
+        <ion-icon name="chevron-back-outline" style="float: left;" (click)="back()"></ion-icon>
+        <span class="headertxt">{{ 'aduan.senarai' | translate }}</span>
+        <ion-img src="../../assets/icon/adminmenu.png" style="position: absolute;top: 50px;right: 20px;" class="iconnoti" (click)="adminmenu()"></ion-img>
+      </div>
+    </div>
+  </div>
+  <div class="main2">
+    <div class="container3">
+      <div class="headerbox">
+        <div class="label">{{ 'aduan.senarai' | translate }}</div>
+        <div *ngFor="let item of AduanList">
+          <div class="cardaduan2" (click)="viewaduan(item)">
+            <div class="cardhead">{{ 'aduan.tarikh' | translate }}</div>
+            <div class="carddetail">{{item.date}}</div>
+            <div class="cardhead">{{ 'aduan.kategori' | translate }}</div>
+            <div class="carddetail">{{item.kategori}} - {{item.katedet.kategori}}<span style="float: right;">></span></div>
+          </div>
+          <div style="height: 10px;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

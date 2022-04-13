@@ -33,4 +33,14 @@ export class AduanService {
     var aduanuserURL = environment.baseUrl + "aduan/" + userid;
     return this.http.get<any>(aduanuserURL);
   }
+
+  getall():Observable<any> {
+    var AlladuanURL = environment.baseUrl + "aduan";
+    return this.http.get<any>(AlladuanURL);
+  }
+
+  updateStat(data:any): Observable<any> {
+    var aduanstatURL = environment.baseUrl + "aduanStatus";
+    return this.http.post<any>(aduanstatURL, data);
+  }
 }

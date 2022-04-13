@@ -197,6 +197,23 @@ const routes: Routes = [
             loadChildren: () => import('../admin/penghargaan/penghargaan.module').then( m => m.PenghargaanPageModule)
           }
         ]
+      },
+      {
+        path: 'aduan',
+        children: [
+          {
+            path: '',
+            loadChildren: () => import('../admin/aduan/aduan.module').then( m => m.AduanPageModule)
+          },
+          {
+            path: 'aduanlist',
+            loadChildren: () => import('../admin/aduan/aduanlist/aduanlist.module').then( m => m.AduanlistPageModule)
+          },
+          {
+            path: 'aduanview',
+            loadChildren: () => import('../admin/aduan/aduanview/aduanview.module').then( m => m.AduanviewPageModule)
+          }
+        ]
       }
     ]
   }

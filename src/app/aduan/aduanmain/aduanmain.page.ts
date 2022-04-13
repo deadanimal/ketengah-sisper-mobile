@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Location } from "@angular/common";
 import { Router, NavigationExtras, ActivatedRoute } from '@angular/router';
 import { AduanService } from '../../shared/services/aduan/aduan.service';
-import { AlertController, LoadingController } from '@ionic/angular';
+import { AlertController, LoadingController, Platform } from '@ionic/angular';
 import { NativeStorage } from '@awesome-cordova-plugins/native-storage/ngx';
 
 @Component({
@@ -25,8 +25,14 @@ export class AduanmainPage implements OnInit {
     private alertController: AlertController,
     private loadingController: LoadingController,
     private nativeStorage: NativeStorage,
-    route:ActivatedRoute
+    route:ActivatedRoute,
+    private platform: Platform
   ) {
+
+    this.platform.backButton.subscribeWithPriority(10, () => {
+      this.back();
+    });
+
     route.params.subscribe(async val => {
       const loading = await this.loadingController.create();
       await loading.present();
@@ -44,9 +50,14 @@ export class AduanmainPage implements OnInit {
           console.log(res);
           await loading.dismiss();
           this.aduancount = res[1];
-          this.lattKateAduan = res[0].kategori +' - '+ res[0].kategorilist.kategori;
+          if(res[0].kategori == undefined){
+            this.lattKateAduan = false;
+          }else{
+            this.lattKateAduan = res[0].kategori +' - '+ res[0].kategorilist.kategori;
+          }
           this.lattStatusAduan = res[0].status;
           this.latestaduan = res[0];
+          console.log(this.lattKateAduan);
         },
         async (res) => {
           console.log(res);
