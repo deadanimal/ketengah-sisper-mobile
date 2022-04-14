@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Platform } from '@ionic/angular';
 
 @Component({
   selector: 'app-main',
@@ -7,7 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainPage implements OnInit {
 
-  constructor() { }
+  constructor(
+    private platform: Platform
+  ) { 
+    this.platform.backButton.subscribeWithPriority(10, () => {
+      console.log('none');
+    });
+  }
 
   ngOnInit() {
   }

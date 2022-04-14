@@ -39,6 +39,21 @@ export class SenaraiaduanPage implements OnInit {
       async (res) => {
         console.log(res);
         this.AduanList = res;
+        this.AduanList.forEach(element => {
+          if(element.status == 0){
+            element.statdet = "Tiada Status";
+          }else if(element.status == 1){
+            element.statdet = "Belum Dibaiki";
+          }else if(element.status == 2){
+            element.statdet = "Dibaiki Sebahagian";
+          }else if(element.status == 3){
+            element.statdet = "Sudah Dibaiki";
+          }else if(element.status == 4){
+            element.statdet = "Kontrak";
+          }else if(element.status == 5){
+            element.statdet = "Semakan";
+          }
+        });
         await loading.dismiss();
       },
       async (res) => {

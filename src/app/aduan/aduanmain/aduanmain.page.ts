@@ -55,7 +55,23 @@ export class AduanmainPage implements OnInit {
           }else{
             this.lattKateAduan = res[0].kategori +' - '+ res[0].kategorilist.kategori;
           }
-          this.lattStatusAduan = res[0].status;
+
+          var statdet = '';
+          if(res[0].status == 0){
+            statdet = "Tiada Status";
+          }else if(res[0].status == 1){
+            statdet = "Belum Dibaiki";
+          }else if(res[0].status == 2){
+            statdet = "Dibaiki Sebahagian";
+          }else if(res[0].status == 3){
+            statdet = "Sudah Dibaiki";
+          }else if(res[0].status == 4){
+            statdet = "Kontrak";
+          }else if(res[0].status == 5){
+            statdet = "Semakan";
+          }
+          
+          this.lattStatusAduan = statdet;
           this.latestaduan = res[0];
           console.log(this.lattKateAduan);
         },

@@ -30,10 +30,10 @@ export class LoginPage implements OnInit {
     this.credentials = this.fb.group({
       // no_telefon: ['122436753', [Validators.required]],
       // password: ['pass', [Validators.required, Validators.minLength(6)]],
-      no_telefon: ['123', [Validators.required]],
-      password: ['pass', [Validators.required, Validators.minLength(6)]],
-      // no_telefon: ['', [Validators.required]],
-      // password: ['', [Validators.required, Validators.minLength(8)]]
+      // no_telefon: ['123', [Validators.required]],
+      // password: ['pass', [Validators.required, Validators.minLength(6)]],
+      no_telefon: ['', [Validators.required]],
+      password: ['', [Validators.required, Validators.minLength(4)]]
     });
   }
 
