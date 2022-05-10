@@ -1,0 +1,96 @@
+.container2 {
+    padding-top: 50px;
+    height: 650px;
+    text-align: left;
+  }
+
+.headerbox {
+    padding: 0px 20px 0px 20px;
+}
+
+.select {
+    width: 100%;
+    height: 45px;
+    background: #FFFFFF;
+    border: 1px solid #3D2C7C;
+    box-sizing: border-box;
+    border-radius: 9px;
+    --placeholder-color:#494949;
+    box-shadow: inset -4px -4px 9px rgba(255, 255, 255, 0.6), inset 4px 4px 14px #C5D7EE;
+    padding:10px;
+}
+
+.label {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 0.02em;
+    text-transform: capitalize;
+    color: #494949;
+    // padding-left: 20px;
+  }
+  
+  .descbox {
+    padding: 40px 60px 40px 60px;
+  }
+  
+  .textarea {
+    width: 100%;
+    background: #FFFFFF;
+    border: 1px solid #3D2C7C;
+    box-shadow: inset -4px -4px 9px rgba(255, 255, 255, 0.6), inset 4px 4px 14px #C5D7EE;
+    border-radius: 9px;
+    padding:20px;
+    color: black;
+  }
+
+  .button {
+    background-color: #3D2C7C;
+    height: 48px;
+    width: 100%;
+    border-radius: 10px;
+    margin:auto;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 21px;
+  }
+
+.cardaduan {
+  background: #FFFFFF;
+  border: 1px solid #F7FAFD;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 8px rgba(73, 87, 184, 0.2);
+  border-radius: 10px;
+  width: 80%;
+  height: 120px;
+  display: inline-block;
+  padding: 10px 30px;
+}
+
+.cardhead {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  letter-spacing: -0.165px;
+  color: #494949;
+  padding: 5px;
+}
+
+.carddetail {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: -0.165px;
+  color: #3D2C7C;
+  padding: 5px;
+}
+
+.carddetail2 {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: -0.165px;
+  color: #D23330;
+  padding: 5px;
+}

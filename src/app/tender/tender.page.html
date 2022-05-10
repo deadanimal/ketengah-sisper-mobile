@@ -12,19 +12,20 @@
   </div>
   <div class="main2">
     <div class="container2">
-      <div style="padding: 0px 20px 40px 20px">
+      <div *ngIf="tenderform" [formGroup]="tenderform" style="padding: 0px 30px 40px 30px">
         <div class="label">{{ 'tender.namasyarikat' | translate }}.</div>
-        <input class="select">
+        <input class="select" formControlName="nama_syarikat">
         <div class="label">{{ 'tender.norujsyarikat' | translate }}.</div>
-        <input class="select">
+        <input class="select" formControlName="no_ruj">
         <div class="label">{{ 'tender.alamat' | translate }}.</div>
-        <input class="select">
+        <input class="select" formControlName="alamat1">
+        <input class="select" formControlName="alamat2">
         <div class="label">{{ 'tender.poskod' | translate }}.</div>
-        <input class="select">
+        <input class="select" formControlName="poskod">
         <div class="label">{{ 'tender.bandar' | translate }}.</div>
-        <input class="select">
+        <input class="select" formControlName="bandar">
         <div class="label">{{ 'tender.negeri' | translate }}.</div>
-        <input class="select">
+        <input class="select" formControlName="negeri">
       </div>
       <!-- <div style="height: 30px;"></div> -->
       <button ion-button class="button" (click)="hantar()">{{ 'hantar' | translate }}</button>

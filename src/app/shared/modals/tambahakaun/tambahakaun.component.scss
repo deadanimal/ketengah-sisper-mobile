@@ -1,0 +1,28 @@
+.contain {
+    text-align: center; 
+    vertical-align: middle;
+    padding: 20px 50px;
+}
+.card {
+    background: #FFFFFF;
+    border: 1px solid #F7FAFD;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 8px rgba(73, 87, 184, 0.2);
+    border-radius: 17px;
+    height: 130px;
+    padding: 30px;
+}
+.icon{
+    height: 70px;
+    width: 70px;
+    display: inline-block;
+}
+.word {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    align-items: center;
+    text-align: center;
+    color: #494949;
+}

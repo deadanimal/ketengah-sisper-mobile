@@ -4,8 +4,6 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { CalendarPageRoutingModule } from './calendar-routing.module';
-
 import { CalendarPage } from './calendar.page';
 import { CalendarModule } from 'ion2-calendar';
 
@@ -14,7 +12,6 @@ import { CalendarModule } from 'ion2-calendar';
     CommonModule,
     FormsModule,
     IonicModule,
-    CalendarPageRoutingModule,
     CalendarModule.forRoot({
       doneLabel: 'Save',
       closeIcon: true

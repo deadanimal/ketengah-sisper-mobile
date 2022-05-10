@@ -19,6 +19,14 @@ const routes: Routes = [
   {
     path: 'fasiliti',
     loadChildren: () => import('./fasiliti/fasiliti.module').then( m => m.FasilitiPageModule)
+  },
+  {
+    path: 'sejarah',
+    loadChildren: () => import('./sejarah/sejarah.module').then( m => m.SejarahPageModule)
+  },
+  {
+    path: 'sejarah',
+    loadChildren: () => import('./sejarah/sejarah.module').then( m => m.SejarahPageModule)
   }
 ];
 

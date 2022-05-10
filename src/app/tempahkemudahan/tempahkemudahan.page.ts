@@ -24,4 +24,16 @@ export class TempahkemudahanPage implements OnInit {
   dewan(){
     this.router.navigate(['main/tabs/tempahkemudahan/dewan']);
   }
+
+  alatan(){
+    this.router.navigate(['main/tabs/tempahkemudahan/alatan']);
+  }
+
+  fasiliti(){
+    this.router.navigate(['main/tabs/tempahkemudahan/fasiliti']);
+  }
+
+  sejarah(){
+    this.router.navigate(['main/tabs/tempahkemudahan/sejarah']);
+  }
 }

@@ -1,0 +1,50 @@
+<ion-content>
+  <div class="main">
+    <div class="container">
+      <div class="header">
+        <ion-icon name="chevron-back-outline" style="float: left;" (click)="back()"></ion-icon>
+        <span class="headertxt">
+          <div style="width:350px;margin: auto;">
+            ({{ 'sejarah.sejarah' | translate }})</div></span>
+      </div>
+      <div style="padding-top: 40px;">
+        <ion-img src="../../assets/icon/SejarahHead.png" class="icontetapan"></ion-img>
+      </div>
+    </div>
+  </div>
+  <div class="main2">
+    <div class="container2">
+      <div class="detail">
+        <div class="card">
+          <div class="cardhead">{{ 'fasiliti.fasiliti' | translate }}</div>
+          <div class="carddetail">{{tempahan.tempat}}</div>
+        </div>
+        <div class="card">
+          <div class="cardhead">{{ 'sejarah.lokasi' | translate }}</div>
+          <div class="carddetail">{{tempahan.lokasinama}}</div>
+        </div>
+        <div class="card">
+          <div class="cardhead">{{ 'fasiliti.gelanggang' | translate }}</div>
+          <div class="carddetail">{{tempahan.namatempat}}</div>
+        </div>
+        <div class="card">
+          <div class="cardhead">{{ 'sejarah.tarikh' | translate }}</div>
+          <div class="carddetail">{{tempahan.date_from}} - {{tempahan.date_to}}</div>
+        </div>
+        <div class="card">
+          <div class="cardhead">{{ 'sejarah.masa' | translate }}</div>
+          <div class="carddetail">{{tempahan.time_from}} - {{tempahan.time_to}}</div>
+        </div>
+        <div class="card">
+          <div class="cardhead">{{ 'sejarah.qty' | translate }}</div>
+          <div class="carddetail">{{tempahan.qty}}</div>
+        </div>
+        <div class="card">
+          <div class="cardhead">{{ 'sejarah.jumlah' | translate }}</div>
+          <div class="carddetail">{{tempahan.amaun}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</ion-content>

@@ -85,6 +85,10 @@ const routes: Routes = [
           {
             path: '',
             loadChildren: () => import('../tender/tender.module').then( m => m.TenderPageModule)
+          },
+          {
+            path: 'tenderDetail',
+            loadChildren: () => import('../tender/tenderdetail/tenderdetail.module').then( m => m.TenderdetailPageModule)
           }
         ]
       },
@@ -106,6 +110,20 @@ const routes: Routes = [
           {
             path: 'fasiliti',
             loadChildren: () => import('../tempahkemudahan/fasiliti/fasiliti.module').then( m => m.FasilitiPageModule)
+          },
+          {
+            path: 'sejarah',
+            children: [
+              {
+                path: '',
+                loadChildren: () => import('../tempahkemudahan/sejarah/sejarah.module').then( m => m.SejarahPageModule)
+              },
+              {
+                path: 'view',
+                loadChildren: () => import('../tempahkemudahan/sejarah/view/view.module').then( m => m.ViewPageModule)
+              }
+            ]
+            
           }
         ]
       },

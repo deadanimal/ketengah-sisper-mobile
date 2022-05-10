@@ -4,16 +4,13 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { LanguagePageRoutingModule } from './language-routing.module';
-
 import { LanguagePage } from './language.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    IonicModule,
-    LanguagePageRoutingModule
+    IonicModule
   ],
   declarations: [LanguagePage]
 })

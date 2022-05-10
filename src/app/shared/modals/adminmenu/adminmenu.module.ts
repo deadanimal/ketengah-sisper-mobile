@@ -4,16 +4,13 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { AdminmenuPageRoutingModule } from './adminmenu-routing.module';
-
 import { AdminmenuPage } from './adminmenu.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    IonicModule,
-    AdminmenuPageRoutingModule
+    IonicModule
   ],
   declarations: [AdminmenuPage]
 })

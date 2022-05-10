@@ -7,6 +7,10 @@ const routes: Routes = [
   {
     path: '',
     component: TenderPage
+  },
+  {
+    path: 'tenderdetail',
+    loadChildren: () => import('./tenderdetail/tenderdetail.module').then( m => m.TenderdetailPageModule)
   }
 ];
 

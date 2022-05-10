@@ -84,7 +84,8 @@
   "lain": {
     "catatan": "Description",
     "urusan": "Affairs",
-    "lain":"Others"
+    "lain":"Others",
+    "jumlah":"Total Payment"
   },
   "lejar": {
     "lejar": "Ledger",
@@ -111,7 +112,12 @@
     "alamat": "Address",
     "poskod": "Postcode",
     "bandar": "City",
-    "negeri": "State"
+    "negeri": "State",
+    "NSH": "Quotation Value",
+    "urusan": "Affairs",
+    "catatan": "Description",
+    "amaun": "Value",
+    "jumlah": "Total"
   },
   "hantar": "Send",
   "dewan": {
@@ -121,6 +127,17 @@
     "placelokasi": "Choose Location",
     "placedewan": "Choose Hall",
     "tarikh": "Date",
-    "masa": "Time"
-  }
+    "masa": "Time",
+    "daripada": "From",
+    "hingga": "To"
+  },
+  "pilih": "Select",
+  "kembali": "Back",
+  "alatan": {
+    "alatan": "Tools"
+  },
+  "fasiliti": {
+    "fasiliti": "Facility"
+  },
+  "simpan": "Save"
 }

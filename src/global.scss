@@ -26,7 +26,13 @@
 @import "~@ionic/angular/css/flex-utils.css";
 
 .alert-radio-label.sc-ion-alert-md{
-    color:black;
+    color:black !important;
+    padding-inline-start: 25px;
+    font-size: 10px;
+}
+
+.alert-radio-icon.sc-ion-alert-md {
+    left: 13px;
 }
 
 .select{
@@ -78,5 +84,13 @@
 }
 
 .month-packer-item button{
+    color: black;
+}
+
+.picker-opt{
+    color: black;
+}
+
+ion-select {
     color: black;
 }

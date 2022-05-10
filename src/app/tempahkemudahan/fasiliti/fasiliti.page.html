@@ -1,9 +1,83 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>fasiliti</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
+  <div class="main">
+    <div class="container">
+      <div class="header">
+        <ion-icon name="chevron-back-outline" style="float: left;" (click)="back()"></ion-icon>
+        <span class="headertxt">
+          <div style="width:100px;margin: auto;">
+            {{ 'dewan.tempah' | translate }}<br>({{ 'fasiliti.fasiliti' | translate }})</div></span>
+      </div>
+      <div style="padding-top: 40px;">
+        <ion-img src="../../assets/icon/fasilitiHead.png" class="icontetapan"></ion-img>
+      </div>
+    </div>
+  </div>
+  <div class="main2">
+    <div class="container2">
+      <div style="padding:0px 40px;">
+        <div class="label">{{ 'dewan.lokasi' | translate }}.</div>
+        <ion-select okText="{{ 'semak.ok' | translate }}" cancelText="{{ 'semak.cancel' | translate }}" class="select" placeholder="{{ 'dewan.placelokasi' | translate }}" [(ngModel)]="Lokasi" (ionChange)="ChangeDDLokasi()">
+          <ion-select-option *ngFor="let lokasi of ddLokasi; let i = index" [value]="lokasi.id">
+            {{lokasi.nama}}
+          </ion-select-option>
+        </ion-select>
+        <div style="height: 10px;"></div>
+        <div class="label">{{ 'fasiliti.fasiliti' | translate }}.</div>
+        <ion-select okText="{{ 'semak.ok' | translate }}" cancelText="{{ 'semak.cancel' | translate }}" class="select" placeholder="{{ 'fasiliti.placefasiliti' | translate }}" [(ngModel)]="Fasiliti" (ionChange)="ChangeDDFasiliti()" [disabled]="lokasiread">
+          <ion-select-option *ngFor="let fasiliti of ddFasiliti; let i = index" [value]="fasiliti.id">
+            {{fasiliti.nama}}
+          </ion-select-option>
+        </ion-select>
+        <div style="height: 10px;"></div>
+        <div class="label">{{ 'fasiliti.gelanggang' | translate }}.</div>
+        <ion-select okText="{{ 'semak.ok' | translate }}" cancelText="{{ 'semak.cancel' | translate }}" class="select" placeholder="{{ 'fasiliti.placegelanggang' | translate }}" [(ngModel)]="Gelanggang" (ionChange)="ChangeDDGelanggang()" [disabled]="gelanggangread">
+          <ion-select-option *ngFor="let gelanggang of ddGelanggang; let i = index" [value]="gelanggang.id">
+            {{gelanggang.nama_gelanggang}}
+          </ion-select-option>
+        </ion-select>
+        <div style="height: 10px;"></div>
+        <div class="label">{{ 'dewan.tarikh' | translate }}.</div>
+        <input class="select" placeholder="00/00/0000 - 00/00/0000" (click)="opencal()" (ionChange)="ChangeDDTarikh()" [(ngModel)]="TarikhVal" [disabled]="tarikhread">
+        <div *ngIf="cal==true" style="text-align: center;padding-top: 10px;">
+          <ion-calendar [options]="caloption" type="string" [(ngModel)]="date"></ion-calendar>
+          <button class="button" style="width:60%" (click)="pilihcal()">Pilih</button>
+        </div>
+        <div style="height: 10px;"></div>
+        <div *ngIf="masablock == true" class="label">{{ 'dewan.masa' | translate }}.</div>
+      </div>
+      <div *ngIf="masablock == true">
+        <ul class="ks-cboxtags" id="boxfrom">
+          <li><input type="checkbox" id="box0" value="0" name="boxtime"><label for="box0">00:00 - 01:00</label></li>
+          <li><input type="checkbox" id="box1" value="1" name="boxtime"><label for="box1">01:00 - 02:00</label></li>
+          <li><input type="checkbox" id="box2" value="2" name="boxtime"><label for="box2">02:00 - 03:00</label></li>
+          <li><input type="checkbox" id="box3" value="3" name="boxtime" ><label for="box3">03:00 - 04:00</label></li>
+          <li><input type="checkbox" id="box4" value="4" name="boxtime"><label for="box4">04:00 - 05:00</label></li>
+          <li><input type="checkbox" id="box5" value="5" name="boxtime"><label for="box5">05:00 - 06:00</label></li>
+          <li><input type="checkbox" id="box6" value="6" name="boxtime"><label for="box6">06:00 - 07:00</label></li>
+          <li><input type="checkbox" id="box7" value="7" name="boxtime"><label for="box7">07:00 - 08:00</label></li>
+          <li><input type="checkbox" id="box8" value="8" name="boxtime"><label for="box8">08:00 - 09:00</label></li>
+          <li><input type="checkbox" id="box9" value="9" name="boxtime"><label for="box9">09:00 - 10:00</label></li>
+          <li><input type="checkbox" id="box10" value="10" name="boxtime"><label for="box10">10:00 - 11:00</label></li>
+          <li><input type="checkbox" id="box11" value="11" name="boxtime"><label for="box11">11:00 - 12:00</label></li>
+          <li><input type="checkbox" id="box12" value="12" name="boxtime"><label for="box12">12:00 - 13:00</label></li>
+          <li><input type="checkbox" id="box13" value="13" name="boxtime"><label for="box13">13:00 - 13:00</label></li>
+          <li><input type="checkbox" id="box14" value="14" name="boxtime"><label for="box14">14:00 - 13:00</label></li>
+          <li><input type="checkbox" id="box15" value="15" name="boxtime"><label for="box15">15:00 - 13:00</label></li>
+          <li><input type="checkbox" id="box16" value="16" name="boxtime"><label for="box16">16:00 - 13:00</label></li>
+          <li><input type="checkbox" id="box17" value="17" name="boxtime"><label for="box17">17:00 - 13:00</label></li>
+          <li><input type="checkbox" id="box18" value="18" name="boxtime"><label for="box18">18:00 - 13:00</label></li>
+          <li><input type="checkbox" id="box19" value="19" name="boxtime"><label for="box19">19:00 - 13:00</label></li>
+          <li><input type="checkbox" id="box20" value="20" name="boxtime"><label for="box20">20:00 - 13:00</label></li>
+          <li><input type="checkbox" id="box21" value="21" name="boxtime"><label for="box21">21:00 - 13:00</label></li>
+          <li><input type="checkbox" id="box22" value="22" name="boxtime"><label for="box22">22:00 - 13:00</label></li>
+          <li><input type="checkbox" id="box23" value="23" name="boxtime"><label for="box23">23:00 - 13:00</label></li>
+        </ul>
+      </div>
+      <div style="height: 40px;"></div>
+      <div style="padding:0px 40px 30px 40px;">
+        <button ion-button class="button" (click)="hantar()">{{ 'hantar' | translate }}</button>
+      </div>
+    </div>
+  </div>
 
 </ion-content>

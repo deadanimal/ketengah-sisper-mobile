@@ -84,7 +84,8 @@
     "lain": {
       "catatan": "Catatan",
       "urusan": "Urusan",
-      "lain":"Lain-lain"
+      "lain":"Lain-lain",
+      "jumlah":"Jumlah Bayaran"
     },
     "lejar": {
       "lejar": "Lejar",
@@ -111,7 +112,12 @@
       "alamat": "Alamat",
       "poskod": "Poskod",
       "bandar": "Bandar",
-      "negeri": "Negeri"
+      "negeri": "Negeri",
+      "NSH": "Nilai Sebut Harga",
+      "urusan": "Urusan",
+      "catatan": "Catatan",
+      "amaun": "Amaun",
+      "jumlah": "Jumlah"
     },
     "hantar": "Hantar",
     "dewan": {
@@ -121,6 +127,35 @@
       "placelokasi": "Pilih Lokasi",
       "placedewan": "Pilih Dewan",
       "tarikh": "Tarikh",
-      "masa": "Masa"
+      "masa": "Masa",
+      "daripada": "Daripada",
+      "hingga": "Hingga"
+    },
+    "pilih": "Pilih",
+    "kembali": "Kembali",
+    "alatan": {
+      "alatan": "Alatan",
+      "kuantiti": "Kuantiti",
+      "tarikh": "Tarikh",
+      "placealatan": "Pilih Alatan"
+    },
+    "fasiliti": {
+      "fasiliti": "Fasiliti",
+      "placefasiliti": "Pilih Fasiliti",
+      "gelanggang": "Gelanggang",
+      "placegelanggang": "Pilih Gelanggang"
+    },
+    "simpan": "Simpan",
+    "bayar": "Bayar",
+    "sejarah": {
+      "sejarah": "Sejarah Tempahan",
+      "tempahan": " Tempahan",
+      "tarikh": "Tarikh",
+      "lokasi": "Lokasi",
+      "masa": "Masa",
+      "jumlah": "Jumlah Bayaran",
+      "qty": "Kuantiti"
     }
+
+
 }

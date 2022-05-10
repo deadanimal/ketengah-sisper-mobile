@@ -4,6 +4,7 @@ import { NativeStorage } from '@awesome-cordova-plugins/native-storage/ngx';
 import { AlertController, LoadingController, ModalController, Platform } from '@ionic/angular';
 import { NotisService } from '../shared/services/notis/notis.service';
 import { AdminmenuPage } from '../shared/modals/adminmenu/adminmenu.page';
+import { TambahakaunComponent } from '../shared/modals/TambahAkaun/tambahakaun.component';
 import { PengumumanService } from '../shared/services/pengumuman/pengumuman.service';
 
 @Component({
@@ -131,13 +132,13 @@ export class HomePage implements OnInit {
   }
 
   async tambah(){
-    // const modal = await this.modalController.create({
-    //   component: AdminmenuPage,
-    //   cssClass: 'menu-modal',
-    //   backdropDismiss: true
-    // });
+    const modal = await this.modalController.create({
+      component: TambahakaunComponent,
+      cssClass: 'med-modal',
+      backdropDismiss: true
+    });
 
-    // return await modal.present();
+    return await modal.present();
   }
 
   notis(){
@@ -178,7 +179,11 @@ export class HomePage implements OnInit {
   }
   
   Tender(){
-    this.router.navigate(['main/tabs/tender']);
+    if(this.user.tender == 0){
+      this.router.navigate(['main/tabs/tender']);
+    }else if(this.user.tender == 1){
+      this.router.navigate(['main/tabs/tender/tenderDetail']);
+    }
   }
 
   TempahKemudahan(){
