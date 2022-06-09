@@ -19,6 +19,10 @@ export class TenderdetailPage implements OnInit {
 
   TenderList:any;
 
+  urusan:any;
+  harga:any;
+  catatan:any;
+
   constructor(
     private location: Location,
     private fb: FormBuilder,
@@ -123,7 +127,103 @@ export class TenderdetailPage implements OnInit {
 
   }
 
-  deleteone(item){
+  edit(item){
+
+    var element = document.getElementById('editform'+item.id).style.display;
+    
+    var formelem = document.getElementsByName('editformname');
+    formelem.forEach(element => {
+      if(element.style.display == 'block'){
+        element .style.display = 'none';
+      }
+    });
+
+    if(element == 'none'){
+      console.log('none',element);
+      document.getElementById('editform'+item.id).style.display = 'block';
+    }else{
+      document.getElementById('editform'+item.id).style.display = 'none';
+      console.log(element);
+    }
+   
+    this.urusan = item.urusan;
+    this.harga = item.harga;
+    this.catatan = item.catatan;
 
   }
+
+  async deleteone(id){
+    console.log(id);
+    const loading = await this.loadingController.create();
+    await loading.present();
+
+    await this.shtenderdtlService.delete(id).subscribe(
+      async (res) => {
+        console.log(res);
+        this.TenderList.forEach(function(item, index, object) {
+          if(item.id == id){
+            object.splice(index,1);
+          }
+        })
+        console.log(this.TenderList);
+        await loading.dismiss();
+      },
+      async (res) => {
+        console.log(res);
+        await loading.dismiss();
+        const alert = await this.alertController.create({
+          header: 'Loading failed',
+          message: res.message,
+          buttons: ['OK'],
+        });
+ 
+        await alert.present();
+      }
+    );
+  }
+
+  async update(id){
+
+    console.log(id)
+    const loading = await this.loadingController.create();
+    await loading.present();
+
+    console.log(this.urusan);
+
+    var data = [
+      {
+        "urusan": this.urusan,
+        "harga": this.harga,
+        "catatan": this.catatan
+      }
+    ]
+
+    await this.shtenderdtlService.update(data[0], id).subscribe(
+      async (res) => {
+        console.log(res);
+        this.TenderList.forEach(function(item, index, object) {
+          if(item.id == id){
+            object[index].urusan = res.urusan;
+            object[index].harga = res.harga;
+            object[index].catatan = res.catatan;
+          }
+        })
+        document.getElementById('editform'+id).style.display  = 'none';
+        console.log(this.TenderList);
+        await loading.dismiss();
+      },
+      async (res) => {
+        console.log(res);
+        await loading.dismiss();
+        const alert = await this.alertController.create({
+          header: 'Loading failed',
+          message: res.message,
+          buttons: ['OK'],
+        });
+ 
+        await alert.present();
+      }
+    );
+  }
+
 }

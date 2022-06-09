@@ -126,6 +126,22 @@ const routes: Routes = [
   {
     path: 'aduan',
     loadChildren: () => import('./admin/aduan/aduan.module').then( m => m.AduanPageModule)
+  },
+  {
+    path: 'pengguna',
+    loadChildren: () => import('./admin/pengguna/pengguna.module').then( m => m.PenggunaPageModule)
+  },
+  {
+    path: 'sekatan',
+    loadChildren: () => import('./admin/sekatan/sekatan.module').then( m => m.SekatanPageModule)
+  },
+  {
+    path: 'perumahan',
+    loadChildren: () => import('./akaun/perumahan/perumahan.module').then( m => m.PerumahanPageModule)
+  },
+  {
+    path: 'premis',
+    loadChildren: () => import('./akaun/premis/premis.module').then( m => m.PremisPageModule)
   }
 ];
 

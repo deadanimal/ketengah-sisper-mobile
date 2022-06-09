@@ -139,5 +139,24 @@
   "fasiliti": {
     "fasiliti": "Facility"
   },
-  "simpan": "Save"
+  "simpan": "Save",
+  "bayar": "Bayar",
+    "kemaskini": "Kemaskini",
+    "sejarah": {
+      "sejarah": "Sejarah Tempahan",
+      "tempahan": " Tempahan",
+      "tarikh": "Tarikh",
+      "lokasi": "Lokasi",
+      "masa": "Masa",
+      "jumlah": "Jumlah Bayaran",
+      "qty": "Kuantiti"
+    },
+    "pengguna":{
+      "pengguna": "Pengguna",
+      "senarai": "Senarai Pengguna",
+      "notel": "Nombor Telefon"
+    },
+    "sekatan": {
+      "tarikh": "Sekatan Tarikh"
+    }
 }

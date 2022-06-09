@@ -22,6 +22,28 @@ const routes: Routes = [
         ]
       },
       {
+        path: 'akaun',
+        children: [
+          {
+            path: 'perumahan',
+            children: [
+              {
+                path: '',
+                loadChildren: () => import('../akaun/perumahan/perumahan.module').then( m => m.PerumahanPageModule) 
+              },
+              {
+                path: 'form',
+                loadChildren: () => import('../akaun/perumahan/form/form.module').then( m => m.FormPageModule) 
+              }
+            ]
+          },
+          {
+            path: 'premis',
+            loadChildren: () => import('../akaun/premis/premis.module').then( m => m.PremisPageModule)
+          }
+        ]
+      },
+      {
         path: 'profil',
         children: [
           {
@@ -230,6 +252,28 @@ const routes: Routes = [
           {
             path: 'aduanview',
             loadChildren: () => import('../admin/aduan/aduanview/aduanview.module').then( m => m.AduanviewPageModule)
+          }
+        ]
+      },
+      {
+        path: 'pengguna',
+        children: [
+          {
+            path: '',
+            loadChildren: () => import('../admin/pengguna/pengguna.module').then( m => m.PenggunaPageModule)
+          }
+        ]
+      },
+      {
+        path: 'sekatan',
+        children: [
+          {
+            path: '',
+            loadChildren: () => import('../admin/sekatan/sekatan.module').then( m => m.SekatanPageModule)
+          },
+          {
+            path: 'form',
+            loadChildren: () => import('../admin/sekatan/form/form.module').then( m => m.FormPageModule)
           }
         ]
       }

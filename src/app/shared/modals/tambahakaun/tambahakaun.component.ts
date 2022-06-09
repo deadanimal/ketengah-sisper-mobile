@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-tambahakaun',
@@ -7,8 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TambahakaunComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private modalController: ModalController,
+    private router: Router,
+  ) { }
 
   ngOnInit() {}
 
+  perumahan() {
+    this.modalController.dismiss();
+    this.router.navigate(['main/tabs/akaun/perumahan']);
+  }
+
+  premis() {
+    this.modalController.dismiss();
+    this.router.navigate(['main/tabs/akaun/premis']);
+  }
 }

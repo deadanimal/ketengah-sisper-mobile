@@ -1,0 +1,49 @@
+<ion-content>
+  <div class="main">
+    <div class="container2">
+      <div class="header">
+        <ion-icon name="chevron-back-outline" style="float: left;" (click)="back()"></ion-icon>
+        <span class="headertxt">{{ 'sekatan.tarikh' | translate }}</span>
+        <span *ngIf="src == 1" class="headertxt2">({{ 'sekatan.futsal' | translate }})</span>
+        <span *ngIf="src == 2" class="headertxt2">({{ 'sekatan.badminton' | translate }})</span>
+        <span *ngIf="src == 3" class="headertxt2">({{ 'tempat_kemudahan.dewan' | translate }})</span>
+        <ion-img src="../../assets/icon/adminmenu.png" style="position: absolute;top: 50px;right: 20px;" class="iconnoti" (click)="adminmenu()"></ion-img>
+      </div>
+    </div>
+  </div>
+  <div class="main2" style="margin-top: -40px;">
+    <div class="container3">
+      <div style="padding:0px 40px;">
+        <div class="label">{{ 'sekatan.tempat' | translate }}</div>
+        <ion-select okText="{{ 'semak.ok' | translate }}" cancelText="{{ 'semak.cancel' | translate }}" class="select" placeholder="{{ 'sekatan.placetempat' | translate }}" [(ngModel)]="lokasi" (ionChange)="ChangeDDLokasi()">
+          <ion-select-option *ngFor="let tempat of ddTempat; let i = index" [value]="tempat.id">
+            {{tempat.nama}}
+          </ion-select-option>
+        </ion-select>
+        <div style="height: 20px;"></div>
+        <div *ngIf="src != 3" class="label">{{ 'fasiliti.gelanggang' | translate }}</div>
+        <div *ngIf="src == 3" class="label">{{ 'tempat_kemudahan.dewan' | translate }}</div>
+        <!-- <input class="select" placeholder="{{ 'dewan.placedewan' | translate }}"> -->
+        <ion-select *ngIf="src != 3" okText="{{ 'semak.ok' | translate }}" cancelText="{{ 'semak.cancel' | translate }}" class="select" placeholder="{{ 'sekatan.placegelanggang' | translate }}" [(ngModel)]="gelanggang" (ionChange)="ChangeDDDewan()">
+          <ion-select-option *ngFor="let dewan of ddGelanggang; let i = index" [value]="dewan.id">
+            {{dewan.nama_gelanggang}}
+          </ion-select-option>
+        </ion-select>
+        <ion-select *ngIf="src == 3" okText="{{ 'semak.ok' | translate }}" cancelText="{{ 'semak.cancel' | translate }}" class="select" placeholder="{{ 'dewan.placedewan' | translate }}" [(ngModel)]="gelanggang" (ionChange)="ChangeDDDewan()">
+          <ion-select-option *ngFor="let dewan of ddGelanggang; let i = index" [value]="dewan.id">
+            {{dewan.nama}}
+          </ion-select-option>
+        </ion-select>
+        <div style="height: 10px;"></div>
+        <div class="label">{{ 'dewan.tarikh' | translate }}.</div>
+        <input class="select" placeholder="00/00/0000 - 00/00/0000" (click)="opencal()" (ionChange)="ChangeDDTarikh()" [(ngModel)]="dispTarikh">
+        <div *ngIf="cal==true" style="text-align: center;padding-top: 10px;">
+          <ion-calendar [options]="caloption" type="string" [(ngModel)]="date"></ion-calendar>
+          <button class="button" style="width:60%" (click)="pilihcal()">Pilih</button>
+        </div>
+        <div style="height: 40px;"></div>
+        <button ion-button class="button" (click)="hantar()">{{ 'hantar' | translate }}</button>
+      </div>
+    </div>
+  </div>
+</ion-content>

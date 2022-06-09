@@ -147,6 +147,7 @@
     },
     "simpan": "Simpan",
     "bayar": "Bayar",
+    "kemaskini": "Kemaskini",
     "sejarah": {
       "sejarah": "Sejarah Tempahan",
       "tempahan": " Tempahan",
@@ -155,7 +156,31 @@
       "masa": "Masa",
       "jumlah": "Jumlah Bayaran",
       "qty": "Kuantiti"
-    }
-
-
+    },
+    "pengguna":{
+      "pengguna": "Pengguna",
+      "senarai": "Senarai Pengguna",
+      "notel": "Nombor Telefon"
+    },
+    "sekatan": {
+      "tarikh": "Sekatan Tarikh",
+      "futsal": "Futsal",
+      "badminton": "Badminton",
+      "tempat": "Tempat",
+      "placetempat": "Pilih Tempat",
+      "gelanggang": "Gelanggang",
+      "placegelanggang": "Pilih Gelanggang"
+    },
+  "akaun": {
+    "tambahakaun": "Tambah Akaun Perumahan",
+    "tambahpremis": "Tambah Akaun Premis",
+    "desc": "Adakah Anda Merupakan Pemilik atau Penyewa Akaun Perumahan Yang Ingin Ditambah?",
+    "yes": "Ya",
+    "no": "Tidak",
+    "tambahyes": "Saya Merupakan Pemilik atau Penyewa Asal Akaun Perumahan Yang Ingin Ditambah.",
+    "tambahno": "Saya Merupakan Anak Atau Ahli Keluarga Kepada Pemilik atau Penyewa Asal.",
+    "noakaun": "No. Akaun",
+    "namaakaun": "Nama Akaun",
+    "nokp":"No Kad Pengenalan Pemilik"
+  }
 }

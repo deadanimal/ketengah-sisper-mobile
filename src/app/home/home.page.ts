@@ -205,4 +205,12 @@ export class HomePage implements OnInit {
 
     return await modal.present();
   }
+
+  penggunaadmin(){
+    this.router.navigate(['main/admin/pengguna']);
+  }
+
+  sekatanadmin(){
+    this.router.navigate(['main/admin/sekatan']);
+  }
 }

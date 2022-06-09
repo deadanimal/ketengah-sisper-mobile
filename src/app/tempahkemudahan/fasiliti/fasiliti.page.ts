@@ -6,6 +6,7 @@ import { FasilitiService } from 'src/app/shared/services/fasiliti/fasiliti.servi
 import { BookingService } from 'src/app/shared/services/booking/booking.service';
 import { Router } from '@angular/router';
 import { NativeStorage } from '@awesome-cordova-plugins/native-storage/ngx';
+import { timelist } from '../../shared/model/timelist.model';
 
 @Component({
   selector: 'app-fasiliti',
@@ -22,11 +23,14 @@ export class FasilitiPage implements OnInit {
   cal=false;
   date:any;
   caloption = {
-    pickMode: 'range',
-    title: 'RANGE',
+    // pickMode: 'multi',
+    title: 'FASILITI',
     daysConfig: []
   };
   days:any;
+  hour : any;
+  masa : any;
+  amaun : any;
   TarikhVal:any;
   masablock = false;
   listfutsal:any;
@@ -37,6 +41,7 @@ export class FasilitiPage implements OnInit {
   tarikhread = true;
   ddGelanggang:any;
   user:any;
+  timecheck = [];
 
   constructor(
     private location: Location,
@@ -272,22 +277,93 @@ export class FasilitiPage implements OnInit {
       this.cal =true;
     }
 
-    const fromdate = new Date(this.date.from);
-    const todate = new Date(this.date.to);
-    if(fromdate.getTime() == todate.getTime()){
-      this.masablock = true;
-      this.days = 1;
-    }else{
-      this.masablock = false;
-      var diff = Math.abs(todate.getTime() - fromdate.getTime());
-      this.days = Math.ceil(diff / (1000 * 3600 * 24)) + 1;
-    }
-    this.TarikhVal = fromdate.getDate()+'/'+fromdate.getMonth()+'/'+fromdate.getFullYear()+' - '+ todate.getDate()+'/'+todate.getMonth()+'/'+todate.getFullYear();
+    const fromdate = new Date(this.date);
+    this.masablock = true;
+    this.days = 1;
+    this.TarikhVal = fromdate.getDate()+'/'+fromdate.getMonth()+'/'+fromdate.getFullYear();
     
+    this.ChangeDDTarikh();
   }
 
-  ChangeDDTarikh() {
+  async ChangeDDTarikh() {
+    if(this.Fasiliti == 1){
+      var court = this.Gelanggang;
+    }else if(this.Fasiliti == 2){
+      var court = this.Gelanggang;
+    }
+  
+    var fasiliti = this.Fasiliti;
+    var alltime = [];
+    
+    await this.listbooking.forEach(async function (value) {
+      console.log(value);
+      if(fasiliti == 1){
+        if(value.ft_court_id == court){
+          if(value.days == 1){
+            var time = value.time.split(",");
+            await time.forEach(function (value) {
+              alltime.push(value);
+            });
+          }
+        }
+      }else if(fasiliti == 2){
+        if(value.bd_court_id == court){
+          if(value.days == 1){
+            var time = value.time.split(",");
+            await time.forEach(function (value) {
+              alltime.push(value);
+            });
+          }
+        }
+      }
+    });
 
+    console.log('alltime',alltime);
+    this.ChangeMasa(alltime);
+  }
+
+  ChangeMasa(time:any){
+    console.log(time);
+    var txt : any;
+    var txt2 : any;
+    var temp = [];
+    var add = true;
+    for (let index = 0; index < 23; index++) {
+      add = true;
+      if(index < 10){
+        txt = "0"+index;
+        txt2 = index+1;
+        if(index != 9){
+          txt2 = "0"+txt2;
+        }
+      }else{
+        txt = index;
+        txt2 = index + 1;
+      }
+      let timelist: timelist;
+      timelist = {
+        val: index,
+        text: txt+":00 - "+ txt2+":00",
+        check: false
+      };
+      if(timelist.val >= 8){
+        if(timelist.val == 19){
+          add = false;
+        }
+        time.forEach(function (value) {
+          if (value == index){
+            add = false;
+          }
+        });
+      }else{
+        add = false;
+      }
+      if(add == true){
+        temp.push(timelist);
+      }
+    }
+    this.timecheck = temp;
+    console.log(this.timecheck);
   }
 
   async hantar() {
@@ -300,30 +376,68 @@ export class FasilitiPage implements OnInit {
 
     if(this.Fasiliti == 1){
       formData.append('futsal', this.Gelanggang);
+      var court = this.Gelanggang;
+      this.listfutsal.forEach(function (value) {
+        if(value.id == court){
+          harga = value.harga;
+          return;
+        }
+      });
+      console.log('timecheck',this.timecheck);
+      if(this.timecheck != []){
+        console.log(this.timecheck);
+        var array = [];
+        await this.timecheck.forEach(function (value) {
+          if (value.check == true) {
+            console.log(value);
+            array.push(value.val);
+          }
+        });
+        this.masa = array.toString();
+        this.hour = array.length;
+        
+        this.amaun = harga * this.hour;
+      }
+
     }else if(this.Fasiliti == 2){
       formData.append('badminton', this.Gelanggang);
+      var court = this.Gelanggang;
+      this.listfutsal.forEach(function (value) {
+        if(value.id == court){
+          harga = value.harga;
+          return;
+        }
+      });
+      console.log('timecheck',this.timecheck);
+      if(this.timecheck != []){
+        console.log(this.timecheck);
+        var array = [];
+        await this.timecheck.forEach(function (value) {
+          if (value.check == true) {
+            console.log(value);
+            array.push(value.val);
+          }
+        });
+        this.masa = array.toString();
+        this.hour = array.length;
+        
+        this.amaun = harga * this.hour;
+      }
     }
 
-    // var dewan = this.Dewan;
-    // this.listdewan.forEach(function (value) {
-    //   if(value.id == dewan){
-    //     harga = value.harga;
-    //     return;
-    //   }
-    // });
+    console.log('masa',this.masa);
     
-    // this.amaun = harga * this.hour;
-
     if(this.date == undefined){
       await loading.dismiss();
       this.alerterror('Tarikh diperlukan');
     }
 
-    formData.append('tarikh_mula', this.date.from);
-    formData.append('tarikh_akhir', this.date.to);
+    formData.append('tarikh_mula', this.date);
+    formData.append('tarikh_akhir', this.date);
     formData.append('days', this.days);   
-    // formData.append('hour', this.hour); 
-    // formData.append('amaun', this.amaun); 
+    formData.append('masa', this.masa);
+    formData.append('hour', this.hour); 
+    formData.append('amaun', this.amaun); 
     await this.bookingService.add(formData).subscribe(
       async (res) => {
         console.log(res);
@@ -361,5 +475,7 @@ export class FasilitiPage implements OnInit {
     this.Gelanggang = '';
     this.TarikhVal = '';
     this.date = '';
+    this.masablock = false;
+    this.timecheck = [];
   }
 }

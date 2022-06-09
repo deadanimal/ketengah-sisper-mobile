@@ -1,0 +1,40 @@
+<ion-content>
+  <div class="main">
+    <div class="container2">
+      <div class="header">
+        <ion-icon name="chevron-back-outline" style="float: left;" (click)="back()"></ion-icon>
+        <span class="headertxt">{{ 'pengguna.pengguna' | translate }}</span>
+        <ion-img src="../../assets/icon/adminmenu.png" style="position: absolute;top: 50px;right: 20px;" class="iconnoti" (click)="adminmenu()"></ion-img>
+      </div>
+    </div>
+  </div>
+  <div class="main2">
+    <div class="container3">
+      <span class="pagetitle">{{ 'pengguna.senarai' | translate }}</span>
+      <div style="padding:20px 30px;">
+        <div class="srchtitle" style="padding: 20px 0px;">{{ 'pengguna.notel' | translate }}</div>
+        <input class="search" type="number" [(ngModel)]="phoneno"/>
+        <ion-img class="searchbtn" src="../../assets/icon/searchicon.png" (click)="search()"></ion-img>
+      </div>
+      <div style="padding-right:10px;padding-top: 20px;">
+        <div *ngFor="let item of penggunaList">
+          <div class="card">
+            <table style="width: 100%; height: 100%;color: black;">
+              <tr>
+                <td style="padding:10px 30px;">
+                  <div class="nama">{{item.name}}</div>
+                  <div class="jenis">{{item.jenis}}</div>
+                  <div class="nophone">{{item.no_telefon}}</div>
+                </td>
+                <td>
+                  <ion-toggle (click)="aktif(item)" [(ngModel)]="item.check"></ion-toggle>  
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div style="height:10px;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

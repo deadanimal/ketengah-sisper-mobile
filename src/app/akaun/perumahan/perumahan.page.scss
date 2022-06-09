@@ -1,0 +1,47 @@
+.container2 {
+    padding-top: 45px;
+    height: 650px;
+    text-align: center;
+}
+
+.bodyhead {
+    font-weight: 500;
+    font-size: 19px;
+    color: #3D2C7C;
+}
+
+.maincomp {
+    height: 100%; 
+    width: 100%; 
+    text-align: left;
+    padding: 0px 30px;
+}
+
+.headerbody {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0.02em;
+    color: #494949;
+    width: 70%;
+}
+
+.cardyes {
+    background: #7054D9;
+    box-shadow: 0px 4px 8px rgba(73, 87, 184, 0.2);
+    border-radius: 17px;
+    height: 100px;
+    width: 90%;
+    text-align: left;
+    padding: 10px 25px;
+}
+
+.cardno {
+    background: #3D2C7C;
+    box-shadow: 0px 4px 8px rgba(73, 87, 184, 0.2);
+    border-radius: 17px;
+    height: 100px;
+    width: 90%;
+    text-align: left;
+    padding: 10px 25px;
+}

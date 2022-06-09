@@ -42,8 +42,13 @@
       </div>
       <div *ngIf="masablock == true">
         <ul class="ks-cboxtags" id="boxfrom">
-          <li><input type="checkbox" id="box0" value="0" name="boxtime"><label for="box0">00:00 - 01:00</label></li>
-          <li><input type="checkbox" id="box1" value="1" name="boxtime"><label for="box1">01:00 - 02:00</label></li>
+          <li *ngFor="let item of timecheck">
+            <input type="checkbox" id="box{{item.val}}" value="{{item.val}}" name="boxtime" [(ngModel)]="item.check"><label for="box{{item.val}}">{{item.text}}</label>
+          </li>
+
+
+          <!-- <li><input type="checkbox" id="box0" value="0" name="boxtime" (change)="check($event)"><label for="box0">00:00 - 01:00</label></li>
+          <li><input type="checkbox" id="box1" value="1" name="boxtime" (change)="check($event)"><label for="box1">01:00 - 02:00</label></li>
           <li><input type="checkbox" id="box2" value="2" name="boxtime"><label for="box2">02:00 - 03:00</label></li>
           <li><input type="checkbox" id="box3" value="3" name="boxtime" ><label for="box3">03:00 - 04:00</label></li>
           <li><input type="checkbox" id="box4" value="4" name="boxtime"><label for="box4">04:00 - 05:00</label></li>
@@ -65,7 +70,7 @@
           <li><input type="checkbox" id="box12" value="12" name="boxtime"><label for="box12">20:00 - 13:00</label></li>
           <li><input type="checkbox" id="box12" value="12" name="boxtime"><label for="box12">21:00 - 13:00</label></li>
           <li><input type="checkbox" id="box12" value="12" name="boxtime"><label for="box12">22:00 - 13:00</label></li>
-          <li><input type="checkbox" id="box12" value="12" name="boxtime"><label for="box12">23:00 - 13:00</label></li>
+          <li><input type="checkbox" id="box12" value="12" name="boxtime"><label for="box12">23:00 - 13:00</label></li> -->
         </ul>
       </div>
       <div style="height: 40px;"></div>

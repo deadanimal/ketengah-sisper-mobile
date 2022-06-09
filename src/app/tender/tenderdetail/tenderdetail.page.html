@@ -36,33 +36,67 @@
         </div>
         <div style="height: 30px;"></div>
           <ion-radio-group value="biff">
-            <ion-item *ngFor="let item of TenderList">
-              <ion-radio slot="start" value="{{item.id}}"></ion-radio>
-              <div class="cardaduan" style="display:inline-block;">
-                <table style="width:100%;">
-                  <tr>
-                    <td class="cardhead">{{ 'tender.urusan' | translate }}</td>
-                    <td class="carddetail">{{item.urusan}}</td>
-                    <td rowspan="3">
-                      <div>sad</div>
-                      <ion-img src="../../assets/icon/delete.png" class="icondelete" color="danger" (click)="deleteone(item.id)"></ion-img>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="cardhead">{{ 'tender.catatan' | translate }}</td>
-                    <td class="carddetail">{{item.catatan}}</td>
-                  </tr>
-                  <tr>
-                    <td class="cardhead">{{ 'tender.jumlah' | translate }}</td>
-                    <td class="carddetail2">{{item.harga}}</td>
-                  </tr>
-                </table>
+            <div *ngFor="let item of TenderList">
+              <ion-item-sliding>
+                <ion-item >
+                  <ion-radio slot="start" value="{{item.id}}" style="margin-inline-end:15px;"></ion-radio>
+                  <div class="cardaduan" style="display:inline-block;">
+                    <table style="width:100%;">
+                      <colgroup>
+                        <col style="width: 35%;">
+                        <col style="width: 65%;">
+                      </colgroup>
+                      <tr>
+                        <td class="cardhead">{{ 'tender.urusan' | translate }}</td>
+                        <td class="carddetail">{{item.urusan}}</td>
+                      </tr>
+                      <tr>
+                        <td class="cardhead">{{ 'tender.catatan' | translate }}</td>
+                        <td class="carddetail">{{item.catatan}}</td>
+                      </tr>
+                      <tr>
+                        <td class="cardhead">{{ 'tender.jumlah' | translate }} (RM)</td>
+                        <td class="carddetail2">{{item.harga}}</td>
+                      </tr>
+                    </table>
+                  </div>
+                  <div style="width: 20px;"></div>
+                </ion-item>
+                <div style="height: 20px;"></div>
+                <ion-item-options side="end">
+                  <div class="icon" style="background-color:#F6C949;" (click)="edit(item)">
+                    <ion-icon style="height: 110px;" name="create-outline"></ion-icon>
+                  </div>
+                  &nbsp;
+                  <div class="icon" style="background-color:#D23330;" (click)="deleteone(item.id)">
+                    <ion-icon style="height: 110px;" name="trash-outline"></ion-icon>
+                  </div>
+                </ion-item-options>
+              </ion-item-sliding>
+              <div id="editform{{item.id}}" name="editformname" style="display: none; padding: 30px 50px;">
+                <div class="label">{{ 'lain.urusan' | translate }}</div>
+                <div style="height: 10px;"></div>
+                <ion-select okText="{{ 'semak.ok' | translate }}" cancelText="{{ 'semak.cancel' | translate }}" class="select" [(ngModel)]="urusan">
+                  <ion-select-option *ngFor="let urusan of ddUrusan; let i = index" [value]="urusan.id">
+                    {{urusan.urusan}}
+                  </ion-select-option>
+                </ion-select>
+                <div style="height: 30px;"></div>
+                <div class="label">{{ 'tender.NSH' | translate }} (RM)</div>
+                <div style="height: 10px;"></div>
+                <input type="number" class="select" placeholder="00.00" [(ngModel)]="harga">
+                <div style="height: 30px;"></div>
+                <div class="label">{{ 'lain.catatan' | translate }}</div>
+                <div style="height: 10px;"></div>
+                <textarea class="textarea" rows="7" cols="50" [(ngModel)]="catatan"></textarea>
+                <div style="height: 30px;"></div>
+                <button class="button" name="editbtn" (click)="update(item.id)">{{ 'kemaskini' | translate }}</button>
               </div>
-            </ion-item>
+            </div>
           </ion-radio-group>
           <div style="height: 20px;"></div>
           <div class="descbox">
-            <button ion-button class="button" (click)="bayar()">{{ 'bayar' | translate }}</button>
+            <button ion-button id="bayar" class="button" (click)="bayar()">{{ 'bayar' | translate }}</button>
           </div>
           
       </div>

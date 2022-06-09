@@ -18,7 +18,18 @@ export class ShtenderdtlService {
   }
 
   add(data:any): Observable<any> {
-    var AddtenderURL = environment.baseUrl + "tenderdtl";
-    return this.http.post<any>(AddtenderURL, data);
+    var tenderURL = environment.baseUrl + "tenderdtl";
+    return this.http.post<any>(tenderURL, data);
+  }
+
+  update(data:any, id:any): Observable<any> {
+    var tenderURL = environment.baseUrl + "tenderdtl/" + id;
+    console.log(data);
+    return this.http.put<any>(tenderURL, data);
+  }
+
+  delete(id:any): Observable<any> {
+    var tenderURL = environment.baseUrl + "tenderdtl/" + id;
+    return this.http.delete<any>(tenderURL);
   }
 }
