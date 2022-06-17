@@ -5,11 +5,11 @@
     <div class="container">
       <div class="header">
         <ion-icon name="chevron-back-outline" style="float: left;" (click)="back()"></ion-icon>
-        <span class="headertxt">{{ 'lejar.lejar' | translate }}</span>
+        <span class="headertxt" style="width: 93%;">{{ 'lejar.lejar' | translate }}</span>
         <span class="headertxt2">({{ 'lejar.sewapremis' | translate }})</span>
       </div>
       <div style="padding-top: 10px;">
-        <ion-img src="../../assets/icon/ssewapremis.png" class="icontetapan"></ion-img>
+        <ion-img src="../../assets/icon/lejarpremis.png" class="icontetapan"></ion-img>
       </div>
     </div>
   </div>
@@ -18,28 +18,28 @@
       <div class="headerbox">
         <div class="descbox">
           <div class="label1" >{{ 'lejar.nama' | translate }}</div>
-            <div style="height: 10px;"></div>
-            <ion-select okText="{{ 'semak.ok' | translate }}" cancelText="{{ 'semak.cancel' | translate }}" class="select" placeholder="{{ 'lejar.nama' | translate }}">
-              <ion-select-option></ion-select-option>
-            </ion-select>
-            <div style="height: 10px;"></div>
-          <div class="label1" >{{ 'lejar.tahun' | translate }}</div>
-            <div style="height: 10px;"></div>
-            <ion-select okText="{{ 'semak.ok' | translate }}" cancelText="{{ 'semak.cancel' | translate }}" class="select" placeholder="{{ 'lejar.2022' | translate }}">
+          
+          <div style="height: 10px;"></div>
+          <ion-select okText="{{ 'semak.ok' | translate }}" cancelText="{{ 'semak.cancel' | translate }}" class="select" placeholder="{{ 'lejar.nama' | translate }}">
             <ion-select-option></ion-select-option>
           </ion-select>
+          <div style="height: 22px;"></div>
+          <div class="label1" >{{ 'lejar.tahun' | translate }}</div>
           <div style="height: 10px;"></div>
+          <ion-select okText="{{ 'semak.ok' | translate }}" cancelText="{{ 'semak.cancel' | translate }}" class="select" placeholder="{{ 'lejar.tahun' | translate }}">
+            <ion-select-option></ion-select-option>
+          </ion-select>
+          <div style="height: 22px;"></div>
           <div class="label1" >{{ 'lejar.bulan' | translate }}</div>
           <div style="height: 10px;"></div>
-          <ion-select okText="{{ 'semak.ok' | translate }}" cancelText="{{ 'semak.cancel' | translate }}" class="select" placeholder="{{ 'lejar.jan' | translate }}">
-          <ion-select-option></ion-select-option>
-        </ion-select>
+          <ion-select okText="{{ 'semak.ok' | translate }}" cancelText="{{ 'semak.cancel' | translate }}" class="select" placeholder="{{ 'lejar.bulan' | translate }}">
+            <ion-select-option></ion-select-option>
+          </ion-select>
 
-        <div style="padding: 30px 30px;">
-          <button ion-button class="button cetak" (click)="cetak()">{{ 'lejar.cetak' | translate }}</button>
-        </div>
+          <div style="padding: 50px 0px;">
+            <button ion-button class="button" (click)="hantar()">{{ 'lejar.cetak' | translate }}</button>
           </div>
-
+        </div>
       </div>
     </div>
   </div>

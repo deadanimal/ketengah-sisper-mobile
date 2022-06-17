@@ -142,6 +142,18 @@ const routes: Routes = [
   {
     path: 'premis',
     loadChildren: () => import('./akaun/premis/premis.module').then( m => m.PremisPageModule)
+  },
+  {
+    path: 'maklumat',
+    loadChildren: () => import('./akaun/maklumat/maklumat.module').then( m => m.MaklumatPageModule)
+  },
+  {
+    path: 'kaedah',
+    loadChildren: () => import('./bayaran/kaedah/kaedah.module').then( m => m.KaedahPageModule)
+  },
+  {
+    path: 'resit',
+    loadChildren: () => import('./bayaran/resit/resit.module').then( m => m.ResitPageModule)
   }
 ];
 

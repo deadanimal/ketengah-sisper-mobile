@@ -44,8 +44,97 @@
         <div *ngIf="role == 1">
           <ion-card class="card">
             <ion-card-content>
-              Keep close to Nature's heart... and break clear away, once in awhile,
-              and climb a mountain or spend a week in the woods. Wash your spirit clean.
+              <div *ngIf="showmore == 0">
+                <div *ngIf="rumah != ''">
+                  <table (click)="detail(rumah[0])">
+                    <colgroup>
+                      <col style="width: 68%;padding: 10px;">
+                      <col style="width: 32%;padding: 10px;">
+                    </colgroup>
+                    <tr>
+                      <td class="nama">{{rumah[0].nama}}</td>
+                      <td class="tunggakan">RM {{rumah[0].jumlahbyr}}</td>
+                    </tr>
+                    <tr>
+                      <td rowspan="2" class="noakaun">{{rumah[0].no_akaun_rumah}}</td>
+                      <td class="byrsblm">{{ 'home.byrsebelum' | translate }}</td>
+                    </tr>
+                    <tr>
+                      <td class="byrsblm" style="font-weight: 600;" *ngIf="rumah[0].tarikh_tamat_perjanjian != ''"{{rumah[0].tarikh_tamat_perjanjian}}></td>
+                      <td class="byrsblm" style="font-weight: 600;" *ngIf="rumah[0].tarikh_tamat_perjanjian == ''">-</td>
+                    </tr>
+                  </table>
+                </div>
+                <div *ngIf="premis != ''">
+                  <table (click)="detail(premis[0])">
+                    <colgroup>
+                      <col style="width: 68%;padding: 10px;">
+                      <col style="width: 32%;padding: 10px;">
+                    </colgroup>
+                    <tr>
+                      <td class="nama">{{premis[0].nama}}</td>
+                      <td class="tunggakan">RM {{premis[0].jumlahbyr}}</td>
+                    </tr>
+                    <tr>
+                      <td rowspan="2" class="noakaun">{{premis[0].no_akaun_premis}}</td>
+                      <td class="byrsblm">{{ 'home.byrsebelum' | translate }}</td>
+                    </tr>
+                    <tr>
+                      <td class="byrsblm" style="font-weight: 600;" *ngIf="premis[0].tarikh_tamat_perjanjian != ''"{{premis[0].tarikh_tamat_perjanjian}}></td>
+                      <td class="byrsblm" style="font-weight: 600;" *ngIf="premis[0].tarikh_tamat_perjanjian == ''">-</td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+              <div *ngIf="showmore == 1">
+                <div *ngIf="rumah != ''">
+                  <table *ngFor="let item of rumah" (click)="detail(item)">
+                    <colgroup>
+                      <col style="width: 68%;padding: 10px;">
+                      <col style="width: 32%;padding: 10px;">
+                    </colgroup>
+                    <tr>
+                      <td class="nama">{{item.nama}}</td>
+                      <td class="tunggakan">RM {{item.jumlahbyr}}</td>
+                    </tr>
+                    <tr>
+                      <td rowspan="2" class="noakaun">{{item.no_akaun_rumah}}</td>
+                      <td class="byrsblm">{{ 'home.byrsebelum' | translate }}</td>
+                    </tr>
+                    <tr>
+                      <td class="byrsblm" style="font-weight: 600;" *ngIf="item.tarikh_tamat_perjanjian != ''"{{item.tarikh_tamat_perjanjian}}></td>
+                      <td class="byrsblm" style="font-weight: 600;" *ngIf="item.tarikh_tamat_perjanjian == ''">-</td>
+                    </tr>
+                  </table>
+                </div>
+                <div *ngIf="premis != ''">
+                  <table *ngFor="let item of premis" (click)="detail(item)">
+                    <colgroup>
+                      <col style="width: 68%;padding: 10px;">
+                      <col style="width: 32%;padding: 10px;">
+                    </colgroup>
+                    <tr>
+                      <td class="nama">{{item.nama}}</td>
+                      <td class="tunggakan">RM {{item.jumlahbyr}}</td>
+                    </tr>
+                    <tr>
+                      <td rowspan="2" class="noakaun">{{item.no_akaun_premis}}</td>
+                      <td class="byrsblm">{{ 'home.byrsebelum' | translate }}</td>
+                    </tr>
+                    <tr>
+                      <td class="byrsblm" style="font-weight: 600;" *ngIf="item.tarikh_tamat_perjanjian != ''"{{item.tarikh_tamat_perjanjian}}></td>
+                      <td class="byrsblm" style="font-weight: 600;" *ngIf="item.tarikh_tamat_perjanjian == ''">-</td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+              <div *ngIf="showmore == 0" style="text-align: center;margin: auto;padding-top: 20px;" (click)="more(0)">
+                <ion-img src="../../assets/icon/showakaun.png" class="showmore"></ion-img>
+              </div>
+              <div *ngIf="showmore == 1" style="text-align: center;margin: auto;padding-top: 20px;" (click)="more(1)">
+                <ion-img src="../../assets/icon/showakaun.png" class="showmore" style="-ms-transform: rotate(180deg);transform: rotate(180deg);"></ion-img>
+              </div>
+              
             </ion-card-content>
           </ion-card>
           <table style="width: 100%;padding-right: 20px;">

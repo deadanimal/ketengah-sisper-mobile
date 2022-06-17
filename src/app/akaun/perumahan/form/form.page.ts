@@ -4,7 +4,6 @@ import { Location } from "@angular/common";
 import { AlertController, LoadingController, ModalController } from '@ionic/angular';
 import { NativeStorage } from '@awesome-cordova-plugins/native-storage/ngx';
 import { PerumahanService } from '../../../shared/services/akaun/perumahan/perumahan.service';
-import { PremisService } from '../../../shared/services/akaun/premis/premis.service';
 
 @Component({
   selector: 'app-form',
@@ -26,7 +25,6 @@ export class FormPage implements OnInit {
     private loadingController: LoadingController,
     private nativeStorage: NativeStorage,
     private perumahanService: PerumahanService,
-    private premisService: PremisService,
     private alertController: AlertController
 
   ) {
@@ -44,7 +42,8 @@ export class FormPage implements OnInit {
 
     await this.nativeStorage.getItem('user').then(
       data => {
-        this.user = data.value;;
+        this.user = data.value;
+        console.log(this.user);
       },
       error => console.error(error)
     );
@@ -67,16 +66,24 @@ export class FormPage implements OnInit {
     if(this.src == 'no'){
       formData.append('no_ic', this.nokp);
     }else{
-      formData.append('no_ic', '770510036865');
+      formData.append('no_ic', this.user.no_ic);
     }
     
 
     await this.perumahanService.add(formData).subscribe(
       async (res) => {
         console.log(res);
-        this.clearform();
         await loading.dismiss();
-        this.router.navigate(['/main/tabs/home']);
+        if(res == 1){
+          this.alerterror('API Error');
+        }else if(res == 2){
+          this.alerterror('Akaun Tidak Dijumpai');
+        }else{
+          this.user.perumahan.push(res);
+          this.nativeStorage.setItem('user', {value: this.user});
+          this.clearform();
+          this.router.navigate(['/main/tabs/home']);
+        }
       },
       async (res) => {
         console.log(res);
@@ -97,5 +104,15 @@ export class FormPage implements OnInit {
     this.noakaun = '';
     this.namaakaun = '';
     this.src = '';
+  }
+
+  async alerterror(msg){
+    const alert = await this.alertController.create({
+      header: 'Loading failed',
+      message: msg,
+      buttons: ['OK'],
+    });
+
+    await alert.present();
   }
 }

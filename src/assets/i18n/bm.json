@@ -13,7 +13,8 @@
       "pengumuman":"Pengumuman",
       "pengguna":"Pengguna",
       "penghargaan":"Penghargaan",
-      "tarikh":"Sekatan Tarikh"
+      "tarikh":"Sekatan Tarikh",
+      "byrsebelum":"Bayar Sebelum"
     },
     "setting": {
       "tetapan": "Tetapan",
@@ -90,13 +91,18 @@
     "lejar": {
       "lejar": "Lejar",
       "sewarumah": "Sewa Rumah",
-      "sewapremis": "Sewa Premis"
+      "sewapremis": "Sewa Premis",
+      "nama": "Nama Akaun",
+      "tahun": "Tahun",
+      "bulan": "Bulan",
+      "cetak": "Cetak"
     },
     "sewa": {
-      "bayarsewa": "Bayar Sewa",
+      "bayarsewa": "Kaunter Bayaran",
       "jumlah": "Jumlah",
       "jumkeseluruhan": "JUMLAH KESELURUHAN",
-      "bayar": "Bayar"
+      "bayar": "Bayar",
+      "pilihakaun": "Pilih Akaun Sewa"
     },
     "tempat_kemudahan": {
       "dewan": "Dewan",
@@ -171,16 +177,42 @@
       "gelanggang": "Gelanggang",
       "placegelanggang": "Pilih Gelanggang"
     },
-  "akaun": {
-    "tambahakaun": "Tambah Akaun Perumahan",
-    "tambahpremis": "Tambah Akaun Premis",
-    "desc": "Adakah Anda Merupakan Pemilik atau Penyewa Akaun Perumahan Yang Ingin Ditambah?",
-    "yes": "Ya",
-    "no": "Tidak",
-    "tambahyes": "Saya Merupakan Pemilik atau Penyewa Asal Akaun Perumahan Yang Ingin Ditambah.",
-    "tambahno": "Saya Merupakan Anak Atau Ahli Keluarga Kepada Pemilik atau Penyewa Asal.",
-    "noakaun": "No. Akaun",
-    "namaakaun": "Nama Akaun",
-    "nokp":"No Kad Pengenalan Pemilik"
-  }
+    "akaun": {
+      "tambahakaun": "Tambah Akaun Perumahan",
+      "tambahpremis": "Tambah Akaun Premis",
+      "desc": "Adakah Anda Merupakan Pemilik atau Penyewa Akaun Perumahan Yang Ingin Ditambah?",
+      "yes": "Ya",
+      "no": "Tidak",
+      "tambahyes": "Saya Merupakan Pemilik atau Penyewa Asal Akaun Perumahan Yang Ingin Ditambah.",
+      "tambahno": "Saya Merupakan Anak Atau Ahli Keluarga Kepada Pemilik atau Penyewa Asal.",
+      "noakaun": "No. Akaun",
+      "namaakaun": "Nama Akaun",
+      "nokp":"No Kad Pengenalan Pemilik",
+      "maklumat":"Maklumat Akaun",
+      "jumlah":"Jumlah Yang Perlu Dibayar",
+      "semasa":"Bil Semasa",
+      "tunggak":"Bil Tertunggak",
+      "nama":"Nama",
+      "bandar":"Bandar",
+      "nokp2":"No Kad Pengenalan",
+      "norumah":"Nombor Rumah",
+      "taman":"Taman",
+      "kate":"Kategori",
+      "kadarsewa":"Kadar Sewa",
+      "jenisrumah":"Jenis Rumah",
+      "tlhbayar":"Jumlah Telah Dibayar",
+      "pinjaman":"Jumlah Pinjaman",
+      "tunggakan":"Tunggakan",
+      "mulaperjanjian":"Tarikh Mula Perjanjian",
+      "tamatperjanjian":"Tarikh Tamat Perjanjian",
+      "baki":"Baki"
+    },
+    "bayaran": {
+      "kaedah": "Pilih Kaedah Bayaran",
+      "jumlah": "Jumlah",
+      "kad": "Kad Kredit/ Debit",
+      "kaedahlain": "Kaedah Pembayaran Lain",
+      "tambahkad": "Tambah Kad",
+      "resit": "Resit"
+    }
 }

@@ -17,11 +17,11 @@
       </div>
         <div class="boxwhite" style="border-bottom: 0.7px solid #E8E8E8">
           {{ 'profile.nama' | translate }} <br>
-          <ion-input type="text" class="input" readonly value="{{username}}"></ion-input>
+          <ion-input type="text" class="input" readonly [(ngModel)]="username"></ion-input>
         </div>
         <div class="boxwhite" style="border-bottom: 0.7px solid #E8E8E8">
           {{ 'profile.nokp' | translate }} <br>
-          <ion-input type="text" class="input" readonly value="{{nokp}}"></ion-input>
+          <ion-input type="text" class="input" readonly [(ngModel)]="nokp"></ion-input>
         </div>
         <div class="boxwhite" style="border-bottom: 0.7px solid #E8E8E8">
           {{ 'profile.emel' | translate }} <br>

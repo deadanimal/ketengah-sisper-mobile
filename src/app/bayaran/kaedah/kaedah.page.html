@@ -1,0 +1,93 @@
+<ion-content>
+  <div class="main">
+    <div class="container2">
+      <div class="header">
+        <ion-icon name="chevron-back-outline" style="float: left;" (click)="back()"></ion-icon>
+        <span class="headertxt" style="width:70%;margin: auto;display: inline-block;">{{ 'bayaran.kaedah' | translate }}</span>
+      </div>
+    </div>
+  </div>
+  <div class="main2">
+    <div class="container3">
+      <div style="padding: 0px 40px 20px 40px;">
+        <div class="jumlah">
+          {{ 'bayaran.jumlah' | translate }} (RM)
+        </div>
+        <div>
+          <div class="jum" style="width:70%;border-bottom: 1pt solid black;display: inline-block;">{{jumlah}}</div>
+        </div>
+      </div>
+      <div class="boxgrey">
+        <div class="tetapanword">{{ 'bayaran.kad' | translate }}</div>
+      </div>
+      <div style="height: 20px;"></div>
+      <div style="padding: 0px 40px 20px 40px;">
+        <div class="txtbox">
+          <div style="display:inline-block;padding-right: 30px;">
+            <ion-checkbox></ion-checkbox>
+          </div>
+          <span class="input" style="width:70%;">&#x25cf;&#x25cf;&#x25cf;&#x25cf; &#x25cf;&#x25cf;&#x25cf;&#x25cf; &#x25cf;&#x25cf;&#x25cf;&#x25cf; {{kad}}</span>
+          <img src="../../assets/icon/visa.png" style="display:inline-block;">
+        </div>
+        <div style="height: 10px;"></div>
+        <div class="txtbox2">
+          <span class="input" style="width:82%;">{{ 'bayaran.tambahkad' | translate }}</span>
+          <div class="tambah">+</div>
+        </div>
+      </div>
+      <div class="boxgrey">
+        <div class="tetapanword">{{ 'bayaran.kaedahlain' | translate }}</div>
+      </div>
+      <div style="height: 20px;"></div>
+      <div style="padding: 0px 40px 20px 40px;">
+        <div class="txtbox3" style="padding:15px 10px 8px 25px;">
+          <table style="width: 100%;">
+            <tr>
+              <td style="width:35%;">
+                <img src="../../assets/icon/FPX.png" style="display:inline-block;">
+              </td>
+              <td style="width:65%;" class="wordbox">Online Banking via FPX</td>
+            </tr>
+          </table>
+        </div>
+        <div style="height: 10px;"></div>
+        <div class="txtbox3" style="padding:15px 10px 8px 25px;">
+          <table style="width: 100%;">
+            <tr>
+              <td style="width:35%;">
+                <img src="../../assets/icon/Boost.png" style="display:inline-block;">
+              </td>
+              <td style="width:65%;" class="wordbox">Boost e-Wallet</td>
+            </tr>
+          </table>
+        </div>
+        <div style="height: 10px;"></div>
+        <div class="txtbox3" style="padding:5px 10px 8px 35px;">
+          <table style="width: 100%;">
+            <tr>
+              <td style="width:35%;">
+                <img src="../../assets/icon/TnG.png" style="display:inline-block;">
+              </td>
+              <td style="width:65%;" class="wordbox">TNG e-Wallet</td>
+            </tr>
+          </table>
+        </div>
+        <div style="height: 10px;"></div>
+        <div class="txtbox3" style="padding:8px 10px 8px 30px;">
+          <table style="width: 100%;">
+            <tr>
+              <td style="width:35%;">
+                <img src="../../assets/icon/GrabPay.png" style="display:inline-block;">
+              </td>
+              <td style="width:65%;" class="wordbox">GrabPay e-Wallet</td>
+            </tr>
+          </table>
+        </div>
+        <div style="height: 20px;"></div>
+        <button class="button" (click)="bayar();">{{'sewa.bayar' | translate}} ({{jumcount}})</button>
+      </div>
+      
+    </div>
+  </div>
+
+</ion-content>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Location } from "@angular/common";
 
 @Component({
   selector: 'app-sewarumah',
@@ -7,19 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SewarumahPage implements OnInit {
 
-  constructor() { }
+  constructor(
+    private location: Location
+  ) { }
 
   ngOnInit() {
   }
+
   back(){
-    // this.location.back();
+    this.location.back();
   }
 
-  aduan() {
-    // this.router.navigate(['/main/tabs/aduan/aduanmain']);
-  }
-
-  hantar() {
-    // this.router.navigate(['/main/tabs/aduan/penghargaan']);
+  hantar(){
+    
   }
 }

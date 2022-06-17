@@ -1,0 +1,118 @@
+<ion-content>
+  <div class="main">
+    <div class="container2">
+      <div class="header">
+        <ion-icon name="chevron-back-outline" style="float: left;" (click)="back()"></ion-icon>
+        <span class="headertxt" style="width:70%;margin: auto;display: inline-block;">{{ 'akaun.maklumat' | translate }}</span>
+      </div>
+    </div>
+  </div>
+  <div class="main2">
+    <div class="container3">
+      <div class="jumlah">
+        {{ 'akaun.jumlah' | translate }}
+      </div>
+      <div class="jumlahrm">
+        RM {{data.jumlah_tunggakan}}
+      </div>
+      <div class="byrsblm">
+        {{ 'home.byrsebelum' | translate }} <span style="color: #D23330;">{{data.tarikh_tamat_perjanjian}}</span>
+      </div>
+      <div style="padding-top: 25px;">
+        <table style="width: 100%;text-align: center;">
+          <colgroup>
+            <col style="width: 50%;">
+            <col style="width: 50%;">
+          </colgroup>
+          <tr>
+            <td>
+              <div class="bilcard">
+                <div class="bilinfo">
+                  {{ 'akaun.semasa' | translate }}
+                </div>
+                <div class="bilval">
+                  {{data.kadar_sewa}}
+                </div>
+              </div>
+            </td>
+            <td>
+              <div class="bilcard">
+                <div class="bilinfo">
+                  {{ 'akaun.tunggak' | translate }}
+                </div>
+                <div class="bilval">
+                  {{data.jumlah_tunggakan}}
+                </div>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div style="padding-top: 25px;">
+        <div class="boxgrey">
+          <div class="tetapanword">{{ 'akaun.maklumat' | translate }}</div>
+        </div>
+        <div class="boxwhite" style="border-bottom: 0.7px solid #E8E8E8">
+          {{ 'akaun.nama' | translate }} <br>
+          <ion-input type="text" class="input" readonly [value]="data.nama"></ion-input>
+        </div>
+        <div class="boxwhite" style="border-bottom: 0.7px solid #E8E8E8">
+          {{ 'akaun.bandar' | translate }} <br>
+          <ion-input type="text" class="input" readonly [value]="data.bandar"></ion-input>
+        </div>
+        <div class="boxwhite" style="border-bottom: 0.7px solid #E8E8E8">
+          {{ 'akaun.nokp2' | translate }} <br>
+          <ion-input type="text" class="input" readonly [value]="data.no_kad_pengenalan"></ion-input>
+        </div>
+        <div class="boxwhite" style="border-bottom: 0.7px solid #E8E8E8">
+          {{ 'akaun.norumah' | translate }} <br>
+          <ion-input type="text" class="input" readonly [value]="data.no_rumah"></ion-input>
+        </div>
+        <div class="boxwhite" style="border-bottom: 0.7px solid #E8E8E8">
+          {{ 'akaun.taman' | translate }} <br>
+          <ion-input type="text" class="input" readonly [value]="data.taman"></ion-input>
+        </div>
+        <div class="boxwhite" style="border-bottom: 0.7px solid #E8E8E8">
+          {{ 'akaun.kate' | translate }} <br>
+          <ion-input type="text" class="input" readonly [value]="data.kategori"></ion-input>
+        </div>
+        <div class="boxwhite" style="border-bottom: 0.7px solid #E8E8E8">
+          {{ 'akaun.kadarsewa' | translate }} <br>
+          <ion-input type="text" class="input" readonly [value]="data.kadar_sewa"></ion-input>
+        </div>
+        <div class="boxwhite" style="border-bottom: 0.7px solid #E8E8E8">
+          {{ 'akaun.jenisrumah' | translate }} <br>
+          <ion-input type="text" class="input" readonly [value]="data.jenis_rumah"></ion-input>
+        </div>
+        <div class="boxwhite" style="border-bottom: 0.7px solid #E8E8E8">
+          {{ 'akaun.tlhbayar' | translate }} <br>
+          <ion-input type="text" class="input" readonly [value]="data.jumlah_telah_bayar"></ion-input>
+        </div>
+        <div class="boxwhite" style="border-bottom: 0.7px solid #E8E8E8">
+          {{ 'akaun.pinjaman' | translate }} <br>
+          <ion-input type="text" class="input" readonly [value]="data.jumlah_pinjaman"></ion-input>
+        </div>
+        <div class="boxwhite" style="border-bottom: 0.7px solid #E8E8E8">
+          {{ 'akaun.tunggakan' | translate }} <br>
+          <ion-input type="text" class="input" readonly [value]="data.jumlah_tunggakan"></ion-input>
+        </div>
+        <div class="boxwhite" style="border-bottom: 0.7px solid #E8E8E8">
+          {{ 'akaun.mulaperjanjian' | translate }} <br>
+          <ion-input type="text" class="input" readonly [value]="data.tarikh_mula_perjanjian"></ion-input>
+        </div>
+        <div class="boxwhite" style="border-bottom: 0.7px solid #E8E8E8">
+          {{ 'akaun.tamatperjanjian' | translate }} <br>
+          <ion-input type="text" class="input" readonly [value]="data.tarikh_tamat_perjanjian"></ion-input>
+        </div>
+        <div class="boxwhite" style="border-bottom: 0.7px solid #E8E8E8">
+          {{ 'akaun.baki' | translate }} <br>
+          <ion-input type="text" class="input" readonly [value]="data.jumlah_baki"></ion-input>
+        </div>
+        <div style="padding:60px 0px 20px 0px;text-align: center;">
+          <button ion-button class="button" (click)="bayar()">{{ 'bayar' | translate }}(1)</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</ion-content>

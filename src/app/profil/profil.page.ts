@@ -33,6 +33,10 @@ export class ProfilPage implements OnInit {
   ) { }
 
   ngOnInit() {
+    
+  }
+
+  async ionViewDidEnter() {
     this.nativeStorage.getItem('user').then(
       data => {
         console.log('user',data);

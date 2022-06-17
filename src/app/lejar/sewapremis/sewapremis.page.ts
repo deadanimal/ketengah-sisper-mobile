@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Location } from "@angular/common";
 
 @Component({
   selector: 'app-sewapremis',
@@ -7,15 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SewapremisPage implements OnInit {
 
-  constructor() { }
+  constructor(
+    private location: Location
+  ) { }
 
   ngOnInit() {
   }
+  
   back(){
-    // this.location.back();
+    this.location.back();
   }
-  cetak(){
-    // this.location.back();
+
+  hantar(){
+    
   }
 
 }

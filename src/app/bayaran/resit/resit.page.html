@@ -1,0 +1,26 @@
+<ion-content>
+  <div class="main">
+    <div class="container2">
+      <div class="header">
+        <ion-icon name="chevron-back-outline" style="float: left;" (click)="back()"></ion-icon>
+        <span class="headertxt" style="width:70%;margin: auto;display: inline-block;">{{ 'bayaran.resit' | translate }}</span>
+      </div>
+    </div>
+  </div>
+  <div class="main2">
+    <div class="container3">
+      <div class="headresit">
+        <span>Thank You,</span><br>
+        <span>Here's your receipt.</span>
+      </div>
+      <div *ngFor="let item of data" class="card">
+        <div>tarikh_resit {{item.tarikh_resit}}</div>
+        <div>no_resit {{item.no_resit}}</div>
+        <div>noakaun {{item.noakaun}}</div>
+        <div>no_ic_pemilik {{item.no_ic_pemilik}}</div>
+      </div>
+      <div style="height: 20px;"></div>
+    </div>
+  </div>
+
+</ion-content>

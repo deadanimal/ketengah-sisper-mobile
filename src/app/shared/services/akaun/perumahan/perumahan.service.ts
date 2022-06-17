@@ -15,7 +15,7 @@ export class PerumahanService {
   ) { }
 
   add(data:any): Observable<any> {
-    var AddbookingURL = environment.baseUrl + "perumahan";
-    return this.http.post<any>(AddbookingURL, data);
+    var AddURL = environment.baseUrl + "perumahan";
+    return this.http.post<any>(AddURL, data);
   }
 }

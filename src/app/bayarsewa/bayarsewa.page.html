@@ -13,23 +13,28 @@
   <div class="main2">
     <div class="container2">
       <div class="headerbox">
-        <div class="label">{{ 'aduan.senarai' | translate }}</div>
-        <div *ngFor="let item of AduanList">
+        <div class="label">{{ 'sewa.pilihakaun' | translate }}</div>
+        <div style="height: 20px;"></div>
+        <div *ngFor="let item of AkaunList">
           <div class="cardaduan2">
-              <div class="cardhead">{{item.noacc}}</div>
-              <div class="cardadd">{{item.address}}</div>
+              <div class="cardhead" *ngIf="item.no_akaun_rumah != ''">{{item.no_akaun_rumah}}</div>
+              <div class="cardhead" *ngIf="item.no_akaun_premis != ''">{{item.no_akaun_premis}}</div>
+              <div class="cardadd">{{item.taman}} {{item.bandar}}</div>
               <div class="carddetail">{{ 'sewa.jumlah' | translate }} (RM)</div>
-              <div><div class="jum" style="width:70%;border-bottom: 1pt solid black;display: inline-block;">{{item.jum}}</div>
-              <div style="width:30%;display: inline-block;text-align: right;"><ion-checkbox class="check"></ion-checkbox></div></div>
+              <div><div class="jum" style="width:70%;border-bottom: 1pt solid black;display: inline-block;">
+                <ion-input type="number" class="jum" [(ngModel)]="item.jumlahbyr" (change)='changejumlah()'></ion-input>
+              </div>
+              <div style="width:30%;display: inline-block;text-align: right;"><ion-checkbox class="check" [(ngModel)]="item.check" (click)="check(item)"></ion-checkbox></div></div>
           </div>
-          <div style="height: 10px;"></div>
-          <div class="total" style="display: inline-block; width: 80%;">
-            {{'sewa.jumkeseluruhan' | translate}} (RM)
-          </div>
-          <div class="jum" style="display: inline-block; width: 20%;">{{jumlah}}</div>
-          <div style="height: 10px;"></div>
-          <button class="button">{{'sewa.bayar' | translate}} ({{jumcount}})</button>
+          <div style="height: 20px;"></div>
         </div>
+        <div style="height: 20px;"></div>
+        <div class="total" style="display: inline-block; width: 80%;">
+          {{'sewa.jumkeseluruhan' | translate}} (RM)
+        </div>
+        <div class="jum" style="display: inline-block; width: 20%;">{{jumlah}}</div>
+        <div style="height: 20px;"></div>
+        <button class="button" (click)="bayar();">{{'sewa.bayar' | translate}} ({{jumcount}})</button>
       </div>
     </div>
   </div>

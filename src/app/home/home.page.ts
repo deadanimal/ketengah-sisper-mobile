@@ -29,6 +29,11 @@ export class HomePage implements OnInit {
   notiarr = [];
   pengumumanlist : any;
 
+  rumah: any;
+  premis: any;
+
+  showmore: any;
+
   constructor(
     private router: Router,
     private nativeStorage: NativeStorage,
@@ -76,12 +81,48 @@ export class HomePage implements OnInit {
   async ionViewDidEnter() {
     const loading = await this.loadingController.create();
       await loading.present();
-
+      this.showmore = 0;
       await this.nativeStorage.getItem('user').then(
         data => {
           this.username = data.value.name;
           this.user = data.value;
           this.role = data.value.role;
+
+          this.rumah = data.value.perumahan;
+          this.premis = data.value.premis;
+
+          
+          this.rumah.forEach(element => {
+            var temp = 0;
+            var temp2 = 0;
+
+            if(element.jumlah_tunggakan != ""){
+              temp = parseInt(element.jumlah_tunggakan);
+            }
+            if(element.kadar_sewa != ""){
+              temp2 = parseInt(element.kadar_sewa);
+            }
+            console.log(temp2);
+            element.jumlahbyr = temp + temp2;
+          });
+          this.premis.forEach(element => {
+            var temp = 0;
+            var temp2 = 0;
+
+            if(element.jumlah_tunggakan != ""){
+              temp = parseInt(element.jumlah_tunggakan);
+            }
+            if(element.kadar_sewa != ""){
+              temp2 = parseInt(element.kadar_sewa);
+            }
+            console.log(temp2);
+            element.jumlahbyr = temp + temp2;
+          });
+          
+
+          console.log('rumah',this.rumah);
+          console.log('premis',this.premis);
+          this.nativeStorage.setItem('user', {value: this.user});
           console.log(this.user);
         },
         error => console.error(error)
@@ -212,5 +253,22 @@ export class HomePage implements OnInit {
 
   sekatanadmin(){
     this.router.navigate(['main/admin/sekatan']);
+  }
+
+  more(val){
+    if(val == 0){
+      this.showmore = 1;
+    }else if(val == 1){
+      this.showmore = 0;
+    }
+  }
+
+  detail(data){
+    let navigationExtras: NavigationExtras = {
+      state: {
+        data: data
+      }
+    };
+    this.router.navigate(['main/tabs/akaun/maklumat'], navigationExtras);
   }
 }

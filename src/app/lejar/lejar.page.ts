@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from "@angular/common";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-lejar',
@@ -10,6 +11,7 @@ export class LejarPage implements OnInit {
 
   constructor(
     private location: Location,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -19,12 +21,12 @@ export class LejarPage implements OnInit {
     this.location.back();
   }
 
-  aduan() {
-    // this.router.navigate(['/main/tabs/aduan/aduanmain']);
+  sewarumah() {
+    this.router.navigate(['/main/tabs/lejar/sewarumah']);
   }
 
-  penghargaan() {
-    // this.router.navigate(['/main/tabs/aduan/penghargaan']);
+  sewapremis() {
+    this.router.navigate(['/main/tabs/lejar/sewapremis']);
   }
 
 }
