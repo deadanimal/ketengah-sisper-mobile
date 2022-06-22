@@ -6,7 +6,7 @@ import { DewanService } from '../../shared/services/dewan/dewan.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CalendarPage } from 'src/app/shared/modals/calendar/calendar.page';
 import { BookingService } from 'src/app/shared/services/booking/booking.service';
-import { Router } from '@angular/router';
+import { Router, NavigationExtras } from '@angular/router';
 import { CalendarModalOptions, CalendarModule } from 'ion2-calendar';
 import { from } from 'rxjs';
 import { NativeStorage } from '@awesome-cordova-plugins/native-storage/ngx';
@@ -234,22 +234,8 @@ export class DewanPage implements OnInit {
       }
     });
     console.log(this.timecheck);
-    if(this.timecheck != []){
-      console.log(this.timecheck);
-      var array = [];
-      await this.timecheck.forEach(function (value) {
-        if (value.check == true) {
-          console.log(value);
-          array.push(value.val);
-        }
-      });
-      this.masa = array.toString();
-      this.hour = array.length;
-      
-      this.amaun = harga * this.hour;
-    }else{
-      this.amaun = harga * this.days;
-    }
+
+    this.amaun = harga * this.days;
     
     console.log(this.amaun);
     const formData = new FormData();
@@ -272,7 +258,33 @@ export class DewanPage implements OnInit {
         console.log(res);
         this.clearform();
         await loading.dismiss();
-        this.router.navigate(['/main/tabs/tempahkemudahan']);
+        var arr = [];
+        var akaun = {};
+
+        console.log(res);
+          
+          akaun = {
+            "id":'',
+            "amaun":this.amaun,
+            "kodbayaran":"DWN"+res.id,
+          }
+          arr.push(akaun);
+        
+        var data = 
+          {
+            "src": 2,
+            "jumlah": this.amaun,
+            "jumcount":1,
+            "akaun":arr
+          };
+        
+        let navigationExtras: NavigationExtras = {
+          state: {
+            data: data
+          }
+        };
+
+        this.router.navigate(['main/tabs/bayaran'], navigationExtras);
       },
       async (res) => {
         console.log(res);

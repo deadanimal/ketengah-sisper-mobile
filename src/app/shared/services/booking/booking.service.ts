@@ -26,4 +26,9 @@ export class BookingService {
     var BookingURL = environment.baseUrl + "booking/" + id;
     return this.http.get<any>(BookingURL);
   }
+
+  getgraf():Observable<any> {
+    var BookingURL = environment.baseUrl + "grafbook";
+    return this.http.get<any>(BookingURL);
+  }
 }

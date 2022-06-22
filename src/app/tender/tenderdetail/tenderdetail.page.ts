@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { ShtenderdtlService } from 'src/app/shared/services/shtenderdtl/shtenderdtl.service';
 import { NativeStorage } from '@awesome-cordova-plugins/native-storage/ngx';
-import { Router } from '@angular/router';
+import { Router, NavigationExtras } from '@angular/router';
 
 @Component({
   selector: 'app-tenderdetail',
@@ -18,11 +18,12 @@ export class TenderdetailPage implements OnInit {
   user:any;
 
   TenderList:any;
-
+  selected:any;
   urusan:any;
   harga:any;
   catatan:any;
-
+  jumlah:any;
+  selectedValue:any;
   constructor(
     private location: Location,
     private fb: FormBuilder,
@@ -72,8 +73,9 @@ export class TenderdetailPage implements OnInit {
 
     await this.shtenderdtlService.get(this.user.tender).subscribe(
       async (res) => {
-        console.log(res);
+        
         this.TenderList = res;
+        console.log(this.TenderList);
         await loading.dismiss();
       },
       async (res) => {
@@ -104,9 +106,13 @@ export class TenderdetailPage implements OnInit {
     console.log(this.tenderform.value);
     await this.shtenderdtlService.add(this.tenderform.value).subscribe(
       async (res) => {
-        console.log(res);
         this.TenderList.push(res);
         this.tenderform.reset()
+        this.TenderList.forEach(element => {
+          element.selectedValue == false
+        });
+        console.log(res);
+
         await loading.dismiss();
       },
       async (res) => {
@@ -123,8 +129,38 @@ export class TenderdetailPage implements OnInit {
     );
   }
 
-  bayar(){
+  check(data){
+    this.selected = data;
+  }
 
+  bayar(){
+    var arr = [];
+    var akaun = {};
+
+    console.log(this.selected);
+      
+      akaun = {
+        "id":'',
+        "amaun":this.selected.harga,
+        "kodbayaran":this.selected.urusan,
+      }
+      arr.push(akaun);
+    
+    var data = 
+      {
+        "src": 2,
+        "jumlah": this.selected.harga,
+        "jumcount":1,
+        "akaun":arr
+      };
+    
+    let navigationExtras: NavigationExtras = {
+      state: {
+        data: data
+      }
+    };
+
+    this.router.navigate(['main/tabs/bayaran'], navigationExtras);
   }
 
   edit(item){

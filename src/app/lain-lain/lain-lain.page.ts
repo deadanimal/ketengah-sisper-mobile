@@ -3,7 +3,7 @@ import { Location } from "@angular/common";
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { LainService } from '../shared/services/lain/lain.service';
-import { Router } from '@angular/router';
+import { Router, NavigationExtras } from '@angular/router';
 
 @Component({
   selector: 'app-lain-lain',
@@ -14,6 +14,7 @@ export class LainLainPage implements OnInit {
 
   lainform: FormGroup;
   ddUrusan: any;
+  jumlah: any;
 
   constructor(
     private location: Location,
@@ -63,12 +64,34 @@ export class LainLainPage implements OnInit {
   async hantar(){
     const loading = await this.loadingController.create();
     await loading.present();
-
+    var arr = [];
+    var akaun = {};
+    
     await this.lainService.add(this.lainform.value).subscribe(
       async (res) => {
         console.log(res);
+        this.jumlah = res.jumlah_bayar;
+        akaun = {
+          "id":res.id,
+          "amaun":this.jumlah,
+          "kodbayaran":'LL'+res.kod_urusan,
+        }
+        arr.push(akaun);
+        var data = 
+          {
+            "src": 2,
+            "jumlah": this.jumlah,
+            "jumcount":1,
+            "akaun":arr
+          };
+        
+        let navigationExtras: NavigationExtras = {
+          state: {
+            data: data
+          }
+        };
         await loading.dismiss();
-        this.router.navigate(['/main/tabs/home']);
+        this.router.navigate(['main/tabs/bayaran'], navigationExtras);
       },
       async (res) => {
         console.log(res);

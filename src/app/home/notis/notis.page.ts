@@ -6,6 +6,7 @@ import { ViewnotisPage } from '../../shared/modals/viewnotis/viewnotis.page';
 import { NotisService } from '../../shared/services/notis/notis.service';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { NativeStorage } from '@awesome-cordova-plugins/native-storage/ngx';
+import { isNgTemplate } from '@angular/compiler';
 
 @Component({
   selector: 'app-notis',
@@ -119,30 +120,31 @@ export class NotisPage implements OnInit {
     const loading = await this.loadingController.create();
     await loading.present();
     // console.log(data);
-
-    if(data.view == false){
-      await this.notisService.viewid(data.id,this.user.user_id).subscribe(
-        async (res) => {
-          res.view = true;
-          console.log('res',res);
-          var date = new Date(res.created_at);
-          res.date = date.getDate()+'/'+date.getMonth()+'/'+date.getFullYear();
-          var foundIndex = this.checkBoxList.findIndex(x => x.id == res.id);
-          this.checkBoxList[foundIndex] = res;
-          console.log('checklist',this.checkBoxList);
-        },
-        async (res) => {
-          console.log(res);
-          await loading.dismiss();
-          const alert = await this.alertController.create({
-            header: 'Loading failed',
-            message: res.message,
-            buttons: ['OK'],
-          });
-   
-          await alert.present();
-        }
-      );
+    if(data.id != undefined && data.id != null){
+      if(data.view == false){
+        await this.notisService.viewid(data.id,this.user.user_id).subscribe(
+          async (res) => {
+            res.view = true;
+            console.log('res',res);
+            var date = new Date(res.created_at);
+            res.date = date.getDate()+'/'+date.getMonth()+'/'+date.getFullYear();
+            var foundIndex = this.checkBoxList.findIndex(x => x.id == res.id);
+            this.checkBoxList[foundIndex] = res;
+            console.log('checklist',this.checkBoxList);
+          },
+          async (res) => {
+            console.log(res);
+            await loading.dismiss();
+            const alert = await this.alertController.create({
+              header: 'Loading failed',
+              message: res.message,
+              buttons: ['OK'],
+            });
+     
+            await alert.present();
+          }
+        );
+      }
     }
 
     const modal = await this.modalController.create({

@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 
@@ -14,6 +15,7 @@ import { NativeStorage } from '@awesome-cordova-plugins/native-storage/ngx';
 import { CalendarModule } from 'ion2-calendar';
 import { DatePipe } from '@angular/common';
 import { Keyboard } from '@awesome-cordova-plugins/keyboard/ngx';
+import { PDFGenerator } from '@ionic-native/pdf-generator/ngx';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -22,7 +24,7 @@ export function createTranslateLoader(http: HttpClient) {
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(
+  imports: [BrowserModule,CommonModule, IonicModule.forRoot(
     {
       scrollAssist: false,
       scrollPadding: true
@@ -40,7 +42,7 @@ export function createTranslateLoader(http: HttpClient) {
       closeIcon: true
     })
   ],
-  providers: [NativeStorage,{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },DatePipe,Keyboard],
+  providers: [PDFGenerator,NativeStorage,{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },DatePipe,Keyboard],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

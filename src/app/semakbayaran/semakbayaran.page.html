@@ -11,29 +11,25 @@
     <div class="container3">
       <div class="headerbox">
         <div class="labelakaun">{{ 'semak.akaun' | translate }}</div>
-        <ion-select okText="{{ 'semak.ok' | translate }}" cancelText="{{ 'semak.cancel' | translate }}" class="select">
-          <ion-select-option></ion-select-option>
+        <ion-select okText="{{ 'semak.ok' | translate }}" cancelText="{{ 'semak.cancel' | translate }}" class="select" [(ngModel)]="selectedakaun" (ionChange)="tukaracc(selectedakaun)">
+          <ion-select-option *ngFor="let item of ddakaun" [value]="item">
+            {{item.nama}}
+          </ion-select-option>
         </ion-select>
       </div>
       <div class="bodybox">
         <div class="title">{{ 'semak.sejbayaran' | translate }}</div>
-        <div style="padding: 10px 0px 10px 0px">
+        <div *ngFor="let val of bayaranlist" style="padding: 10px 0px 10px 0px">
           <div class="card">
             <div class="cardhead">
-              Mac
+              {{val.bulan}}
             </div>
             <div class="cardbody">
-              <div class="body1">7 Mac 2022</div>
-              <div class="body1" style="text-align: right;">RM 100</div>
+              <div class="body1">{{val.tarikh_bayaran}}</div>
+              <div class="body1" style="text-align: right;">RM {{val.amaun}}</div>
               
             </div>
           </div>
-        </div>
-        <div style="padding: 10px 0px 10px 0px">
-          <div class="card"></div>
-        </div>
-        <div style="padding: 10px 0px 10px 0px">
-          <div class="card"></div>
         </div>
       </div>
     </div>  

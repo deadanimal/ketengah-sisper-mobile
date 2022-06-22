@@ -32,4 +32,9 @@ export class NotisService {
     var AddnotisURL = environment.baseUrl + "notis";
     return this.http.post<any>(AddnotisURL, data);
   }
+
+  getnotis(data:any): Observable<any> {
+    var notisURL = environment.baseUrl + "notisapi";
+    return this.http.post<any>(notisURL, data);
+  }
 }

@@ -253,6 +253,38 @@
               </td>
             </tr>
           </table>
+          <div style="padding-top: 30px;">
+            <button class="buttunchart" (click)="displaychart()" *ngIf="showchart==0">{{ 'home.tunjuk' | translate }}</button>
+            <button class="buttunchart" (click)="downloadchart()" *ngIf="showchart==1">{{ 'home.muatturun' | translate }}</button>
+          </div>
+          <div>
+            <canvas #chartCanvas></canvas>
+          </div>
+          <div style="display: none;" id="pdf">
+            <table style="width: 100%;border: 1 pt solid black;font-size: 14px;color: black;">
+              <colgroup>
+                <col style="width: 21%;">
+                <col style="width: 21%;">
+                <col style="width: 18%;">
+                <col style="width: 27%;">
+                <col style="width: 13%;">
+              </colgroup>
+              <tr style="border-bottom:1pt solid black;">
+                <td>Tarikh Mula</td>
+                <td>Tarikh Akhir</td>
+                <td>Jenis</td>
+                <td>Lokasi</td>
+                <td>Hari</td>
+              </tr>
+              <tr *ngFor="let item of bookdtl">
+                <td>{{item.date_from}}</td>
+                <td>{{item.date_to}}</td>
+                <td>{{item.jenis}}</td>
+                <td>{{item.tempat}}</td>
+                <td>{{item.days}}</td>
+              </tr>
+            </table>
+          </div>
         </div>
       </div>
     </div>

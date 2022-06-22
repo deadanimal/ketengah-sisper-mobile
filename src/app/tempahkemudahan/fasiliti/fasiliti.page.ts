@@ -4,7 +4,7 @@ import { AlertController, LoadingController} from '@ionic/angular';
 import { LokasiService } from '../../shared/services/lokasi/lokasi.service';
 import { FasilitiService } from 'src/app/shared/services/fasiliti/fasiliti.service';
 import { BookingService } from 'src/app/shared/services/booking/booking.service';
-import { Router } from '@angular/router';
+import { Router, NavigationExtras } from '@angular/router';
 import { NativeStorage } from '@awesome-cordova-plugins/native-storage/ngx';
 import { timelist } from '../../shared/model/timelist.model';
 
@@ -443,7 +443,38 @@ export class FasilitiPage implements OnInit {
         console.log(res);
         this.clearform();
         await loading.dismiss();
-        this.router.navigate(['/main/tabs/tempahkemudahan']);
+        var arr = [];
+        var akaun = {};
+
+        console.log(res);
+        if(this.Fasiliti == 1){
+          var kod = "FT"+res.id;
+        }else if(this.Fasiliti == 2){
+          var kod = "BD"+res.id;
+        }
+
+          akaun = {
+            "id":'',
+            "amaun":this.amaun,
+            "kodbayaran":kod,
+          }
+          arr.push(akaun);
+        
+        var data = 
+          {
+            "src": 2,
+            "jumlah": this.amaun,
+            "jumcount":1,
+            "akaun":arr
+          };
+        
+        let navigationExtras: NavigationExtras = {
+          state: {
+            data: data
+          }
+        };
+
+        this.router.navigate(['main/tabs/bayaran'], navigationExtras);
       },
       async (res) => {
         console.log(res);

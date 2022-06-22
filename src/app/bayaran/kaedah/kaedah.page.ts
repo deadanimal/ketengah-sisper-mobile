@@ -18,6 +18,7 @@ export class KaedahPage implements OnInit {
   akaun: any;
   user: any;
   src: any;
+  kodbayaran: any;
 
   constructor(
     private location: Location,
@@ -62,10 +63,15 @@ export class KaedahPage implements OnInit {
     await loading.present();
 
     const formData = new FormData();
-    formData.append('akaun', JSON.stringify(this.akaun));
+   
     formData.append('userid', this.user.user_id);
     formData.append('src', this.src);
     if(this.src == 1){
+      formData.append('akaun', JSON.stringify(this.akaun));
+      formData.append('jenis_transaksi', '1');
+      formData.append('card_detail', '1');
+    }else if(this.src == 2){
+      formData.append('akaun', JSON.stringify(this.akaun));
       formData.append('jenis_transaksi', '1');
       formData.append('card_detail', '1');
     }else{
@@ -87,7 +93,8 @@ export class KaedahPage implements OnInit {
         await loading.dismiss();
         let navigationExtras: NavigationExtras = {
           state: {
-            data: res
+            data: res,
+            src: this.src
           }
         };
         this.router.navigate(['main/tabs/bayaran/resit'], navigationExtras);

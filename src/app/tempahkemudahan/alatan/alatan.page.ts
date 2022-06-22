@@ -3,7 +3,7 @@ import { Location } from "@angular/common";
 import { AlertController, LoadingController } from '@ionic/angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BookingService } from 'src/app/shared/services/booking/booking.service';
-import { Router } from '@angular/router';
+import { Router, NavigationExtras } from '@angular/router';
 import { AlatanService } from 'src/app/shared/services/alatan/alatan.service';
 import { NativeStorage } from '@awesome-cordova-plugins/native-storage/ngx';
 
@@ -150,7 +150,33 @@ export class AlatanPage implements OnInit {
         console.log(res);
         this.clearform();
         await loading.dismiss();
-        this.router.navigate(['/main/tabs/tempahkemudahan']);
+        var arr = [];
+        var akaun = {};
+
+        console.log(res);
+          
+          akaun = {
+            "id":'',
+            "amaun":this.amaun,
+            "kodbayaran":"ALT"+res.id,
+          }
+          arr.push(akaun);
+        
+        var data = 
+          {
+            "src": 2,
+            "jumlah": this.amaun,
+            "jumcount":1,
+            "akaun":arr
+          };
+        
+        let navigationExtras: NavigationExtras = {
+          state: {
+            data: data
+          }
+        };
+
+        this.router.navigate(['main/tabs/bayaran'], navigationExtras);
       },
       async (res) => {
         console.log(res);

@@ -1,0 +1,57 @@
+<ion-content>
+  <div style="padding: 20px;background-color: white;height: 100%;width: 100%;">
+    <div id="pdf">
+      <table style="width: 100%;border: 1 pt solid black;font-size: 14px;color: black;">
+        <colgroup>
+          <col style="width: 15%;">
+          <col style="width: 15%;">
+          <col style="width: 10%;">
+          <col style="width: 25%;">
+          <col style="width: 10%;">
+          <col style="width: 25%;">
+        </colgroup>
+        <tr>
+          <td colspan="6">Lejar <span *ngIf="src == 1">Rumah</span><span *ngIf="src == 2">Premis</span> : {{selectedakaun.nama}}</td>
+        </tr>
+        <tr>
+          <td colspan="6">Nombor Akaun : <span *ngIf="src == 1">{{selectedakaun.no_akaun_rumah}}</span><span *ngIf="src == 2">{{selectedakaun.no_akaun_premis}}</span></td>
+        </tr>
+        <tr>
+          <td colspan="6">Nombor Kad Pengenalan : {{selectedakaun.no_kad_pengenalan}}</td>
+        </tr>
+        <tr>
+          <td colspan="6" style="height: 50px;"></td>
+        </tr>
+      </table>
+      <table style="width: 100%;border: 1 pt solid black;font-size: 14px;color: black;display: none;" id="tr1">
+        <colgroup>
+          <col style="width: 15%;">
+          <col style="width: 15%;">
+          <col style="width: 10%;">
+          <col style="width: 25%;">
+          <col style="width: 10%;">
+          <col style="width: 25%;">
+        </colgroup>
+        <tr style="border-bottom:1pt solid black;">
+          <td>Tarikh</td>
+          <td>Rujukan</td>
+          <td>Debit</td>
+          <td>Urusan</td>
+          <td>Kredit</td>
+          <td>Urusan</td>
+        </tr>
+        <tr *ngFor="let item of lejardtl">
+          <td>{{item.tarikh}}</td>
+          <td>{{item.rujukan}}</td>
+          <td>{{item.debit}}</td>
+          <td style="border-right:1pt solid black;"><span *ngIf="item.debit != ''">{{item.urusan}}</span></td>
+          <td>{{item.kredit}}</td>
+          <td><span *ngIf="item.kredit != ''">{{item.urusan}}</span></td>
+        </tr>
+      </table>
+    </div>
+    <div style="padding: 50px 0px;">
+      <button ion-button class="button" (click)="download()">Cetak</button>
+    </div>
+  </div>
+</ion-content>

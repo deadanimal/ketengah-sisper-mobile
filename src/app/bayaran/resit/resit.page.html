@@ -13,13 +13,44 @@
         <span>Thank You,</span><br>
         <span>Here's your receipt.</span>
       </div>
-      <div *ngFor="let item of data" class="card">
-        <div>tarikh_resit {{item.tarikh_resit}}</div>
-        <div>no_resit {{item.no_resit}}</div>
-        <div>noakaun {{item.noakaun}}</div>
-        <div>no_ic_pemilik {{item.no_ic_pemilik}}</div>
+      <div *ngFor="let item of data">
+        <div style="height: 20px;"></div>
+        <div class="card" >
+          <div>
+            <button class="button" (click)="cetak(item.id);">{{'bayaran.cetak' | translate}}</button>
+          </div>
+          <div style="height: 20px;"></div>
+          <div id="pdf{{item.id}}">
+            <table style="width: 100%;">
+              <colgroup>
+                <col style="width: 35%;">
+                <col style="width: 65%;">
+              </colgroup>
+              <tr>
+                <td>Tarikh Resit</td>
+                <td>{{item.tarikh_resit}}</td>
+              </tr>
+              <tr>
+                <td>No Resit</td>
+                <td>{{item.no_resit}}</td>
+              </tr>
+              <tr *ngIf="src == 1">
+                <td>No Akaun</td>
+                <td>{{item.noakaun}}</td>
+              </tr>
+              <tr *ngIf="src == 1">
+                <td>No IC Pemilik</td>
+                <td>{{item.no_ic_pemilik}}</td>
+              </tr>
+              <tr *ngIf="src == 2">
+                <td>Kod Bayaran</td>
+                <td>{{item.kodbayaran}}</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div style="height: 20px;"></div>
       </div>
-      <div style="height: 20px;"></div>
     </div>
   </div>
 

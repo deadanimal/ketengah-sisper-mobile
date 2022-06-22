@@ -154,6 +154,10 @@ const routes: Routes = [
   {
     path: 'resit',
     loadChildren: () => import('./bayaran/resit/resit.module').then( m => m.ResitPageModule)
+  },
+  {
+    path: 'lejard',
+    loadChildren: () => import('./shared/modals/lejard/lejard.module').then( m => m.LejardPageModule)
   }
 ];
 

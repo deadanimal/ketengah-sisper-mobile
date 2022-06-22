@@ -34,7 +34,7 @@
               </tr>
             </table>
           </ion-item>   
-          <ion-item-options side="end">
+          <ion-item-options side="end" *ngIf="item.id != undefined && item.id != null">
             <ion-item-option color="danger" style="padding: 0px 10px;"><ion-img src="../../assets/icon/delete.png" class="icondelete" (click)="deleteone(item.id)"></ion-img></ion-item-option>
           </ion-item-options>  
         </ion-item-sliding>

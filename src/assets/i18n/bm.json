@@ -14,7 +14,9 @@
       "pengguna":"Pengguna",
       "penghargaan":"Penghargaan",
       "tarikh":"Sekatan Tarikh",
-      "byrsebelum":"Bayar Sebelum"
+      "byrsebelum":"Bayar Sebelum",
+      "tunjuk":"Tunjuk Graf",
+      "muatturun":"Muat Turun Graf"
     },
     "setting": {
       "tetapan": "Tetapan",
@@ -213,6 +215,7 @@
       "kad": "Kad Kredit/ Debit",
       "kaedahlain": "Kaedah Pembayaran Lain",
       "tambahkad": "Tambah Kad",
-      "resit": "Resit"
+      "resit": "Resit",
+      "cetak": "Cetak"
     }
 }

@@ -27,10 +27,12 @@
     "@capacitor/haptics": "1.1.0",
     "@capacitor/keyboard": "1.1.0",
     "@capacitor/status-bar": "1.0.3",
+    "@ionic-native/pdf-generator": "^5.36.0",
     "@ionic/angular": "^5.9.3",
     "@ionic/core": "^5.9.3",
     "@ngx-translate/core": "^14.0.0",
     "@ngx-translate/http-loader": "^7.0.0",
+    "chart.js": "^3.8.0",
     "cordova-android": "10.1.1",
     "cordova-browser": "6.0.0",
     "ion2-calendar": "^3.5.0",
@@ -56,6 +58,7 @@
     "@types/node": "^12.20.47",
     "@typescript-eslint/eslint-plugin": "4.16.1",
     "@typescript-eslint/parser": "4.16.1",
+    "cordova-pdf-generator": "^2.1.1",
     "cordova-plugin-device": "^2.0.3",
     "cordova-plugin-ionic-keyboard": "^2.2.0",
     "cordova-plugin-ionic-webview": "^5.0.0",
@@ -86,7 +89,8 @@
       "cordova-plugin-device": {},
       "cordova-plugin-splashscreen": {},
       "cordova-plugin-ionic-webview": {},
-      "cordova-plugin-ionic-keyboard": {}
+      "cordova-plugin-ionic-keyboard": {},
+      "cordova-pdf-generator": {}
     },
     "platforms": [
       "android",
