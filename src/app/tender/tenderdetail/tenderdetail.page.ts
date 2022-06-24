@@ -99,34 +99,39 @@ export class TenderdetailPage implements OnInit {
   async hantar(){
     const loading = await this.loadingController.create();
     await loading.present();
-    console.log(this.user.tender);
-    this.tenderform.patchValue({
-      sh_id: this.user.tender
-    });
-    console.log(this.tenderform.value);
-    await this.shtenderdtlService.add(this.tenderform.value).subscribe(
-      async (res) => {
-        this.TenderList.push(res);
-        this.tenderform.reset()
-        this.TenderList.forEach(element => {
-          element.selectedValue == false
-        });
-        console.log(res);
 
-        await loading.dismiss();
-      },
-      async (res) => {
-        console.log(res);
-        await loading.dismiss();
-        const alert = await this.alertController.create({
-          header: 'Loading failed',
-          message: res.message,
-          buttons: ['OK'],
-        });
- 
-        await alert.present();
-      }
-    );
+    if(this.tenderform.value.kod_urusan == ''){
+      this.alerterror('Urusan diperlukan');
+    }else{ 
+      console.log(this.user.tender);
+      this.tenderform.patchValue({
+        sh_id: this.user.tender
+      });
+      console.log(this.tenderform.value);
+      await this.shtenderdtlService.add(this.tenderform.value).subscribe(
+        async (res) => {
+          this.TenderList.push(res);
+          this.tenderform.reset()
+          this.TenderList.forEach(element => {
+            element.selectedValue == false
+          });
+          console.log(res);
+
+          await loading.dismiss();
+        },
+        async (res) => {
+          console.log(res);
+          await loading.dismiss();
+          const alert = await this.alertController.create({
+            header: 'Loading failed',
+            message: res.message,
+            buttons: ['OK'],
+          });
+  
+          await alert.present();
+        }
+      );
+    }
   }
 
   check(data){
@@ -262,4 +267,13 @@ export class TenderdetailPage implements OnInit {
     );
   }
 
+  async alerterror(msg){
+    const alert = await this.alertController.create({
+      header: 'Loading failed',
+      message: msg,
+      buttons: ['OK'],
+    });
+
+    await alert.present();
+  }
 }

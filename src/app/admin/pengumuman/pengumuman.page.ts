@@ -46,6 +46,13 @@ export class PengumumanPage implements OnInit {
     this.location.back();
   }
 
+  clearform(){
+    this.tajukumum = '';
+    this.kandunganumum = '';
+    this.tempohumum = '';
+    this.date = '';
+  }
+
   async hantar(){
     const loading = await this.loadingController.create();
     await loading.present();
@@ -60,6 +67,7 @@ export class PengumumanPage implements OnInit {
     await this.pengumumanService.add(formData).subscribe(
       async (res) => {
         console.log(res);
+        this.clearform();
         await loading.dismiss();
         const alert = await this.alertController.create({
           header: 'Success',
