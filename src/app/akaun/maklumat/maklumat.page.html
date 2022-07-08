@@ -12,11 +12,14 @@
       <div class="jumlah">
         {{ 'akaun.jumlah' | translate }}
       </div>
-      <div class="jumlahrm">
+      <div *ngIf="jumexist==true" class="jumlahrm">
         RM {{jumlah}}
       </div>
+      <div *ngIf="jumexist==false" class="jumlahrm">
+        RM 00.00
+      </div>
       <div class="byrsblm">
-        {{ 'home.byrsebelum' | translate }} <span style="color: #D23330;">{{data.tarikh_tamat_perjanjian}}</span>
+        {{ 'home.byrsebelum' | translate }} <span style="color: #D23330;">{{bayarsblm}}</span>
       </div>
       <div style="padding-top: 25px;">
         <table style="width: 100%;text-align: center;">
@@ -54,7 +57,7 @@
         </div>
         <div class="boxwhite" style="border-bottom: 0.7px solid #E8E8E8">
           {{ 'akaun.nama' | translate }} <br>
-          <ion-input type="text" class="input" readonly [value]="data.nama"></ion-input>
+          <ion-input type="text" class="input" readonly [value]="data.nama_pemilik"></ion-input>
         </div>
         <div class="boxwhite" style="border-bottom: 0.7px solid #E8E8E8">
           {{ 'akaun.bandar' | translate }} <br>

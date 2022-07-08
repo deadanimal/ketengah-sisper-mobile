@@ -8,13 +8,16 @@
     "tender":"Quotation/ Tender",
     "tempahkemudahan":"Bookings",
     "aduan":"Complaint",
+    "aduandan":"Complaint and Announcement",
     "lain":"Others",
     "notis":"Notice",
     "pengumuman":"Announcement",
     "pengguna":"User",
     "penghargaan":"Appreciation",
     "tarikh":"Blocked Bookings",
-    "byrsebelum":"Pay Before"
+    "byrsebelum":"Pay Before",
+    "tunjuk":"Display Graph",
+    "muatturun":"Download Graph"
   },
   "setting": {
     "tetapan": "Setting",
@@ -50,7 +53,8 @@
   "notis": {
     "notis": "Notice",
     "buang": "Delete",
-    "tajuk": "Notice Title"
+    "tajuk": "Notice Title",
+    "notisumum": "Announcement dan Notice"
   },
   "aduan": {
     "aduan": "Complaint",
@@ -71,7 +75,9 @@
     "katerosak": "Damage Category",
     "jenisrosak": "Type of Damage",
     "butiranaduan": "Complaint Detail",
-    "pilihstatus": "Choose Status"
+    "pilihstatus": "Choose Status",
+    "aduanpeng": "Complaint and Appreciation",
+    "aduanrosak": "Damage Complaint"
   },
   "penghargaan": {
     "penghargaan": "Appreciation",
@@ -91,13 +97,18 @@
   "lejar": {
     "lejar": "Ledger",
     "sewarumah": "House Loans",
-    "sewapremis": "Premise Loans"
+    "sewapremis": "Premise Loans",
+    "nama": "Account Name",
+    "tahun": "Tahun",
+    "bulan": "Bulan",
+    "cetak": "Cetak"
   },
   "sewa": {
     "bayarsewa": "Loan Payments",
     "jumlah": "Total",
     "jumkeseluruhan": "GRAND TOTAL",
-    "bayar": "Pay"
+    "bayar": "Pay",
+    "pilihakaun": "Choose Account"
   },
   "tempat_kemudahan": {
     "dewan": "Hall",
@@ -135,10 +146,16 @@
   "pilih": "Select",
   "kembali": "Back",
   "alatan": {
-    "alatan": "Tools"
+    "alatan": "Tools",
+    "kuantiti": "Quantity",
+    "tarikh": "Date",
+    "placealatan": "Choose Tools"
   },
   "fasiliti": {
-    "fasiliti": "Facility"
+    "fasiliti": "Facility",
+    "placefasiliti": "Choose Facility",
+    "gelanggang": "Place",
+    "placegelanggang": "Choose Place"
   },
   "simpan": "Save",
   "bayar": "Bayar",
@@ -150,33 +167,61 @@
       "lokasi": "Lokasi",
       "masa": "Masa",
       "jumlah": "Jumlah Bayaran",
-      "qty": "Kuantiti"
+      "qty": "Kuantiti",
+      "fasiliti": "Booking Type",
+      "gelangang": "Hall Name"
     },
-    "pengguna":{
-      "pengguna": "Pengguna",
-      "senarai": "Senarai Pengguna",
-      "notel": "Nombor Telefon"
-    },
-    "sekatan": {
-      "tarikh": "Sekatan Tarikh",
-      "futsal": "Futsal",
-      "badminton": "Badminton",
-      "tempat": "Tempat",
-      "placetempat": "Pilih Tempat",
-      "gelanggang": "Gelanggang",
-      "placegelanggang": "Pilih Gelanggang"
-    },
-    "akaun": {
-      "tambahakaun": "Tambah Akaun Perumahan",
-      "tambahpremis": "Tambah Akaun Premis",
-      "desc": "Adakah Anda Merupakan Pemilik atau Penyewa Akaun Perumahan Yang Ingin Ditambah?",
-      "yes": "Ya",
-      "no": "Tidak",
-      "tambahyes": "Saya Merupakan Pemilik atau Penyewa Asal Akaun Perumahan Yang Ingin Ditambah.",
-      "tambahno": "Saya Merupakan Anak Atau Ahli Keluarga Kepada Pemilik atau Penyewa Asal.",
-      "noakaun": "No. Akaun",
-      "namaakaun": "Nama Akaun",
-      "nokp":"No Kad Pengenalan Pemilik",
-      "maklumat":"Maklumat Akaun"
-    }
+  "pengguna":{
+    "pengguna": "User",
+    "senarai": "List of Users",
+    "notel": "Telefon Number"
+  },
+  "sekatan": {
+    "tarikh": "Block Date",
+    "futsal": "Futsal",
+    "badminton": "Badminton",
+    "tempat": "Venue",
+    "placetempat": "Choose Venue",
+    "gelanggang": "Court",
+    "placegelanggang": "Choose Court"
+  },
+  "akaun": {
+    "tambahakaun": "Add Housing Account",
+    "tambahpremis": "Add Premise Account",
+    "desc": "Are You The Owner or The Original Tenant of The Account That You Want to Add?",
+    "yes": "Yes",
+    "no": "No",
+    "tambahyes": "I Am The Owner or The Original Tenant of The Account",
+    "tambahno": "I Am The Child or Family Member of The Owner or The Original Tenant",
+    "noakaun": "Account Number",
+    "namaakaun": "Account Name",
+    "nokp":"Owner's Identification Card Number",
+    "maklumat":"Account Info",
+    "jumlah":"Amount To Be Paid",
+    "semasa":"Current Bill",
+    "tunggak":"Outstanding Bill",
+    "nama":"Name",
+    "bandar":"City",
+    "nokp2":"Identification Card Number",
+    "norumah":"House Number",
+    "taman":"Neighbourhood",
+    "kate":"Category",
+    "kadarsewa":"Rent Rate",
+    "jenisrumah":"House Type",
+    "tlhbayar":"Amount That Has Been Paid",
+    "pinjaman":"Loan Amount",
+    "tunggakan":"Outstanding",
+    "mulaperjanjian":"Date of Agreement",
+    "tamatperjanjian":"End of Agreement",
+    "baki":"Balance"
+  },
+  "bayaran": {
+    "kaedah": "Choose Payment Method",
+    "jumlah": "Amount",
+    "kad": "Credit / Debit Card",
+    "kaedahlain": "Other Payment Method",
+    "tambahkad": "Add Card",
+    "resit": "Receipt",
+    "cetak": "Print"
+  }
 }

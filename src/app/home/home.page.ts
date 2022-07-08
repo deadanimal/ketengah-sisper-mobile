@@ -50,7 +50,7 @@ export class HomePage implements OnInit {
     private loadingController: LoadingController,
     private notisService: NotisService,
     private pengumumanService: PengumumanService,
-    route:ActivatedRoute,
+    private route:ActivatedRoute,
     public modalController: ModalController,
     private platform: Platform,
     private bookingService: BookingService,
@@ -60,8 +60,10 @@ export class HomePage implements OnInit {
       console.log('none');
     });
 
-    route.params.subscribe(async val => {
-
+    this.route.queryParams.subscribe(async params => {
+      if (this.router.getCurrentNavigation().extras.state.src == 1) {
+        this.tambah();
+      }
     });
   }
 

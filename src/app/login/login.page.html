@@ -19,7 +19,10 @@
               <div class="input-div">
                 <label class="label">Kata Laluan</label>
                   <div style="padding-top: 10px;">
-                    <ion-input type="password" class="input" formControlName="password"></ion-input>
+                    <div class="input" style="padding: 3px 0px 0px 0px;">
+                      <ion-input type="{{showPass ? 'password' : 'text' }}" style="width: 90%;height: 100%;display: inline-block;" formControlName="password"></ion-input>
+                      <ion-icon (click)='hideShowPassword()' name="{{showPass ? 'eye-outline' : 'eye-off-outline' }}" style="width: 10%;display: inline-block;"></ion-icon>
+                    </div>
                   </div>
                 <div class="forgotpass" (click)="forgotpass()">Lupa Kata Laluan?</div>
               </div>
@@ -27,7 +30,7 @@
                 <button ion-button class="button" (click)="login()">Log Masuk</button>
               </div>
               <div class="input-div" style="font-weight:400;color:white;">
-                Tiada Akaun? <span style="font-weight:600;color: #F6C949;" (click)="register()">Daftar Sekarang</span>
+                Belum Daftar? <span style="font-weight:600;color: #F6C949;" (click)="register()">Daftar Sekarang</span>
               </div>
             </form>
           </div>

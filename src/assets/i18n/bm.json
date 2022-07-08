@@ -3,11 +3,12 @@
       "selamat": "Selamat Datang",
       "akaun-saya": "Akaun Saya",
       "tambah": "Tambah",
-      "bayar-sewa": "Bayar Sewa",
-      "lejar":"Lejar",
-      "tender":"Sebutharga/ Tender",
+      "bayar-sewa": "Kaunter Bayaran",
+      "lejar":"Penyata Akaun",
+      "tender":"Pembelian Sebut Harga Tender",
       "tempahkemudahan":"Tempah Kemudahan",
       "aduan":"Aduan",
+      "aduandan":"Aduan dan Pengumuman",
       "lain":"Lain-Lain",
       "notis":"Notis",
       "pengumuman":"Pengumuman",
@@ -52,7 +53,8 @@
     "notis": {
       "notis": "Notis",
       "buang": "Buang",
-      "tajuk": "Tajuk Notis"
+      "tajuk": "Tajuk Notis",
+      "notisumum": "Pengumuman dan Notis"
     },
     "aduan": {
       "aduan": "Aduan",
@@ -73,7 +75,9 @@
       "katerosak": "Kategori Kerosakan",
       "jenisrosak": "Jenis Kerosakan",
       "butiranaduan": "Butiran Aduan",
-      "pilihstatus": "Pilih Status"
+      "pilihstatus": "Pilih Status",
+      "aduanpeng": "Aduan dan Penghargaan",
+      "aduanrosak": "Aduan Kerosakan"
     },
     "penghargaan": {
       "penghargaan": "Penghargaan",
@@ -163,7 +167,9 @@
       "lokasi": "Lokasi",
       "masa": "Masa",
       "jumlah": "Jumlah Bayaran",
-      "qty": "Kuantiti"
+      "qty": "Kuantiti",
+      "fasiliti": "Jenis Tempahan",
+      "gelangang": "Nama Dewan"
     },
     "pengguna":{
       "pengguna": "Pengguna",

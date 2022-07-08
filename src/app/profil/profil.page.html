@@ -39,7 +39,7 @@
         </div>
         <div class="boxwhite" style="border-bottom: 0.7px solid #E8E8E8">
           {{ 'profile.akaun' | translate }} <br>
-          <ion-input type="text" class="input"></ion-input><span style="width: 30%;">Kemaskini</span>
+          <ion-input type="text" class="input" readonly [(ngModel)]="bilakaun"></ion-input><span style="width: 30%;" (click)="akauan()">Kemaskini</span>
         </div>
         <div style="padding:50px 0px 20px 0px;text-align: center;">
           <!-- <button ion-button class="button2" (click)="lupapass()">{{ 'profile.lupakatalaluan' | translate }}</button> -->

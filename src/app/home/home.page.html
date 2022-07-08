@@ -139,11 +139,13 @@
           </ion-card>
           <table style="width: 100%;padding-right: 20px;">
             <colgroup>
+              <col style="width: 11%;">
               <col style="width: 33%;">
               <col style="width: 33%;">
-              <col style="width: 33%;">
+              <col style="width: 11%;">
             </colgroup>
             <tr>
+              <td></td>
               <td>
                 <ion-card class="card2" (click)="Sewa();">
                   <ion-img class="cardimg" style="width:56px;height:50px;" src="../../assets/icon/main1.png"></ion-img>
@@ -156,13 +158,21 @@
                   <div class="cardname">{{ 'home.lejar' | translate }}</div>
                 </ion-card>
               </td>
-              <td>
+              <td></td>
+              <!-- <td>
                 <ion-card class="card2" (click)="Tender();">
                   <ion-img class="cardimg" style="width: 45px;height: 50px;" src="../../assets/icon/main3.png"></ion-img>
                   <div class="cardname">{{ 'home.tender' | translate }}</div>
                 </ion-card>
-              </td>
+              </td> -->
             </tr>
+          </table>
+          <table style="width: 100%;padding-right: 20px;">
+            <colgroup>
+              <col style="width: 33%;">
+              <col style="width: 33%;">
+              <col style="width: 33%;">
+            </colgroup>
             <tr>
               <td>
                 <ion-card class="card2" (click)="TempahKemudahan();">
@@ -173,7 +183,7 @@
               <td>
                 <ion-card class="card2" (click)="Aduan();">
                   <ion-img class="cardimg" style="width: 49.76px;height: 50px;" src="../../assets/icon/main5.png"></ion-img>
-                  <div class="cardname">{{ 'home.aduan' | translate }}</div>
+                  <div class="cardname">{{ 'home.aduandan' | translate }}</div>
                 </ion-card>
               </td>
               <td>

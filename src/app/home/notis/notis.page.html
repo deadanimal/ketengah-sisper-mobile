@@ -3,7 +3,7 @@
     <div class="container2">
       <div class="header">
         <ion-icon name="chevron-back-outline" style="float: left;" (click)="back()"></ion-icon>
-        <span class="headertxt" style="width:70%;margin: auto;display: inline-block;">{{ 'notis.notis' | translate }}</span>
+        <span class="headertxt" style="width:70%;margin: auto;display: inline-block;">{{ 'notis.notisumum' | translate }}</span>
         <ion-img src="../../assets/icon/delete.png" class="icondeletehist" style="float: right;" (click)="deletehist()"></ion-img>
       </div>
     </div>
@@ -14,7 +14,7 @@
         Pilih Semua
         <div style="float: right;"><ion-checkbox style="margin-right:20px;" (click)="checkAll($event)"></ion-checkbox></div>
       </div>
-      <div *ngFor="let item of checkBoxList" style="padding-bottom:20px">
+      <div *ngFor="let item of checkBoxList;let i=index" style="padding-bottom:20px">
         <ion-item-sliding *ngIf="item.view == false">
           <ion-item style="background-color: white;">  
             <table style="border-bottom: 0.7px solid #E8E8E8; height: 58px;width: 100%;">
@@ -26,7 +26,7 @@
               <tr>
                 <td (click)="openModal(item)" rowspan="2" style="padding:30px 20px"><ion-img src="../../assets/icon/notinew.png" class="icondelete"></ion-img></td>
                 <td (click)="openModal(item)" class="notistitleactive">{{item.tajuk}}</td>
-                <td rowspan="2" class="notisdate">{{item.date}} &nbsp; 
+                <td rowspan="2" class="notisdate"><span *ngIf="i != 0">{{item.date}} &nbsp;</span>
                   <input type="checkbox" *ngIf="deleteall == true" style="display: inline-block;margin:0;opacity:1" [(ngModel)]="item.selected"></td>
               </tr>
               <tr>
@@ -49,7 +49,7 @@
               <tr>
                 <td (click)="openModal(item)" rowspan="2" style="padding:30px 20px; height:100%;"><ion-img src="../../assets/icon/notiold.png" class="icondelete" ></ion-img></td>
                 <td (click)="openModal(item)" class="notistitleactive" style="opacity: 0.3; height:100%;">{{item.tajuk}}</td>
-                <td rowspan="2" class="notisdate" >{{item.date}} &nbsp; 
+                <td rowspan="2" class="notisdate" ><span *ngIf="i != 0">{{item.date}} &nbsp;</span>
                   <input type="checkbox" *ngIf="deleteall == true" style="display: inline-block;margin:0;opacity:1" [(ngModel)]="item.selected">
                 </td>
               </tr>

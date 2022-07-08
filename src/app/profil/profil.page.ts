@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from "@angular/common";
-import { Router } from '@angular/router';
+import { Router, NavigationExtras } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthenticationService } from '../shared/services/auth/authentication.service';
 import { UserService } from '../shared/services/user/user.service';
@@ -20,6 +20,7 @@ export class ProfilPage implements OnInit {
   nohp:any;
   pass:any;
   showPass = true;
+  bilakaun:any;
   
   constructor(
     private location: Location,
@@ -37,6 +38,7 @@ export class ProfilPage implements OnInit {
   }
 
   async ionViewDidEnter() {
+    this.bilakaun = 0;
     this.nativeStorage.getItem('user').then(
       data => {
         console.log('user',data);
@@ -46,9 +48,17 @@ export class ProfilPage implements OnInit {
         this.email = data.value.email;
         this.nohp = data.value.no_telefon;
         this.pass = data.value.password;
+        data.value.perumahan.forEach(element => {
+          this.bilakaun ++;
+        });
+        data.value.premis.forEach(element => {
+          this.bilakaun ++;
+        });
       },
       error => console.error(error)
     );
+
+    
   }
 
   back(){
@@ -152,5 +162,14 @@ export class ProfilPage implements OnInit {
     let pattern = /^([0-9])$/;
     let result = pattern.test(event.key);
     return result;
+  }
+
+  akauan(){
+    let navigationExtras: NavigationExtras = {
+      state: {
+        src: 1
+      }
+    };
+    this.router.navigate(['main'], navigationExtras);
   }
 }

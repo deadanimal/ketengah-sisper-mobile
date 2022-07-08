@@ -16,26 +16,26 @@
     <div class="container2">
       <div class="detail">
         <div class="card">
-          <div class="cardhead">{{ 'fasiliti.fasiliti' | translate }}</div>
+          <div class="cardhead">{{ 'sejarah.fasiliti' | translate }}</div>
           <div class="carddetail">{{tempahan.tempat}}</div>
         </div>
-        <div class="card">
+        <div class="card" *ngIf="jenis != 2">
           <div class="cardhead">{{ 'sejarah.lokasi' | translate }}</div>
           <div class="carddetail">{{tempahan.lokasinama}}</div>
         </div>
         <div class="card">
-          <div class="cardhead">{{ 'fasiliti.gelanggang' | translate }}</div>
+          <div class="cardhead">{{ 'sejarah.gelangang' | translate }}</div>
           <div class="carddetail">{{tempahan.namatempat}}</div>
         </div>
         <div class="card">
           <div class="cardhead">{{ 'sejarah.tarikh' | translate }}</div>
           <div class="carddetail">{{tempahan.date_from}} - {{tempahan.date_to}}</div>
         </div>
-        <div class="card">
+        <div class="card" *ngIf="jenis != 1 && jenis != 2">
           <div class="cardhead">{{ 'sejarah.masa' | translate }}</div>
           <div class="carddetail">{{tempahan.time_from}} - {{tempahan.time_to}}</div>
         </div>
-        <div class="card">
+        <div class="card" *ngIf="jenis != 1 && jenis != 3">
           <div class="cardhead">{{ 'sejarah.qty' | translate }}</div>
           <div class="carddetail">{{tempahan.qty}}</div>
         </div>

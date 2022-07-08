@@ -11,7 +11,9 @@ export class MaklumatPage implements OnInit {
 
   data: any;
   jumlah: any;
-  
+  jumexist= false;
+  bayarsblm:any;
+
   constructor(
     private location: Location,
     private route: ActivatedRoute,
@@ -22,6 +24,14 @@ export class MaklumatPage implements OnInit {
         this.data = this.router.getCurrentNavigation().extras.state.data;
         console.log('data',this.data);
         this.jumlah = parseInt(this.data.kadar_sewa) + parseInt(this.data.jumlah_tunggakan);
+        if(this.jumlah > 0){
+          this.jumexist = true;
+        }
+        let d = new Date();
+        d.setMonth(d.getMonth() + 1, 1);
+        console.log(d.toLocaleDateString('en-GB'));
+        this.bayarsblm = d.toLocaleDateString('en-GB');
+        console.log("byrsblm", this.bayarsblm);
       }
     });
   }

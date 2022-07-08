@@ -12,6 +12,7 @@ import { Keyboard } from '@awesome-cordova-plugins/keyboard/ngx';
 })
 export class LoginPage implements OnInit {
   credentials: FormGroup;
+  showPass = true;
 
   constructor(
     private router: Router,
@@ -90,5 +91,9 @@ export class LoginPage implements OnInit {
 
   forgotpass(){
     this.router.navigate(['/forgotpass']);
+  }
+
+  hideShowPassword() {
+    this.showPass = !this.showPass;
   }
 }
