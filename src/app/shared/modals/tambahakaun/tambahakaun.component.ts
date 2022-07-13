@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
+import {  HttpClient } from '@angular/common/http';
+import { TranslateService, TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 @Component({
   selector: 'app-tambahakaun',
@@ -9,12 +12,29 @@ import { ModalController } from '@ionic/angular';
 })
 export class TambahakaunComponent implements OnInit {
 
+  akaun:any;
+  jenis:any;
+  jenis2:any;
+
   constructor(
     private modalController: ModalController,
     private router: Router,
-  ) { }
+    private translateService: TranslateService
+  ) {
+    console.log('translation', this.translateService);
+   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    if(this.translateService.defaultLang == 'bm'){
+      this.akaun = 'Akaun';
+      this.jenis = 'Perumahan';
+      this.jenis2 = 'Premis';
+    }else{
+      this.akaun = 'Account';
+      this.jenis = 'Housing';
+      this.jenis2 = 'Premise';
+    }
+  }
 
   perumahan() {
     this.modalController.dismiss();

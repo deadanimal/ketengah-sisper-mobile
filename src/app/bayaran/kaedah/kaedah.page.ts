@@ -75,16 +75,16 @@ export class KaedahPage implements OnInit {
       formData.append('jenis_transaksi', '1');
       formData.append('card_detail', '1');
     }else{
-      formData.append('bil_premis_id', this.user.user_id);
-      formData.append('bil_rumah_id', this.user.user_id);
-      formData.append('booking_id', this.user.user_id);
-      formData.append('st_id', this.user.user_id);
-      formData.append('no_ic_pemilik', this.user.user_id);
-      formData.append('amaun', this.user.user_id);
-      formData.append('tarikh_bayaran', this.user.user_id);
-      formData.append('status_bayaran', this.user.user_id);
-      formData.append('jenis_transaksi', '2');
-      formData.append('card_detail', '1');
+      // formData.append('bil_premis_id', this.user.user_id);
+      // formData.append('bil_rumah_id', this.user.user_id);
+      // formData.append('booking_id', this.user.user_id);
+      // formData.append('st_id', this.user.user_id);
+      // formData.append('no_ic_pemilik', this.user.user_id);
+      // formData.append('amaun', this.user.user_id);
+      // formData.append('tarikh_bayaran', this.user.user_id);
+      // formData.append('status_bayaran', this.user.user_id);
+      // formData.append('jenis_transaksi', '2');
+      // formData.append('card_detail', '1');
     }
     
     await this.bayaranService.add(formData).subscribe(

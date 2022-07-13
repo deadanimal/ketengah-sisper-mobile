@@ -23,8 +23,9 @@
           <div class="cardhead">{{ 'sejarah.lokasi' | translate }}</div>
           <div class="carddetail">{{tempahan.lokasinama}}</div>
         </div>
-        <div class="card">
-          <div class="cardhead">{{ 'sejarah.gelangang' | translate }}</div>
+        <div class="card" *ngIf="jenis != 2">
+          <div class="cardhead" *ngIf="jenis == 1">{{ 'sejarah.dewan' | translate }}</div>
+          <div class="cardhead" *ngIf="jenis == 3">{{ 'sejarah.gelangang' | translate }}</div>
           <div class="carddetail">{{tempahan.namatempat}}</div>
         </div>
         <div class="card">

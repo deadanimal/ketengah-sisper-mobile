@@ -24,6 +24,8 @@ export class TenderdetailPage implements OnInit {
   catatan:any;
   jumlah:any;
   selectedValue:any;
+  jumcount:any;
+
   constructor(
     private location: Location,
     private fb: FormBuilder,
@@ -63,7 +65,8 @@ export class TenderdetailPage implements OnInit {
 
     const loading = await this.loadingController.create();
     await loading.present();
-
+    this.jumlah = 0;
+    this.jumcount = 0;
     this.tenderform = this.fb.group({
       sh_id:[],
       kod_urusan: ['', [Validators.required]],
@@ -135,30 +138,44 @@ export class TenderdetailPage implements OnInit {
   }
 
   check(data){
-    this.selected = data;
+    // // this.selected = data;
+    // this.jumlah = data.harga;
+    // if(data.check == true){
+    //   // this.jumcount = this.jumcount - 1;
+    //   this.jumlah = this.jumlah + data.harga;
+    // }else if(data.check == false){
+    //   // this.jumcount = this.jumcount + 1;
+    //   this.jumlah = this.jumlah + data.harga;
+    // }
+    // console.log(this.jumlah);
   }
 
   bayar(){
     var arr = [];
     var akaun = {};
 
-    console.log(this.selected);
-      
-      akaun = {
-        "id":'',
-        "amaun":this.selected.harga,
-        "kodbayaran":this.selected.urusan,
+    this.TenderList;
+    this.TenderList.forEach(element => {
+      if(element.check == true){
+        akaun = {
+          "id":'',
+          "amaun":element.harga,
+          "kodbayaran":element.urusan,
+        }
+        arr.push(akaun);
+        this.jumlah = this.jumlah + parseInt(element.harga);
+        this.jumcount ++;
       }
-      arr.push(akaun);
+    });
     
     var data = 
       {
         "src": 2,
-        "jumlah": this.selected.harga,
-        "jumcount":1,
+        "jumlah": this.jumlah,
+        "jumcount":this.jumcount,
         "akaun":arr
       };
-    
+      console.log(this.jumlah);
     let navigationExtras: NavigationExtras = {
       state: {
         data: data

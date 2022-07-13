@@ -8,7 +8,7 @@
       "tender":"Pembelian Sebut Harga Tender",
       "tempahkemudahan":"Tempah Kemudahan",
       "aduan":"Aduan",
-      "aduandan":"Aduan dan Pengumuman",
+      "aduandan":"Aduan dan Penghargaan",
       "lain":"Lain-Lain",
       "notis":"Notis",
       "pengumuman":"Pengumuman",
@@ -169,7 +169,8 @@
       "jumlah": "Jumlah Bayaran",
       "qty": "Kuantiti",
       "fasiliti": "Jenis Tempahan",
-      "gelangang": "Nama Dewan"
+      "dewan": "Nama Dewan",
+      "gelangang": "Nama Gelanggang"
     },
     "pengguna":{
       "pengguna": "Pengguna",
@@ -223,5 +224,8 @@
       "tambahkad": "Tambah Kad",
       "resit": "Resit",
       "cetak": "Cetak"
-    }
+    },
+    "akaundisp": "Akaun",
+    "perumahan": "Perumahan"
+
 }

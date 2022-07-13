@@ -38,8 +38,9 @@
           <ion-radio-group value="biff">
             <div *ngFor="let item of TenderList">
               <ion-item-sliding>
-                <ion-item >checked
-                  <ion-radio slot="start" value="{{item.id}}" style="margin-inline-end:15px;" (click)="check(item)"></ion-radio>
+                <ion-item >
+                  <ion-checkbox slot="start" class="check" [(ngModel)]="item.check"></ion-checkbox>
+                  <!-- <ion-radio slot="start" value="{{item.id}}" style="margin-inline-end:15px;" (click)="check(item)"></ion-radio> -->
                   <div class="cardaduan" style="display:inline-block;">
                     <table style="width:100%;">
                       <colgroup>

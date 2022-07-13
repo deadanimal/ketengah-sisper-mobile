@@ -8,7 +8,7 @@
     "tender":"Quotation/ Tender",
     "tempahkemudahan":"Bookings",
     "aduan":"Complaint",
-    "aduandan":"Complaint and Announcement",
+    "aduandan":"Complaint and Appreciation",
     "lain":"Others",
     "notis":"Notice",
     "pengumuman":"Announcement",
@@ -169,7 +169,8 @@
       "jumlah": "Jumlah Bayaran",
       "qty": "Kuantiti",
       "fasiliti": "Booking Type",
-      "gelangang": "Hall Name"
+      "dewan": "Hall Name",
+      "gelangang": "Court Name"
     },
   "pengguna":{
     "pengguna": "User",

@@ -4,7 +4,7 @@ import { NativeStorage } from '@awesome-cordova-plugins/native-storage/ngx';
 import { AlertController, LoadingController, ModalController, Platform } from '@ionic/angular';
 import { NotisService } from '../shared/services/notis/notis.service';
 import { AdminmenuPage } from '../shared/modals/adminmenu/adminmenu.page';
-import { TambahakaunComponent } from '../shared/modals/TambahAkaun/tambahakaun.component';
+import { TambahakaunComponent } from '../shared/modals/tambahakaun/tambahakaun.component';
 import { PengumumanService } from '../shared/services/pengumuman/pengumuman.service';
 import Chart from 'chart.js/auto';
 import { BookingService } from 'src/app/shared/services/booking/booking.service';
