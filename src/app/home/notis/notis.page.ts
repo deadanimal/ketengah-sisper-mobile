@@ -35,7 +35,8 @@ export class NotisPage implements OnInit {
         this.checkBoxList = this.router.getCurrentNavigation().extras.state.notis;
         await this.checkBoxList.forEach(async function (value) {
           var date = new Date(value.created_at);
-          value.date = date.getDate()+'/'+date.getMonth()+'/'+date.getFullYear();
+          var month = date.getMonth() + 1;
+          value.date = date.getDate()+'/'+month+'/'+date.getFullYear();
         });
        
         console.log('list',this.checkBoxList);
@@ -127,7 +128,8 @@ export class NotisPage implements OnInit {
             res.view = true;
             console.log('res',res);
             var date = new Date(res.created_at);
-            res.date = date.getDate()+'/'+date.getMonth()+'/'+date.getFullYear();
+            var month = date.getMonth() + 1;
+            res.date = date.getDate()+'/'+month+'/'+date.getFullYear();
             var foundIndex = this.checkBoxList.findIndex(x => x.id == res.id);
             this.checkBoxList[foundIndex] = res;
             console.log('checklist',this.checkBoxList);

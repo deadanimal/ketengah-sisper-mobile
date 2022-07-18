@@ -118,7 +118,7 @@ export class LainLainPage implements OnInit {
   }
 
   Check(val){
-    console.log(val.detail.value);
+    console.log(this.user.tender);
     if(val.detail.value == 8){
       if(this.user.tender == 0){
         this.router.navigate(['main/tabs/tender']);
