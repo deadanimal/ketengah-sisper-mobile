@@ -95,9 +95,9 @@
       "cordova-pdf-generator": {}
     },
     "platforms": [
-      "android",
       "browser",
-      "ios"
+      "ios",
+      "android"
     ]
   }
 }
