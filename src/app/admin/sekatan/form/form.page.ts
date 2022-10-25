@@ -1,14 +1,18 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
-import { Location } from "@angular/common";
-import { AlertController, LoadingController, ModalController } from '@ionic/angular';
-import { AdminmenuPage } from 'src/app/shared/modals/adminmenu/adminmenu.page';
-import { LokasiService } from '../../../shared/services/lokasi/lokasi.service';
-import { DewanService } from '../../../shared/services/dewan/dewan.service';
-import { CalendarModalOptions, CalendarModule } from 'ion2-calendar';
-import { FasilitiService } from 'src/app/shared/services/fasiliti/fasiliti.service';
-import { BookingService } from 'src/app/shared/services/booking/booking.service';
 import { NativeStorage } from '@awesome-cordova-plugins/native-storage/ngx';
+import {
+  AlertController,
+  LoadingController,
+  ModalController,
+} from '@ionic/angular';
+import { CalendarModalOptions, CalendarModule } from 'ion2-calendar';
+import { AdminmenuPage } from 'src/app/shared/modals/adminmenu/adminmenu.page';
+import { BookingService } from 'src/app/shared/services/booking/booking.service';
+import { FasilitiService } from 'src/app/shared/services/fasiliti/fasiliti.service';
+import { DewanService } from '../../../shared/services/dewan/dewan.service';
+import { LokasiService } from '../../../shared/services/lokasi/lokasi.service';
 
 @Component({
   selector: 'app-form',
@@ -16,7 +20,6 @@ import { NativeStorage } from '@awesome-cordova-plugins/native-storage/ngx';
   styleUrls: ['./form.page.scss'],
 })
 export class FormPage implements OnInit {
-
   src: any;
   lokasi: any;
   ddTempat: any;
@@ -26,16 +29,16 @@ export class FormPage implements OnInit {
   caloption = {
     pickMode: 'range',
     title: 'RANGE',
-    daysConfig: []
+    daysConfig: [],
   };
   cal = false;
   dispTarikh: any;
   date: any;
-  days:any;
-  listfutsal:any;
-  listbadminton:any;
-  listbooking:any;
-  user:any;
+  days: any;
+  listfutsal: any;
+  listbadminton: any;
+  listbooking: any;
+  user: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -49,9 +52,8 @@ export class FormPage implements OnInit {
     private fasilitiService: FasilitiService,
     private bookingService: BookingService,
     private nativeStorage: NativeStorage
-
   ) {
-    this.route.queryParams.subscribe(params => {
+    this.route.queryParams.subscribe((params) => {
       if (this.router.getCurrentNavigation().extras.state) {
         this.src = this.router.getCurrentNavigation().extras.state.source;
         console.log(this.src);
@@ -64,17 +66,16 @@ export class FormPage implements OnInit {
     await loading.present();
 
     await this.nativeStorage.getItem('user').then(
-      data => {
-        this.user = data.value;;
+      (data) => {
+        this.user = data.value;
       },
-      error => console.error(error)
+      (error) => console.error(error)
     );
 
     await loading.dismiss();
   }
 
   async ionViewDidEnter() {
-  
     const loading = await this.loadingController.create();
     await loading.present();
 
@@ -82,12 +83,12 @@ export class FormPage implements OnInit {
       async (res) => {
         console.log(res);
         this.ddTempat = res;
-        if(this.src == 1){
+        if (this.src == 1) {
           this.ddTempat = [
             {
-              "id": 1,
-              "nama": "AMBS (HQ)"
-            }
+              id: 1,
+              nama: 'Al Muktafi Billah Shah',
+            },
           ];
           await this.fasilitiService.getfutsal().subscribe(
             async (res) => {
@@ -102,12 +103,11 @@ export class FormPage implements OnInit {
                 message: res.message,
                 buttons: ['OK'],
               });
-       
+
               await alert.present();
             }
           );
-        }
-        else if(this.src == 2){
+        } else if (this.src == 2) {
           await this.fasilitiService.getbadminton().subscribe(
             async (res) => {
               console.log(res);
@@ -121,12 +121,11 @@ export class FormPage implements OnInit {
                 message: res.message,
                 buttons: ['OK'],
               });
-       
+
               await alert.present();
             }
           );
-        }
-        else if(this.src == 3){
+        } else if (this.src == 3) {
           await this.dewanService.getdd().subscribe(
             async (res) => {
               console.log(res);
@@ -140,7 +139,7 @@ export class FormPage implements OnInit {
                 message: res.message,
                 buttons: ['OK'],
               });
-       
+
               await alert.present();
             }
           );
@@ -159,7 +158,7 @@ export class FormPage implements OnInit {
               message: res.message,
               buttons: ['OK'],
             });
-     
+
             await alert.present();
           }
         );
@@ -172,21 +171,21 @@ export class FormPage implements OnInit {
           message: res.message,
           buttons: ['OK'],
         });
-  
+
         await alert.present();
       }
     );
   }
 
-  back(){
+  back() {
     this.location.back();
   }
 
-  async adminmenu(){
+  async adminmenu() {
     const modal = await this.modalController.create({
       component: AdminmenuPage,
       cssClass: 'menu-modal',
-      backdropDismiss: true
+      backdropDismiss: true,
     });
 
     return await modal.present();
@@ -194,29 +193,29 @@ export class FormPage implements OnInit {
 
   async ChangeDDLokasi() {
     this.ddGelanggang = [];
-    var array = []
+    var array = [];
     var val = this.lokasi;
     console.log(val);
-    if(this.src == 1){
+    if (this.src == 1) {
       await this.listfutsal.forEach(function (value) {
-        if(value.lokasi == val){
+        if (value.lokasi == val) {
           array.push(value);
         }
       });
-    }else if(this.src == 2){
+    } else if (this.src == 2) {
       await this.listbadminton.forEach(function (value) {
-        if(value.lokasi == val){
+        if (value.lokasi == val) {
           array.push(value);
         }
       });
-    }else if(this.src == 3){
+    } else if (this.src == 3) {
       await this.listdewan.forEach(function (value) {
-        if(value.lokasi == val){
+        if (value.lokasi == val) {
           array.push(value);
         }
       });
     }
-    
+
     this.ddGelanggang = array;
   }
 
@@ -225,51 +224,51 @@ export class FormPage implements OnInit {
     var gelanggang = this.gelanggang;
     var src = this.src;
     await this.listbooking.forEach(function (value) {
-      if(src == 1){
-        if(value.ft_court_id == gelanggang){
-          var obj: {[k: string]: any} = {};
+      if (src == 1) {
+        if (value.ft_court_id == gelanggang) {
+          var obj: { [k: string]: any } = {};
           obj.date = new Date(value.date_from);
           obj.disable = true;
           opt.push(obj);
           var dateday = obj['date'];
           console.log(opt);
-          for(let i=1; i<value.days; i++){
-            var obj: {[k: string]: any} = {};
-            dateday = new Date(dateday).getTime() + (1000 * 60 * 60 * 24);
+          for (let i = 1; i < value.days; i++) {
+            var obj: { [k: string]: any } = {};
+            dateday = new Date(dateday).getTime() + 1000 * 60 * 60 * 24;
             var newdate = new Date(dateday);
             obj.date = newdate;
             obj.disable = true;
             opt.push(obj);
           }
         }
-      }else if(src == 2){
-        if(value.bd_court_id == gelanggang){
-          var obj: {[k: string]: any} = {};
+      } else if (src == 2) {
+        if (value.bd_court_id == gelanggang) {
+          var obj: { [k: string]: any } = {};
           obj.date = new Date(value.date_from);
           obj.disable = true;
           opt.push(obj);
           var dateday = obj['date'];
           console.log(opt);
-          for(let i=1; i<value.days; i++){
-            var obj: {[k: string]: any} = {};
-            dateday = new Date(dateday).getTime() + (1000 * 60 * 60 * 24);
+          for (let i = 1; i < value.days; i++) {
+            var obj: { [k: string]: any } = {};
+            dateday = new Date(dateday).getTime() + 1000 * 60 * 60 * 24;
             var newdate = new Date(dateday);
             obj.date = newdate;
             obj.disable = true;
             opt.push(obj);
           }
         }
-      }else if(src == 3){
-        if(value.dewan_id == gelanggang){
-          var obj: {[k: string]: any} = {};
+      } else if (src == 3) {
+        if (value.dewan_id == gelanggang) {
+          var obj: { [k: string]: any } = {};
           obj.date = new Date(value.date_from);
           obj.disable = true;
           opt.push(obj);
           var dateday = obj['date'];
           console.log(opt);
-          for(let i=1; i<value.days; i++){
-            var obj: {[k: string]: any} = {};
-            dateday = new Date(dateday).getTime() + (1000 * 60 * 60 * 24);
+          for (let i = 1; i < value.days; i++) {
+            var obj: { [k: string]: any } = {};
+            dateday = new Date(dateday).getTime() + 1000 * 60 * 60 * 24;
             var newdate = new Date(dateday);
             obj.date = newdate;
             obj.disable = true;
@@ -282,61 +281,69 @@ export class FormPage implements OnInit {
     this.caloption.daysConfig = opt;
     console.log(this.caloption);
 
-    if(this.cal == true){
-      this.cal =false;
+    if (this.cal == true) {
+      this.cal = false;
     }
   }
 
   opencal() {
-    if(this.cal == true){
-      this.cal =false;
-    }else{
-      this.cal =true;
+    if (this.cal == true) {
+      this.cal = false;
+    } else {
+      this.cal = true;
     }
   }
 
-  ChangeDDTarikh() {
+  ChangeDDTarikh() {}
 
-  }
-
-  pilihcal(){
+  pilihcal() {
     console.log(this.date);
-    if(this.cal == true){
-      this.cal =false;
-    }else{
-      this.cal =true;
+    if (this.cal == true) {
+      this.cal = false;
+    } else {
+      this.cal = true;
     }
 
     const fromdate = new Date(this.date.from);
     const todate = new Date(this.date.to);
-    if(fromdate.getTime() == todate.getTime()){
+    if (fromdate.getTime() == todate.getTime()) {
       this.days = 1;
-    }else{
+    } else {
       var diff = Math.abs(todate.getTime() - fromdate.getTime());
       this.days = Math.ceil(diff / (1000 * 3600 * 24)) + 1;
     }
-    this.dispTarikh = fromdate.getDate()+'/'+fromdate.getMonth()+'/'+fromdate.getFullYear()+' - '+ todate.getDate()+'/'+todate.getMonth()+'/'+todate.getFullYear();
-    
+    this.dispTarikh =
+      fromdate.getDate() +
+      '/' +
+      fromdate.getMonth() +
+      '/' +
+      fromdate.getFullYear() +
+      ' - ' +
+      todate.getDate() +
+      '/' +
+      todate.getMonth() +
+      '/' +
+      todate.getFullYear();
   }
 
-  async hantar(){
+  async hantar() {
     const loading = await this.loadingController.create();
     await loading.present();
     var harga = 0;
 
     const formData = new FormData();
     formData.append('user_id', this.user.admin_id);
-    if(this.src == 1){
+    if (this.src == 1) {
       formData.append('futsal', this.gelanggang);
-    }else if(this.src == 2){
+    } else if (this.src == 2) {
       formData.append('badminton', this.gelanggang);
-    }else if(this.src == 3){
+    } else if (this.src == 3) {
       formData.append('dewan', this.gelanggang);
-    }else{
+    } else {
       this.alerterror('Error');
     }
 
-    if(this.date == undefined){
+    if (this.date == undefined) {
       await loading.dismiss();
       this.alerterror('Tarikh diperlukan');
     }
@@ -360,13 +367,13 @@ export class FormPage implements OnInit {
           message: res.message,
           buttons: ['OK'],
         });
- 
+
         await alert.present();
       }
     );
   }
 
-  async alerterror(msg){
+  async alerterror(msg) {
     const alert = await this.alertController.create({
       header: 'Loading failed',
       message: msg,
@@ -376,7 +383,7 @@ export class FormPage implements OnInit {
     await alert.present();
   }
 
-  clearform(){
+  clearform() {
     this.lokasi = '';
     this.src = '';
     this.gelanggang = '';
