@@ -1,0 +1,228 @@
+{
+  "home": {
+    "selamat": "Welcome",
+    "akaun-saya": "My Account",
+    "tambah": "Add",
+    "bayar-sewa": "Pay Rent",
+    "lejar":"Ledger",
+    "tender":"Quotation/ Tender",
+    "tempahkemudahan":"Bookings",
+    "aduan":"Complaint",
+    "aduandan":"Complaint and Appreciation",
+    "lain":"Others",
+    "notis":"Notice",
+    "pengumuman":"Announcement",
+    "pengguna":"User",
+    "penghargaan":"Appreciation",
+    "tarikh":"Blocked Bookings",
+    "byrsebelum":"Pay Before",
+    "tunjuk":"Display Graph",
+    "muatturun":"Download Graph"
+  },
+  "setting": {
+    "tetapan": "Setting",
+    "noti": "Notification",
+    "bahasa": "Application Language Setting",
+    "bantuan": "Help and Support",
+    "faq": "FAQ",
+    "terma": "Terms and Condition"
+ },
+  "logout": "Log Keluar",
+  "profile": {
+    "profile": "Profile",
+    "nama": "Full Name",
+    "nokp": "Identification Number",
+    "emel": "E-mail",
+    "notel": "Phone Number",
+    "pass": "Password",
+    "akaun": "House / Premise Account",
+    "lupakatalaluan": "Forgot Password"
+  },
+  "semak": {
+    "main": "Check Payment",
+    "akaun": "Account Name",
+    "ok": "Okay",
+    "cancel": "Back",
+    "sejbayaran": "Payment History"
+  },
+  "forgot": {
+    "pass": "Forgot Password",
+    "word1": "Please Enter Your Phone Number",
+    "word2": "The Password Reset Link Will Be Sent via SMS. Please Check Your SMS Inbox"
+  },
+  "notis": {
+    "notis": "Notice",
+    "buang": "Delete",
+    "tajuk": "Notice Title",
+    "notisumum": "Announcement dan Notice"
+  },
+  "aduan": {
+    "aduan": "Complaint",
+    "penghargaan": "Appreciation",
+    "tambah": "Add",
+    "tambahdesc": "Add New Complaint And Send Straight To The Department",
+    "aduandesc": "List Of Complaints",
+    "kategori": "Category",
+    "status": "Status",
+    "tambahaduan": "Add Complaint",
+    "silaisi": "Please Fill In The Damage Information",
+    "pilihkate": "Choose a Category",
+    "pilihrosak": "Choose Damage",
+    "catatan": "Description",
+    "hantar": "Send",
+    "senarai": "Complaint List",
+    "tarikh": "Complaint Date",
+    "katerosak": "Damage Category",
+    "jenisrosak": "Type of Damage",
+    "butiranaduan": "Complaint Detail",
+    "pilihstatus": "Choose Status",
+    "aduanpeng": "Complaint and Appreciation",
+    "aduanrosak": "Damage Complaint"
+  },
+  "penghargaan": {
+    "penghargaan": "Appreciation",
+    "silaisi": "Fill In Your Appreciation Message"
+  },
+  "pengumuman": {
+    "tajukpengumuman": "Announcement Title",
+    "kandungan": "Content",
+    "tempohpengumuman": "Announcement Period"
+  },
+  "lain": {
+    "catatan": "Description",
+    "urusan": "Affairs",
+    "lain":"Others",
+    "jumlah":"Total Payment"
+  },
+  "lejar": {
+    "lejar": "Ledger",
+    "sewarumah": "House Loans",
+    "sewapremis": "Premise Loans",
+    "nama": "Account Name",
+    "tahun": "Tahun",
+    "bulan": "Bulan",
+    "cetak": "Cetak"
+  },
+  "sewa": {
+    "bayarsewa": "Loan Payments",
+    "jumlah": "Total",
+    "jumkeseluruhan": "GRAND TOTAL",
+    "bayar": "Pay",
+    "pilihakaun": "Choose Account"
+  },
+  "tempat_kemudahan": {
+    "dewan": "Hall",
+    "tempahK": "Bookings",
+    "alatan": "Tools",
+    "fasiliti": "Facility",
+    "sejarahTempahan": "Booking History"
+  },
+  "tender": {
+    "tender": "Quotation / Tender",
+    "namasyarikat": "Name of Company / Buyer",
+    "norujsyarikat": "Company Reference Number",
+    "alamat": "Address",
+    "poskod": "Postcode",
+    "bandar": "City",
+    "negeri": "State",
+    "NSH": "Quotation Value",
+    "urusan": "Affairs",
+    "catatan": "Description",
+    "amaun": "Value",
+    "jumlah": "Total"
+  },
+  "hantar": "Send",
+  "dewan": {
+    "tempah": "Book",
+    "dewan": "Hall",
+    "lokasi": "Location",
+    "placelokasi": "Choose Location",
+    "placedewan": "Choose Hall",
+    "tarikh": "Date",
+    "masa": "Time",
+    "daripada": "From",
+    "hingga": "To"
+  },
+  "pilih": "Select",
+  "kembali": "Back",
+  "alatan": {
+    "alatan": "Tools",
+    "kuantiti": "Quantity",
+    "tarikh": "Date",
+    "placealatan": "Choose Tools"
+  },
+  "fasiliti": {
+    "fasiliti": "Facility",
+    "placefasiliti": "Choose Facility",
+    "gelanggang": "Place",
+    "placegelanggang": "Choose Place"
+  },
+  "simpan": "Save",
+  "bayar": "Bayar",
+    "kemaskini": "Kemaskini",
+    "sejarah": {
+      "sejarah": "Sejarah Tempahan",
+      "tempahan": " Tempahan",
+      "tarikh": "Tarikh",
+      "lokasi": "Lokasi",
+      "masa": "Masa",
+      "jumlah": "Jumlah Bayaran",
+      "qty": "Kuantiti",
+      "fasiliti": "Booking Type",
+      "dewan": "Hall Name",
+      "gelangang": "Court Name"
+    },
+  "pengguna":{
+    "pengguna": "User",
+    "senarai": "List of Users",
+    "notel": "Telefon Number"
+  },
+  "sekatan": {
+    "tarikh": "Block Date",
+    "futsal": "Futsal",
+    "badminton": "Badminton",
+    "tempat": "Venue",
+    "placetempat": "Choose Venue",
+    "gelanggang": "Court",
+    "placegelanggang": "Choose Court"
+  },
+  "akaun": {
+    "tambahakaun": "Add Housing Account",
+    "tambahpremis": "Add Premise Account",
+    "desc": "Are You The Owner or The Original Tenant of The Account That You Want to Add?",
+    "yes": "Yes",
+    "no": "No",
+    "tambahyes": "I Am The Owner or The Original Tenant of The Account",
+    "tambahno": "I Am The Child or Family Member of The Owner or The Original Tenant",
+    "noakaun": "Account Number",
+    "namaakaun": "Account Name",
+    "nokp":"Owner's Identification Card Number",
+    "maklumat":"Account Info",
+    "jumlah":"Amount To Be Paid",
+    "semasa":"Current Bill",
+    "tunggak":"Outstanding Bill",
+    "nama":"Name",
+    "bandar":"City",
+    "nokp2":"Identification Card Number",
+    "norumah":"House Number",
+    "taman":"Neighbourhood",
+    "kate":"Category",
+    "kadarsewa":"Rent Rate",
+    "jenisrumah":"House Type",
+    "tlhbayar":"Amount That Has Been Paid",
+    "pinjaman":"Loan Amount",
+    "tunggakan":"Outstanding",
+    "mulaperjanjian":"Date of Agreement",
+    "tamatperjanjian":"End of Agreement",
+    "baki":"Balance"
+  },
+  "bayaran": {
+    "kaedah": "Choose Payment Method",
+    "jumlah": "Amount",
+    "kad": "Credit / Debit Card",
+    "kaedahlain": "Other Payment Method",
+    "tambahkad": "Add Card",
+    "resit": "Receipt",
+    "cetak": "Print"
+  }
+}
