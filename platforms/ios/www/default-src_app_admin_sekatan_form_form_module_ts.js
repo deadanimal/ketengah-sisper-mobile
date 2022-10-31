@@ -190,7 +190,7 @@ let FormPage = class FormPage {
                     this.ddTempat = [
                         {
                             "id": 1,
-                            "nama": "AMBS (HQ)"
+                            "nama": "Al Muktafi Billah Shah"
                         }
                     ];
                     yield this.fasilitiService.getfutsal().subscribe((res) => (0,tslib__WEBPACK_IMPORTED_MODULE_8__.__awaiter)(this, void 0, void 0, function* () {

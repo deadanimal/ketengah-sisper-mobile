@@ -119,16 +119,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! tslib */ 64762);
 /* harmony import */ var _raw_loader_form_page_html__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !raw-loader!./form.page.html */ 35458);
 /* harmony import */ var _form_page_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./form.page.scss */ 44250);
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/common */ 38583);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @angular/core */ 37716);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/router */ 39895);
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/common */ 38583);
+/* harmony import */ var _awesome_cordova_plugins_native_storage_ngx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @awesome-cordova-plugins/native-storage/ngx */ 34113);
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @ionic/angular */ 80476);
-/* harmony import */ var src_app_shared_modals_adminmenu_adminmenu_page__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/shared/modals/adminmenu/adminmenu.page */ 18037);
-/* harmony import */ var _shared_services_lokasi_lokasi_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../shared/services/lokasi/lokasi.service */ 75836);
-/* harmony import */ var _shared_services_dewan_dewan_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../shared/services/dewan/dewan.service */ 46725);
+/* harmony import */ var src_app_shared_modals_adminmenu_adminmenu_page__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/shared/modals/adminmenu/adminmenu.page */ 18037);
+/* harmony import */ var src_app_shared_services_booking_booking_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/shared/services/booking/booking.service */ 6659);
 /* harmony import */ var src_app_shared_services_fasiliti_fasiliti_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/shared/services/fasiliti/fasiliti.service */ 10419);
-/* harmony import */ var src_app_shared_services_booking_booking_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! src/app/shared/services/booking/booking.service */ 6659);
-/* harmony import */ var _awesome_cordova_plugins_native_storage_ngx__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @awesome-cordova-plugins/native-storage/ngx */ 34113);
+/* harmony import */ var _shared_services_dewan_dewan_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../shared/services/dewan/dewan.service */ 46725);
+/* harmony import */ var _shared_services_lokasi_lokasi_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../shared/services/lokasi/lokasi.service */ 75836);
 
 
 
@@ -158,10 +158,10 @@ let FormPage = class FormPage {
         this.caloption = {
             pickMode: 'range',
             title: 'RANGE',
-            daysConfig: []
+            daysConfig: [],
         };
         this.cal = false;
-        this.route.queryParams.subscribe(params => {
+        this.route.queryParams.subscribe((params) => {
             if (this.router.getCurrentNavigation().extras.state) {
                 this.src = this.router.getCurrentNavigation().extras.state.source;
                 console.log(this.src);
@@ -172,10 +172,9 @@ let FormPage = class FormPage {
         return (0,tslib__WEBPACK_IMPORTED_MODULE_8__.__awaiter)(this, void 0, void 0, function* () {
             const loading = yield this.loadingController.create();
             yield loading.present();
-            yield this.nativeStorage.getItem('user').then(data => {
+            yield this.nativeStorage.getItem('user').then((data) => {
                 this.user = data.value;
-                ;
-            }, error => console.error(error));
+            }, (error) => console.error(error));
             yield loading.dismiss();
         });
     }
@@ -189,9 +188,9 @@ let FormPage = class FormPage {
                 if (this.src == 1) {
                     this.ddTempat = [
                         {
-                            "id": 1,
-                            "nama": "AMBS (HQ)"
-                        }
+                            id: 1,
+                            nama: 'Al Muktafi Billah Shah',
+                        },
                     ];
                     yield this.fasilitiService.getfutsal().subscribe((res) => (0,tslib__WEBPACK_IMPORTED_MODULE_8__.__awaiter)(this, void 0, void 0, function* () {
                         console.log(res);
@@ -269,9 +268,9 @@ let FormPage = class FormPage {
     adminmenu() {
         return (0,tslib__WEBPACK_IMPORTED_MODULE_8__.__awaiter)(this, void 0, void 0, function* () {
             const modal = yield this.modalController.create({
-                component: src_app_shared_modals_adminmenu_adminmenu_page__WEBPACK_IMPORTED_MODULE_2__.AdminmenuPage,
+                component: src_app_shared_modals_adminmenu_adminmenu_page__WEBPACK_IMPORTED_MODULE_3__.AdminmenuPage,
                 cssClass: 'menu-modal',
-                backdropDismiss: true
+                backdropDismiss: true,
             });
             return yield modal.present();
         });
@@ -322,7 +321,7 @@ let FormPage = class FormPage {
                         console.log(opt);
                         for (let i = 1; i < value.days; i++) {
                             var obj = {};
-                            dateday = new Date(dateday).getTime() + (1000 * 60 * 60 * 24);
+                            dateday = new Date(dateday).getTime() + 1000 * 60 * 60 * 24;
                             var newdate = new Date(dateday);
                             obj.date = newdate;
                             obj.disable = true;
@@ -340,7 +339,7 @@ let FormPage = class FormPage {
                         console.log(opt);
                         for (let i = 1; i < value.days; i++) {
                             var obj = {};
-                            dateday = new Date(dateday).getTime() + (1000 * 60 * 60 * 24);
+                            dateday = new Date(dateday).getTime() + 1000 * 60 * 60 * 24;
                             var newdate = new Date(dateday);
                             obj.date = newdate;
                             obj.disable = true;
@@ -358,7 +357,7 @@ let FormPage = class FormPage {
                         console.log(opt);
                         for (let i = 1; i < value.days; i++) {
                             var obj = {};
-                            dateday = new Date(dateday).getTime() + (1000 * 60 * 60 * 24);
+                            dateday = new Date(dateday).getTime() + 1000 * 60 * 60 * 24;
                             var newdate = new Date(dateday);
                             obj.date = newdate;
                             obj.disable = true;
@@ -382,8 +381,7 @@ let FormPage = class FormPage {
             this.cal = true;
         }
     }
-    ChangeDDTarikh() {
-    }
+    ChangeDDTarikh() { }
     pilihcal() {
         console.log(this.date);
         if (this.cal == true) {
@@ -401,7 +399,18 @@ let FormPage = class FormPage {
             var diff = Math.abs(todate.getTime() - fromdate.getTime());
             this.days = Math.ceil(diff / (1000 * 3600 * 24)) + 1;
         }
-        this.dispTarikh = fromdate.getDate() + '/' + fromdate.getMonth() + '/' + fromdate.getFullYear() + ' - ' + todate.getDate() + '/' + todate.getMonth() + '/' + todate.getFullYear();
+        this.dispTarikh =
+            fromdate.getDate() +
+                '/' +
+                fromdate.getMonth() +
+                '/' +
+                fromdate.getFullYear() +
+                ' - ' +
+                todate.getDate() +
+                '/' +
+                todate.getMonth() +
+                '/' +
+                todate.getFullYear();
     }
     hantar() {
         return (0,tslib__WEBPACK_IMPORTED_MODULE_8__.__awaiter)(this, void 0, void 0, function* () {
@@ -470,12 +479,12 @@ FormPage.ctorParameters = () => [
     { type: _angular_common__WEBPACK_IMPORTED_MODULE_10__.Location },
     { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_11__.ModalController },
     { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_11__.LoadingController },
-    { type: _shared_services_lokasi_lokasi_service__WEBPACK_IMPORTED_MODULE_3__.LokasiService },
+    { type: _shared_services_lokasi_lokasi_service__WEBPACK_IMPORTED_MODULE_7__.LokasiService },
     { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_11__.AlertController },
-    { type: _shared_services_dewan_dewan_service__WEBPACK_IMPORTED_MODULE_4__.DewanService },
+    { type: _shared_services_dewan_dewan_service__WEBPACK_IMPORTED_MODULE_6__.DewanService },
     { type: src_app_shared_services_fasiliti_fasiliti_service__WEBPACK_IMPORTED_MODULE_5__.FasilitiService },
-    { type: src_app_shared_services_booking_booking_service__WEBPACK_IMPORTED_MODULE_6__.BookingService },
-    { type: _awesome_cordova_plugins_native_storage_ngx__WEBPACK_IMPORTED_MODULE_7__.NativeStorage }
+    { type: src_app_shared_services_booking_booking_service__WEBPACK_IMPORTED_MODULE_4__.BookingService },
+    { type: _awesome_cordova_plugins_native_storage_ngx__WEBPACK_IMPORTED_MODULE_2__.NativeStorage }
 ];
 FormPage = (0,tslib__WEBPACK_IMPORTED_MODULE_8__.__decorate)([
     (0,_angular_core__WEBPACK_IMPORTED_MODULE_12__.Component)({

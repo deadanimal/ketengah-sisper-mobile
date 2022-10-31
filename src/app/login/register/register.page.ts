@@ -51,13 +51,19 @@ export class RegisterPage implements OnInit {
       async (res) => {
         console.log(res);
         await loading.dismiss(); 
+        const alert = await this.alertController.create({
+          header: 'Daftar Berjaya',
+          message: 'Anda telah berjaya mendaftar akaun e-SISPER. Sila login sekarang.',
+          buttons: ['OK'],
+        });        
+        await alert.present();
         this.router.navigate(['/login']); 
       },
       async (res) => {
         console.log(res);
         await loading.dismiss();
         const alert = await this.alertController.create({
-          header: 'Register failed',
+          header: 'Daftar tidak berjaya',
           message: res.message,
           buttons: ['OK'],
         });

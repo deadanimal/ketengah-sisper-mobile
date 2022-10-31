@@ -29,7 +29,7 @@
         </div>
         <div class="boxwhite" style="border-bottom: 0.7px solid #E8E8E8">
           Nombor Kad Pengenalan <br>
-          <ion-input type="tel" maxlength="12" class="input" placeholder="000000000000" clearInput formControlName="no_ic" (keypress)="numericOnly($event)"></ion-input>
+          <ion-input type="tel" maxlength="12" class="input" placeholder="Letakkan nombor IC sahaja tanpa -" clearInput formControlName="no_ic" (keypress)="numericOnly($event)"></ion-input>
         </div>
         <div *ngIf="!registerForm.controls.no_ic.valid && registerForm.controls.no_ic.dirty" class="validator">
           No Kad Pengenalan Yang Sah Diperlukan.
