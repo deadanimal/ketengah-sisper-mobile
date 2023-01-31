@@ -1,4 +1,4 @@
-(self["webpackChunkkkr_pothole"] = self["webpackChunkkkr_pothole"] || []).push([["src_app_admin_penghargaan_penghargaan_module_ts"],{
+(self["webpackChunkSisper"] = self["webpackChunkSisper"] || []).push([["src_app_admin_penghargaan_penghargaan_module_ts"],{
 
 /***/ 3249:
 /*!*****************************************************************!*\
@@ -111,7 +111,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! tslib */ 64762);
 /* harmony import */ var _raw_loader_penghargaan_page_html__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !raw-loader!./penghargaan.page.html */ 86623);
-/* harmony import */ var _penghargaan_page_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./penghargaan.page.scss */ 26579);
+/* harmony import */ var _penghargaan_page_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./penghargaan.page.scss */ 82021);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/core */ 37716);
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/common */ 38583);
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @ionic/angular */ 80476);
@@ -247,7 +247,7 @@ PenghargaanPage = (0,tslib__WEBPACK_IMPORTED_MODULE_6__.__decorate)([
 
 /***/ }),
 
-/***/ 26579:
+/***/ 82021:
 /*!*********************************************************!*\
   !*** ./src/app/admin/penghargaan/penghargaan.page.scss ***!
   \*********************************************************/

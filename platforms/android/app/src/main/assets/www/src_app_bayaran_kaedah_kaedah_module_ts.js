@@ -111,7 +111,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! tslib */ 64762);
 /* harmony import */ var _raw_loader_kaedah_page_html__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !raw-loader!./kaedah.page.html */ 79603);
-/* harmony import */ var _kaedah_page_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./kaedah.page.scss */ 18332);
+/* harmony import */ var _kaedah_page_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./kaedah.page.scss */ 36355);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/core */ 37716);
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common */ 38583);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/router */ 39895);
@@ -231,7 +231,7 @@ KaedahPage = (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__decorate)([
 
 /***/ }),
 
-/***/ 18332:
+/***/ 36355:
 /*!*************************************************!*\
   !*** ./src/app/bayaran/kaedah/kaedah.page.scss ***!
   \*************************************************/

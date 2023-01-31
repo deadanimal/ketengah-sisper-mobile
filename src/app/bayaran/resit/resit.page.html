@@ -3,55 +3,66 @@
     <div class="container2">
       <div class="header">
         <ion-icon name="chevron-back-outline" style="float: left;" (click)="back()"></ion-icon>
-        <span class="headertxt" style="width:70%;margin: auto;display: inline-block;">{{ 'bayaran.resit' | translate }}</span>
+        <span class="headertxt" style="width:70%;margin: auto;display: inline-block;">{{ 'bayaran.resit' | translate
+          }}</span>
       </div>
     </div>
   </div>
-  <div class="main2">
-    <div class="container3">
-      <div class="headresit">
-        <span>Thank You,</span><br>
-        <span>Here's your receipt.</span>
-      </div>
-      <div *ngFor="let item of data">
-        <div style="height: 20px;"></div>
-        <div class="card" >
-          <div>
-            <button class="button" (click)="cetak(item.id);">{{'bayaran.cetak' | translate}}</button>
-          </div>
-          <div style="height: 20px;"></div>
-          <div id="pdf{{item.id}}">
-            <table style="width: 100%;">
-              <colgroup>
-                <col style="width: 35%;">
-                <col style="width: 65%;">
-              </colgroup>
-              <tr>
-                <td>Tarikh Resit</td>
-                <td>{{item.tarikh_resit}}</td>
-              </tr>
-              <tr>
-                <td>No Resit</td>
-                <td>{{item.no_resit}}</td>
-              </tr>
-              <tr *ngIf="src == 1">
-                <td>No Akaun</td>
-                <td>{{item.noakaun}}</td>
-              </tr>
-              <tr *ngIf="src == 1">
-                <td>No IC Pemilik</td>
-                <td>{{item.no_ic_pemilik}}</td>
-              </tr>
-              <tr *ngIf="src == 2">
-                <td>Kod Bayaran</td>
-                <td>{{item.kodbayaran}}</td>
-              </tr>
-            </table>
-          </div>
-        </div>
-        <div style="height: 20px;"></div>
-      </div>
-    </div>
+
+  <div class="headresit">
+    <span>Thank You,</span><br>
+    <span>Here's your receipt.</span>
   </div>
+
+
+  <ng-container *ngIf="reciept">
+    <ion-grid fixed>
+
+      <ion-row>
+        <ion-col size="6"><span>Status</span></ion-col>
+        <ion-col size="6"> <span>{{reciept.message}}</span> </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="6"> <span>Transaction ID</span></ion-col>
+        <ion-col size="6"><span>{{reciept.transaction_id}}</span></ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="6"><span>Reference ID:</span></ion-col>
+        <ion-col size="6"><span>{{reciept.reference_id}}</span></ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="6"><span>Amount</span></ion-col>
+        <ion-col size="6"><span style="color: red;">{{reciept.amount}}</span></ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="6"><span>Timestamp:</span></ion-col>
+        <ion-col size="6"><span>{{reciept.transaction_timestamp}}</span></ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="6"><span>Buyer Bank Name:</span></ion-col>
+        <ion-col size="6"><span>{{reciept.buyer_bank_name}}</span></ion-col>
+      </ion-row>
+
+
+    </ion-grid>
+
+  </ng-container>
+
+  <ng-container *ngIf="paymentService.reciept.value !== {}">
+
+    <p>{{paymentService.reciept.value |json}}</p>
+
+  </ng-container>
+
+  <h1>Doneeeeeee</h1>
+
+
+
+
+
+
+
 
 </ion-content>

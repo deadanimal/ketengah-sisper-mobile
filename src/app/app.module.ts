@@ -16,6 +16,7 @@ import { CalendarModule } from 'ion2-calendar';
 import { DatePipe } from '@angular/common';
 import { Keyboard } from '@awesome-cordova-plugins/keyboard/ngx';
 import { PDFGenerator } from '@ionic-native/pdf-generator/ngx';
+import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -24,25 +25,25 @@ export function createTranslateLoader(http: HttpClient) {
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule,CommonModule, IonicModule.forRoot(
+  imports: [BrowserModule, CommonModule, IonicModule.forRoot(
     {
       scrollAssist: false,
       scrollPadding: true
     }), AppRoutingModule,
-    HttpClientModule, 
-    TranslateModule.forRoot({ 
-      loader: {  
-        provide: TranslateLoader, 
-        useFactory: (createTranslateLoader),  
-        deps: [HttpClient] 
-      } 
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (createTranslateLoader),
+        deps: [HttpClient]
+      }
     }),
     CalendarModule.forRoot({
       doneLabel: 'Save',
       closeIcon: true
     })
   ],
-  providers: [PDFGenerator,NativeStorage,{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },DatePipe,Keyboard],
+  providers: [PDFGenerator, NativeStorage, { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, DatePipe, Keyboard, InAppBrowser],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

@@ -1,4 +1,4 @@
-(self["webpackChunkkkr_pothole"] = self["webpackChunkkkr_pothole"] || []).push([["src_app_shared_modals_adminmenu_adminmenu_module_ts"],{
+(self["webpackChunkSisper"] = self["webpackChunkSisper"] || []).push([["src_app_shared_modals_adminmenu_adminmenu_module_ts"],{
 
 /***/ 88698:
 /*!*************************************************************!*\

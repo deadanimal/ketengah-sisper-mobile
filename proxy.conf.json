@@ -1,0 +1,7 @@
+{
+  "/api": {
+    "target": "https://ketengah-api.prototype.com.my/fpx/initiate/payment/app",
+    "secure": false,
+    "changeOrigin": true
+  }
+}

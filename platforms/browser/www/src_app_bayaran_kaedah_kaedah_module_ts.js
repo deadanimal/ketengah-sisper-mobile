@@ -1,4 +1,4 @@
-(self["webpackChunkkkr_pothole"] = self["webpackChunkkkr_pothole"] || []).push([["src_app_bayaran_kaedah_kaedah_module_ts"],{
+(self["webpackChunkSisper"] = self["webpackChunkSisper"] || []).push([["src_app_bayaran_kaedah_kaedah_module_ts"],{
 
 /***/ 91723:
 /*!*********************************************************!*\
@@ -90,7 +90,8 @@ KaedahPageModule = (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__decorate)([
                 }
             })
         ],
-        declarations: [_kaedah_page__WEBPACK_IMPORTED_MODULE_1__.KaedahPage]
+        declarations: [_kaedah_page__WEBPACK_IMPORTED_MODULE_1__.KaedahPage],
+        providers: [_angular_forms__WEBPACK_IMPORTED_MODULE_6__.FormBuilder]
     })
 ], KaedahPageModule);
 
@@ -109,15 +110,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "KaedahPage": () => (/* binding */ KaedahPage)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! tslib */ 64762);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! tslib */ 64762);
 /* harmony import */ var _raw_loader_kaedah_page_html__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !raw-loader!./kaedah.page.html */ 79603);
-/* harmony import */ var _kaedah_page_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./kaedah.page.scss */ 18332);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/core */ 37716);
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common */ 38583);
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/router */ 39895);
+/* harmony import */ var _kaedah_page_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./kaedah.page.scss */ 36355);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/core */ 37716);
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/common */ 38583);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/router */ 39895);
 /* harmony import */ var src_app_shared_services_bayaran_bayaran_bayaran_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/shared/services/bayaran/bayaran/bayaran.service */ 76290);
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @ionic/angular */ 80476);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @ionic/angular */ 80476);
 /* harmony import */ var _awesome_cordova_plugins_native_storage_ngx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @awesome-cordova-plugins/native-storage/ngx */ 34113);
+/* harmony import */ var src_app_pay_pay_page__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/pay/pay.page */ 48941);
+
 
 
 
@@ -128,7 +131,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let KaedahPage = class KaedahPage {
-    constructor(location, route, router, bayaranService, loadingController, alertController, nativeStorage) {
+    constructor(location, route, router, bayaranService, loadingController, alertController, nativeStorage, modalController) {
         this.location = location;
         this.route = route;
         this.router = router;
@@ -136,7 +139,8 @@ let KaedahPage = class KaedahPage {
         this.loadingController = loadingController;
         this.alertController = alertController;
         this.nativeStorage = nativeStorage;
-        this.route.queryParams.subscribe((params) => (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__awaiter)(this, void 0, void 0, function* () {
+        this.modalController = modalController;
+        this.route.queryParams.subscribe((params) => (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__awaiter)(this, void 0, void 0, function* () {
             if (this.router.getCurrentNavigation().extras.state) {
                 this.jumlah = this.router.getCurrentNavigation().extras.state.data.jumlah;
                 this.jumcount = this.router.getCurrentNavigation().extras.state.data.jumcount;
@@ -159,7 +163,7 @@ let KaedahPage = class KaedahPage {
         this.location.back();
     }
     bayar() {
-        return (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__awaiter)(this, void 0, void 0, function* () {
+        return (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__awaiter)(this, void 0, void 0, function* () {
             const loading = yield this.loadingController.create();
             yield loading.present();
             const formData = new FormData();
@@ -187,7 +191,7 @@ let KaedahPage = class KaedahPage {
                 // formData.append('jenis_transaksi', '2');
                 // formData.append('card_detail', '1');
             }
-            yield this.bayaranService.add(formData).subscribe((res) => (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__awaiter)(this, void 0, void 0, function* () {
+            yield this.bayaranService.add(formData).subscribe((res) => (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__awaiter)(this, void 0, void 0, function* () {
                 console.log(res);
                 yield loading.dismiss();
                 let navigationExtras = {
@@ -196,8 +200,10 @@ let KaedahPage = class KaedahPage {
                         src: this.src
                     }
                 };
-                this.router.navigate(['main/tabs/bayaran/resit'], navigationExtras);
-            }), (res) => (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__awaiter)(this, void 0, void 0, function* () {
+                // this.router.navigateByUrl('pay')
+                this.presentModal();
+                // this.router.navigate(['main/tabs/bayaran/resit'], navigationExtras);
+            }), (res) => (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__awaiter)(this, void 0, void 0, function* () {
                 console.log(res);
                 yield loading.dismiss();
                 const alert = yield this.alertController.create({
@@ -209,18 +215,28 @@ let KaedahPage = class KaedahPage {
             }));
         });
     }
+    presentModal() {
+        return (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__awaiter)(this, void 0, void 0, function* () {
+            const modal = yield this.modalController.create({
+                component: src_app_pay_pay_page__WEBPACK_IMPORTED_MODULE_4__.PayPage,
+                componentProps: { value: 123 }
+            });
+            yield modal.present();
+        });
+    }
 };
 KaedahPage.ctorParameters = () => [
-    { type: _angular_common__WEBPACK_IMPORTED_MODULE_5__.Location },
-    { type: _angular_router__WEBPACK_IMPORTED_MODULE_6__.ActivatedRoute },
-    { type: _angular_router__WEBPACK_IMPORTED_MODULE_6__.Router },
+    { type: _angular_common__WEBPACK_IMPORTED_MODULE_6__.Location },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_7__.ActivatedRoute },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_7__.Router },
     { type: src_app_shared_services_bayaran_bayaran_bayaran_service__WEBPACK_IMPORTED_MODULE_2__.BayaranService },
-    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_7__.LoadingController },
-    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_7__.AlertController },
-    { type: _awesome_cordova_plugins_native_storage_ngx__WEBPACK_IMPORTED_MODULE_3__.NativeStorage }
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_8__.LoadingController },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_8__.AlertController },
+    { type: _awesome_cordova_plugins_native_storage_ngx__WEBPACK_IMPORTED_MODULE_3__.NativeStorage },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_8__.ModalController }
 ];
-KaedahPage = (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__decorate)([
-    (0,_angular_core__WEBPACK_IMPORTED_MODULE_8__.Component)({
+KaedahPage = (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_9__.Component)({
         selector: 'app-kaedah',
         template: _raw_loader_kaedah_page_html__WEBPACK_IMPORTED_MODULE_0__.default,
         styles: [_kaedah_page_scss__WEBPACK_IMPORTED_MODULE_1__.default]
@@ -231,7 +247,7 @@ KaedahPage = (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__decorate)([
 
 /***/ }),
 
-/***/ 18332:
+/***/ 36355:
 /*!*************************************************!*\
   !*** ./src/app/bayaran/kaedah/kaedah.page.scss ***!
   \*************************************************/

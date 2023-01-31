@@ -1,4 +1,4 @@
-(self["webpackChunkkkr_pothole"] = self["webpackChunkkkr_pothole"] || []).push([["src_app_admin_pengumuman_pengumuman_module_ts"],{
+(self["webpackChunkSisper"] = self["webpackChunkSisper"] || []).push([["src_app_admin_pengumuman_pengumuman_module_ts"],{
 
 /***/ 49835:
 /*!***************************************************************!*\
@@ -111,7 +111,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! tslib */ 64762);
 /* harmony import */ var _raw_loader_pengumuman_page_html__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !raw-loader!./pengumuman.page.html */ 12477);
-/* harmony import */ var _pengumuman_page_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./pengumuman.page.scss */ 3559);
+/* harmony import */ var _pengumuman_page_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./pengumuman.page.scss */ 25458);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/core */ 37716);
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/common */ 38583);
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @ionic/angular */ 80476);
@@ -238,7 +238,7 @@ PengumumanPage = (0,tslib__WEBPACK_IMPORTED_MODULE_6__.__decorate)([
 
 /***/ }),
 
-/***/ 3559:
+/***/ 25458:
 /*!*******************************************************!*\
   !*** ./src/app/admin/pengumuman/pengumuman.page.scss ***!
   \*******************************************************/

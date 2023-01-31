@@ -1,4 +1,4 @@
-(self["webpackChunkkkr_pothole"] = self["webpackChunkkkr_pothole"] || []).push([["default-src_app_admin_aduan_aduanview_aduanview_module_ts"],{
+(self["webpackChunkSisper"] = self["webpackChunkSisper"] || []).push([["default-src_app_admin_aduan_aduanview_aduanview_module_ts"],{
 
 /***/ 77272:
 /*!*******************************************************************!*\
@@ -111,7 +111,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! tslib */ 64762);
 /* harmony import */ var _raw_loader_aduanview_page_html__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !raw-loader!./aduanview.page.html */ 3543);
-/* harmony import */ var _aduanview_page_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./aduanview.page.scss */ 12172);
+/* harmony import */ var _aduanview_page_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./aduanview.page.scss */ 42038);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/core */ 37716);
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common */ 38583);
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic/angular */ 80476);
@@ -232,7 +232,7 @@ AduanviewPage = (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__decorate)([
 
 /***/ }),
 
-/***/ 12172:
+/***/ 42038:
 /*!***********************************************************!*\
   !*** ./src/app/admin/aduan/aduanview/aduanview.page.scss ***!
   \***********************************************************/

@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Location } from "@angular/common";
 import { ActivatedRoute, Router, NavigationExtras } from '@angular/router';
 import { BayaranService } from 'src/app/shared/services/bayaran/bayaran/bayaran.service';
-import { AlertController, LoadingController } from '@ionic/angular';
+import { AlertController, LoadingController, ModalController } from '@ionic/angular';
 import { NativeStorage } from '@awesome-cordova-plugins/native-storage/ngx';
+import { PayPage } from 'src/app/pay/pay.page';
 
 @Component({
   selector: 'app-kaedah',
@@ -27,7 +28,8 @@ export class KaedahPage implements OnInit {
     private bayaranService: BayaranService,
     private loadingController: LoadingController,
     private alertController: AlertController,
-    private nativeStorage: NativeStorage
+    private nativeStorage: NativeStorage,
+    private modalController: ModalController
   ) {
     this.route.queryParams.subscribe(async params => {
       if (this.router.getCurrentNavigation().extras.state) {
@@ -45,7 +47,7 @@ export class KaedahPage implements OnInit {
           error => console.error(error)
         );
         await loading.dismiss();
-        console.log('akaun',this.akaun);
+        console.log('akaun', this.akaun);
       }
     });
   }
@@ -54,27 +56,27 @@ export class KaedahPage implements OnInit {
     this.kad = '4444';
   }
 
-  back(){
+  back() {
     this.location.back();
   }
 
-  async bayar(){
+  async bayar() {
     const loading = await this.loadingController.create();
     await loading.present();
 
     const formData = new FormData();
-   
+
     formData.append('userid', this.user.user_id);
     formData.append('src', this.src);
-    if(this.src == 1){
+    if (this.src == 1) {
       formData.append('akaun', JSON.stringify(this.akaun));
       formData.append('jenis_transaksi', '1');
       formData.append('card_detail', '1');
-    }else if(this.src == 2){
+    } else if (this.src == 2) {
       formData.append('akaun', JSON.stringify(this.akaun));
       formData.append('jenis_transaksi', '1');
       formData.append('card_detail', '1');
-    }else{
+    } else {
       // formData.append('bil_premis_id', this.user.user_id);
       // formData.append('bil_rumah_id', this.user.user_id);
       // formData.append('booking_id', this.user.user_id);
@@ -86,7 +88,7 @@ export class KaedahPage implements OnInit {
       // formData.append('jenis_transaksi', '2');
       // formData.append('card_detail', '1');
     }
-    
+
     await this.bayaranService.add(formData).subscribe(
       async (res) => {
         console.log(res);
@@ -97,7 +99,10 @@ export class KaedahPage implements OnInit {
             src: this.src
           }
         };
-        this.router.navigate(['main/tabs/bayaran/resit'], navigationExtras);
+        // this.router.navigateByUrl('pay')
+        this.presentModal()
+
+        // this.router.navigate(['main/tabs/bayaran/resit'], navigationExtras);
       },
       async (res) => {
         console.log(res);
@@ -112,4 +117,15 @@ export class KaedahPage implements OnInit {
       }
     );
   }
+
+  async presentModal() {
+    const modal = await this.modalController.create({
+      component: PayPage,
+      componentProps: { value: 123 }
+    });
+
+    await modal.present();
+
+  }
+
 }

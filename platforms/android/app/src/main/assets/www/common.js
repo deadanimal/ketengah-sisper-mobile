@@ -551,7 +551,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! tslib */ 64762);
 /* harmony import */ var _raw_loader_aduanlist_page_html__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !raw-loader!./aduanlist.page.html */ 13656);
-/* harmony import */ var _aduanlist_page_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./aduanlist.page.scss */ 78322);
+/* harmony import */ var _aduanlist_page_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./aduanlist.page.scss */ 10833);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/core */ 37716);
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common */ 38583);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ 39895);
@@ -638,7 +638,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! tslib */ 64762);
 /* harmony import */ var _raw_loader_calendar_page_html__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !raw-loader!./calendar.page.html */ 690);
-/* harmony import */ var _calendar_page_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./calendar.page.scss */ 8462);
+/* harmony import */ var _calendar_page_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./calendar.page.scss */ 51660);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/core */ 37716);
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic/angular */ 80476);
 
@@ -692,7 +692,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! tslib */ 64762);
 /* harmony import */ var _raw_loader_lejard_page_html__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !raw-loader!./lejard.page.html */ 6650);
-/* harmony import */ var _lejard_page_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./lejard.page.scss */ 81637);
+/* harmony import */ var _lejard_page_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./lejard.page.scss */ 12163);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/core */ 37716);
 /* harmony import */ var _ionic_native_pdf_generator_ngx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic-native/pdf-generator/ngx */ 37961);
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ 80476);
@@ -846,7 +846,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! tslib */ 64762);
 /* harmony import */ var _raw_loader_viewnotis_page_html__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !raw-loader!./viewnotis.page.html */ 68345);
-/* harmony import */ var _viewnotis_page_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./viewnotis.page.scss */ 17116);
+/* harmony import */ var _viewnotis_page_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./viewnotis.page.scss */ 82125);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/core */ 37716);
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic/angular */ 80476);
 
@@ -1190,7 +1190,7 @@ UserService = (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__decorate)([
 
 /***/ }),
 
-/***/ 78322:
+/***/ 10833:
 /*!***********************************************************!*\
   !*** ./src/app/admin/aduan/aduanlist/aduanlist.page.scss ***!
   \***********************************************************/
@@ -1205,7 +1205,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ 8462:
+/***/ 51660:
 /*!***********************************************************!*\
   !*** ./src/app/shared/modals/calendar/calendar.page.scss ***!
   \***********************************************************/
@@ -1220,7 +1220,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ 81637:
+/***/ 12163:
 /*!*******************************************************!*\
   !*** ./src/app/shared/modals/lejard/lejard.page.scss ***!
   \*******************************************************/
@@ -1235,7 +1235,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ 17116:
+/***/ 82125:
 /*!*************************************************************!*\
   !*** ./src/app/shared/modals/viewnotis/viewnotis.page.scss ***!
   \*************************************************************/

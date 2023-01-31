@@ -12,7 +12,7 @@ import { AlertController, LoadingController } from '@ionic/angular';
 export class RegisterPage implements OnInit {
   registerForm: FormGroup;
   showPass = true;
-
+  no_ic: any;
   constructor(
     private router: Router,
     private fb: FormBuilder,
@@ -23,15 +23,15 @@ export class RegisterPage implements OnInit {
 
   ngOnInit() {
     this.registerForm = this.fb.group({
-      name: ['',[Validators.required]],
-      no_telefon: ['',[Validators.required, Validators.minLength(9),Validators.maxLength(9)]],
-      no_ic: ['',[Validators.required, Validators.minLength(12),Validators.maxLength(12)]],
-      alamat: ['',[Validators.required]],
-      poskod: ['',[Validators.required]],
-      bandar: ['',[Validators.required]],
-      negeri: ['',[Validators.required]],
-      email: ['',[Validators.required, Validators.email]],
-      password: ['',[Validators.required]]
+      name: ['', [Validators.required]],
+      no_telefon: ['', [Validators.required, Validators.minLength(9), Validators.maxLength(9)]],
+      no_ic: ['', [Validators.required, Validators.minLength(12), Validators.maxLength(12)]],
+      alamat: ['', [Validators.required]],
+      poskod: ['', [Validators.required]],
+      bandar: ['', [Validators.required]],
+      negeri: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required]]
     });
   }
 
@@ -39,25 +39,25 @@ export class RegisterPage implements OnInit {
     this.registerForm.reset()
   }
 
-  back(){
+  back() {
     this.router.navigate(['/login']);
   }
 
-  async daftar(){
+  async daftar() {
     const loading = await this.loadingController.create();
     await loading.present();
 
     this.authService.register(this.registerForm.value).subscribe(
       async (res) => {
         console.log(res);
-        await loading.dismiss(); 
+        await loading.dismiss();
         const alert = await this.alertController.create({
           header: 'Daftar Berjaya',
           message: 'Anda telah berjaya mendaftar akaun e-SISPER. Sila login sekarang.',
           buttons: ['OK'],
-        });        
+        });
         await alert.present();
-        this.router.navigate(['/login']); 
+        this.router.navigate(['/login']);
       },
       async (res) => {
         console.log(res);
@@ -67,19 +67,22 @@ export class RegisterPage implements OnInit {
           message: res.message,
           buttons: ['OK'],
         });
- 
+
         await alert.present();
       }
     );
   }
 
-  login(){
+  login() {
     this.router.navigate(['/login']);
   }
 
   numericOnly(event): boolean {
     let pattern = /^([0-9])$/;
     let result = pattern.test(event.key);
+    if (event.target.value.length === 6) {
+      this.no_ic += '-'
+    }
     return result;
   }
 

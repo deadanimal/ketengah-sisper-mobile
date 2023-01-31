@@ -213,7 +213,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! tslib */ 64762);
 /* harmony import */ var _raw_loader_alatan_page_html__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !raw-loader!./alatan.page.html */ 43615);
-/* harmony import */ var _alatan_page_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./alatan.page.scss */ 7441);
+/* harmony import */ var _alatan_page_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./alatan.page.scss */ 47212);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/core */ 37716);
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/common */ 38583);
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @ionic/angular */ 80476);
@@ -419,7 +419,7 @@ AlatanPage = (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__decorate)([
 
 /***/ }),
 
-/***/ 7441:
+/***/ 47212:
 /*!*********************************************************!*\
   !*** ./src/app/tempahkemudahan/alatan/alatan.page.scss ***!
   \*********************************************************/

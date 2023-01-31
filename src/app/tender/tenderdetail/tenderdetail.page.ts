@@ -13,18 +13,21 @@ import { Router, NavigationExtras } from '@angular/router';
 })
 export class TenderdetailPage implements OnInit {
 
-  tenderform:FormGroup;
-  ddUrusan:any;
-  user:any;
+  tenderform: FormGroup;
+  ddUrusan: any;
+  user: any;
+  namea: any;
+  something: any;
 
-  TenderList:any;
-  selected:any;
-  urusan:any;
-  harga:any;
-  catatan:any;
-  jumlah:any;
-  selectedValue:any;
-  jumcount:any;
+  TenderList: any;
+  selected: any;
+  urusan: any;
+  harga: any;
+  catatan: any;
+  jumlah: any;
+  selectedValue: any;
+  jumcount: any;
+  name: string;
 
   constructor(
     private location: Location,
@@ -61,14 +64,16 @@ export class TenderdetailPage implements OnInit {
     await loading.dismiss();
   }
 
-  async ionViewWillEnter () {
+  // localStorage.get("done")
+
+  async ionViewWillEnter() {
 
     const loading = await this.loadingController.create();
     await loading.present();
     this.jumlah = 0;
     this.jumcount = 0;
     this.tenderform = this.fb.group({
-      sh_id:[],
+      sh_id: [],
       kod_urusan: ['', [Validators.required]],
       jumlah_bayar: ['', [Validators.required]],
       catatan: ['', [Validators.required]]
@@ -76,7 +81,7 @@ export class TenderdetailPage implements OnInit {
 
     await this.shtenderdtlService.get(this.user.tender).subscribe(
       async (res) => {
-        
+
         this.TenderList = res;
         console.log(this.TenderList);
         await loading.dismiss();
@@ -89,23 +94,23 @@ export class TenderdetailPage implements OnInit {
           message: res.message,
           buttons: ['OK'],
         });
- 
+
         await alert.present();
       }
     );
   }
 
-  back(){
+  back() {
     this.location.back();
   }
 
-  async hantar(){
+  async hantar() {
     const loading = await this.loadingController.create();
     await loading.present();
 
-    if(this.tenderform.value.kod_urusan == ''){
+    if (this.tenderform.value.kod_urusan == '') {
       this.alerterror('Urusan diperlukan');
-    }else{ 
+    } else {
       console.log(this.user.tender);
       this.tenderform.patchValue({
         sh_id: this.user.tender
@@ -130,14 +135,14 @@ export class TenderdetailPage implements OnInit {
             message: res.message,
             buttons: ['OK'],
           });
-  
+
           await alert.present();
         }
       );
     }
   }
 
-  check(data){
+  check(data) {
     // // this.selected = data;
     // this.jumlah = data.harga;
     // if(data.check == true){
@@ -150,32 +155,32 @@ export class TenderdetailPage implements OnInit {
     // console.log(this.jumlah);
   }
 
-  bayar(){
+  bayar() {
     var arr = [];
     var akaun = {};
 
     this.TenderList;
     this.TenderList.forEach(element => {
-      if(element.check == true){
+      if (element.check == true) {
         akaun = {
-          "id":'',
-          "amaun":element.harga,
-          "kodbayaran":element.urusan,
+          "id": '',
+          "amaun": element.harga,
+          "kodbayaran": element.urusan,
         }
         arr.push(akaun);
         this.jumlah = this.jumlah + parseInt(element.harga);
-        this.jumcount ++;
+        this.jumcount++;
       }
     });
-    
-    var data = 
-      {
-        "src": 2,
-        "jumlah": this.jumlah,
-        "jumcount":this.jumcount,
-        "akaun":arr
-      };
-      console.log(this.jumlah);
+
+    var data =
+    {
+      "src": 2,
+      "jumlah": this.jumlah,
+      "jumcount": this.jumcount,
+      "akaun": arr
+    };
+    console.log(this.jumlah);
     let navigationExtras: NavigationExtras = {
       state: {
         data: data
@@ -185,32 +190,32 @@ export class TenderdetailPage implements OnInit {
     this.router.navigate(['main/tabs/bayaran'], navigationExtras);
   }
 
-  edit(item){
+  edit(item) {
 
-    var element = document.getElementById('editform'+item.id).style.display;
-    
+    var element = document.getElementById('editform' + item.id).style.display;
+
     var formelem = document.getElementsByName('editformname');
     formelem.forEach(element => {
-      if(element.style.display == 'block'){
-        element .style.display = 'none';
+      if (element.style.display == 'block') {
+        element.style.display = 'none';
       }
     });
 
-    if(element == 'none'){
-      console.log('none',element);
-      document.getElementById('editform'+item.id).style.display = 'block';
-    }else{
-      document.getElementById('editform'+item.id).style.display = 'none';
+    if (element == 'none') {
+      console.log('none', element);
+      document.getElementById('editform' + item.id).style.display = 'block';
+    } else {
+      document.getElementById('editform' + item.id).style.display = 'none';
       console.log(element);
     }
-   
+
     this.urusan = item.urusan;
     this.harga = item.harga;
     this.catatan = item.catatan;
 
   }
 
-  async deleteone(id){
+  async deleteone(id) {
     console.log(id);
     const loading = await this.loadingController.create();
     await loading.present();
@@ -218,9 +223,9 @@ export class TenderdetailPage implements OnInit {
     await this.shtenderdtlService.delete(id).subscribe(
       async (res) => {
         console.log(res);
-        this.TenderList.forEach(function(item, index, object) {
-          if(item.id == id){
-            object.splice(index,1);
+        this.TenderList.forEach(function (item, index, object) {
+          if (item.id == id) {
+            object.splice(index, 1);
           }
         })
         console.log(this.TenderList);
@@ -234,13 +239,13 @@ export class TenderdetailPage implements OnInit {
           message: res.message,
           buttons: ['OK'],
         });
- 
+
         await alert.present();
       }
     );
   }
 
-  async update(id){
+  async update(id) {
 
     console.log(id)
     const loading = await this.loadingController.create();
@@ -259,14 +264,14 @@ export class TenderdetailPage implements OnInit {
     await this.shtenderdtlService.update(data[0], id).subscribe(
       async (res) => {
         console.log(res);
-        this.TenderList.forEach(function(item, index, object) {
-          if(item.id == id){
+        this.TenderList.forEach(function (item, index, object) {
+          if (item.id == id) {
             object[index].urusan = res.urusan;
             object[index].harga = res.harga;
             object[index].catatan = res.catatan;
           }
         })
-        document.getElementById('editform'+id).style.display  = 'none';
+        document.getElementById('editform' + id).style.display = 'none';
         console.log(this.TenderList);
         await loading.dismiss();
       },
@@ -278,13 +283,13 @@ export class TenderdetailPage implements OnInit {
           message: res.message,
           buttons: ['OK'],
         });
- 
+
         await alert.present();
       }
     );
   }
 
-  async alerterror(msg){
+  async alerterror(msg) {
     const alert = await this.alertController.create({
       header: 'Loading failed',
       message: msg,

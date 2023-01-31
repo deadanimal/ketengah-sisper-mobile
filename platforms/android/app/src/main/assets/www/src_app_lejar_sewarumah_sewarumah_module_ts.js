@@ -111,7 +111,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! tslib */ 64762);
 /* harmony import */ var _raw_loader_sewarumah_page_html__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !raw-loader!./sewarumah.page.html */ 83266);
-/* harmony import */ var _sewarumah_page_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./sewarumah.page.scss */ 87991);
+/* harmony import */ var _sewarumah_page_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./sewarumah.page.scss */ 20426);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/core */ 37716);
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/common */ 38583);
 /* harmony import */ var _awesome_cordova_plugins_native_storage_ngx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @awesome-cordova-plugins/native-storage/ngx */ 34113);
@@ -279,7 +279,7 @@ SewarumahPage = (0,tslib__WEBPACK_IMPORTED_MODULE_6__.__decorate)([
 
 /***/ }),
 
-/***/ 87991:
+/***/ 20426:
 /*!*****************************************************!*\
   !*** ./src/app/lejar/sewarumah/sewarumah.page.scss ***!
   \*****************************************************/

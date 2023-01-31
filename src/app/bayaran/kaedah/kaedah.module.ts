@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormBuilder, FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
@@ -8,7 +8,7 @@ import { KaedahPageRoutingModule } from './kaedah-routing.module';
 
 import { KaedahPage } from './kaedah.page';
 
-import {  HttpClient } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 export function createTranslateLoader(http: HttpClient) {
@@ -29,6 +29,7 @@ export function createTranslateLoader(http: HttpClient) {
       }
     })
   ],
-  declarations: [KaedahPage]
+  declarations: [KaedahPage],
+  providers: [FormBuilder]
 })
-export class KaedahPageModule {}
+export class KaedahPageModule { }

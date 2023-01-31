@@ -161,7 +161,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! tslib */ 64762);
 /* harmony import */ var _raw_loader_tender_page_html__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !raw-loader!./tender.page.html */ 42752);
-/* harmony import */ var _tender_page_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./tender.page.scss */ 32124);
+/* harmony import */ var _tender_page_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./tender.page.scss */ 29052);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/core */ 37716);
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/common */ 38583);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/router */ 39895);
@@ -284,7 +284,7 @@ TenderPage = (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__decorate)([
 
 /***/ }),
 
-/***/ 32124:
+/***/ 29052:
 /*!*****************************************!*\
   !*** ./src/app/tender/tender.page.scss ***!
   \*****************************************/

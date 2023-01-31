@@ -112,7 +112,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! tslib */ 64762);
 /* harmony import */ var _raw_loader_penghargaanmain_page_html__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !raw-loader!./penghargaanmain.page.html */ 91504);
-/* harmony import */ var _penghargaanmain_page_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./penghargaanmain.page.scss */ 342);
+/* harmony import */ var _penghargaanmain_page_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./penghargaanmain.page.scss */ 17103);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/core */ 37716);
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common */ 38583);
 /* harmony import */ var _shared_services_penghargaan_penghargaan_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../shared/services/penghargaan/penghargaan.service */ 37189);
@@ -199,7 +199,7 @@ PenghargaanmainPage = (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__decorate)([
 
 /***/ }),
 
-/***/ 342:
+/***/ 17103:
 /*!*****************************************************************!*\
   !*** ./src/app/aduan/penghargaanmain/penghargaanmain.page.scss ***!
   \*****************************************************************/

@@ -94,7 +94,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! tslib */ 64762);
 /* harmony import */ var _raw_loader_firstime_page_html__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !raw-loader!./firstime.page.html */ 75351);
-/* harmony import */ var _firstime_page_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./firstime.page.scss */ 72173);
+/* harmony import */ var _firstime_page_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./firstime.page.scss */ 83200);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/core */ 37716);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ 39895);
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic/angular */ 80476);
@@ -175,7 +175,7 @@ FirstimePage = (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__decorate)([
 
 /***/ }),
 
-/***/ 72173:
+/***/ 83200:
 /*!*********************************************!*\
   !*** ./src/app/firstime/firstime.page.scss ***!
   \*********************************************/

@@ -115,7 +115,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! tslib */ 64762);
 /* harmony import */ var _raw_loader_perumahan_page_html__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !raw-loader!./perumahan.page.html */ 31121);
-/* harmony import */ var _perumahan_page_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./perumahan.page.scss */ 51157);
+/* harmony import */ var _perumahan_page_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./perumahan.page.scss */ 91545);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/core */ 37716);
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ 38583);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ 39895);
@@ -168,7 +168,7 @@ PerumahanPage = (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__decorate)([
 
 /***/ }),
 
-/***/ 51157:
+/***/ 91545:
 /*!*****************************************************!*\
   !*** ./src/app/akaun/perumahan/perumahan.page.scss ***!
   \*****************************************************/

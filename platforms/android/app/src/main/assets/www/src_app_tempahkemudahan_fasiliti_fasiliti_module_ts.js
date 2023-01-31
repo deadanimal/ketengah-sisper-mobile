@@ -257,7 +257,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! tslib */ 64762);
 /* harmony import */ var _raw_loader_fasiliti_page_html__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !raw-loader!./fasiliti.page.html */ 68103);
-/* harmony import */ var _fasiliti_page_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./fasiliti.page.scss */ 86539);
+/* harmony import */ var _fasiliti_page_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./fasiliti.page.scss */ 80973);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/core */ 37716);
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/common */ 38583);
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @ionic/angular */ 80476);
@@ -744,7 +744,7 @@ FasilitiPage = (0,tslib__WEBPACK_IMPORTED_MODULE_6__.__decorate)([
 
 /***/ }),
 
-/***/ 86539:
+/***/ 80973:
 /*!*************************************************************!*\
   !*** ./src/app/tempahkemudahan/fasiliti/fasiliti.page.scss ***!
   \*************************************************************/

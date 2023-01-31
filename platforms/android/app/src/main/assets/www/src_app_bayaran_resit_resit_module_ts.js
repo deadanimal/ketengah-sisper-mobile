@@ -111,7 +111,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! tslib */ 64762);
 /* harmony import */ var _raw_loader_resit_page_html__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !raw-loader!./resit.page.html */ 2547);
-/* harmony import */ var _resit_page_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./resit.page.scss */ 34762);
+/* harmony import */ var _resit_page_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./resit.page.scss */ 25737);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/core */ 37716);
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common */ 38583);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ 39895);
@@ -180,7 +180,7 @@ ResitPage = (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__decorate)([
 
 /***/ }),
 
-/***/ 34762:
+/***/ 25737:
 /*!***********************************************!*\
   !*** ./src/app/bayaran/resit/resit.page.scss ***!
   \***********************************************/

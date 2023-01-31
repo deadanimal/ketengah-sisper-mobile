@@ -1,4 +1,4 @@
-(self["webpackChunkkkr_pothole"] = self["webpackChunkkkr_pothole"] || []).push([["src_app_admin_pengguna_pengguna_module_ts"],{
+(self["webpackChunkSisper"] = self["webpackChunkSisper"] || []).push([["src_app_admin_pengguna_pengguna_module_ts"],{
 
 /***/ 36338:
 /*!***********************************************************!*\
@@ -111,7 +111,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! tslib */ 64762);
 /* harmony import */ var _raw_loader_pengguna_page_html__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !raw-loader!./pengguna.page.html */ 62926);
-/* harmony import */ var _pengguna_page_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./pengguna.page.scss */ 6492);
+/* harmony import */ var _pengguna_page_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./pengguna.page.scss */ 47949);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/core */ 37716);
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common */ 38583);
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic/angular */ 80476);
@@ -260,7 +260,7 @@ PenggunaService = (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__decorate)([
 
 /***/ }),
 
-/***/ 6492:
+/***/ 47949:
 /*!***************************************************!*\
   !*** ./src/app/admin/pengguna/pengguna.page.scss ***!
   \***************************************************/

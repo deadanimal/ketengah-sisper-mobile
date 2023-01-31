@@ -1,4 +1,4 @@
-(self["webpackChunkkkr_pothole"] = self["webpackChunkkkr_pothole"] || []).push([["src_app_tender_tenderdetail_tenderdetail_module_ts"],{
+(self["webpackChunkSisper"] = self["webpackChunkSisper"] || []).push([["src_app_tender_tenderdetail_tenderdetail_module_ts"],{
 
 /***/ 17975:
 /*!********************************************************************!*\
@@ -166,7 +166,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! tslib */ 64762);
 /* harmony import */ var _raw_loader_tenderdetail_page_html__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !raw-loader!./tenderdetail.page.html */ 70778);
-/* harmony import */ var _tenderdetail_page_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./tenderdetail.page.scss */ 20890);
+/* harmony import */ var _tenderdetail_page_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./tenderdetail.page.scss */ 69826);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/core */ 37716);
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/common */ 38583);
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/forms */ 3679);
@@ -214,6 +214,7 @@ let TenderdetailPage = class TenderdetailPage {
             yield loading.dismiss();
         });
     }
+    // localStorage.get("done")
     ionViewWillEnter() {
         return (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__awaiter)(this, void 0, void 0, function* () {
             const loading = yield this.loadingController.create();
@@ -436,7 +437,7 @@ TenderdetailPage = (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__decorate)([
 
 /***/ }),
 
-/***/ 20890:
+/***/ 69826:
 /*!************************************************************!*\
   !*** ./src/app/tender/tenderdetail/tenderdetail.page.scss ***!
   \************************************************************/

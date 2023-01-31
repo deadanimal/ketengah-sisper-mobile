@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from "@angular/common";
-import { AlertController, LoadingController} from '@ionic/angular';
+import { AlertController, LoadingController } from '@ionic/angular';
 import { LokasiService } from '../../shared/services/lokasi/lokasi.service';
 import { FasilitiService } from 'src/app/shared/services/fasiliti/fasiliti.service';
 import { BookingService } from 'src/app/shared/services/booking/booking.service';
@@ -14,34 +14,35 @@ import { timelist } from '../../shared/model/timelist.model';
   styleUrls: ['./fasiliti.page.scss'],
 })
 export class FasilitiPage implements OnInit {
-  
-  ddLokasi : any;
-  Lokasi : any;
-  Fasiliti : any;
-  ddFasiliti : any;
-  Gelanggang : any;
-  cal=false;
-  date:any;
+
+  ddLokasi: any;
+  Lokasi: any;
+  Fasiliti: any;
+  ddFasiliti: any;
+  Gelanggang: any;
+  cal = false;
+  date: any;
   caloption = {
     // pickMode: 'multi',
     title: 'FASILITI',
     daysConfig: []
   };
-  days:any;
-  hour : any;
-  masa : any;
-  amaun : any;
-  TarikhVal:any;
+  days: any;
+  hour: any;
+  masa: any;
+  amaun: any;
+  TarikhVal: any;
   masablock = false;
-  listfutsal:any;
-  listbadminton:any;
-  listbooking:any;
+  listfutsal: any;
+  listbadminton: any;
+  listbooking: any;
   lokasiread = true;
   gelanggangread = true;
   tarikhread = true;
-  ddGelanggang:any;
-  user:any;
+  ddGelanggang: any;
+  user: any;
   timecheck = [];
+  current: any;
 
   constructor(
     private location: Location,
@@ -55,6 +56,11 @@ export class FasilitiPage implements OnInit {
   ) { }
 
   async ngOnInit() {
+    this.TarikhVal = new Date()
+    this.TarikhVal = this.TarikhVal.toISOString().split('T')[0];
+
+    //set current to this date
+
     this.ddFasiliti = [
       {
         id: "1",
@@ -108,7 +114,7 @@ export class FasilitiPage implements OnInit {
                       message: res.message,
                       buttons: ['OK'],
                     });
-             
+
                     await alert.present();
                   }
                 );
@@ -121,7 +127,7 @@ export class FasilitiPage implements OnInit {
                   message: res.message,
                   buttons: ['OK'],
                 });
-         
+
                 await alert.present();
               }
             );
@@ -134,7 +140,7 @@ export class FasilitiPage implements OnInit {
               message: res.message,
               buttons: ['OK'],
             });
-     
+
             await alert.present();
           }
         );
@@ -147,7 +153,7 @@ export class FasilitiPage implements OnInit {
           message: res.message,
           buttons: ['OK'],
         });
- 
+
         await alert.present();
       }
     );
@@ -155,7 +161,7 @@ export class FasilitiPage implements OnInit {
   }
 
   ChangeDDLokasi() {
-    if(this.Lokasi == 1){
+    if (this.Lokasi == 1) {
       this.ddFasiliti = [
         {
           id: "1",
@@ -167,7 +173,7 @@ export class FasilitiPage implements OnInit {
         }
       ];
       this.lokasiread = false;
-    }else{
+    } else {
       this.ddFasiliti = [
         {
           id: "2",
@@ -185,15 +191,15 @@ export class FasilitiPage implements OnInit {
   async ChangeDDFasiliti() {
     this.gelanggangread = false;
     this.tarikhread = false;
-    if(this.Fasiliti == 1){
+    if (this.Fasiliti == 1) {
       this.ddGelanggang = this.listfutsal;
-    }else if(this.Fasiliti == 2){
+    } else if (this.Fasiliti == 2) {
       this.ddGelanggang = [];
       var array = []
       var val = this.Lokasi;
       console.log(val);
       await this.listbadminton.forEach(function (value) {
-        if(value.lokasi == val){
+        if (value.lokasi == val) {
           array.push(value);
         }
       });
@@ -207,17 +213,17 @@ export class FasilitiPage implements OnInit {
     var gelanggang = this.Gelanggang;
     var fasiliti = this.Fasiliti;
     await this.listbooking.forEach(function (value) {
-      if(fasiliti == 1){
-        if(value.ft_court_id == gelanggang){
-          if(value.days > 1){
-            var obj: {[k: string]: any} = {};
+      if (fasiliti == 1) {
+        if (value.ft_court_id == gelanggang) {
+          if (value.days > 1) {
+            var obj: { [k: string]: any } = {};
             obj.date = new Date(value.date_from);
             obj.disable = true;
             opt.push(obj);
             var dateday = obj['date'];
             console.log(opt);
-            for(let i=1; i<value.days; i++){
-              var obj: {[k: string]: any} = {};
+            for (let i = 1; i < value.days; i++) {
+              var obj: { [k: string]: any } = {};
               dateday = new Date(dateday).getTime() + (1000 * 60 * 60 * 24);
               var newdate = new Date(dateday);
               obj.date = newdate;
@@ -226,17 +232,17 @@ export class FasilitiPage implements OnInit {
             }
           }
         }
-      }else if(fasiliti == 2){
-        if(value.bd_court_id == gelanggang){
-          if(value.days > 1){
-            var obj: {[k: string]: any} = {};
+      } else if (fasiliti == 2) {
+        if (value.bd_court_id == gelanggang) {
+          if (value.days > 1) {
+            var obj: { [k: string]: any } = {};
             obj.date = new Date(value.date_from);
             obj.disable = true;
             opt.push(obj);
             var dateday = obj['date'];
             console.log(opt);
-            for(let i=1; i<value.days; i++){
-              var obj: {[k: string]: any} = {};
+            for (let i = 1; i < value.days; i++) {
+              var obj: { [k: string]: any } = {};
               dateday = new Date(dateday).getTime() + (1000 * 60 * 60 * 24);
               var newdate = new Date(dateday);
               obj.date = newdate;
@@ -246,69 +252,69 @@ export class FasilitiPage implements OnInit {
           }
         }
       }
-      
+
     });
 
     this.caloption.daysConfig = opt;
     console.log(this.caloption);
 
-    if(this.cal == true){
-      this.cal =false;
+    if (this.cal == true) {
+      this.cal = false;
     }
   }
 
-  back(){
+  back() {
     this.location.back();
   }
 
-  opencal(){
-    if(this.cal == true){
-      this.cal =false;
-    }else{
-      this.cal =true;
+  opencal() {
+    if (this.cal == true) {
+      this.cal = false;
+    } else {
+      this.cal = true;
     }
   }
 
-  pilihcal(){
+  pilihcal() {
     console.log(this.date);
-    if(this.cal == true){
-      this.cal =false;
-    }else{
-      this.cal =true;
+    if (this.cal == true) {
+      this.cal = false;
+    } else {
+      this.cal = true;
     }
 
     const fromdate = new Date(this.date);
     this.masablock = true;
     this.days = 1;
-    this.TarikhVal = fromdate.getDate()+'/'+fromdate.getMonth()+'/'+fromdate.getFullYear();
-    
+    this.TarikhVal = fromdate.getDate() + '/' + fromdate.getMonth() + '/' + fromdate.getFullYear();
+
     this.ChangeDDTarikh();
   }
 
   async ChangeDDTarikh() {
-    if(this.Fasiliti == 1){
+    if (this.Fasiliti == 1) {
       var court = this.Gelanggang;
-    }else if(this.Fasiliti == 2){
+    } else if (this.Fasiliti == 2) {
       var court = this.Gelanggang;
     }
-  
+
     var fasiliti = this.Fasiliti;
     var alltime = [];
-    
+
     await this.listbooking.forEach(async function (value) {
       console.log(value);
-      if(fasiliti == 1){
-        if(value.ft_court_id == court){
-          if(value.days == 1){
+      if (fasiliti == 1) {
+        if (value.ft_court_id == court) {
+          if (value.days == 1) {
             var time = value.time.split(",");
             await time.forEach(function (value) {
               alltime.push(value);
             });
           }
         }
-      }else if(fasiliti == 2){
-        if(value.bd_court_id == court){
-          if(value.days == 1){
+      } else if (fasiliti == 2) {
+        if (value.bd_court_id == court) {
+          if (value.days == 1) {
             var time = value.time.split(",");
             await time.forEach(function (value) {
               alltime.push(value);
@@ -318,47 +324,47 @@ export class FasilitiPage implements OnInit {
       }
     });
 
-    console.log('alltime',alltime);
+    console.log('alltime', alltime);
     this.ChangeMasa(alltime);
   }
 
-  ChangeMasa(time:any){
+  ChangeMasa(time: any) {
     console.log(time);
-    var txt : any;
-    var txt2 : any;
+    var txt: any;
+    var txt2: any;
     var temp = [];
     var add = true;
     for (let index = 0; index < 23; index++) {
       add = true;
-      if(index < 10){
-        txt = "0"+index;
-        txt2 = index+1;
-        if(index != 9){
-          txt2 = "0"+txt2;
+      if (index < 10) {
+        txt = "0" + index;
+        txt2 = index + 1;
+        if (index != 9) {
+          txt2 = "0" + txt2;
         }
-      }else{
+      } else {
         txt = index;
         txt2 = index + 1;
       }
       let timelist: timelist;
       timelist = {
         val: index,
-        text: txt+":00 - "+ txt2+":00",
+        text: txt + ":00 - " + txt2 + ":00",
         check: false
       };
-      if(timelist.val >= 8){
-        if(timelist.val == 19){
+      if (timelist.val >= 8) {
+        if (timelist.val == 19) {
           add = false;
         }
         time.forEach(function (value) {
-          if (value == index){
+          if (value == index) {
             add = false;
           }
         });
-      }else{
+      } else {
         add = false;
       }
-      if(add == true){
+      if (add == true) {
         temp.push(timelist);
       }
     }
@@ -374,17 +380,17 @@ export class FasilitiPage implements OnInit {
     const formData = new FormData();
     formData.append('user_id', this.user.user_id);
 
-    if(this.Fasiliti == 1){
+    if (this.Fasiliti == 1) {
       formData.append('futsal', this.Gelanggang);
       var court = this.Gelanggang;
       this.listfutsal.forEach(function (value) {
-        if(value.id == court){
+        if (value.id == court) {
           harga = value.harga;
           return;
         }
       });
-      console.log('timecheck',this.timecheck);
-      if(this.timecheck != []){
+      console.log('timecheck', this.timecheck);
+      if (this.timecheck != []) {
         console.log(this.timecheck);
         var array = [];
         await this.timecheck.forEach(function (value) {
@@ -395,21 +401,21 @@ export class FasilitiPage implements OnInit {
         });
         this.masa = array.toString();
         this.hour = array.length;
-        
+
         this.amaun = harga * this.hour;
       }
 
-    }else if(this.Fasiliti == 2){
+    } else if (this.Fasiliti == 2) {
       formData.append('badminton', this.Gelanggang);
       var court = this.Gelanggang;
       this.listfutsal.forEach(function (value) {
-        if(value.id == court){
+        if (value.id == court) {
           harga = value.harga;
           return;
         }
       });
-      console.log('timecheck',this.timecheck);
-      if(this.timecheck != []){
+      console.log('timecheck', this.timecheck);
+      if (this.timecheck != []) {
         console.log(this.timecheck);
         var array = [];
         await this.timecheck.forEach(function (value) {
@@ -420,24 +426,24 @@ export class FasilitiPage implements OnInit {
         });
         this.masa = array.toString();
         this.hour = array.length;
-        
+
         this.amaun = harga * this.hour;
       }
     }
 
-    console.log('masa',this.masa);
-    
-    if(this.date == undefined){
+    console.log('masa', this.masa);
+
+    if (this.date == undefined) {
       await loading.dismiss();
       this.alerterror('Tarikh diperlukan');
     }
 
     formData.append('tarikh_mula', this.date);
     formData.append('tarikh_akhir', this.date);
-    formData.append('days', this.days);   
+    formData.append('days', this.days);
     formData.append('masa', this.masa);
-    formData.append('hour', this.hour); 
-    formData.append('amaun', this.amaun); 
+    formData.append('hour', this.hour);
+    formData.append('amaun', this.amaun);
     await this.bookingService.add(formData).subscribe(
       async (res) => {
         console.log(res);
@@ -447,27 +453,27 @@ export class FasilitiPage implements OnInit {
         var akaun = {};
 
         console.log(res);
-        if(this.Fasiliti == 1){
-          var kod = "FT"+res.id;
-        }else if(this.Fasiliti == 2){
-          var kod = "BD"+res.id;
+        if (this.Fasiliti == 1) {
+          var kod = "FT" + res.id;
+        } else if (this.Fasiliti == 2) {
+          var kod = "BD" + res.id;
         }
 
-          akaun = {
-            "id":'',
-            "amaun":this.amaun,
-            "kodbayaran":kod,
-          }
-          arr.push(akaun);
-        
-        var data = 
-          {
-            "src": 2,
-            "jumlah": this.amaun,
-            "jumcount":1,
-            "akaun":arr
-          };
-        
+        akaun = {
+          "id": '',
+          "amaun": this.amaun,
+          "kodbayaran": kod,
+        }
+        arr.push(akaun);
+
+        var data =
+        {
+          "src": 2,
+          "jumlah": this.amaun,
+          "jumcount": 1,
+          "akaun": arr
+        };
+
         let navigationExtras: NavigationExtras = {
           state: {
             data: data
@@ -484,13 +490,13 @@ export class FasilitiPage implements OnInit {
           message: res.message,
           buttons: ['OK'],
         });
- 
+
         await alert.present();
       }
     );
   }
 
-  async alerterror(msg){
+  async alerterror(msg) {
     const alert = await this.alertController.create({
       header: 'Loading failed',
       message: msg,
@@ -500,7 +506,7 @@ export class FasilitiPage implements OnInit {
     await alert.present();
   }
 
-  clearform(){
+  clearform() {
     this.Lokasi = '';
     this.Fasiliti = '';
     this.Gelanggang = '';

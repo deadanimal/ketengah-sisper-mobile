@@ -1,4 +1,4 @@
-(self["webpackChunkkkr_pothole"] = self["webpackChunkkkr_pothole"] || []).push([["src_app_lain-lain_lain-lain_module_ts"],{
+(self["webpackChunkSisper"] = self["webpackChunkSisper"] || []).push([["src_app_lain-lain_lain-lain_module_ts"],{
 
 /***/ 33772:
 /*!*******************************************************!*\
@@ -112,7 +112,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! tslib */ 64762);
 /* harmony import */ var _raw_loader_lain_lain_page_html__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !raw-loader!./lain-lain.page.html */ 85458);
-/* harmony import */ var _lain_lain_page_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./lain-lain.page.scss */ 39442);
+/* harmony import */ var _lain_lain_page_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./lain-lain.page.scss */ 76104);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/core */ 37716);
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/common */ 38583);
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/forms */ 3679);
@@ -291,7 +291,7 @@ LainService = (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__decorate)([
 
 /***/ }),
 
-/***/ 39442:
+/***/ 76104:
 /*!***********************************************!*\
   !*** ./src/app/lain-lain/lain-lain.page.scss ***!
   \***********************************************/

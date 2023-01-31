@@ -131,7 +131,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! tslib */ 64762);
 /* harmony import */ var _raw_loader_tempahkemudahan_page_html__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !raw-loader!./tempahkemudahan.page.html */ 99021);
-/* harmony import */ var _tempahkemudahan_page_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./tempahkemudahan.page.scss */ 50893);
+/* harmony import */ var _tempahkemudahan_page_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./tempahkemudahan.page.scss */ 41749);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/core */ 37716);
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ 38583);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ 39895);
@@ -180,7 +180,7 @@ TempahkemudahanPage = (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__decorate)([
 
 /***/ }),
 
-/***/ 50893:
+/***/ 41749:
 /*!***********************************************************!*\
   !*** ./src/app/tempahkemudahan/tempahkemudahan.page.scss ***!
   \***********************************************************/

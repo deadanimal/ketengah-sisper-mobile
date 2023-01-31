@@ -16,9 +16,9 @@ import { PDFGenerator } from '@ionic-native/pdf-generator/ngx';
   styleUrls: ['./home.page.scss'],
 })
 export class HomePage implements OnInit {
-  @ViewChild('chartCanvas') chartCanvas : ElementRef;
-  data : any = [];
-  canvasChart : Chart;
+  @ViewChild('chartCanvas') chartCanvas: ElementRef;
+  data: any = [];
+  canvasChart: Chart;
   slideOpts = {
     initialSlide: 0,
     autoplay: {
@@ -29,11 +29,11 @@ export class HomePage implements OnInit {
 
   noti = false;
   chartdata: any;
-  username : any;
-  user : any;
-  role : any;
+  username: any;
+  user: any;
+  role: any;
   notiarr = [];
-  pengumumanlist : any;
+  pengumumanlist: any;
 
   rumah: any;
   premis: any;
@@ -50,7 +50,7 @@ export class HomePage implements OnInit {
     private loadingController: LoadingController,
     private notisService: NotisService,
     private pengumumanService: PengumumanService,
-    private route:ActivatedRoute,
+    private route: ActivatedRoute,
     public modalController: ModalController,
     private platform: Platform,
     private bookingService: BookingService,
@@ -61,14 +61,14 @@ export class HomePage implements OnInit {
     });
 
     this.route.queryParams.subscribe(async params => {
-      if (this.router.getCurrentNavigation().extras.state.src == 1) {
+      if (this.router.getCurrentNavigation().extras.state?.src === 1) {
         this.tambah();
       }
     });
   }
 
   async ngOnInit() {
-    
+
     const loading = await this.loadingController.create();
     await loading.present();
     this.showchart = 0;
@@ -76,7 +76,7 @@ export class HomePage implements OnInit {
       async (res) => {
         console.log(res);
         this.pengumumanlist = res;
-        
+        this.user = res;
         await loading.dismiss();
       },
       async (res) => {
@@ -95,57 +95,59 @@ export class HomePage implements OnInit {
 
   async ionViewDidEnter() {
     const loading = await this.loadingController.create();
-      await loading.present();
-      this.showmore = 0;
-      await this.nativeStorage.getItem('user').then(
-        data => {
-          this.username = data.value.name;
-          this.user = data.value;
-          this.role = data.value.role;
+    await loading.present();
+    this.showmore = 0;
+    await this.nativeStorage.getItem('user').then(
+      data => {
+        console.log(data)
+        this.username = data.value.name;
+        this.user = data.value;
+        this.role = data.value.role;
 
-          this.rumah = data.value.perumahan;
-          this.premis = data.value.premis;
+        this.rumah = data.value.perumahan;
+        this.premis = data.value.premis;
 
-          if(this.rumah != undefined){
-            this.rumah.forEach(element => {
-              var temp = 0;
-              var temp2 = 0;
-  
-              if(element.jumlah_tunggakan != ""){
-                temp = parseInt(element.jumlah_tunggakan);
-              }
-              if(element.kadar_sewa != ""){
-                temp2 = parseInt(element.kadar_sewa);
-              }
-              console.log(temp2);
-              element.jumlahbyr = temp + temp2;
-            });
-          }
+        if (this.rumah != undefined) {
+          this.rumah.forEach(element => {
+            var temp = 0;
+            var temp2 = 0;
 
-          if(this.premis != undefined){
-            this.premis.forEach(element => {
-              var temp = 0;
-              var temp2 = 0;
-  
-              if(element.jumlah_tunggakan != ""){
-                temp = parseInt(element.jumlah_tunggakan);
-              }
-              if(element.kadar_sewa != ""){
-                temp2 = parseInt(element.kadar_sewa);
-              }
-              console.log(temp2);
-              element.jumlahbyr = temp + temp2;
-            });
-          }
-          
-          console.log('rumah',this.rumah);
-          console.log('premis',this.premis);
-          this.nativeStorage.setItem('user', {value: this.user});
-          console.log(this.user);
-        },
-        error => console.error(error)
-      );
-      if(this.user.role == 1){
+            if (element.jumlah_tunggakan != "") {
+              temp = parseInt(element.jumlah_tunggakan);
+            }
+            if (element.kadar_sewa != "") {
+              temp2 = parseInt(element.kadar_sewa);
+            }
+            console.log(temp2);
+            element.jumlahbyr = temp + temp2;
+          });
+        }
+
+        if (this.premis != undefined) {
+          this.premis.forEach(element => {
+            var temp = 0;
+            var temp2 = 0;
+
+            if (element.jumlah_tunggakan != "") {
+              temp = parseInt(element.jumlah_tunggakan);
+            }
+            if (element.kadar_sewa != "") {
+              temp2 = parseInt(element.kadar_sewa);
+            }
+            console.log(temp2);
+            element.jumlahbyr = temp + temp2;
+          });
+        }
+
+        console.log('rumah', this.rumah);
+        console.log('premis', this.premis);
+        this.nativeStorage.setItem('user', { value: this.user });
+        console.log(this.user);
+      },
+      error => console.error(error)
+    );
+    if (this.user) {
+      if (this.user.role == 1) {
         var userid = this.user.user_id;
         var noti = false;
         await this.notisService.getbyid(this.user.user_id).subscribe(
@@ -156,22 +158,22 @@ export class HomePage implements OnInit {
               value.view = false;
               value.selected = false;
               await obj.forEach(function (value2) {
-                if(value2.id == userid){
+                if (value2.id == userid) {
                   value.view = true;
                 }
               });
-              if(value.view == false){
+              if (value.view == false) {
                 noti = true;
               }
             });
             this.notiarr = res;
             this.noti = noti;
-            
+
             await this.notisService.getnotis(this.user).subscribe(
               async (res) => {
-                console.log('api',res);
-                Array.prototype.push.apply(this.notiarr,res);
-                console.log('notis',this.notiarr);
+                console.log('api', res);
+                Array.prototype.push.apply(this.notiarr, res);
+                console.log('notis', this.notiarr);
                 await loading.dismiss();
               },
               async (res) => {
@@ -182,7 +184,7 @@ export class HomePage implements OnInit {
                   message: res.message,
                   buttons: ['OK'],
                 });
-        
+
                 await alert.present();
               }
             );
@@ -195,11 +197,11 @@ export class HomePage implements OnInit {
               message: res.message,
               buttons: ['OK'],
             });
-    
+
             await alert.present();
           }
         );
-      }else if (this.user.role == 2){
+      } else if (this.user.role == 2) {
         await this.bookingService.getgraf().subscribe(
           async (res) => {
             console.log(res);
@@ -222,7 +224,7 @@ export class HomePage implements OnInit {
                   message: res.message,
                   buttons: ['OK'],
                 });
-      
+
                 await alert.present();
               }
             );
@@ -235,11 +237,12 @@ export class HomePage implements OnInit {
               message: res.message,
               buttons: ['OK'],
             });
-  
+
             await alert.present();
           }
         );
       }
+    }
   }
 
   displaychart() {
@@ -257,14 +260,14 @@ export class HomePage implements OnInit {
       fileName: 'eSisper_Tempahan.pdf'
     };
     await this.pdfGenerator.fromData(content, options)
-    .then((base64) => {
-      console.log('OK', base64);
-    }).catch((error) => {
-      console.log('error', error);
-    });
+      .then((base64) => {
+        console.log('OK', base64);
+      }).catch((error) => {
+        console.log('error', error);
+      });
   }
 
-  async tambah(){
+  async tambah() {
     const modal = await this.modalController.create({
       component: TambahakaunComponent,
       cssClass: 'med-modal',
@@ -274,8 +277,8 @@ export class HomePage implements OnInit {
     return await modal.present();
   }
 
-  notis(){
-    console.log('notis',this.notiarr);
+  notis() {
+    console.log('notis', this.notiarr);
 
     let navigationExtras: NavigationExtras = {
       state: {
@@ -285,51 +288,51 @@ export class HomePage implements OnInit {
     this.router.navigate(['main/tabs/home/notis'], navigationExtras);
   }
 
-  Aduan(){
+  Aduan() {
     this.router.navigate(['main/tabs/aduan']);
   }
 
-  notisadmin(){
+  notisadmin() {
     this.router.navigate(['main/admin/notis']);
   }
 
-  pengumumanadmin(){
+  pengumumanadmin() {
     this.router.navigate(['main/admin/pengumuman']);
   }
 
-  penghargaanadmin(){
+  penghargaanadmin() {
     this.router.navigate(['main/admin/penghargaan']);
   }
 
-  Lain(){
+  Lain() {
     this.router.navigate(['main/tabs/lain']);
   }
 
-  Lejar(){
+  Lejar() {
     this.router.navigate(['main/tabs/lejar']);
   }
 
-  Sewa(){
+  Sewa() {
     this.router.navigate(['main/tabs/bayarsewa']);
   }
-  
-  Tender(){
-    if(this.user.tender == 0){
+
+  Tender() {
+    if (this.user.tender == 0) {
       this.router.navigate(['main/tabs/tender']);
-    }else if(this.user.tender == 1){
+    } else if (this.user.tender == 1) {
       this.router.navigate(['main/tabs/tender/tenderDetail']);
     }
   }
 
-  TempahKemudahan(){
+  TempahKemudahan() {
     this.router.navigate(['main/tabs/tempahkemudahan']);
   }
 
-  aduanadmin(){
+  aduanadmin() {
     this.router.navigate(['main/admin/aduan']);
   }
 
-  async adminmenu(){
+  async adminmenu() {
     const modal = await this.modalController.create({
       component: AdminmenuPage,
       cssClass: 'menu-modal',
@@ -341,23 +344,23 @@ export class HomePage implements OnInit {
     return await modal.present();
   }
 
-  penggunaadmin(){
+  penggunaadmin() {
     this.router.navigate(['main/admin/pengguna']);
   }
 
-  sekatanadmin(){
+  sekatanadmin() {
     this.router.navigate(['main/admin/sekatan']);
   }
 
-  more(val){
-    if(val == 0){
+  more(val) {
+    if (val == 0) {
       this.showmore = 1;
-    }else if(val == 1){
+    } else if (val == 1) {
       this.showmore = 0;
     }
   }
 
-  detail(data){
+  detail(data) {
     let navigationExtras: NavigationExtras = {
       state: {
         data: data
@@ -368,46 +371,46 @@ export class HomePage implements OnInit {
 
   async barChartMethod() {
     var today = new Date();
-    var dd ='';
-    var day =0;
+    var dd = '';
+    var day = 0;
     var label = [];
     var data = [];
 
-    console.log('chart',this.chartdata);
+    console.log('chart', this.chartdata);
     this.chartdata.forEach(element => {
       var r = Object.keys(element);
-      console.log('r',r);
+      console.log('r', r);
 
       r.forEach(item => {
         var today = new Date(item);
         var dd = String(today.getDate()).padStart(2, '0');
         var day = today.getDay();
         console.log(day);
-        if(day == 1){
+        if (day == 1) {
           var hari = 'isnin'
           var temp = dd + '-' + hari;
           label.push(temp);
-        }else if(day == 2){
+        } else if (day == 2) {
           var hari = 'selasa'
           var temp = dd + '-' + hari;
           label.push(temp);
-        }else if(day == 3){
+        } else if (day == 3) {
           var hari = 'rabu'
           var temp = dd + '-' + hari;
           label.push(temp);
-        }else if(day == 4){
+        } else if (day == 4) {
           var hari = 'khamis'
           var temp = dd + '-' + hari;
           label.push(temp);
-        }else if(day == 5){
+        } else if (day == 5) {
           var hari = 'jumaat'
           var temp = dd + '-' + hari;
           label.push(temp);
-        }else if(day == 6){
+        } else if (day == 6) {
           var hari = 'sabtu'
           var temp = dd + '-' + hari;
           label.push(temp);
-        }else if(day == 0){
+        } else if (day == 0) {
           var hari = 'ahad'
           var temp = dd + '-' + hari;
           label.push(temp);

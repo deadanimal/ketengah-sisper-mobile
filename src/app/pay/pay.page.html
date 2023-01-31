@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="close()">
+        <ion-icon slot="start" name="close"></ion-icon>
+        Close
+      </ion-button>
+    </ion-buttons>
+    <ion-title>pay</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="paymentForm" (ngSubmit)="pay()">
+    <!-- create ionic form with referene number, customer name,  email, amount  ,remark , additional params  -->
+
+
+    <div class="boxwhite" style="border-bottom: 0.7px solid #E8E8E8">
+      Customer Name<br>
+      <ion-input formControlName="customerName" type="text" class="input"></ion-input>
+    </div>
+
+    <div class="boxwhite" style="border-bottom: 0.7px solid #E8E8E8">
+      Customer Email<br>
+      <ion-input formControlName="customerEmail" type="text" class="input"></ion-input>
+    </div>
+
+    <div class="boxwhite" style="border-bottom: 0.7px solid #E8E8E8">
+      Amount<br>
+      <ion-input formControlName="amount" type="text" class="input"></ion-input>
+    </div>
+
+    <div class="boxwhite" style="border-bottom: 0.7px solid #E8E8E8">
+      Remark<br>
+      <ion-input formControlName="remark" type="text" class="input"></ion-input>
+    </div>
+
+
+
+    <ion-button expand="block" type="submit" [disabled]="!paymentForm.valid">Pay</ion-button>
+  </form>
+</ion-content>

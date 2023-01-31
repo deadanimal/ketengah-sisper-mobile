@@ -1,0 +1,6 @@
+{
+	"appId": "sisper.io.app",
+	"appName": "Sisper",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}
