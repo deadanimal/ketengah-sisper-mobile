@@ -13,8 +13,8 @@ import { NativeStorage } from '@awesome-cordova-plugins/native-storage/ngx';
 })
 export class PenghargaanmainPage implements OnInit {
 
-  PenghargaanVal:any;
-  user:any;
+  PenghargaanVal: any;
+  user: any;
 
   constructor(
     private location: Location,
@@ -39,7 +39,7 @@ export class PenghargaanmainPage implements OnInit {
     );
   }
 
-  back(){
+  back() {
     this.location.back();
   }
 
@@ -56,6 +56,14 @@ export class PenghargaanmainPage implements OnInit {
       async (res) => {
         console.log(res);
         await loading.dismiss();
+
+        const alert = await this.alertController.create({
+          header: 'Success',
+          message: 'Hantaran anda telah berjaya Terima Kasih',
+          buttons: ['OK'],
+        })
+        alert.present();
+
         this.router.navigate(['/main/tabs/aduan']);
       },
       async (res) => {
@@ -66,7 +74,7 @@ export class PenghargaanmainPage implements OnInit {
           message: res.message,
           buttons: ['OK'],
         });
- 
+
         await alert.present();
       }
     );

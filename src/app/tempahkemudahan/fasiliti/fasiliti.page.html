@@ -20,7 +20,7 @@
         <ion-select okText="{{ 'semak.ok' | translate }}" cancelText="{{ 'semak.cancel' | translate }}" class="select"
           placeholder="{{ 'dewan.placelokasi' | translate }}" [(ngModel)]="Lokasi" (ionChange)="ChangeDDLokasi()">
           <ion-select-option *ngFor="let lokasi of ddLokasi; let i = index" [value]="lokasi.id">
-            {{lokasi.nama}}
+            {{lokasi.nama === 'AMBS (HQ)'? 'Al Muktafi Billah Shah' : lokasi.nama}}
           </ion-select-option>
         </ion-select>
         <div style="height: 10px;"></div>
@@ -28,8 +28,8 @@
         <ion-select okText="{{ 'semak.ok' | translate }}" cancelText="{{ 'semak.cancel' | translate }}" class="select"
           placeholder="{{ 'fasiliti.placefasiliti' | translate }}" [(ngModel)]="Fasiliti"
           (ionChange)="ChangeDDFasiliti()" [disabled]="lokasiread">
-          <ion-select-option *ngFor="let fasiliti of ddFasiliti; let i = index" [value]="fasiliti.id">
-            {{fasiliti.nama}}
+          <ion-select-option *ngFor="let fasiliti of fasilities" [value]="fasiliti.id">
+            {{fasiliti.fasiliti}} {{" "}} - {{" "}} {{fasiliti.kadar_per_jam}}
           </ion-select-option>
         </ion-select>
         <div style="height: 10px;"></div>
@@ -43,7 +43,7 @@
         </ion-select>
         <div style="height: 10px;"></div>
         <div class="label">{{ 'dewan.tarikh' | translate }}.</div>
-        <input [value]="date |date" class="select" (click)="opencal()" (ionChange)="ChangeDDTarikh()"
+        <input [value]="date |date: 'yyyy-MM-dd ' " class="select" (click)="opencal()" (ionChange)="ChangeDDTarikh()"
           [(ngModel)]="TarikhVal">
         <div *ngIf="cal==true" style="text-align: center;padding-top: 10px;">
           <ion-calendar [options]="caloption" type="string" [(ngModel)]="date"></ion-calendar>

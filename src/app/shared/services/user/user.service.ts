@@ -11,13 +11,20 @@ export class UserService {
 
   constructor(
     private http: HttpClient
-  ) { 
-
-  }
+  ) { }
 
   update(type, data, id): Observable<any> {
     console.log(id);
     var updateURL = environment.baseUrl + "user/" + id;
-    return this.http.patch<any>(updateURL, {type,data});
+    return this.http.patch<any>(updateURL, { type, data });
+  }
+
+  checkFirstTimeLogin(id: string, data: any) {
+    var updateURL = environment.baseUrl + "FirstLoginChangePassword/" + id;
+    return this.http.post(updateURL, data);
+  }
+
+  getAllUsers() {
+    return this.http.get(environment.baseUrl + "allusers");
   }
 }

@@ -15,13 +15,24 @@
       <div class="headerbox">
         <div class="label">{{ 'aduan.silaisi' | translate }}.</div>
         <div class="descbox">
-          <ion-select okText="{{ 'semak.ok' | translate }}" cancelText="{{ 'semak.cancel' | translate }}" class="select" placeholder="{{ 'aduan.pilihkate' | translate }}" [(ngModel)]="KateVal" (ionChange)="ChangeDDKate()">
+          <ion-select [(ngModel)]="pilih_jenis" placeholder="Pilih Jenis Akaun" class="select"
+            style="margin-bottom: 10px;">
+            <ion-select-option value="akaun rumah ">
+              Akaun Rumah
+            </ion-select-option>
+            <ion-select-option value="akaun premis">
+              Akaun Premis
+            </ion-select-option>
+          </ion-select>
+          <ion-select okText="{{ 'semak.ok' | translate }}" cancelText="{{ 'semak.cancel' | translate }}" class="select"
+            placeholder="{{ 'aduan.pilihkate' | translate }}" [(ngModel)]="KateVal" (ionChange)="ChangeDDKate()">
             <ion-select-option *ngFor="let kate of ddKategori; let i = index" [value]="kate.kategori_id">
               {{kate.kategori}}
             </ion-select-option>
           </ion-select>
           <div style="height: 10px;"></div>
-          <ion-select okText="{{ 'semak.ok' | translate }}" cancelText="{{ 'semak.cancel' | translate }}" class="select" placeholder="{{ 'aduan.pilihrosak' | translate }}" [(ngModel)]="RosakVal">
+          <ion-select okText="{{ 'semak.ok' | translate }}" cancelText="{{ 'semak.cancel' | translate }}" class="select"
+            placeholder="{{ 'aduan.pilihrosak' | translate }}" [(ngModel)]="RosakVal">
             <ion-select-option *ngFor="let rosak of ddRosak; let i = index" [value]="rosak.kerosakan_id">
               {{rosak.kerosakan}}
             </ion-select-option>

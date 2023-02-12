@@ -14,7 +14,7 @@ import { timelist } from '../../shared/model/timelist.model';
   styleUrls: ['./fasiliti.page.scss'],
 })
 export class FasilitiPage implements OnInit {
-
+  fasilities: any;
   ddLokasi: any;
   Lokasi: any;
   Fasiliti: any;
@@ -56,6 +56,11 @@ export class FasilitiPage implements OnInit {
   ) { }
 
   async ngOnInit() {
+
+    this.fasilitiService.getFasilities().subscribe(data => {
+      console.log(data);
+      this.fasilities = data;
+    })
     this.TarikhVal = new Date()
     this.TarikhVal = this.TarikhVal.toISOString().split('T')[0];
 
@@ -277,7 +282,7 @@ export class FasilitiPage implements OnInit {
 
   pilihcal() {
     console.log(this.date);
-    if (this.cal == true) {
+    if (this.cal === true) {
       this.cal = false;
     } else {
       this.cal = true;
@@ -286,7 +291,26 @@ export class FasilitiPage implements OnInit {
     const fromdate = new Date(this.date);
     this.masablock = true;
     this.days = 1;
-    this.TarikhVal = fromdate.getDate() + '/' + fromdate.getMonth() + '/' + fromdate.getFullYear();
+    let date;
+    // this.TarikhVal = fromdate.getDate() + '/' + fromdate.getMonth() + '/' + fromdate.getFullYear();
+
+    //if date or month is single digit, add 0 in front
+    if (fromdate.getDate() < 10) {
+      date = '0' + fromdate.getDate();
+    } else {
+      date = fromdate.getDate();
+    }
+    let month;
+
+    if (fromdate.getMonth() < 10) {
+      month = '0' + fromdate.getMonth();
+    } else {
+      month = fromdate.getMonth();
+    }
+
+    const year = fromdate.getFullYear();
+
+    this.TarikhVal = year + '/' + month + '/' + date;
 
     this.ChangeDDTarikh();
   }
@@ -373,6 +397,8 @@ export class FasilitiPage implements OnInit {
   }
 
   async hantar() {
+
+    console.table(this.Fasiliti)
     const loading = await this.loadingController.create();
     await loading.present();
     var harga = 0;
@@ -458,12 +484,16 @@ export class FasilitiPage implements OnInit {
         } else if (this.Fasiliti == 2) {
           var kod = "BD" + res.id;
         }
+        const rate = this.fasilities.find(f => f.id === this.Fasiliti).kadar_per_jam
+
+
 
         akaun = {
-          "id": '',
-          "amaun": this.amaun,
-          "kodbayaran": kod,
-        }
+          src: 2,
+          kadar_per_jam: rate,
+          akaun: arr,
+          jumcount: 1
+        };
         arr.push(akaun);
 
         var data =
@@ -474,11 +504,19 @@ export class FasilitiPage implements OnInit {
           "akaun": arr
         };
 
-        let navigationExtras: NavigationExtras = {
+
+        const navigationExtras: NavigationExtras = {
           state: {
-            data: data
+            data: {
+              src: 2,
+              kadar_per_jam: rate,
+              akaun: arr,
+              jumcount: 1
+            }
           }
         };
+
+        this.fasilitiService.rates.next(this.Fasiliti.kadar_per_jam)
 
         this.router.navigate(['main/tabs/bayaran'], navigationExtras);
       },

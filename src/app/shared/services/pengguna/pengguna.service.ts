@@ -12,13 +12,22 @@ export class PenggunaService {
     private http: HttpClient
   ) { }
 
-  search(data:any): Observable<any> {
+  search(data: any): Observable<any> {
     var searchpengguna = environment.baseUrl + "searchpengguna";
     return this.http.post<any>(searchpengguna, data);
   }
 
-  aktif(data:any): Observable<any> {
+  aktif(data: any): Observable<any> {
     var searchpengguna = environment.baseUrl + "aktifpengguna";
     return this.http.post<any>(searchpengguna, data);
+  }
+
+  searchByName(data: any): Observable<any> {
+
+    var searchpengguna = environment.baseUrl + "SearchPenggunaByName";
+    return this.http.post<any>(searchpengguna, data);
+
+
+
   }
 }

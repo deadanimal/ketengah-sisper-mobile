@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Location } from "@angular/common";
+import { Location } from '@angular/common';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BookingService } from 'src/app/shared/services/booking/booking.service';
@@ -13,21 +13,21 @@ import { NativeStorage } from '@awesome-cordova-plugins/native-storage/ngx';
   styleUrls: ['./alatan.page.scss'],
 })
 export class AlatanPage implements OnInit {
-
-  ddAlatan:any;
-  Alatan:any;
-  QtyVal:any;
-  cal=false;
-  date:any;
+  masablock = false;
+  ddAlatan: any;
+  Alatan: any;
+  QtyVal: any;
+  cal = false;
+  date: any;
   caloption = {
     pickMode: 'range',
     title: 'RANGE',
-    daysConfig: []
+    daysConfig: [],
   };
-  days:any;
-  TarikhVal:any;
-  amaun:any;
-  user:any;
+  days: any;
+  TarikhVal: any;
+  amaun: any;
+  user: any;
 
   constructor(
     private location: Location,
@@ -41,14 +41,16 @@ export class AlatanPage implements OnInit {
   ) { }
 
   async ngOnInit() {
+    this.TarikhVal = new Date();
+    this.TarikhVal = this.TarikhVal.toISOString().split('T')[0];
     const loading = await this.loadingController.create();
     await loading.present();
 
     await this.nativeStorage.getItem('user').then(
-      data => {
-        this.user = data.value;;
+      (data) => {
+        this.user = data.value;
       },
-      error => console.error(error)
+      (error) => console.error(error)
     );
 
     await loading.dismiss();
@@ -79,53 +81,72 @@ export class AlatanPage implements OnInit {
     );
   }
 
-  back(){
+  back() {
     this.location.back();
   }
 
-  opencal(){
-    if(this.cal == true){
-      this.cal =false;
-    }else{
-      this.cal =true;
+  openCal() {
+    if (this.cal == true) {
+      this.cal = false;
+    } else {
+      this.cal = true;
     }
   }
 
-  pilihcal(){
+  pilihCal() {
     console.log(this.date);
-    if(this.cal == true){
-      this.cal =false;
-    }else{
-      this.cal =true;
+    if (this.cal === true) {
+      this.cal = false;
+    } else {
+      this.cal = true;
     }
 
-    const fromdate = new Date(this.date.from);
-    const todate = new Date(this.date.to);
-    if(fromdate.getTime() == todate.getTime()){
-      this.days = 1;
-    }else{
-      var diff = Math.abs(todate.getTime() - fromdate.getTime());
-      this.days = Math.ceil(diff / (1000 * 3600 * 24)) + 1;
+    const fromdate = new Date(this.date);
+    this.masablock = true;
+    this.days = 1;
+    let date;
+    // this.TarikhVal = fromdate.getDate() + '/' + fromdate.getMonth() + '/' + fromdate.getFullYear();
+
+    //if date or month is single digit, add 0 in front
+    if (fromdate.getDate() < 10) {
+      console.log(date)
+      date = '0' + fromdate.getDate();
+    } else {
+      date = fromdate.getDate();
     }
-    this.TarikhVal = fromdate.getDate()+'/'+fromdate.getMonth()+'/'+fromdate.getFullYear()+' - '+ todate.getDate()+'/'+todate.getMonth()+'/'+todate.getFullYear();
-    
+    let month;
+
+    if (fromdate.getMonth() < 10) {
+      month = '0' + fromdate.getMonth();
+    } else {
+      month = fromdate.getMonth();
+    }
+
+    const year = fromdate.getFullYear();
+
+    this.TarikhVal = year + '/' + month + '/' + date;
+
+    console.log(this.TarikhVal);
+
   }
 
-  increment () {
+
+
+  increment() {
     this.QtyVal++;
   }
-  
-  decrement () {
+
+  decrement() {
     this.QtyVal--;
   }
 
-  async hantar () {
+  async hantar() {
     const loading = await this.loadingController.create();
     await loading.present();
     var harga = 0;
     var alatan = this.Alatan;
     this.ddAlatan.forEach(function (value) {
-      if(value.id == alatan){
+      if (value.id == alatan) {
         harga = value.harga;
         return;
       }
@@ -135,7 +156,7 @@ export class AlatanPage implements OnInit {
     const formData = new FormData();
     formData.append('user_id', this.user.user_id);
     formData.append('alatan', this.Alatan);
-    if(this.date == undefined){
+    if (this.date == undefined) {
       await loading.dismiss();
       this.alerterror('Tarikh diperlukan');
     }
@@ -143,7 +164,7 @@ export class AlatanPage implements OnInit {
     formData.append('tarikh_mula', this.date.from);
     formData.append('tarikh_akhir', this.date.to);
     formData.append('days', this.days);
-    formData.append('amaun', this.amaun); 
+    formData.append('amaun', this.amaun);
     formData.append('qty', this.QtyVal);
     await this.bookingService.add(formData).subscribe(
       async (res) => {
@@ -154,26 +175,25 @@ export class AlatanPage implements OnInit {
         var akaun = {};
 
         console.log(res);
-          
-          akaun = {
-            "id":'',
-            "amaun":this.amaun,
-            "kodbayaran":"ALT"+res.id,
-          }
-          arr.push(akaun);
-        
-        var data = 
-          {
-            "src": 2,
-            "jumlah": this.amaun,
-            "jumcount":1,
-            "akaun":arr
-          };
-        
+
+        akaun = {
+          id: '',
+          amaun: this.amaun,
+          kodbayaran: 'ALT' + res.id,
+        };
+        arr.push(akaun);
+
+        var data = {
+          src: 2,
+          jumlah: this.amaun,
+          jumcount: 1,
+          akaun: arr,
+        };
+
         let navigationExtras: NavigationExtras = {
           state: {
-            data: data
-          }
+            data: data,
+          },
         };
 
         this.router.navigate(['main/tabs/bayaran'], navigationExtras);
@@ -186,20 +206,20 @@ export class AlatanPage implements OnInit {
           message: res.message,
           buttons: ['OK'],
         });
- 
+
         await alert.present();
       }
     );
   }
 
-  clearform(){
+  clearform() {
     this.Alatan = '';
     this.QtyVal = 0;
     this.TarikhVal = '';
     this.date = '';
   }
 
-  async alerterror(msg){
+  async alerterror(msg) {
     const alert = await this.alertController.create({
       header: 'Loading failed',
       message: msg,
@@ -207,5 +227,13 @@ export class AlatanPage implements OnInit {
     });
 
     await alert.present();
+  }
+
+  appendChar(num: any) {
+    if (num < 10) {
+      return `0${num}`;
+    } else {
+      return num;
+    }
   }
 }

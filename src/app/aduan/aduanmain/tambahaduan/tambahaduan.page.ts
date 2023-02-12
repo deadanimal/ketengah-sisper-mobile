@@ -12,14 +12,15 @@ import { NativeStorage } from '@awesome-cordova-plugins/native-storage/ngx';
   styleUrls: ['./tambahaduan.page.scss'],
 })
 export class TambahaduanPage implements OnInit {
-  
-  userid : any;
-  ddKategori:any;
-  ddRosak=[];
-  listrosak:any;
-  KateVal:any;
-  RosakVal:any;
-  CatatanVal:any;
+
+  userid: any;
+  ddKategori: any;
+  ddRosak = [];
+  listrosak: any;
+  KateVal: any;
+  RosakVal: any;
+  CatatanVal: any;
+  pilih_jenis: any;
 
   constructor(
     private location: Location,
@@ -58,7 +59,7 @@ export class TambahaduanPage implements OnInit {
           message: res.message,
           buttons: ['OK'],
         });
- 
+
         await alert.present();
       }
     );
@@ -69,14 +70,14 @@ export class TambahaduanPage implements OnInit {
     var array = []
     var val = this.KateVal;
     await this.listrosak.forEach(function (value) {
-      if(value.kategori_id == val){
+      if (value.kategori_id == val) {
         array.push(value);
       }
     });
     this.ddRosak = array;
   }
 
-  back(){
+  back() {
     this.location.back();
   }
 
@@ -84,16 +85,24 @@ export class TambahaduanPage implements OnInit {
     const loading = await this.loadingController.create();
     await loading.present();
 
+
+    console.log(this.pilih_jenis, "hereeee")
+
     const formData = new FormData();
     formData.append('id', this.userid);
     formData.append('kategori', this.KateVal);
     formData.append('rosak', this.RosakVal);
     formData.append('catatan', this.CatatanVal);
+    formData.append('jenis_akaun', this.pilih_jenis);
 
     await this.aduanService.add(formData).subscribe(
       async (res) => {
         console.log(res);
         await loading.dismiss();
+
+
+
+
         this.router.navigate(['/main/tabs/aduan/aduanmain']);
       },
       async (res) => {
@@ -104,7 +113,7 @@ export class TambahaduanPage implements OnInit {
           message: res.message,
           buttons: ['OK'],
         });
- 
+
         await alert.present();
       }
     );

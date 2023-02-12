@@ -5,7 +5,8 @@
         <ion-icon name="chevron-back-outline" style="float: left;" (click)="back()"></ion-icon>
         <span class="headertxt">
           <div style="width:100px;margin: auto;">
-            {{ 'dewan.tempah' | translate }}<br>({{ 'dewan.dewan' | translate }})</div></span>
+            {{ 'dewan.tempah' | translate }}<br>({{ 'dewan.dewan' | translate }})</div>
+        </span>
       </div>
       <div style="padding-top: 40px;">
         <ion-img src="../../assets/icon/DewanHead.png" class="icontetapan"></ion-img>
@@ -17,22 +18,33 @@
       <div style="padding:0px 40px;">
         <div class="label">{{ 'dewan.lokasi' | translate }}.</div>
         <!-- <input class="select" placeholder="{{ 'dewan.placelokasi' | translate }}"> -->
-        <ion-select okText="{{ 'semak.ok' | translate }}" cancelText="{{ 'semak.cancel' | translate }}" class="select" placeholder="{{ 'dewan.placelokasi' | translate }}" [(ngModel)]="Lokasi" (ionChange)="ChangeDDLokasi()">
-          <ion-select-option *ngFor="let lokasi of ddLokasi; let i = index" [value]="lokasi.id">
-            {{lokasi.nama}}
-          </ion-select-option>
+        <ion-select okText="{{ 'semak.ok' | translate }}" cancelText="{{ 'semak.cancel' | translate }}" class="select"
+          placeholder="{{ 'dewan.placelokasi' | translate }}" [(ngModel)]="Lokasi" (ionChange)="ChangeDDLokasi()">
+
+
+          <ng-container *ngFor="let lokasi of ddLokasi; let i = index">
+            <ion-select-option *ngIf="lokasi.nama.toLowerCase()!== 'AMBS (HQ)'.toLowerCase()" [value]="lokasi.id">
+              {{lokasi.nama}}
+            </ion-select-option>
+            <ion-select-option *ngIf="lokasi.nama.toLowerCase()=== 'AMBS (HQ)'.toLowerCase()" [value]="lokasi.id">
+              Al Muktafi Billah Shah
+            </ion-select-option>
+          </ng-container>
+
+
         </ion-select>
         <div style="height: 10px;"></div>
         <div class="label">{{ 'dewan.dewan' | translate }}.</div>
         <!-- <input class="select" placeholder="{{ 'dewan.placedewan' | translate }}"> -->
-        <ion-select okText="{{ 'semak.ok' | translate }}" cancelText="{{ 'semak.cancel' | translate }}" class="select" placeholder="{{ 'dewan.placedewan' | translate }}" [(ngModel)]="Dewan" (ionChange)="ChangeDDDewan()">
+        <ion-select okText="{{ 'semak.ok' | translate }}" cancelText="{{ 'semak.cancel' | translate }}" class="select"
+          placeholder="{{ 'dewan.placedewan' | translate }}" [(ngModel)]="Dewan" (ionChange)="ChangeDDDewan()">
           <ion-select-option *ngFor="let dewan of ddDewan; let i = index" [value]="dewan.id">
             {{dewan.nama}}
           </ion-select-option>
         </ion-select>
         <div style="height: 10px;"></div>
         <div class="label">{{ 'dewan.tarikh' | translate }}.</div>
-        <input class="select" placeholder="00/00/0000 - 00/00/0000" (click)="opencal()" (ionChange)="ChangeDDTarikh()" [(ngModel)]="TarikhVal">
+        <input class="select" (click)="opencal()" (ionChange)="ChangeDDTarikh()" [(ngModel)]="TarikhVal">
         <div *ngIf="cal==true" style="text-align: center;padding-top: 10px;">
           <ion-calendar [options]="caloption" type="string" [(ngModel)]="date"></ion-calendar>
           <button class="button" style="width:60%" (click)="pilihcal()">Pilih</button>
@@ -43,7 +55,8 @@
       <div *ngIf="masablock == true">
         <ul class="ks-cboxtags" id="boxfrom">
           <li *ngFor="let item of timecheck">
-            <input type="checkbox" id="box{{item.val}}" value="{{item.val}}" name="boxtime" [(ngModel)]="item.check"><label for="box{{item.val}}">{{item.text}}</label>
+            <input type="checkbox" id="box{{item.val}}" value="{{item.val}}" name="boxtime"
+              [(ngModel)]="item.check"><label for="box{{item.val}}">{{item.text}}</label>
           </li>
 
 

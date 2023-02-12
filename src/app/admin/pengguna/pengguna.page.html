@@ -4,16 +4,33 @@
       <div class="header">
         <ion-icon name="chevron-back-outline" style="float: left;" (click)="back()"></ion-icon>
         <span class="headertxt">{{ 'pengguna.pengguna' | translate }}</span>
-        <ion-img src="../../assets/icon/adminmenu.png" style="position: absolute;top: 50px;right: 20px;" class="iconnoti" (click)="adminmenu()"></ion-img>
+        <ion-img src="../../assets/icon/adminmenu.png" style="position: absolute;top: 50px;right: 20px;"
+          class="iconnoti" (click)="adminmenu()"></ion-img>
       </div>
     </div>
   </div>
   <div class="main2">
+
+    <h2 *ngIf="total">{{total}}</h2>
+    <ion-fab horizontal="end" vertical="bottom">
+
+      <ion-fab-button (click)="add()">
+
+        {{total}}
+      </ion-fab-button>
+
+    </ion-fab>
+
     <div class="container3">
       <span class="pagetitle">{{ 'pengguna.senarai' | translate }}</span>
       <div style="padding:20px 30px;">
         <div class="srchtitle" style="padding: 20px 0px;">{{ 'pengguna.notel' | translate }}</div>
-        <input class="search" type="number" [(ngModel)]="phoneno"/>
+        <input [disabled]="name" class="search" type="number" [(ngModel)]="phoneno" />
+        <ion-img class="searchbtn" src="../../assets/icon/searchicon.png" (click)="search()"></ion-img>
+      </div>
+      <div style="padding:20px 30px;">
+        <div class="srchtitle" style="padding: 20px 0px;">{{ 'pengguna.nama' | translate }}</div>
+        <input [disabled]="phoneno" class="search" type="text" [(ngModel)]="name" />
         <ion-img class="searchbtn" src="../../assets/icon/searchicon.png" (click)="search()"></ion-img>
       </div>
       <div style="padding-right:10px;padding-top: 20px;">
@@ -27,7 +44,7 @@
                   <div class="nophone">{{item.no_telefon}}</div>
                 </td>
                 <td>
-                  <ion-toggle (click)="aktif(item)" [(ngModel)]="item.check"></ion-toggle>  
+                  <ion-toggle (click)="aktif(item)" [(ngModel)]="item.check"></ion-toggle>
                 </td>
               </tr>
             </table>

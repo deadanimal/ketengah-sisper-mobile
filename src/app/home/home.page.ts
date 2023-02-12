@@ -9,6 +9,8 @@ import { PengumumanService } from '../shared/services/pengumuman/pengumuman.serv
 import Chart from 'chart.js/auto';
 import { BookingService } from 'src/app/shared/services/booking/booking.service';
 import { PDFGenerator } from '@ionic-native/pdf-generator/ngx';
+import { UserService } from '../shared/services/user/user.service';
+import { async } from '@angular/core/testing';
 
 @Component({
   selector: 'app-home',
@@ -54,7 +56,8 @@ export class HomePage implements OnInit {
     public modalController: ModalController,
     private platform: Platform,
     private bookingService: BookingService,
-    private pdfGenerator: PDFGenerator
+    private pdfGenerator: PDFGenerator,
+    private userService: UserService
   ) {
     this.platform.backButton.subscribeWithPriority(10, () => {
       console.log('none');
@@ -68,6 +71,39 @@ export class HomePage implements OnInit {
   }
 
   async ngOnInit() {
+
+
+
+    this.nativeStorage.getItem('user').then(
+      async data => {
+        let user_id;
+        console.log(data)
+        user_id = data.value.user_id;
+        const formData = new FormData()
+        formData.append('password', data.value.password)
+        this.userService.checkFirstTimeLogin(user_id, formData).subscribe(async (res: any) => {
+
+          console.log("check for password", res)
+
+          if (res.recurring === 0) {
+
+            const alert = await this.alertController.create({
+              header: 'Salamat Datang',
+              message: 'Sila Kemasikini Kata Laluan Anda',
+              buttons: ['OK'],
+            });
+
+            alert.present();
+          }
+
+        })
+
+
+
+      }
+    );
+
+
 
     const loading = await this.loadingController.create();
     await loading.present();
@@ -237,7 +273,7 @@ export class HomePage implements OnInit {
               message: res.message,
               buttons: ['OK'],
             });
-
+            console.log("first")
             await alert.present();
           }
         );
@@ -375,7 +411,7 @@ export class HomePage implements OnInit {
     var day = 0;
     var label = [];
     var data = [];
-
+    var data2 = [];
     console.log('chart', this.chartdata);
     this.chartdata.forEach(element => {
       var r = Object.keys(element);
@@ -452,7 +488,16 @@ export class HomePage implements OnInit {
         }]
       },
       options: {
+
         scales: {
+          yAxes: {
+            suggestedMax: 10,
+            suggestedMin: 0,
+            ticks: {
+
+              stepSize: 2
+            }
+          }
         }
       }
     });

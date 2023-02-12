@@ -19,32 +19,32 @@ import { timelist } from '../../shared/model/timelist.model';
 })
 export class DewanPage implements OnInit {
 
-  ddLokasi : any;
-  Lokasi : any;
-  ddDewan : any;
-  listdewan : any;
-  MasaVal : any;
-  timePicker : any;
-  TarikhVal : any;
-  masablock : any;
-  Dewan : any;
-  date : any;
-  days : any;
-  hour : any;
-  masa : any;
-  amaun : any;
+  ddLokasi: any;
+  Lokasi: any;
+  ddDewan: any;
+  listdewan: any;
+  MasaVal: any;
+  timePicker: any;
+  TarikhVal: any;
+  masablock: any;
+  Dewan: any;
+  date: any;
+  days: any;
+  hour: any;
+  masa: any;
+  amaun: any;
   caloption = {
     pickMode: 'range',
     title: 'RANGE',
     daysConfig: []
   };
   cal = false;
-  listbooking : any;
+  listbooking: any;
   divtime = 'from';
-  TimeVal : any;
-  TimeType : any;
-  temptype : any;
-  user:any;
+  TimeVal: any;
+  TimeType: any;
+  temptype: any;
+  user: any;
   timecheck = [];
 
   constructor(
@@ -62,6 +62,8 @@ export class DewanPage implements OnInit {
   ) { }
 
   async ngOnInit() {
+    this.TarikhVal = new Date()
+    this.TarikhVal = this.TarikhVal.toISOString().split('T')[0];
     const loading = await this.loadingController.create();
     await loading.present();
 
@@ -70,13 +72,13 @@ export class DewanPage implements OnInit {
         this.user = data.value;;
       },
       error => console.error(error)
-    );    
+    );
 
     await loading.dismiss();
   }
-    
+
   async ionViewDidEnter() {
-  this.masablock = false;
+    this.masablock = false;
 
     const loading = await this.loadingController.create();
     await loading.present();
@@ -103,7 +105,7 @@ export class DewanPage implements OnInit {
                   message: res.message,
                   buttons: ['OK'],
                 });
-         
+
                 await alert.present();
               }
             );
@@ -116,7 +118,7 @@ export class DewanPage implements OnInit {
               message: res.message,
               buttons: ['OK'],
             });
-     
+
             await alert.present();
           }
         );
@@ -129,13 +131,13 @@ export class DewanPage implements OnInit {
           message: res.message,
           buttons: ['OK'],
         });
- 
+
         await alert.present();
       }
     );
   }
 
-  back(){
+  back() {
     this.location.back();
   }
 
@@ -145,7 +147,7 @@ export class DewanPage implements OnInit {
     var val = this.Lokasi;
     console.log(val);
     await this.listdewan.forEach(function (value) {
-      if(value.lokasi == val){
+      if (value.lokasi == val) {
         array.push(value);
       }
     });
@@ -160,16 +162,16 @@ export class DewanPage implements OnInit {
     var opt = [];
     var dewan = this.Dewan;
     await this.listbooking.forEach(function (value) {
-      if(value.dewan_id == dewan){
-        if(value.days > 1){
-          var obj: {[k: string]: any} = {};
+      if (value.dewan_id == dewan) {
+        if (value.days > 1) {
+          var obj: { [k: string]: any } = {};
           obj.date = new Date(value.date_from);
           obj.disable = true;
           opt.push(obj);
           var dateday = obj['date'];
           console.log(opt);
-          for(let i=1; i<value.days; i++){
-            var obj: {[k: string]: any} = {};
+          for (let i = 1; i < value.days; i++) {
+            var obj: { [k: string]: any } = {};
             dateday = new Date(dateday).getTime() + (1000 * 60 * 60 * 24);
             var newdate = new Date(dateday);
             obj.date = newdate;
@@ -183,42 +185,42 @@ export class DewanPage implements OnInit {
     this.caloption.daysConfig = opt;
     console.log(this.caloption);
 
-    if(this.cal == true){
-      this.cal =false;
+    if (this.cal == true) {
+      this.cal = false;
     }
   }
 
-  opencal(){
-    if(this.cal == true){
-      this.cal =false;
-    }else{
-      this.cal =true;
+  opencal() {
+    if (this.cal == true) {
+      this.cal = false;
+    } else {
+      this.cal = true;
     }
   }
 
-  pilihcal(){
+  pilihcal() {
     console.log(this.date);
-    if(this.cal == true){
-      this.cal =false;
-    }else{
-      this.cal =true;
+    if (this.cal == true) {
+      this.cal = false;
+    } else {
+      this.cal = true;
     }
     const fromdate = new Date(this.date.from);
     const todate = new Date(this.date.to);
-    if(fromdate.getTime() == todate.getTime()){
-      if(this.Lokasi == 1 && this.Dewan == 2){
+    if (fromdate.getTime() == todate.getTime()) {
+      if (this.Lokasi == 1 && this.Dewan == 2) {
         this.masablock = true;
-      }else{
+      } else {
         this.masablock = false;
       }
       this.days = 1;
-    }else{
+    } else {
       this.masablock = false;
       var diff = Math.abs(todate.getTime() - fromdate.getTime());
       this.days = Math.ceil(diff / (1000 * 3600 * 24)) + 1;
     }
-    this.TarikhVal = fromdate.getDate()+'/'+fromdate.getMonth()+'/'+fromdate.getFullYear()+' - '+ todate.getDate()+'/'+todate.getMonth()+'/'+todate.getFullYear();
-    
+    this.TarikhVal = fromdate.getDate() + '/' + fromdate.getMonth() + '/' + fromdate.getFullYear() + ' - ' + todate.getDate() + '/' + todate.getMonth() + '/' + todate.getFullYear();
+
     this.ChangeDDTarikh();
   }
 
@@ -228,7 +230,7 @@ export class DewanPage implements OnInit {
     var harga = 0;
     var dewan = this.Dewan;
     this.listdewan.forEach(function (value) {
-      if(value.id == dewan){
+      if (value.id == dewan) {
         harga = value.harga;
         return;
       }
@@ -236,12 +238,12 @@ export class DewanPage implements OnInit {
     console.log(this.timecheck);
 
     this.amaun = harga * this.days;
-    
+
     console.log(this.amaun);
     const formData = new FormData();
     formData.append('user_id', this.user.user_id);
     formData.append('dewan', this.Dewan);
-    if(this.date == undefined){
+    if (this.date == undefined) {
       await loading.dismiss();
       this.alerterror('Tarikh diperlukan');
     }
@@ -249,10 +251,10 @@ export class DewanPage implements OnInit {
     formData.append('tarikh_mula', this.date.from);
     formData.append('tarikh_akhir', this.date.to);
     formData.append('days', this.days);
-    formData.append('masa', this.masa);   
-    formData.append('hour', this.hour); 
-    formData.append('amaun', this.amaun); 
-  
+    formData.append('masa', this.masa);
+    formData.append('hour', this.hour);
+    formData.append('amaun', this.amaun);
+
     await this.bookingService.add(formData).subscribe(
       async (res) => {
         console.log(res);
@@ -262,22 +264,22 @@ export class DewanPage implements OnInit {
         var akaun = {};
 
         console.log(res);
-          
-          akaun = {
-            "id":'',
-            "amaun":this.amaun,
-            "kodbayaran":"DWN"+res.id,
-          }
-          arr.push(akaun);
-        
-        var data = 
-          {
-            "src": 2,
-            "jumlah": this.amaun,
-            "jumcount":1,
-            "akaun":arr
-          };
-        
+
+        akaun = {
+          "id": '',
+          "amaun": this.amaun,
+          "kodbayaran": "DWN" + res.id,
+        }
+        arr.push(akaun);
+
+        var data =
+        {
+          "src": 2,
+          "jumlah": this.amaun,
+          "jumcount": 1,
+          "akaun": arr
+        };
+
         let navigationExtras: NavigationExtras = {
           state: {
             data: data
@@ -294,13 +296,13 @@ export class DewanPage implements OnInit {
           message: res.message,
           buttons: ['OK'],
         });
- 
+
         await alert.present();
       }
     );
   }
 
-  async alerterror(msg){
+  async alerterror(msg) {
     const alert = await this.alertController.create({
       header: 'Loading failed',
       message: msg,
@@ -310,7 +312,7 @@ export class DewanPage implements OnInit {
     await alert.present();
   }
 
-  clearform(){
+  clearform() {
     this.Lokasi = '';
     this.Dewan = '';
     this.TarikhVal = '';
@@ -318,43 +320,43 @@ export class DewanPage implements OnInit {
     this.MasaVal = '';
   }
 
-  ChangeMasa(time:any){
+  ChangeMasa(time: any) {
     console.log(time);
-    var txt : any;
-    var txt2 : any;
+    var txt: any;
+    var txt2: any;
     var temp = [];
     var add = true;
     for (let index = 0; index < 23; index++) {
       add = true;
-      if(index < 10){
-        txt = "0"+index;
-        txt2 = index+1;
-        if(index != 9){
-          txt2 = "0"+txt2;
+      if (index < 10) {
+        txt = "0" + index;
+        txt2 = index + 1;
+        if (index != 9) {
+          txt2 = "0" + txt2;
         }
-      }else{
+      } else {
         txt = index;
         txt2 = index + 1;
       }
       let timelist: timelist;
       timelist = {
         val: index,
-        text: txt+":00 - "+ txt2+":00",
+        text: txt + ":00 - " + txt2 + ":00",
         check: false
       };
-      if(timelist.val >= 8){
-        if(timelist.val == 19){
+      if (timelist.val >= 8) {
+        if (timelist.val == 19) {
           add = false;
         }
         time.forEach(function (value) {
-          if (value == index){
+          if (value == index) {
             add = false;
           }
         });
-      }else{
+      } else {
         add = false;
       }
-      if(add == true){
+      if (add == true) {
         temp.push(timelist);
       }
     }
@@ -362,7 +364,7 @@ export class DewanPage implements OnInit {
     console.log(this.timecheck);
   }
 
-  async ChangeDDTarikh(){
+  async ChangeDDTarikh() {
     var dewan = this.Dewan;
     var date = this.date;
     var hari = this.days;
@@ -370,27 +372,27 @@ export class DewanPage implements OnInit {
     var alltime = [];
     var exist = 0;
     console.log(hari);
-    
+
     await this.listbooking.forEach(async function (value) {
       console.log(value);
-      if(value.dewan_id == dewan){
+      if (value.dewan_id == dewan) {
         const fromdate = new Date(date.from);
         var haribaru = new Date(fromdate.getTime());
-        if(value.days == 1){
-          if(new Date(value.date_from).getTime() == haribaru.getTime()){
+        if (value.days == 1) {
+          if (new Date(value.date_from).getTime() == haribaru.getTime()) {
             var time = value.time.split(",");
             await time.forEach(function (value) {
               alltime.push(value);
             });
           }
           for (let index = 1; index <= hari; index++) {
-            
-            var tambah = index*(1000 * 60 * 60 * 24);
+
+            var tambah = index * (1000 * 60 * 60 * 24);
 
             console.log(new Date(value.date_from));
             console.log(haribaru);
 
-            if(new Date(value.date_from).getTime() == haribaru.getTime()){
+            if (new Date(value.date_from).getTime() == haribaru.getTime()) {
               console.log('jadi');
               exist = 1;
               break;
@@ -401,15 +403,15 @@ export class DewanPage implements OnInit {
       }
     });
 
-    if(hari != 1){
-      if(exist == 1){
+    if (hari != 1) {
+      if (exist == 1) {
         this.alerterror('Tarikh Diplih Sudah Penuh, Sila Pilih Tarikh Lain.');
         this.TarikhVal = '';
         this.date = '';
       }
     }
-    
-    console.log('alltime',alltime);
+
+    console.log('alltime', alltime);
     this.ChangeMasa(alltime);
   }
 }

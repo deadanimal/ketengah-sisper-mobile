@@ -1,231 +1,230 @@
 {
-    "home": {
-      "selamat": "Selamat Datang",
-      "akaun-saya": "Akaun Saya",
-      "tambah": "Tambah",
-      "bayar-sewa": "Kaunter Bayaran",
-      "lejar":"Penyata Akaun",
-      "tender":"Pembelian Sebut Harga Tender",
-      "tempahkemudahan":"Tempah Kemudahan",
-      "aduan":"Aduan",
-      "aduandan":"Aduan dan Penghargaan",
-      "lain":"Lain-Lain",
-      "notis":"Notis",
-      "pengumuman":"Pengumuman",
-      "pengguna":"Pengguna",
-      "penghargaan":"Penghargaan",
-      "tarikh":"Sekatan Tarikh",
-      "byrsebelum":"Bayar Sebelum",
-      "tunjuk":"Tunjuk Graf",
-      "muatturun":"Muat Turun Graf"
-    },
-    "setting": {
-      "tetapan": "Tetapan",
-      "noti": "Notifikasi",
-      "bahasa": "Tetapan Bahasa Aplikasi",
-      "bantuan": "Bantuan dan Sokongan",
-      "faq": "FAQ",
-      "terma": "Terma dan Syarat"
-    },
-    "logout": "Log Keluar",
-    "profile": {
-      "profile": "Profil",
-      "nama": "Nama Penuh",
-      "nokp": "Nombor Kad Pengenalan",
-      "emel": "E-mel",
-      "notel": "Nombor Telefon",
-      "pass": "Kata Laluan",
-      "akaun": "Akaun Rumah/ Premis",
-      "lupakatalaluan": "Lupa Kata Laluan"
-    },
-    "semak": {
-      "main": "Semak Bayaran",
-      "akaun": "Nama Akaun",
-      "ok": "Okay",
-      "cancel": "Kembali",
-      "sejbayaran": "Sejarah Pembayaran"
-    },
-    "forgot": {
-      "pass": "Lupa Kata Laluan",
-      "word1": "Sila Masukkan Nombor Telefon",
-      "word2": "Pautan Set Semula Kata Laluan Akan Dihantar Melalui SMS. Sila Semak Peti Mesej Anda"
-    },
-    "notis": {
-      "notis": "Notis",
-      "buang": "Buang",
-      "tajuk": "Tajuk Notis",
-      "notisumum": "Pengumuman dan Notis"
-    },
-    "aduan": {
-      "aduan": "Aduan",
-      "penghargaan": "Perhargaan",
-      "tambah": "Tambah",
-      "tambahdesc": "Tambah Aduan Baru Dan Hantar Terus Ke Jabatan",
-      "aduandesc": "Senarai Aduan Yang Telah Dihantar",
-      "kategori": "Kategori",
-      "status": "Status",
-      "tambahaduan": "Tambah Aduan",
-      "silaisi": "Sila Isi Maklumat Kerosakan Anda",
-      "pilihkate": "Pilih Kategori",
-      "pilihrosak": "Pilih Kerosakan",
-      "catatan": "Catatan",
-      "hantar": "Hantar",
-      "senarai": "Senarai Aduan",
-      "tarikh": "Tarikh Aduan",
-      "katerosak": "Kategori Kerosakan",
-      "jenisrosak": "Jenis Kerosakan",
-      "butiranaduan": "Butiran Aduan",
-      "pilihstatus": "Pilih Status",
-      "aduanpeng": "Aduan dan Penghargaan",
-      "aduanrosak": "Aduan Kerosakan"
-    },
-    "penghargaan": {
-      "penghargaan": "Penghargaan",
-      "silaisi": "Sila Isi Penghargaan Anda"
-    },
-    "pengumuman": {
-      "tajukpengumuman": "Tajuk Pengumuman",
-      "kandungan": "Kandungan",
-      "tempohpengumuman": "Tempoh Pengumuman"
-    },
-    "lain": {
-      "catatan": "Catatan",
-      "urusan": "Urusan",
-      "lain":"Lain-lain",
-      "jumlah":"Jumlah Bayaran"
-    },
-    "lejar": {
-      "lejar": "Lejar",
-      "sewarumah": "Sewa Rumah",
-      "sewapremis": "Sewa Premis",
-      "nama": "Nama Akaun",
-      "tahun": "Tahun",
-      "bulan": "Bulan",
-      "cetak": "Cetak"
-    },
-    "sewa": {
-      "bayarsewa": "Kaunter Bayaran",
-      "jumlah": "Jumlah",
-      "jumkeseluruhan": "JUMLAH KESELURUHAN",
-      "bayar": "Bayar",
-      "pilihakaun": "Pilih Akaun Sewa"
-    },
-    "tempat_kemudahan": {
-      "dewan": "Dewan",
-      "tempahK": "Tempah Kemudahan",
-      "alatan": "Alatan",
-      "fasiliti": "Fasiliti",
-      "sejarahTempahan": "Sejarah Tempahan"
-    },
-    "tender": {
-      "tender": "Sebutharga / Tender",
-      "namasyarikat": "Nama Syarikat / Pembeli",
-      "norujsyarikat": "Nombor Rujukan Syarikat",
-      "alamat": "Alamat",
-      "poskod": "Poskod",
-      "bandar": "Bandar",
-      "negeri": "Negeri",
-      "NSH": "Nilai Sebut Harga",
-      "urusan": "Urusan",
-      "catatan": "Catatan",
-      "amaun": "Amaun",
-      "jumlah": "Jumlah"
-    },
+  "home": {
+    "selamat": "Selamat Datang",
+    "akaun-saya": "Akaun Saya",
+    "tambah": "Tambah",
+    "bayar-sewa": "Kaunter Bayaran",
+    "lejar": "Penyata Akaun",
+    "tender": "Pembelian Sebut Harga Tender",
+    "tempahkemudahan": "Tempah Kemudahan",
+    "aduan": "Aduan",
+    "aduandan": "Aduan dan Penghargaan",
+    "lain": "Lain-Lain",
+    "notis": "Notis",
+    "pengumuman": "Pengumuman",
+    "pengguna": "Pengguna",
+    "penghargaan": "Penghargaan",
+    "tarikh": "Sekatan Tarikh",
+    "byrsebelum": "Bayar Sebelum",
+    "tunjuk": "Tunjuk Graf",
+    "muatturun": "Muat Turun Graf"
+  },
+  "setting": {
+    "tetapan": "Tetapan",
+    "noti": "Notifikasi",
+    "bahasa": "Tetapan Bahasa Aplikasi",
+    "bantuan": "Bantuan dan Sokongan",
+    "faq": "FAQ",
+    "terma": "Terma dan Syarat"
+  },
+  "logout": "Log Keluar",
+  "profile": {
+    "profile": "Profil",
+    "nama": "Nama Penuh",
+    "nokp": "Nombor Kad Pengenalan",
+    "emel": "E-mel",
+    "notel": "Nombor Telefon",
+    "pass": "Kata Laluan",
+    "akaun": "Akaun Rumah/ Premis",
+    "lupakatalaluan": "Lupa Kata Laluan"
+  },
+  "semak": {
+    "main": "Semak Bayaran",
+    "akaun": "Nama Akaun",
+    "ok": "Okay",
+    "cancel": "Kembali",
+    "sejbayaran": "Sejarah Pembayaran"
+  },
+  "forgot": {
+    "pass": "Lupa Kata Laluan",
+    "word1": "Sila Masukkan Nombor Telefon",
+    "word2": "Pautan Set Semula Kata Laluan Akan Dihantar Melalui SMS. Sila Semak Peti Mesej Anda"
+  },
+  "notis": {
+    "notis": "Notis",
+    "buang": "Buang",
+    "tajuk": "Tajuk Notis",
+    "notisumum": "Pengumuman dan Notis"
+  },
+  "aduan": {
+    "aduan": "Aduan",
+    "penghargaan": "Perhargaan",
+    "tambah": "Tambah",
+    "tambahdesc": "Tambah Aduan Baru Dan Hantar Terus Ke Jabatan",
+    "aduandesc": "Senarai Aduan Yang Telah Dihantar",
+    "kategori": "Kategori",
+    "status": "Status",
+    "tambahaduan": "Tambah Aduan",
+    "silaisi": "Sila Isi Maklumat Kerosakan Anda",
+    "pilihkate": "Pilih Kategori",
+    "pilihrosak": "Pilih Kerosakan",
+    "catatan": "Catatan",
     "hantar": "Hantar",
-    "dewan": {
-      "tempah": "Tempah",
-      "dewan": "Dewan",
-      "lokasi": "Lokasi",
-      "placelokasi": "Pilih Lokasi",
-      "placedewan": "Pilih Dewan",
-      "tarikh": "Tarikh",
-      "masa": "Masa",
-      "daripada": "Daripada",
-      "hingga": "Hingga"
-    },
-    "pilih": "Pilih",
-    "kembali": "Kembali",
-    "alatan": {
-      "alatan": "Alatan",
-      "kuantiti": "Kuantiti",
-      "tarikh": "Tarikh",
-      "placealatan": "Pilih Alatan"
-    },
-    "fasiliti": {
-      "fasiliti": "Fasiliti",
-      "placefasiliti": "Pilih Fasiliti",
-      "gelanggang": "Gelanggang",
-      "placegelanggang": "Pilih Gelanggang"
-    },
-    "simpan": "Simpan",
+    "senarai": "Senarai Aduan",
+    "tarikh": "Tarikh Aduan",
+    "katerosak": "Kategori Kerosakan",
+    "jenisrosak": "Jenis Kerosakan",
+    "butiranaduan": "Butiran Aduan",
+    "pilihstatus": "Pilih Status",
+    "aduanpeng": "Aduan dan Penghargaan",
+    "aduanrosak": "Aduan Kerosakan"
+  },
+  "penghargaan": {
+    "penghargaan": "Penghargaan",
+    "silaisi": "Sila Isi Penghargaan Anda"
+  },
+  "pengumuman": {
+    "tajukpengumuman": "Tajuk Pengumuman",
+    "kandungan": "Kandungan",
+    "tempohpengumuman": "Tempoh Pengumuman"
+  },
+  "lain": {
+    "catatan": "Catatan",
+    "urusan": "Urusan",
+    "lain": "Lain-lain",
+    "jumlah": "Jumlah Bayaran"
+  },
+  "lejar": {
+    "lejar": "Penyata Akaun",
+    "sewarumah": "Sewa Rumah",
+    "sewapremis": "Sewa Premis",
+    "nama": "Nama Akaun",
+    "tahun": "Tahun",
+    "bulan": "Bulan",
+    "cetak": "Cetak"
+  },
+  "sewa": {
+    "bayarsewa": "Kaunter Bayaran",
+    "jumlah": "Jumlah",
+    "jumkeseluruhan": "JUMLAH KESELURUHAN",
     "bayar": "Bayar",
-    "kemaskini": "Kemaskini",
-    "sejarah": {
-      "sejarah": "Sejarah Tempahan",
-      "tempahan": " Tempahan",
-      "tarikh": "Tarikh",
-      "lokasi": "Lokasi",
-      "masa": "Masa",
-      "jumlah": "Jumlah Bayaran",
-      "qty": "Kuantiti",
-      "fasiliti": "Jenis Tempahan",
-      "dewan": "Nama Dewan",
-      "gelangang": "Nama Gelanggang"
-    },
-    "pengguna":{
-      "pengguna": "Pengguna",
-      "senarai": "Senarai Pengguna",
-      "notel": "Nombor Telefon"
-    },
-    "sekatan": {
-      "tarikh": "Sekatan Tarikh",
-      "futsal": "Futsal",
-      "badminton": "Badminton",
-      "tempat": "Tempat",
-      "placetempat": "Pilih Tempat",
-      "gelanggang": "Gelanggang",
-      "placegelanggang": "Pilih Gelanggang"
-    },
-    "akaun": {
-      "tambahakaun": "Tambah Akaun Perumahan",
-      "tambahpremis": "Tambah Akaun Premis",
-      "desc": "Adakah Anda Merupakan Pemilik atau Penyewa Akaun Perumahan Yang Ingin Ditambah?",
-      "yes": "Ya",
-      "no": "Tidak",
-      "tambahyes": "Saya Merupakan Pemilik atau Penyewa Asal Akaun Perumahan Yang Ingin Ditambah.",
-      "tambahno": "Saya Merupakan Anak Atau Ahli Keluarga Kepada Pemilik atau Penyewa Asal.",
-      "noakaun": "No. Akaun",
-      "namaakaun": "Nama Akaun",
-      "nokp":"No Kad Pengenalan Pemilik",
-      "maklumat":"Maklumat Akaun",
-      "jumlah":"Jumlah Yang Perlu Dibayar",
-      "semasa":"Bil Semasa",
-      "tunggak":"Bil Tertunggak",
-      "nama":"Nama",
-      "bandar":"Bandar",
-      "nokp2":"No Kad Pengenalan",
-      "norumah":"Nombor Rumah",
-      "taman":"Taman",
-      "kate":"Kategori",
-      "kadarsewa":"Kadar Sewa",
-      "jenisrumah":"Jenis Rumah",
-      "tlhbayar":"Jumlah Telah Dibayar",
-      "pinjaman":"Jumlah Pinjaman",
-      "tunggakan":"Tunggakan",
-      "mulaperjanjian":"Tarikh Mula Perjanjian",
-      "tamatperjanjian":"Tarikh Tamat Perjanjian",
-      "baki":"Baki"
-    },
-    "bayaran": {
-      "kaedah": "Pilih Kaedah Bayaran",
-      "jumlah": "Jumlah",
-      "kad": "Kad Kredit/ Debit",
-      "kaedahlain": "Kaedah Pembayaran Lain",
-      "tambahkad": "Tambah Kad",
-      "resit": "Resit",
-      "cetak": "Cetak"
-    },
-    "akaundisp": "Akaun",
-    "perumahan": "Perumahan"
-
+    "pilihakaun": "Pilih Akaun Sewa"
+  },
+  "tempat_kemudahan": {
+    "dewan": "Dewan",
+    "tempahK": "Tempah Kemudahan",
+    "alatan": "Alatan",
+    "fasiliti": "Fasiliti",
+    "sejarahTempahan": "Sejarah Tempahan"
+  },
+  "tender": {
+    "tender": "Sebutharga / Tender",
+    "namasyarikat": "Nama Syarikat / Pembeli",
+    "norujsyarikat": "Nombor Rujukan Syarikat",
+    "alamat": "Alamat",
+    "poskod": "Poskod",
+    "bandar": "Bandar",
+    "negeri": "Negeri",
+    "NSH": "Nilai Sebut Harga",
+    "urusan": "Urusan",
+    "catatan": "Catatan",
+    "amaun": "Amaun",
+    "jumlah": "Jumlah"
+  },
+  "hantar": "Hantar",
+  "dewan": {
+    "tempah": "Tempah",
+    "dewan": "Dewan",
+    "lokasi": "Lokasi",
+    "placelokasi": "Pilih Lokasi",
+    "placedewan": "Pilih Dewan",
+    "tarikh": "Tarikh",
+    "masa": "Masa",
+    "daripada": "Daripada",
+    "hingga": "Hingga"
+  },
+  "pilih": "Pilih",
+  "kembali": "Kembali",
+  "alatan": {
+    "alatan": "Alatan",
+    "kuantiti": "Kuantiti",
+    "tarikh": "Tarikh",
+    "placealatan": "Pilih Alatan"
+  },
+  "fasiliti": {
+    "fasiliti": "Fasiliti",
+    "placefasiliti": "Pilih Fasiliti",
+    "gelanggang": "Gelanggang",
+    "placegelanggang": "Pilih Gelanggang"
+  },
+  "simpan": "Simpan",
+  "bayar": "Bayar",
+  "kemaskini": "Kemaskini",
+  "sejarah": {
+    "sejarah": "Sejarah Tempahan",
+    "tempahan": " Tempahan",
+    "tarikh": "Tarikh",
+    "lokasi": "Lokasi",
+    "masa": "Masa",
+    "jumlah": "Jumlah Bayaran",
+    "qty": "Kuantiti",
+    "fasiliti": "Jenis Tempahan",
+    "dewan": "Nama Dewan",
+    "gelangang": "Nama Gelanggang"
+  },
+  "pengguna": {
+    "pengguna": "Pengguna",
+    "senarai": "Senarai Pengguna",
+    "notel": "Nombor Telefon"
+  },
+  "sekatan": {
+    "tarikh": "Sekatan Tarikh",
+    "futsal": "Futsal",
+    "badminton": "Badminton",
+    "tempat": "Tempat",
+    "placetempat": "Pilih Tempat",
+    "gelanggang": "Gelanggang",
+    "placegelanggang": "Pilih Gelanggang"
+  },
+  "akaun": {
+    "tambahakaun": "Tambah Akaun Perumahan",
+    "tambahpremis": "Tambah Akaun Premis",
+    "desc": "Adakah Anda Merupakan Pemilik atau Penyewa Akaun Perumahan Yang Ingin Ditambah?",
+    "yes": "Ya",
+    "no": "Tidak",
+    "tambahyes": "Saya Merupakan Pemilik atau Penyewa Asal Akaun Perumahan Yang Ingin Ditambah.",
+    "tambahno": "Saya Merupakan Anak Atau Ahli Keluarga Kepada Pemilik atau Penyewa Asal.",
+    "noakaun": "No. Akaun",
+    "namaakaun": "Nama Akaun",
+    "nokp": "No Kad Pengenalan Pemilik",
+    "maklumat": "Maklumat Akaun",
+    "jumlah": "Jumlah Yang Perlu Dibayar",
+    "semasa": "Bil Semasa",
+    "tunggak": "Bil Tertunggak",
+    "nama": "Nama",
+    "bandar": "Bandar",
+    "nokp2": "No Kad Pengenalan",
+    "norumah": "Nombor Rumah",
+    "taman": "Taman",
+    "kate": "Kategori",
+    "kadarsewa": "Kadar Sewa",
+    "jenisrumah": "Jenis Rumah",
+    "tlhbayar": "Jumlah Telah Dibayar",
+    "pinjaman": "Jumlah Pinjaman",
+    "tunggakan": "Tunggakan",
+    "mulaperjanjian": "Tarikh Mula Perjanjian",
+    "tamatperjanjian": "Tarikh Tamat Perjanjian",
+    "baki": "Baki"
+  },
+  "bayaran": {
+    "kaedah": "Pilih Kaedah Bayaran",
+    "jumlah": "Jumlah",
+    "kad": "Kad Kredit/ Debit",
+    "kaedahlain": "Kaedah Pembayaran Lain",
+    "tambahkad": "Tambah Kad",
+    "resit": "Resit",
+    "cetak": "Cetak"
+  },
+  "akaundisp": "Akaun",
+  "perumahan": "Perumahan"
 }

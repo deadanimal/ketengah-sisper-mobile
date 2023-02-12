@@ -5,298 +5,322 @@
 </ion-header> -->
 
 <ion-content>
-    <div class="homemain"style="padding-top: 50px;padding-bottom: 70px;">
-      <div style="padding-left: 40px;padding-right: 50px;">
-        <div style="display: inline-block; width: 70%;">
-          <ion-img src="../../assets/icon/sisper.png" class="iconsisper"></ion-img>
+  <div class="homemain" style="padding-top: 50px;padding-bottom: 70px;">
+    <div style="padding-left: 40px;padding-right: 50px;">
+      <div style="display: inline-block; width: 70%;">
+        <ion-img src="../../assets/icon/sisper.png" class="iconsisper"></ion-img>
+      </div>
+      <div *ngIf="role == 1" style="display: inline-block;width: 30%;text-align: right;">
+        <ion-img *ngIf="noti==true" src="../../assets/icon/noti.png" class="iconnoti" (click)="notis()"></ion-img>
+        <ion-img *ngIf="noti==false" src="../../assets/icon/notifalse.png" class="iconnotifalse"
+          (click)="notis()"></ion-img>
+      </div>
+      <!-- <div *ngIf="role == 2" style="display: inline-block;width: 30%;text-align: right;"> -->
+      <ion-img *ngIf="role == 2" src="../../assets/icon/adminmenu.png" style="position: absolute;top: 50px;right: 25px;"
+        class="iconnoti" (click)="adminmenu()"></ion-img>
+      <!-- </div> -->
+      <div>
+        <div style="display: inline-block; width: 70%;" class="selamat">{{ 'home.selamat' | translate }}, <br>
+          <span class="inline name">{{username}}</span>
         </div>
-        <div *ngIf="role == 1" style="display: inline-block;width: 30%;text-align: right;">
-          <ion-img *ngIf="noti==true" src="../../assets/icon/noti.png" class="iconnoti" (click)="notis()"></ion-img>
-          <ion-img *ngIf="noti==false" src="../../assets/icon/notifalse.png" class="iconnotifalse" (click)="notis()"></ion-img>
+        <div style="display: inline-block;width: 30%;text-align: right;">
+          <ion-img src="../../assets/icon/ketengah.png" class="iconketengah"></ion-img>
         </div>
-        <!-- <div *ngIf="role == 2" style="display: inline-block;width: 30%;text-align: right;"> -->
-          <ion-img *ngIf="role == 2" src="../../assets/icon/adminmenu.png" style="position: absolute;top: 50px;right: 25px;" class="iconnoti" (click)="adminmenu()"></ion-img>
-        <!-- </div> -->
-        <div>
-          <div style="display: inline-block; width: 70%;" class="selamat">{{ 'home.selamat' | translate }}, <br>
-            <span class="inline name">{{username}}</span>
-          </div>
-          <div style="display: inline-block;width: 30%;text-align: right;">
-            <ion-img src="../../assets/icon/ketengah.png" class="iconketengah"></ion-img>
-          </div>
+      </div>
+      <div *ngIf="role == 1">
+        <div style="display: inline-block;width: 70%;padding-top: 30px;">
+          <span class="akaunsaya">{{ 'home.akaun-saya' | translate }}</span>
         </div>
-        <div *ngIf="role == 1">
-          <div style="display: inline-block;width: 70%;padding-top: 30px;">
-            <span class="akaunsaya">{{ 'home.akaun-saya' | translate }}</span>
-          </div>
-          <div style="display: inline-block;width: 30%;text-align: right;">
+        <div style="display: inline-block;width: 30%;text-align: right;">
+          <div style="display: flex; gap: 2px;">
             <button ion-button class="buttontambah" (click)="tambah()">
               <ion-icon name="add-outline" style="align-items: baseline;"></ion-icon>
               <span style="padding-left: 5px;">{{ 'home.tambah' | translate }}</span>
             </button>
+            <button ion-button class="buttontambah" (click)="tambah()"
+              style="width: fit-content; background-color: orange;">
+
+              <span style="padding-left: 5px;"> - Hapus</span>
+            </button>
           </div>
+
         </div>
-       
       </div>
+
     </div>
-    <div class="homemaintwo">
-      <div class="container2">
-        <div *ngIf="role == 1">
-          <ion-card class="card">
-            <ion-card-content>
-              <div *ngIf="showmore == 0">
-                <div *ngIf="rumah != ''">
-                  <table (click)="detail(rumah[0])">
-                    <colgroup>
-                      <col style="width: 68%;padding: 10px;">
-                      <col style="width: 32%;padding: 10px;">
-                    </colgroup>
-                    <tr>
-                      <td class="nama">{{rumah[0].nama}}</td>
-                      <td class="tunggakan">RM {{rumah[0].jumlahbyr}}</td>
-                    </tr>
-                    <tr>
-                      <td rowspan="2" class="noakaun">{{rumah[0].no_akaun_rumah}}</td>
-                      <td class="byrsblm">{{ 'home.byrsebelum' | translate }}</td>
-                    </tr>
-                    <tr>
-                      <td class="byrsblm" style="font-weight: 600;" *ngIf="rumah[0].tarikh_tamat_perjanjian != ''"{{rumah[0].tarikh_tamat_perjanjian}}></td>
-                      <td class="byrsblm" style="font-weight: 600;" *ngIf="rumah[0].tarikh_tamat_perjanjian == ''">-</td>
-                    </tr>
-                  </table>
-                </div>
-                <div *ngIf="premis != ''">
-                  <table (click)="detail(premis[0])">
-                    <colgroup>
-                      <col style="width: 68%;padding: 10px;">
-                      <col style="width: 32%;padding: 10px;">
-                    </colgroup>
-                    <tr>
-                      <td class="nama">{{premis[0].nama}}</td>
-                      <td class="tunggakan">RM {{premis[0].jumlahbyr}}</td>
-                    </tr>
-                    <tr>
-                      <td rowspan="2" class="noakaun">{{premis[0].no_akaun_premis}}</td>
-                      <td class="byrsblm">{{ 'home.byrsebelum' | translate }}</td>
-                    </tr>
-                    <tr>
-                      <td class="byrsblm" style="font-weight: 600;" *ngIf="premis[0].tarikh_tamat_perjanjian != ''"{{premis[0].tarikh_tamat_perjanjian}}></td>
-                      <td class="byrsblm" style="font-weight: 600;" *ngIf="premis[0].tarikh_tamat_perjanjian == ''">-</td>
-                    </tr>
-                  </table>
-                </div>
+  </div>
+  <div class="homemaintwo">
+    <div class="container2">
+      <div *ngIf="role == 1">
+        <ion-card class="card">
+          <ion-card-content>
+            <div *ngIf="showmore == 0">
+              <div *ngIf="rumah != ''">
+                <table (click)="detail(rumah[0])">
+                  <colgroup>
+                    <col style="width: 68%;padding: 10px;">
+                    <col style="width: 32%;padding: 10px;">
+                  </colgroup>
+                  <tr>
+                    <td class="nama">{{rumah[0].nama}}</td>
+                    <td class="tunggakan">RM {{rumah[0].jumlahbyr}}</td>
+                  </tr>
+                  <tr>
+                    <td rowspan="2" class="noakaun">{{rumah[0].no_akaun_rumah}}</td>
+                    <td class="byrsblm">{{ 'home.byrsebelum' | translate }}</td>
+                  </tr>
+                  <tr>
+                    <td class="byrsblm" style="font-weight: 600;" *ngIf="rumah[0].tarikh_tamat_perjanjian != ''"
+                      {{rumah[0].tarikh_tamat_perjanjian}}></td>
+                    <td class="byrsblm" style="font-weight: 600;" *ngIf="rumah[0].tarikh_tamat_perjanjian == ''">-</td>
+                  </tr>
+                </table>
               </div>
-              <div *ngIf="showmore == 1">
-                <div *ngIf="rumah != ''">
-                  <table *ngFor="let item of rumah" (click)="detail(item)">
-                    <colgroup>
-                      <col style="width: 68%;padding: 10px;">
-                      <col style="width: 32%;padding: 10px;">
-                    </colgroup>
-                    <tr>
-                      <td class="nama">{{item.nama}}</td>
-                      <td class="tunggakan">RM {{item.jumlahbyr}}</td>
-                    </tr>
-                    <tr>
-                      <td rowspan="2" class="noakaun">{{item.no_akaun_rumah}}</td>
-                      <td class="byrsblm">{{ 'home.byrsebelum' | translate }}</td>
-                    </tr>
-                    <tr>
-                      <td class="byrsblm" style="font-weight: 600;" *ngIf="item.tarikh_tamat_perjanjian != ''"{{item.tarikh_tamat_perjanjian}}></td>
-                      <td class="byrsblm" style="font-weight: 600;" *ngIf="item.tarikh_tamat_perjanjian == ''">-</td>
-                    </tr>
-                  </table>
-                </div>
-                <div *ngIf="premis != ''">
-                  <table *ngFor="let item of premis" (click)="detail(item)">
-                    <colgroup>
-                      <col style="width: 68%;padding: 10px;">
-                      <col style="width: 32%;padding: 10px;">
-                    </colgroup>
-                    <tr>
-                      <td class="nama">{{item.nama}}</td>
-                      <td class="tunggakan">RM {{item.jumlahbyr}}</td>
-                    </tr>
-                    <tr>
-                      <td rowspan="2" class="noakaun">{{item.no_akaun_premis}}</td>
-                      <td class="byrsblm">{{ 'home.byrsebelum' | translate }}</td>
-                    </tr>
-                    <tr>
-                      <td class="byrsblm" style="font-weight: 600;" *ngIf="item.tarikh_tamat_perjanjian != ''"{{item.tarikh_tamat_perjanjian}}></td>
-                      <td class="byrsblm" style="font-weight: 600;" *ngIf="item.tarikh_tamat_perjanjian == ''">-</td>
-                    </tr>
-                  </table>
-                </div>
+              <div *ngIf="premis != ''">
+                <table (click)="detail(premis[0])">
+                  <colgroup>
+                    <col style="width: 68%;padding: 10px;">
+                    <col style="width: 32%;padding: 10px;">
+                  </colgroup>
+                  <tr>
+                    <td class="nama">{{premis[0].nama}}</td>
+                    <td class="tunggakan">RM {{premis[0].jumlahbyr}}</td>
+                  </tr>
+                  <tr>
+                    <td rowspan="2" class="noakaun">{{premis[0].no_akaun_premis}}</td>
+                    <td class="byrsblm">{{ 'home.byrsebelum' | translate }}</td>
+                  </tr>
+                  <tr>
+                    <td class="byrsblm" style="font-weight: 600;" *ngIf="premis[0].tarikh_tamat_perjanjian != ''"
+                      {{premis[0].tarikh_tamat_perjanjian}}></td>
+                    <td class="byrsblm" style="font-weight: 600;" *ngIf="premis[0].tarikh_tamat_perjanjian == ''">-</td>
+                  </tr>
+                </table>
               </div>
-              <div *ngIf="showmore == 0" style="text-align: center;margin: auto;padding-top: 20px;" (click)="more(0)">
-                <ion-img src="../../assets/icon/showakaun.png" class="showmore"></ion-img>
+            </div>
+            <div *ngIf="showmore == 1">
+              <div *ngIf="rumah != ''">
+                <table *ngFor="let item of rumah" (click)="detail(item)">
+                  <colgroup>
+                    <col style="width: 68%;padding: 10px;">
+                    <col style="width: 32%;padding: 10px;">
+                  </colgroup>
+                  <tr>
+                    <td class="nama">{{item.nama}}</td>
+                    <td class="tunggakan">RM {{item.jumlahbyr}}</td>
+                  </tr>
+                  <tr>
+                    <td rowspan="2" class="noakaun">{{item.no_akaun_rumah}}</td>
+                    <td class="byrsblm">{{ 'home.byrsebelum' | translate }}</td>
+                  </tr>
+                  <tr>
+                    <td class="byrsblm" style="font-weight: 600;" *ngIf="item.tarikh_tamat_perjanjian != ''"
+                      {{item.tarikh_tamat_perjanjian}}></td>
+                    <td class="byrsblm" style="font-weight: 600;" *ngIf="item.tarikh_tamat_perjanjian == ''">-</td>
+                  </tr>
+                </table>
               </div>
-              <div *ngIf="showmore == 1" style="text-align: center;margin: auto;padding-top: 20px;" (click)="more(1)">
-                <ion-img src="../../assets/icon/showakaun.png" class="showmore" style="-ms-transform: rotate(180deg);transform: rotate(180deg);"></ion-img>
+              <div *ngIf="premis != ''">
+                <table *ngFor="let item of premis" (click)="detail(item)">
+                  <colgroup>
+                    <col style="width: 68%;padding: 10px;">
+                    <col style="width: 32%;padding: 10px;">
+                  </colgroup>
+                  <tr>
+                    <td class="nama">{{item.nama}}</td>
+                    <td class="tunggakan">RM {{item.jumlahbyr}}</td>
+                  </tr>
+                  <tr>
+                    <td rowspan="2" class="noakaun">{{item.no_akaun_premis}}</td>
+                    <td class="byrsblm">{{ 'home.byrsebelum' | translate }}</td>
+                  </tr>
+                  <tr>
+                    <td class="byrsblm" style="font-weight: 600;" *ngIf="item.tarikh_tamat_perjanjian != ''"
+                      {{item.tarikh_tamat_perjanjian}}></td>
+                    <td class="byrsblm" style="font-weight: 600;" *ngIf="item.tarikh_tamat_perjanjian == ''">-</td>
+                  </tr>
+                </table>
               </div>
-              
-            </ion-card-content>
-          </ion-card>
-          <table style="width: 100%;padding-right: 20px;">
-            <colgroup>
-              <col style="width: 11%;">
-              <col style="width: 33%;">
-              <col style="width: 33%;">
-              <col style="width: 11%;">
-            </colgroup>
-            <tr>
-              <td></td>
-              <td>
-                <ion-card class="card2" (click)="Sewa();">
-                  <ion-img class="cardimg" style="width:56px;height:50px;" src="../../assets/icon/main1.png"></ion-img>
-                  <div class="cardname">{{ 'home.bayar-sewa' | translate }}</div>
-                </ion-card>
-              </td>
-              <td>
-                <ion-card class="card2" (click)="Lejar();">
-                  <ion-img class="cardimg" style="width: 43px;height: 50px;" src="../../assets/icon/main2.png"></ion-img>
-                  <div class="cardname">{{ 'home.lejar' | translate }}</div>
-                </ion-card>
-              </td>
-              <td></td>
-              <!-- <td>
+            </div>
+            <div *ngIf="showmore == 0" style="text-align: center;margin: auto;padding-top: 20px;" (click)="more(0)">
+              <ion-img src="../../assets/icon/showakaun.png" class="showmore"></ion-img>
+            </div>
+            <div *ngIf="showmore == 1" style="text-align: center;margin: auto;padding-top: 20px;" (click)="more(1)">
+              <ion-img src="../../assets/icon/showakaun.png" class="showmore"
+                style="-ms-transform: rotate(180deg);transform: rotate(180deg);"></ion-img>
+            </div>
+
+          </ion-card-content>
+        </ion-card>
+        <table style="width: 100%;padding-right: 20px;">
+          <colgroup>
+            <col style="width: 11%;">
+            <col style="width: 33%;">
+            <col style="width: 33%;">
+            <col style="width: 11%;">
+          </colgroup>
+          <tr>
+            <td></td>
+            <td>
+              <ion-card class="card2" (click)="Sewa();">
+                <ion-img class="cardimg" style="width:56px;height:50px;" src="../../assets/icon/main1.png"></ion-img>
+                <div class="cardname">{{ 'home.bayar-sewa' | translate }}</div>
+              </ion-card>
+            </td>
+            <td>
+              <ion-card class="card2" (click)="Lejar();">
+                <ion-img class="cardimg" style="width: 43px;height: 50px;" src="../../assets/icon/main2.png"></ion-img>
+                <div class="cardname">{{ 'home.lejar' | translate }}</div>
+              </ion-card>
+            </td>
+            <td></td>
+            <!-- <td>
                 <ion-card class="card2" (click)="Tender();">
                   <ion-img class="cardimg" style="width: 45px;height: 50px;" src="../../assets/icon/main3.png"></ion-img>
                   <div class="cardname">{{ 'home.tender' | translate }}</div>
                 </ion-card>
               </td> -->
-            </tr>
-          </table>
-          <table style="width: 100%;padding-right: 20px;">
-            <colgroup>
-              <col style="width: 33%;">
-              <col style="width: 33%;">
-              <col style="width: 33%;">
-            </colgroup>
-            <tr>
-              <td>
-                <ion-card class="card2" (click)="TempahKemudahan();">
-                  <ion-img class="cardimg" style="width: 50px;height: 50px;" src="../../assets/icon/main4.png"></ion-img>
-                  <div class="cardname">{{ 'home.tempahkemudahan' | translate }}</div>
-                </ion-card>
-              </td>
-              <td>
-                <ion-card class="card2" (click)="Aduan();">
-                  <ion-img class="cardimg" style="width: 49.76px;height: 50px;" src="../../assets/icon/main5.png"></ion-img>
-                  <div class="cardname">{{ 'home.aduandan' | translate }}</div>
-                </ion-card>
-              </td>
-              <td>
-                <ion-card class="card2" (click)="Lain();">
-                  <ion-img class="cardimg" style="width: 53px;height: 50px;" src="../../assets/icon/main6.png"></ion-img>
-                  <div class="cardname">{{ 'home.lain' | translate }}</div>
-                </ion-card>
-              </td>
-            </tr>
-          </table>
-          <ion-slides pager="true" [options]="slideOpts">
-            <ion-slide *ngFor="let item of pengumumanlist" class="slider">
-              <table style="width: 100%;">
-                <tr>
-                  <td style="padding:30px 0px 10px 0px;">
-                    <div class="headerslide">{{item.tajuk}}</div>
-                  </td>
-                </tr>
-                <tr>
-                  <td>{{item.keterangan}}</td>
-                </tr>
-              </table>
-            </ion-slide>
-            <!-- <ion-slide class="slider">
+          </tr>
+        </table>
+        <table style="width: 100%;padding-right: 20px;">
+          <colgroup>
+            <col style="width: 33%;">
+            <col style="width: 33%;">
+            <col style="width: 33%;">
+          </colgroup>
+          <tr>
+            <td>
+              <ion-card class="card2" (click)="TempahKemudahan();">
+                <ion-img class="cardimg" style="width: 50px;height: 50px;" src="../../assets/icon/main4.png"></ion-img>
+                <div class="cardname">{{ 'home.tempahkemudahan' | translate }}</div>
+              </ion-card>
+            </td>
+            <td>
+              <ion-card class="card2" (click)="Aduan();">
+                <ion-img class="cardimg" style="width: 49.76px;height: 50px;"
+                  src="../../assets/icon/main5.png"></ion-img>
+                <div class="cardname">{{ 'home.aduandan' | translate }}</div>
+              </ion-card>
+            </td>
+            <td>
+              <ion-card class="card2" (click)="Lain();">
+                <ion-img class="cardimg" style="width: 53px;height: 50px;" src="../../assets/icon/main6.png"></ion-img>
+                <div class="cardname">{{ 'home.lain' | translate }}</div>
+              </ion-card>
+            </td>
+          </tr>
+        </table>
+        <ion-slides pager="true" [options]="slideOpts">
+          <ion-slide *ngFor="let item of pengumumanlist" class="slider">
+            <table style="width: 100%;">
+              <tr>
+                <td style="padding:30px 0px 10px 0px;">
+                  <div class="headerslide">{{item.tajuk}}</div>
+                </td>
+              </tr>
+              <tr>
+                <td>{{item.keterangan}}</td>
+              </tr>
+            </table>
+          </ion-slide>
+          <!-- <ion-slide class="slider">
               <ion-img src="../../assets/icon/ketengah.png"></ion-img>
             </ion-slide>
             <ion-slide class="slider">
               <ion-img src="../../assets/icon/ketengah.png"></ion-img>
             </ion-slide> -->
-          </ion-slides>
+        </ion-slides>
+      </div>
+      <div *ngIf="role == 2">
+        <table style="width: 100%;padding-right: 20px;">
+          <colgroup>
+            <col style="width: 33%;">
+            <col style="width: 33%;">
+            <col style="width: 33%;">
+          </colgroup>
+          <tr>
+            <td>
+              <ion-card class="card2" (click)="notisadmin()">
+                <ion-img class="cardimg" style="width:46px;height:42px;"
+                  src="../../assets/icon/adminnotis.png"></ion-img>
+                <div class="cardname">{{ 'home.notis' | translate }}</div>
+              </ion-card>
+            </td>
+            <td>
+              <ion-card class="card2" (click)="pengumumanadmin()">
+                <ion-img class="cardimg" style="width: 48px;height: 38px;"
+                  src="../../assets/icon/adminpengumuman.png"></ion-img>
+                <div class="cardname">{{ 'home.pengumuman' | translate }}</div>
+              </ion-card>
+            </td>
+            <td>
+              <ion-card class="card2" (click)="penggunaadmin()">
+                <ion-img class="cardimg" style="width: 42px;height: 42px;"
+                  src="../../assets/icon/adminpengguna.png"></ion-img>
+                <div class="cardname">{{ 'home.pengguna' | translate }}</div>
+              </ion-card>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <ion-card class="card2" (click)="penghargaanadmin()">
+                <ion-img class="cardimg" style="width: 40px;height: 40px;"
+                  src="../../assets/icon/adminpenghargaan.png"></ion-img>
+                <div class="cardname">{{ 'home.penghargaan' | translate }}</div>
+              </ion-card>
+            </td>
+            <td>
+              <ion-card class="card2" (click)="sekatanadmin()">
+                <ion-img class="cardimg" style="width: 41px;height: 42px;"
+                  src="../../assets/icon/admintarikh.png"></ion-img>
+                <div class="cardname">{{ 'home.tarikh' | translate }}</div>
+              </ion-card>
+            </td>
+            <td>
+              <ion-card class="card2" (click)="aduanadmin();">
+                <ion-img class="cardimg" style="width: 49.76px;height: 40px;"
+                  src="../../assets/icon/main5.png"></ion-img>
+                <div class="cardname">{{ 'home.aduan' | translate }}</div>
+              </ion-card>
+            </td>
+          </tr>
+        </table>
+        <div style="padding-top: 30px;">
+          <button class="buttunchart" (click)="displaychart()" *ngIf="showchart==0">{{ 'home.tunjuk' | translate
+            }}</button>
+          <button class="buttunchart" (click)="downloadchart()" *ngIf="showchart==1">{{ 'home.muatturun' | translate
+            }}</button>
         </div>
-        <div *ngIf="role == 2">
-          <table style="width: 100%;padding-right: 20px;">
+        <div>
+          <canvas #chartCanvas></canvas>
+        </div>
+        <div style="display: none;" id="pdf">
+          <table style="width: 100%;border: 1 pt solid black;font-size: 14px;color: black;">
             <colgroup>
-              <col style="width: 33%;">
-              <col style="width: 33%;">
-              <col style="width: 33%;">
+              <col style="width: 21%;">
+              <col style="width: 21%;">
+              <col style="width: 18%;">
+              <col style="width: 27%;">
+              <col style="width: 13%;">
             </colgroup>
-            <tr>
-              <td>
-                <ion-card class="card2" (click)="notisadmin()">
-                  <ion-img class="cardimg" style="width:46px;height:42px;" src="../../assets/icon/adminnotis.png"></ion-img>
-                  <div class="cardname">{{ 'home.notis' | translate }}</div>
-                </ion-card>
-              </td>
-              <td>
-                <ion-card class="card2" (click)="pengumumanadmin()">
-                  <ion-img class="cardimg" style="width: 48px;height: 38px;" src="../../assets/icon/adminpengumuman.png"></ion-img>
-                  <div class="cardname">{{ 'home.pengumuman' | translate }}</div>
-                </ion-card>
-              </td>
-              <td>
-                <ion-card class="card2" (click)="penggunaadmin()">
-                  <ion-img class="cardimg" style="width: 42px;height: 42px;" src="../../assets/icon/adminpengguna.png"></ion-img>
-                  <div class="cardname">{{ 'home.pengguna' | translate }}</div>
-                </ion-card>
-              </td>
+            <tr style="border-bottom:1pt solid black;">
+              <td>Tarikh Mula</td>
+              <td>Tarikh Akhir</td>
+              <td>Jenis</td>
+              <td>Lokasi</td>
+              <td>Hari</td>
             </tr>
-            <tr>
-              <td>
-                <ion-card class="card2" (click)="penghargaanadmin()">
-                  <ion-img class="cardimg" style="width: 40px;height: 40px;" src="../../assets/icon/adminpenghargaan.png"></ion-img>
-                  <div class="cardname">{{ 'home.penghargaan' | translate }}</div>
-                </ion-card>
-              </td>
-              <td>
-                <ion-card class="card2" (click)="sekatanadmin()">
-                  <ion-img class="cardimg" style="width: 41px;height: 42px;" src="../../assets/icon/admintarikh.png"></ion-img>
-                  <div class="cardname">{{ 'home.tarikh' | translate }}</div>
-                </ion-card>
-              </td>
-              <td>
-                <ion-card class="card2" (click)="aduanadmin();">
-                  <ion-img class="cardimg" style="width: 49.76px;height: 40px;" src="../../assets/icon/main5.png"></ion-img>
-                  <div class="cardname">{{ 'home.aduan' | translate }}</div>
-                </ion-card>
-              </td>
+            <tr *ngFor="let item of bookdtl">
+              <td>{{item.date_from}}</td>
+              <td>{{item.date_to}}</td>
+              <td>{{item.jenis}}</td>
+              <td>{{item.tempat}}</td>
+              <td>{{item.days}}</td>
             </tr>
           </table>
-          <div style="padding-top: 30px;">
-            <button class="buttunchart" (click)="displaychart()" *ngIf="showchart==0">{{ 'home.tunjuk' | translate }}</button>
-            <button class="buttunchart" (click)="downloadchart()" *ngIf="showchart==1">{{ 'home.muatturun' | translate }}</button>
-          </div>
-          <div>
-            <canvas #chartCanvas></canvas>
-          </div>
-          <div style="display: none;" id="pdf">
-            <table style="width: 100%;border: 1 pt solid black;font-size: 14px;color: black;">
-              <colgroup>
-                <col style="width: 21%;">
-                <col style="width: 21%;">
-                <col style="width: 18%;">
-                <col style="width: 27%;">
-                <col style="width: 13%;">
-              </colgroup>
-              <tr style="border-bottom:1pt solid black;">
-                <td>Tarikh Mula</td>
-                <td>Tarikh Akhir</td>
-                <td>Jenis</td>
-                <td>Lokasi</td>
-                <td>Hari</td>
-              </tr>
-              <tr *ngFor="let item of bookdtl">
-                <td>{{item.date_from}}</td>
-                <td>{{item.date_to}}</td>
-                <td>{{item.jenis}}</td>
-                <td>{{item.tempat}}</td>
-                <td>{{item.days}}</td>
-              </tr>
-            </table>
-          </div>
         </div>
       </div>
     </div>
-     
+  </div>
+
 </ion-content>

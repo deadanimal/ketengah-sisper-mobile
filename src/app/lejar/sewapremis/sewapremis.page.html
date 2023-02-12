@@ -15,30 +15,25 @@
     <div class="container2">
       <div class="headerbox">
         <div class="descbox">
-          <div class="label1" >{{ 'lejar.nama' | translate }}</div>
-          
+          <div class="label1">{{ 'lejar.nama' | translate }}</div>
+
           <div style="height: 10px;"></div>
-          <ion-select okText="{{ 'semak.ok' | translate }}" cancelText="{{ 'semak.cancel' | translate }}" class="select" placeholder="{{ 'lejar.nama' | translate }}" [(ngModel)]="akaun">
+          <ion-select okText="{{ 'semak.ok' | translate }}" cancelText="{{ 'semak.cancel' | translate }}" class="select"
+            placeholder="{{ 'lejar.nama' | translate }}" [(ngModel)]="akaun">
             <ion-select-option *ngFor="let item of ddakaun" [value]="item.id">
               {{item.nama}}
             </ion-select-option>
           </ion-select>
           <div style="height: 22px;"></div>
-          <div class="label1" >{{ 'lejar.tahun' | translate }}</div>
+          <div class="label1">{{ 'lejar.tahun' | translate }}</div>
           <div style="height: 10px;"></div>
-          <ion-select okText="{{ 'semak.ok' | translate }}" cancelText="{{ 'semak.cancel' | translate }}" class="select" placeholder="{{ 'lejar.tahun' | translate }}" [(ngModel)]="tahun">
+          <ion-select okText="{{ 'semak.ok' | translate }}" cancelText="{{ 'semak.cancel' | translate }}" class="select"
+            placeholder="{{ 'lejar.tahun' | translate }}" [(ngModel)]="tahun">
             <ion-select-option *ngFor="let item of ddYear" [value]="item">
               {{item}}
             </ion-select-option>
           </ion-select>
-          <div style="height: 22px;"></div>
-          <div class="label1" >{{ 'lejar.bulan' | translate }}</div>
-          <div style="height: 10px;"></div>
-          <ion-select okText="{{ 'semak.ok' | translate }}" cancelText="{{ 'semak.cancel' | translate }}" class="select" placeholder="{{ 'lejar.bulan' | translate }}" [(ngModel)]="bulan">
-            <ion-select-option *ngFor="let item of ddMonth" [value]="item.id">
-              {{item.name}}
-            </ion-select-option>
-          </ion-select>
+
 
           <div style="padding: 50px 0px;">
             <button ion-button class="button" (click)="hantar()">{{ 'lejar.cetak' | translate }}</button>

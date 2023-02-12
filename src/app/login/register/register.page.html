@@ -17,7 +17,8 @@
           Nama Penuh <br>
           <ion-input type="text" class="input" placeholder="Masukkan Nama Penuh Anda" clearInput formControlName="name">
           </ion-input>
-          <span style="font-size: 10px;">required*</span>
+          <span style="font-size: 10px ; color: red;">Ruangan Mandatori*</span>
+
 
         </div>
         <div *ngIf="!registerForm.controls.name.valid && registerForm.controls.name.dirty" class="validator">
@@ -27,7 +28,8 @@
           Nombor Telefon <br>
           <ion-input type="tel" maxlength="9" class="input" placeholder="000000000" clearInput
             formControlName="no_telefon" (keypress)="numericOnly($event)">+60 </ion-input>
-          <span style="font-size: 10px;">required*</span>
+          <span style="font-size: 10px ; color: red;">Ruangan Mandatori*</span>
+
         </div>
         <div *ngIf="!registerForm.controls.no_telefon.valid && registerForm.controls.no_telefon.dirty"
           class="validator">
@@ -35,9 +37,9 @@
         </div>
         <div class="boxwhite" style="border-bottom: 0.7px solid #E8E8E8">
           Nombor Kad Pengenalan <br>
-          <ion-input type="tel" maxlength="12" class="input" placeholder="Letakkan nombor IC sahaja tanpa -" clearInput
-            formControlName="no_ic" (keypress)="numericOnly($event)"></ion-input>
-          <span style="font-size: 10px;">required*</span>
+          <ion-input type="tel" maxlength="14" class="input" placeholder="Letakkan nombor IC sahaja tanpa -" clearInput
+            formControlName="no_ic" (keypress)="numericOnlyKad($event)"></ion-input>
+          <span style="font-size: 10px ; color: red;">Ruangan Mandatori*</span>
 
         </div>
         <div *ngIf="!registerForm.controls.no_ic.valid && registerForm.controls.no_ic.dirty" class="validator">
@@ -47,7 +49,7 @@
           Alamat <br>
           <ion-input type="text" class="input" placeholder="Masukkan Alamat Rumah Anda" clearInput
             formControlName="alamat"></ion-input>
-          <span style="font-size: 10px;">required*</span>
+
 
         </div>
         <div *ngIf="!registerForm.controls.alamat.valid && registerForm.controls.alamat.dirty" class="validator">
@@ -64,7 +66,7 @@
         <div class="boxwhite" style="border-bottom: 0.7px solid #E8E8E8">
           Bandar <br>
           <ion-input type="text" class="input" placeholder="" clearInput formControlName="bandar"></ion-input>
-          <span style="font-size: 10px;">required*</span>
+
 
         </div>
         <div *ngIf="!registerForm.controls.bandar.valid && registerForm.controls.bandar.dirty" class="validator">
@@ -73,7 +75,7 @@
         <div class="boxwhite" style="border-bottom: 0.7px solid #E8E8E8">
           Negeri <br>
           <ion-input type="text" class="input" placeholder="" clearInput formControlName="negeri"></ion-input>
-          <span style="font-size: 10px;">required*</span>
+
 
         </div>
         <div *ngIf="!registerForm.controls.negeri.valid && registerForm.controls.negeri.dirty" class="validator">
@@ -83,7 +85,8 @@
           E-mel <br>
           <ion-input type="text" class="input" placeholder="Masukkan E-mel Anda" clearInput formControlName="email">
           </ion-input>
-          <span style="font-size: 8px;">required*</span>
+          <span style="font-size: 10px ; color: red;">Ruangan Mandatori*</span>
+
 
         </div>
         <div *ngIf="!registerForm.controls.email.valid && registerForm.controls.email.dirty" class="validator">
@@ -94,7 +97,8 @@
           <div style="width: 90%;display: inline-block;">
             <ion-input type="{{showPass ? 'password' : 'text' }}" placeholder="Masukkan Kata Laluan Anda" clearInput
               formControlName="password"></ion-input>
-            <span style="font-size: 8px;">required*</span>
+            <span style="font-size: 10px ; color: red;">Ruangan Mandatori*</span>
+
 
           </div>
           <div style="width: 10%;display: inline-block;" (click)='hideShowPassword()'>

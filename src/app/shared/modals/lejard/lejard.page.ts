@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PDFGenerator } from '@ionic-native/pdf-generator/ngx';
-import { NavParams } from '@ionic/angular';
+import { ModalController, NavParams, ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-lejard',
@@ -15,13 +15,16 @@ export class LejardPage implements OnInit {
 
   constructor(
     private pdfGenerator: PDFGenerator,
-    private navParams: NavParams
+    private navParams: NavParams,
+    private modalController: ModalController,
+    private toastController: ToastController
   ) { }
 
   ngOnInit() {
     console.table(this.navParams);
     var data = this.navParams.data.data;
     this.selectedakaun = data.akaun;
+    console.log(this.selectedakaun)
     this.lejardtl = data.lejar;
     this.src = data.src;
     console.log(data);
@@ -37,13 +40,24 @@ export class LejardPage implements OnInit {
       fileName: 'eSisper_Lejar.pdf'
     };
     await this.pdfGenerator.fromData(content, options)
-    .then((base64) => {
-      document.getElementById('tr1').style.display = "none";
-      console.log('OK', base64);
-    }).catch((error) => {
-      document.getElementById('tr1').style.display = "none";
-      console.log('error', error);
+      .then((base64) => {
+        document.getElementById('tr1').style.display = "none";
+        console.log('OK', base64);
+      }).catch((error) => {
+        document.getElementById('tr1').style.display = "none";
+        console.log('error', error);
+        this.modalController.dismiss()
+        this.presentToast('Fail to generate PDF', 'danger');
+      });
+  }
+
+  async presentToast(message: string, color: string) {
+    const toast = await this.toastController.create({
+      message,
+      color,
+      duration: 2000
     });
+    toast.present();
   }
 
 }

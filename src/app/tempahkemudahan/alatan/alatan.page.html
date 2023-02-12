@@ -5,7 +5,8 @@
         <ion-icon name="chevron-back-outline" style="float: left;" (click)="back()"></ion-icon>
         <span class="headertxt">
           <div style="width:100px;margin: auto;">
-            {{ 'dewan.tempah' | translate }}<br>({{ 'alatan.alatan' | translate }})</div></span>
+            {{ 'dewan.tempah' | translate }}<br>({{ 'alatan.alatan' | translate }})</div>
+        </span>
       </div>
       <div style="padding-top: 40px;">
         <ion-img src="../../assets/icon/alatanHead.png" class="icontetapan"></ion-img>
@@ -16,7 +17,8 @@
     <div class="container2">
       <div style="padding:0px 40px;">
         <div class="label">{{ 'alatan.alatan' | translate }}.</div>
-        <ion-select okText="{{ 'semak.ok' | translate }}" cancelText="{{ 'semak.cancel' | translate }}" class="select" placeholder="{{ 'alatan.placealatan' | translate }}" [(ngModel)]="Alatan">
+        <ion-select okText="{{ 'semak.ok' | translate }}" cancelText="{{ 'semak.cancel' | translate }}" class="select"
+          placeholder="{{ 'alatan.placealatan' | translate }}" [(ngModel)]="Alatan">
           <ion-select-option *ngFor="let alatan of ddAlatan; let i = index" [value]="alatan.id">
             {{alatan.nama_alatan}}
           </ion-select-option>
@@ -24,14 +26,16 @@
         <div style="height: 20px;"></div>
         <div class="label">{{ 'alatan.kuantiti' | translate }}.</div>
         <button class="small" (click)="decrement()"> - </button>
-        <ion-input class="select" style="display: inline-block;width: 50%;text-align: center;" type="number" [(ngModel)]="QtyVal" readonly="true"></ion-input>
+        <ion-input [value]="date |date: 'yyyy-MM-dd ' " class="select"
+          style="display: inline-block;width: 50%;text-align: center;" type="number" [(ngModel)]="QtyVal"
+          readonly="true"></ion-input>
         <button class="small" (click)="increment()"> + </button>
         <div style="height: 20px;"></div>
         <div class="label">{{ 'alatan.tarikh' | translate }}.</div>
-        <input class="select" placeholder="00/00/0000 - 00/00/0000" (click)="opencal()" [(ngModel)]="TarikhVal">
+        <input class="select" [value]="date |date: 'yyyy-MM-dd ' " (focus)="openCal()" [(ngModel)]="TarikhVal">
         <div *ngIf="cal==true" style="text-align: center;padding-top: 10px;">
           <ion-calendar [options]="caloption" type="string" [(ngModel)]="date"></ion-calendar>
-          <button class="button" style="width:60%" (click)="pilihcal()">Pilih</button>
+          <button class="button" style="width:60%" (click)="pilihCal()">Pilih</button>
         </div>
         <div style="height: 40px;"></div>
         <button ion-button class="button" (click)="hantar()">{{ 'hantar' | translate }}</button>

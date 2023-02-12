@@ -3,11 +3,19 @@
     <div class="container2">
       <div class="header">
         <ion-icon name="chevron-back-outline" style="float: left;" (click)="back()"></ion-icon>
-        <span class="headertxt" style="width:70%;margin: auto;display: inline-block;">{{ 'akaun.maklumat' | translate }}</span>
+        <span class="headertxt" style="width:70%;margin: auto;display: inline-block;">{{ 'akaun.maklumat' | translate
+          }}</span>
       </div>
     </div>
   </div>
+
   <div class="main2">
+    <div class="delete">
+      <button style="height: 50px; width: 50px">
+        <ion-icon style="font-size: 30px;" slot="icon-only" name="trash-outline"></ion-icon>
+      </button>
+    </div>
+
     <div class="container3">
       <div class="jumlah">
         {{ 'akaun.jumlah' | translate }}

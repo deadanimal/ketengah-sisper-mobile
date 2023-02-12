@@ -11,10 +11,12 @@
           <col style="width: 25%;">
         </colgroup>
         <tr>
-          <td colspan="6">Lejar <span *ngIf="src == 1">Rumah</span><span *ngIf="src == 2">Premis</span> : {{selectedakaun.nama}}</td>
+          <td colspan="6">Lejar <span *ngIf="src == 1">Rumah</span><span *ngIf="src == 2">Premis</span> :
+            {{selectedakaun.nama}}</td>
         </tr>
         <tr>
-          <td colspan="6">Nombor Akaun : <span *ngIf="src == 1">{{selectedakaun.no_akaun_rumah}}</span><span *ngIf="src == 2">{{selectedakaun.no_akaun_premis}}</span></td>
+          <td colspan="6">Nombor Akaun : <span>{{selectedakaun.no_akaun_rumah}}</span><span
+              *ngIf="src == 2">{{selectedakaun.no_akaun_premis}}</span></td>
         </tr>
         <tr>
           <td colspan="6">Nombor Kad Pengenalan : {{selectedakaun.no_kad_pengenalan}}</td>
