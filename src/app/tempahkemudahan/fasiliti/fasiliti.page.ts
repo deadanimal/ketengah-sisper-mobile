@@ -166,34 +166,38 @@ export class FasilitiPage implements OnInit {
   }
 
   ChangeDDLokasi() {
-    if (this.Lokasi == 1) {
-      this.ddFasiliti = [
-        {
-          id: "1",
-          nama: "Futsal"
-        },
-        {
-          id: "2",
-          nama: "Badminton"
-        }
-      ];
-      this.lokasiread = false;
-    } else {
-      this.ddFasiliti = [
-        {
-          id: "2",
-          nama: "Badminton"
-        }
-      ];
-      this.lokasiread = false;
-    };
-    this.Fasiliti = '';
-    this.Gelanggang = '';
-    this.gelanggangread = true;
-    this.tarikhread = true;
+    // if (this.Lokasi == 1) {
+    //   this.ddFasiliti = [
+    //     {
+    //       id: "1",
+    //       nama: "Futsal"
+    //     },
+    //     {
+    //       id: "2",
+    //       nama: "Badminton"
+    //     }
+    //   ];
+    //   this.lokasiread = false;
+    // } else {
+    //   this.ddFasiliti = [
+    //     {
+    //       id: "2",
+    //       nama: "Badminton"
+    //     }
+    //   ];
+    //   this.lokasiread = false;
+    // };
+    // this.Fasiliti = '';
+    // this.Gelanggang = '';
+    // this.gelanggangread = true;
+    // this.tarikhread = true;
+
+    this.filterFasiliti();
   }
 
   async ChangeDDFasiliti() {
+    console.log("inside event handler")
+    console.log(this.Lokasi)
     this.gelanggangread = false;
     this.tarikhread = false;
     if (this.Fasiliti == 1) {
@@ -552,5 +556,15 @@ export class FasilitiPage implements OnInit {
     this.date = '';
     this.masablock = false;
     this.timecheck = [];
+  }
+
+  filterFasiliti() {
+
+    // console.log('inside the evnet', this.Lokasi, this.fasilities);
+    // // let bandar = this.ddLokasi.find(b => b.bandar == ).bandar;
+    // this.fasilities = this.ddLokasi.filter(f => f.bandar.toLowerCase() == this.Lokasi.toLowerCase());
+    // console.log("comparing", this.fasilities[1].nama, this.Lokasi)
+    // console.log(this.fasilities)
+
   }
 }

@@ -679,6 +679,96 @@ CalendarPage = (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__decorate)([
 
 /***/ }),
 
+/***/ 79787:
+/*!*****************************************************!*\
+  !*** ./src/app/shared/modals/lejard/lejard.page.ts ***!
+  \*****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "LejardPage": () => (/* binding */ LejardPage)
+/* harmony export */ });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! tslib */ 64762);
+/* harmony import */ var _raw_loader_lejard_page_html__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !raw-loader!./lejard.page.html */ 6650);
+/* harmony import */ var _lejard_page_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./lejard.page.scss */ 12163);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/core */ 37716);
+/* harmony import */ var _ionic_native_pdf_generator_ngx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic-native/pdf-generator/ngx */ 37961);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ 80476);
+
+
+
+
+
+
+let LejardPage = class LejardPage {
+    constructor(pdfGenerator, navParams, modalController, toastController) {
+        this.pdfGenerator = pdfGenerator;
+        this.navParams = navParams;
+        this.modalController = modalController;
+        this.toastController = toastController;
+    }
+    ngOnInit() {
+        console.table(this.navParams);
+        var data = this.navParams.data.data;
+        this.selectedakaun = data.akaun;
+        console.log(this.selectedakaun);
+        this.lejardtl = data.lejar;
+        this.src = data.src;
+        console.log(data);
+    }
+    download() {
+        return (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__awaiter)(this, void 0, void 0, function* () {
+            document.getElementById('tr1').style.display = "table";
+            var content = document.getElementById('pdf').innerHTML;
+            let options = {
+                documentSize: 'A4',
+                type: 'share',
+                // landscape: 'portrait',
+                fileName: 'eSisper_Lejar.pdf'
+            };
+            yield this.pdfGenerator.fromData(content, options)
+                .then((base64) => {
+                document.getElementById('tr1').style.display = "none";
+                console.log('OK', base64);
+            }).catch((error) => {
+                document.getElementById('tr1').style.display = "none";
+                console.log('error', error);
+                this.modalController.dismiss();
+                this.presentToast('Fail to generate PDF', 'danger');
+            });
+        });
+    }
+    presentToast(message, color) {
+        return (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__awaiter)(this, void 0, void 0, function* () {
+            const toast = yield this.toastController.create({
+                message,
+                color,
+                duration: 2000
+            });
+            toast.present();
+        });
+    }
+};
+LejardPage.ctorParameters = () => [
+    { type: _ionic_native_pdf_generator_ngx__WEBPACK_IMPORTED_MODULE_2__.PDFGenerator },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__.NavParams },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__.ModalController },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__.ToastController }
+];
+LejardPage = (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_5__.Component)({
+        selector: 'app-lejard',
+        template: _raw_loader_lejard_page_html__WEBPACK_IMPORTED_MODULE_0__.default,
+        styles: [_lejard_page_scss__WEBPACK_IMPORTED_MODULE_1__.default]
+    })
+], LejardPage);
+
+
+
+/***/ }),
+
 /***/ 73068:
 /*!*********************************************************************!*\
   !*** ./src/app/shared/modals/viewnotis/viewnotis-routing.module.ts ***!
@@ -875,6 +965,51 @@ AduanService = (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__decorate)([
 
 /***/ }),
 
+/***/ 96082:
+/*!**********************************************************************!*\
+  !*** ./src/app/shared/services/akaun/perumahan/perumahan.service.ts ***!
+  \**********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "PerumahanService": () => (/* binding */ PerumahanService)
+/* harmony export */ });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! tslib */ 64762);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 37716);
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ 91841);
+/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! src/environments/environment */ 92340);
+
+
+
+
+let PerumahanService = class PerumahanService {
+    constructor(http) {
+        this.http = http;
+    }
+    add(data) {
+        var AddURL = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.baseUrl + "perumahan";
+        return this.http.post(AddURL, data);
+    }
+    deleteAkaun(id) {
+        var DeleteURL = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.baseUrl + "perumahan/" + id;
+        return this.http.delete(DeleteURL);
+    }
+};
+PerumahanService.ctorParameters = () => [
+    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpClient }
+];
+PerumahanService = (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_3__.Injectable)({
+        providedIn: 'root'
+    })
+], PerumahanService);
+
+
+
+/***/ }),
+
 /***/ 76290:
 /*!********************************************************************!*\
   !*** ./src/app/shared/services/bayaran/bayaran/bayaran.service.ts ***!
@@ -919,6 +1054,51 @@ BayaranService = (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__decorate)([
         providedIn: 'root'
     })
 ], BayaranService);
+
+
+
+/***/ }),
+
+/***/ 62803:
+/*!******************************************************!*\
+  !*** ./src/app/shared/services/lain/lain.service.ts ***!
+  \******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "LainService": () => (/* binding */ LainService)
+/* harmony export */ });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! tslib */ 64762);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 37716);
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ 91841);
+/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! src/environments/environment */ 92340);
+
+
+
+
+let LainService = class LainService {
+    constructor(http) {
+        this.http = http;
+    }
+    add(data) {
+        var AddlainURL = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.baseUrl + "lain";
+        return this.http.post(AddlainURL, data);
+    }
+    getdd() {
+        var UrusanURL = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.baseUrl + "laindd";
+        return this.http.get(UrusanURL);
+    }
+};
+LainService.ctorParameters = () => [
+    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpClient }
+];
+LainService = (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_3__.Injectable)({
+        providedIn: 'root'
+    })
+], LainService);
 
 
 
@@ -1075,6 +1255,55 @@ PengumumanService = (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__decorate)([
 
 /***/ }),
 
+/***/ 34758:
+/*!******************************************************!*\
+  !*** ./src/app/shared/services/user/user.service.ts ***!
+  \******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "UserService": () => (/* binding */ UserService)
+/* harmony export */ });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! tslib */ 64762);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 37716);
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ 91841);
+/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! src/environments/environment */ 92340);
+
+
+
+
+let UserService = class UserService {
+    constructor(http) {
+        this.http = http;
+    }
+    update(type, data, id) {
+        console.log(id);
+        var updateURL = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.baseUrl + "user/" + id;
+        return this.http.patch(updateURL, { type, data });
+    }
+    checkFirstTimeLogin(id, data) {
+        var updateURL = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.baseUrl + "ForgotPass/" + id;
+        return this.http.post(updateURL, data);
+    }
+    getAllUsers() {
+        return this.http.get(src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.baseUrl + "allusers");
+    }
+};
+UserService.ctorParameters = () => [
+    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpClient }
+];
+UserService = (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_3__.Injectable)({
+        providedIn: 'root'
+    })
+], UserService);
+
+
+
+/***/ }),
+
 /***/ 10833:
 /*!***********************************************************!*\
   !*** ./src/app/admin/aduan/aduanlist/aduanlist.page.scss ***!
@@ -1102,6 +1331,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (".button {\n  width: 134px;\n  height: 49px;\n  font-style: normal;\n  font-weight: 600;\n  font-size: 14px;\n  line-height: 21px;\n  text-align: center;\n  align-items: center;\n  color: #FFFFFF;\n  background: #3D2C7C;\n  border-radius: 10px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImNhbGVuZGFyLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLFlBQUE7RUFDQSxZQUFBO0VBQ0Esa0JBQUE7RUFDQSxnQkFBQTtFQUNBLGVBQUE7RUFDQSxpQkFBQTtFQUNBLGtCQUFBO0VBQ0EsbUJBQUE7RUFDQSxjQUFBO0VBQ0EsbUJBQUE7RUFDQSxtQkFBQTtBQUNKIiwiZmlsZSI6ImNhbGVuZGFyLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5idXR0b24ge1xyXG4gICAgd2lkdGg6IDEzNHB4O1xyXG4gICAgaGVpZ2h0OiA0OXB4O1xyXG4gICAgZm9udC1zdHlsZTogbm9ybWFsO1xyXG4gICAgZm9udC13ZWlnaHQ6IDYwMDtcclxuICAgIGZvbnQtc2l6ZTogMTRweDtcclxuICAgIGxpbmUtaGVpZ2h0OiAyMXB4O1xyXG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG4gICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcclxuICAgIGNvbG9yOiAjRkZGRkZGO1xyXG4gICAgYmFja2dyb3VuZDogIzNEMkM3QztcclxuICAgIGJvcmRlci1yYWRpdXM6IDEwcHg7XHJcbn0iXX0= */");
+
+/***/ }),
+
+/***/ 12163:
+/*!*******************************************************!*\
+  !*** ./src/app/shared/modals/lejard/lejard.page.scss ***!
+  \*******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (".button {\n  background-color: #3D2C7C;\n  height: 48px;\n  width: 100%;\n  border-radius: 10px;\n  margin: auto;\n  font-style: normal;\n  font-weight: 700;\n  font-size: 14px;\n  line-height: 21px;\n  color: white;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImxlamFyZC5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSx5QkFBQTtFQUNBLFlBQUE7RUFDQSxXQUFBO0VBQ0EsbUJBQUE7RUFDQSxZQUFBO0VBQ0Esa0JBQUE7RUFDQSxnQkFBQTtFQUNBLGVBQUE7RUFDQSxpQkFBQTtFQUNBLFlBQUE7QUFDSiIsImZpbGUiOiJsZWphcmQucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmJ1dHRvbiB7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjM0QyQzdDO1xyXG4gICAgaGVpZ2h0OiA0OHB4O1xyXG4gICAgd2lkdGg6IDEwMCU7XHJcbiAgICBib3JkZXItcmFkaXVzOiAxMHB4O1xyXG4gICAgbWFyZ2luOmF1dG87XHJcbiAgICBmb250LXN0eWxlOiBub3JtYWw7XHJcbiAgICBmb250LXdlaWdodDogNzAwO1xyXG4gICAgZm9udC1zaXplOiAxNHB4O1xyXG4gICAgbGluZS1oZWlnaHQ6IDIxcHg7XHJcbiAgICBjb2xvcjogd2hpdGU7XHJcbn0iXX0= */");
 
 /***/ }),
 
@@ -1147,6 +1391,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("<ion-content class=\"ion-padding\">\r\n  <div style=\"padding:10px 10px; text-align: center;\">\r\n    <ion-calendar [(ngModel)]=\"date\" [options]=\"option\" type=\"string\" [format]=\"'YYYY-MM-DD'\"></ion-calendar>\r\n    <div style=\"height: 15px;\"></div>\r\n    <button class=\"button\" (click)=\"closeModal()\">Tutup</button>\r\n  </div>\r\n</ion-content>\r\n");
+
+/***/ }),
+
+/***/ 6650:
+/*!*********************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/shared/modals/lejard/lejard.page.html ***!
+  \*********************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("<ion-content>\r\n  <div style=\"padding: 20px;background-color: white;height: 100%;width: 100%;\">\r\n    <div id=\"pdf\">\r\n      <table style=\"width: 100%;border: 1 pt solid black;font-size: 14px;color: black;\">\r\n        <colgroup>\r\n          <col style=\"width: 15%;\">\r\n          <col style=\"width: 15%;\">\r\n          <col style=\"width: 10%;\">\r\n          <col style=\"width: 25%;\">\r\n          <col style=\"width: 10%;\">\r\n          <col style=\"width: 25%;\">\r\n        </colgroup>\r\n        <tr>\r\n          <td colspan=\"6\">Lejar <span *ngIf=\"src == 1\">Rumah</span><span *ngIf=\"src == 2\">Premis</span> :\r\n            {{selectedakaun.nama}}</td>\r\n        </tr>\r\n        <tr>\r\n          <td colspan=\"6\">Nombor Akaun : <span>{{selectedakaun.no_akaun_rumah}}</span><span\r\n              *ngIf=\"src == 2\">{{selectedakaun.no_akaun_premis}}</span></td>\r\n        </tr>\r\n        <tr>\r\n          <td colspan=\"6\">Nombor Kad Pengenalan : {{selectedakaun.no_kad_pengenalan}}</td>\r\n        </tr>\r\n        <tr>\r\n          <td colspan=\"6\" style=\"height: 50px;\"></td>\r\n        </tr>\r\n      </table>\r\n      <table style=\"width: 100%;border: 1 pt solid black;font-size: 14px;color: black;display: none;\" id=\"tr1\">\r\n        <colgroup>\r\n          <col style=\"width: 15%;\">\r\n          <col style=\"width: 15%;\">\r\n          <col style=\"width: 10%;\">\r\n          <col style=\"width: 25%;\">\r\n          <col style=\"width: 10%;\">\r\n          <col style=\"width: 25%;\">\r\n        </colgroup>\r\n        <tr style=\"border-bottom:1pt solid black;\">\r\n          <td>Tarikh</td>\r\n          <td>Rujukan</td>\r\n          <td>Debit</td>\r\n          <td>Urusan</td>\r\n          <td>Kredit</td>\r\n          <td>Urusan</td>\r\n        </tr>\r\n        <tr *ngFor=\"let item of lejardtl\">\r\n          <td>{{item.tarikh}}</td>\r\n          <td>{{item.rujukan}}</td>\r\n          <td>{{item.debit}}</td>\r\n          <td style=\"border-right:1pt solid black;\"><span *ngIf=\"item.debit != ''\">{{item.urusan}}</span></td>\r\n          <td>{{item.kredit}}</td>\r\n          <td><span *ngIf=\"item.kredit != ''\">{{item.urusan}}</span></td>\r\n        </tr>\r\n      </table>\r\n    </div>\r\n    <div style=\"padding: 50px 0px;\">\r\n      <button ion-button class=\"button\" (click)=\"download()\">Cetak</button>\r\n    </div>\r\n  </div>\r\n</ion-content>\r\n");
 
 /***/ }),
 

@@ -331,10 +331,15 @@ let AuthenticationService = class AuthenticationService {
         }));
     }
     register(register) {
-        var registerURL = src_environments_environment__WEBPACK_IMPORTED_MODULE_1__.environment.baseUrl + "UserRegister";
+        const registerURL = src_environments_environment__WEBPACK_IMPORTED_MODULE_1__.environment.baseUrl + 'UserRegister';
         return this.http.post(registerURL, register);
     }
     logout() {
+        // let user;
+        // this.nativeStorage.getItem('user').then(res => {
+        //   user = res;
+        // });
+        // localStorage.setItem(user.user_id, 'true')
         return this.nativeStorage.remove(TOKEN_KEY);
     }
     forgetpass(phone) {

@@ -26,7 +26,7 @@ const routes = [
     },
     {
         path: 'form',
-        loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_akaun_perumahan_form_form_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./form/form.module */ 76578)).then(m => m.FormPageModule)
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("common"), __webpack_require__.e("src_app_akaun_perumahan_form_form_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./form/form.module */ 76578)).then(m => m.FormPageModule)
     }
 ];
 let PerumahanPageRoutingModule = class PerumahanPageRoutingModule {

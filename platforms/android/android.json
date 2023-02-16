@@ -9,7 +9,7 @@
         "parents": {
           "/manifest/application": [
             {
-              "xml": "<application android:networkSecurityConfig=\"@xml/network_security_config\" />",
+              "xml": "<activity windowSoftInputMode=\"adjustPan\" />",
               "count": 2,
               "mode": "merge",
               "id": "config.xml",
@@ -23,7 +23,7 @@
               }
             },
             {
-              "xml": "<activity windowSoftInputMode=\"adjustPan\" />",
+              "xml": "<application android:networkSecurityConfig=\"@xml/network_security_config\" />",
               "count": 1,
               "mode": "merge",
               "id": "config.xml",

@@ -164,6 +164,12 @@ let PenghargaanmainPage = class PenghargaanmainPage {
             yield this.penghargaanService.add(formData).subscribe((res) => (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__awaiter)(this, void 0, void 0, function* () {
                 console.log(res);
                 yield loading.dismiss();
+                const alert = yield this.alertController.create({
+                    header: 'Success',
+                    message: 'Hantaran anda telah berjaya Terima Kasih',
+                    buttons: ['OK'],
+                });
+                alert.present();
                 this.router.navigate(['/main/tabs/aduan']);
             }), (res) => (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__awaiter)(this, void 0, void 0, function* () {
                 console.log(res);

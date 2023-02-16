@@ -109,13 +109,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "HomePage": () => (/* binding */ HomePage)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! tslib */ 64762);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! tslib */ 64762);
 /* harmony import */ var _raw_loader_home_page_html__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !raw-loader!./home.page.html */ 49764);
 /* harmony import */ var _home_page_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./home.page.scss */ 4677);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @angular/core */ 37716);
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @angular/router */ 39895);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @angular/core */ 37716);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @angular/router */ 39895);
 /* harmony import */ var _awesome_cordova_plugins_native_storage_ngx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @awesome-cordova-plugins/native-storage/ngx */ 34113);
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @ionic/angular */ 80476);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @ionic/angular */ 80476);
 /* harmony import */ var _shared_services_notis_notis_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../shared/services/notis/notis.service */ 64338);
 /* harmony import */ var _shared_modals_adminmenu_adminmenu_page__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../shared/modals/adminmenu/adminmenu.page */ 18037);
 /* harmony import */ var _shared_modals_tambahakaun_tambahakaun_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../shared/modals/tambahakaun/tambahakaun.component */ 67217);
@@ -123,6 +123,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var chart_js_auto__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! chart.js/auto */ 6625);
 /* harmony import */ var src_app_shared_services_booking_booking_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! src/app/shared/services/booking/booking.service */ 6659);
 /* harmony import */ var _ionic_native_pdf_generator_ngx__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @ionic-native/pdf-generator/ngx */ 37961);
+/* harmony import */ var _shared_services_user_user_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../shared/services/user/user.service */ 34758);
+
 
 
 
@@ -138,7 +140,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let HomePage = class HomePage {
-    constructor(router, nativeStorage, alertController, loadingController, notisService, pengumumanService, route, modalController, platform, bookingService, pdfGenerator) {
+    constructor(router, nativeStorage, alertController, loadingController, notisService, pengumumanService, route, modalController, platform, bookingService, pdfGenerator, userService) {
         this.router = router;
         this.nativeStorage = nativeStorage;
         this.alertController = alertController;
@@ -150,6 +152,7 @@ let HomePage = class HomePage {
         this.platform = platform;
         this.bookingService = bookingService;
         this.pdfGenerator = pdfGenerator;
+        this.userService = userService;
         this.data = [];
         this.slideOpts = {
             initialSlide: 0,
@@ -163,7 +166,7 @@ let HomePage = class HomePage {
         this.platform.backButton.subscribeWithPriority(10, () => {
             console.log('none');
         });
-        this.route.queryParams.subscribe((params) => (0,tslib__WEBPACK_IMPORTED_MODULE_10__.__awaiter)(this, void 0, void 0, function* () {
+        this.route.queryParams.subscribe((params) => (0,tslib__WEBPACK_IMPORTED_MODULE_11__.__awaiter)(this, void 0, void 0, function* () {
             var _a;
             if (((_a = this.router.getCurrentNavigation().extras.state) === null || _a === void 0 ? void 0 : _a.src) === 1) {
                 this.tambah();
@@ -171,16 +174,23 @@ let HomePage = class HomePage {
         }));
     }
     ngOnInit() {
-        return (0,tslib__WEBPACK_IMPORTED_MODULE_10__.__awaiter)(this, void 0, void 0, function* () {
+        return (0,tslib__WEBPACK_IMPORTED_MODULE_11__.__awaiter)(this, void 0, void 0, function* () {
+            this.nativeStorage.getItem('user').then((data) => (0,tslib__WEBPACK_IMPORTED_MODULE_11__.__awaiter)(this, void 0, void 0, function* () {
+                let user_id;
+                console.log(data);
+                user_id = data.value.user_id;
+                const formData = new FormData();
+                formData.append('password', data.value.password);
+            }));
             const loading = yield this.loadingController.create();
             yield loading.present();
             this.showchart = 0;
-            yield this.pengumumanService.gettempoh().subscribe((res) => (0,tslib__WEBPACK_IMPORTED_MODULE_10__.__awaiter)(this, void 0, void 0, function* () {
+            yield this.pengumumanService.gettempoh().subscribe((res) => (0,tslib__WEBPACK_IMPORTED_MODULE_11__.__awaiter)(this, void 0, void 0, function* () {
                 console.log(res);
                 this.pengumumanlist = res;
                 this.user = res;
                 yield loading.dismiss();
-            }), (res) => (0,tslib__WEBPACK_IMPORTED_MODULE_10__.__awaiter)(this, void 0, void 0, function* () {
+            }), (res) => (0,tslib__WEBPACK_IMPORTED_MODULE_11__.__awaiter)(this, void 0, void 0, function* () {
                 console.log(res);
                 yield loading.dismiss();
                 const alert = yield this.alertController.create({
@@ -193,11 +203,17 @@ let HomePage = class HomePage {
         });
     }
     ionViewDidEnter() {
-        return (0,tslib__WEBPACK_IMPORTED_MODULE_10__.__awaiter)(this, void 0, void 0, function* () {
+        return (0,tslib__WEBPACK_IMPORTED_MODULE_11__.__awaiter)(this, void 0, void 0, function* () {
             const loading = yield this.loadingController.create();
             yield loading.present();
             this.showmore = 0;
-            yield this.nativeStorage.getItem('user').then(data => {
+            yield this.nativeStorage.getItem('user').then((data) => (0,tslib__WEBPACK_IMPORTED_MODULE_11__.__awaiter)(this, void 0, void 0, function* () {
+                let user_id = data.value.user_id;
+                const formData = new FormData();
+                formData.append('password', data.value.password);
+                this.userService.checkFirstTimeLogin(user_id, formData).subscribe((res) => (0,tslib__WEBPACK_IMPORTED_MODULE_11__.__awaiter)(this, void 0, void 0, function* () {
+                    console.log("check for password", res);
+                }));
                 console.log(data);
                 this.username = data.value.name;
                 this.user = data.value;
@@ -236,15 +252,24 @@ let HomePage = class HomePage {
                 console.log('premis', this.premis);
                 this.nativeStorage.setItem('user', { value: this.user });
                 console.log(this.user);
-            }, error => console.error(error));
+                if (this.user.recurring === 0) {
+                    console.log("the recurring is zero show alert ");
+                    const alert = yield this.alertController.create({
+                        header: 'Salamat Datang',
+                        message: 'Sila Kemasikini Kata Laluan Anda',
+                        buttons: ['OK'],
+                    });
+                    alert.present();
+                }
+            }), error => console.error(error));
             if (this.user) {
                 if (this.user.role == 1) {
                     var userid = this.user.user_id;
                     var noti = false;
-                    yield this.notisService.getbyid(this.user.user_id).subscribe((res) => (0,tslib__WEBPACK_IMPORTED_MODULE_10__.__awaiter)(this, void 0, void 0, function* () {
+                    yield this.notisService.getbyid(this.user.user_id).subscribe((res) => (0,tslib__WEBPACK_IMPORTED_MODULE_11__.__awaiter)(this, void 0, void 0, function* () {
                         // console.log(res);
                         yield res.forEach(function (value) {
-                            return (0,tslib__WEBPACK_IMPORTED_MODULE_10__.__awaiter)(this, void 0, void 0, function* () {
+                            return (0,tslib__WEBPACK_IMPORTED_MODULE_11__.__awaiter)(this, void 0, void 0, function* () {
                                 let obj = JSON.parse(value.viewed);
                                 value.view = false;
                                 value.selected = false;
@@ -260,12 +285,12 @@ let HomePage = class HomePage {
                         });
                         this.notiarr = res;
                         this.noti = noti;
-                        yield this.notisService.getnotis(this.user).subscribe((res) => (0,tslib__WEBPACK_IMPORTED_MODULE_10__.__awaiter)(this, void 0, void 0, function* () {
+                        yield this.notisService.getnotis(this.user).subscribe((res) => (0,tslib__WEBPACK_IMPORTED_MODULE_11__.__awaiter)(this, void 0, void 0, function* () {
                             console.log('api', res);
                             Array.prototype.push.apply(this.notiarr, res);
                             console.log('notis', this.notiarr);
                             yield loading.dismiss();
-                        }), (res) => (0,tslib__WEBPACK_IMPORTED_MODULE_10__.__awaiter)(this, void 0, void 0, function* () {
+                        }), (res) => (0,tslib__WEBPACK_IMPORTED_MODULE_11__.__awaiter)(this, void 0, void 0, function* () {
                             console.log(res);
                             yield loading.dismiss();
                             const alert = yield this.alertController.create({
@@ -275,7 +300,7 @@ let HomePage = class HomePage {
                             });
                             yield alert.present();
                         }));
-                    }), (res) => (0,tslib__WEBPACK_IMPORTED_MODULE_10__.__awaiter)(this, void 0, void 0, function* () {
+                    }), (res) => (0,tslib__WEBPACK_IMPORTED_MODULE_11__.__awaiter)(this, void 0, void 0, function* () {
                         console.log(res);
                         yield loading.dismiss();
                         const alert = yield this.alertController.create({
@@ -287,18 +312,18 @@ let HomePage = class HomePage {
                     }));
                 }
                 else if (this.user.role == 2) {
-                    yield this.bookingService.getgraf().subscribe((res) => (0,tslib__WEBPACK_IMPORTED_MODULE_10__.__awaiter)(this, void 0, void 0, function* () {
+                    yield this.bookingService.getgraf().subscribe((res) => (0,tslib__WEBPACK_IMPORTED_MODULE_11__.__awaiter)(this, void 0, void 0, function* () {
                         console.log(res);
                         var book = [];
                         res.forEach(element => {
                             book.push(element);
                         });
                         this.chartdata = book;
-                        yield this.bookingService.get().subscribe((res) => (0,tslib__WEBPACK_IMPORTED_MODULE_10__.__awaiter)(this, void 0, void 0, function* () {
+                        yield this.bookingService.get().subscribe((res) => (0,tslib__WEBPACK_IMPORTED_MODULE_11__.__awaiter)(this, void 0, void 0, function* () {
                             this.bookdtl = res;
                             console.log(this.bookdtl);
                             yield loading.dismiss();
-                        }), (res) => (0,tslib__WEBPACK_IMPORTED_MODULE_10__.__awaiter)(this, void 0, void 0, function* () {
+                        }), (res) => (0,tslib__WEBPACK_IMPORTED_MODULE_11__.__awaiter)(this, void 0, void 0, function* () {
                             console.log(res);
                             yield loading.dismiss();
                             const alert = yield this.alertController.create({
@@ -308,7 +333,7 @@ let HomePage = class HomePage {
                             });
                             yield alert.present();
                         }));
-                    }), (res) => (0,tslib__WEBPACK_IMPORTED_MODULE_10__.__awaiter)(this, void 0, void 0, function* () {
+                    }), (res) => (0,tslib__WEBPACK_IMPORTED_MODULE_11__.__awaiter)(this, void 0, void 0, function* () {
                         console.log(res);
                         yield loading.dismiss();
                         const alert = yield this.alertController.create({
@@ -328,7 +353,7 @@ let HomePage = class HomePage {
         this.barChartMethod();
     }
     downloadchart() {
-        return (0,tslib__WEBPACK_IMPORTED_MODULE_10__.__awaiter)(this, void 0, void 0, function* () {
+        return (0,tslib__WEBPACK_IMPORTED_MODULE_11__.__awaiter)(this, void 0, void 0, function* () {
             // this.bookdtl = '';
             var content = document.getElementById('pdf').innerHTML;
             let options = {
@@ -346,7 +371,7 @@ let HomePage = class HomePage {
         });
     }
     tambah() {
-        return (0,tslib__WEBPACK_IMPORTED_MODULE_10__.__awaiter)(this, void 0, void 0, function* () {
+        return (0,tslib__WEBPACK_IMPORTED_MODULE_11__.__awaiter)(this, void 0, void 0, function* () {
             const modal = yield this.modalController.create({
                 component: _shared_modals_tambahakaun_tambahakaun_component__WEBPACK_IMPORTED_MODULE_5__.TambahakaunComponent,
                 cssClass: 'med-modal',
@@ -400,7 +425,7 @@ let HomePage = class HomePage {
         this.router.navigate(['main/admin/aduan']);
     }
     adminmenu() {
-        return (0,tslib__WEBPACK_IMPORTED_MODULE_10__.__awaiter)(this, void 0, void 0, function* () {
+        return (0,tslib__WEBPACK_IMPORTED_MODULE_11__.__awaiter)(this, void 0, void 0, function* () {
             const modal = yield this.modalController.create({
                 component: _shared_modals_adminmenu_adminmenu_page__WEBPACK_IMPORTED_MODULE_4__.AdminmenuPage,
                 cssClass: 'menu-modal',
@@ -434,7 +459,7 @@ let HomePage = class HomePage {
         this.router.navigate(['main/tabs/akaun/maklumat'], navigationExtras);
     }
     barChartMethod() {
-        return (0,tslib__WEBPACK_IMPORTED_MODULE_10__.__awaiter)(this, void 0, void 0, function* () {
+        return (0,tslib__WEBPACK_IMPORTED_MODULE_11__.__awaiter)(this, void 0, void 0, function* () {
             var today = new Date();
             var dd = '';
             var day = 0;
@@ -536,23 +561,24 @@ let HomePage = class HomePage {
     }
 };
 HomePage.ctorParameters = () => [
-    { type: _angular_router__WEBPACK_IMPORTED_MODULE_11__.Router },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_12__.Router },
     { type: _awesome_cordova_plugins_native_storage_ngx__WEBPACK_IMPORTED_MODULE_2__.NativeStorage },
-    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_12__.AlertController },
-    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_12__.LoadingController },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_13__.AlertController },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_13__.LoadingController },
     { type: _shared_services_notis_notis_service__WEBPACK_IMPORTED_MODULE_3__.NotisService },
     { type: _shared_services_pengumuman_pengumuman_service__WEBPACK_IMPORTED_MODULE_6__.PengumumanService },
-    { type: _angular_router__WEBPACK_IMPORTED_MODULE_11__.ActivatedRoute },
-    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_12__.ModalController },
-    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_12__.Platform },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_12__.ActivatedRoute },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_13__.ModalController },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_13__.Platform },
     { type: src_app_shared_services_booking_booking_service__WEBPACK_IMPORTED_MODULE_8__.BookingService },
-    { type: _ionic_native_pdf_generator_ngx__WEBPACK_IMPORTED_MODULE_9__.PDFGenerator }
+    { type: _ionic_native_pdf_generator_ngx__WEBPACK_IMPORTED_MODULE_9__.PDFGenerator },
+    { type: _shared_services_user_user_service__WEBPACK_IMPORTED_MODULE_10__.UserService }
 ];
 HomePage.propDecorators = {
-    chartCanvas: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_13__.ViewChild, args: ['chartCanvas',] }]
+    chartCanvas: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_14__.ViewChild, args: ['chartCanvas',] }]
 };
-HomePage = (0,tslib__WEBPACK_IMPORTED_MODULE_10__.__decorate)([
-    (0,_angular_core__WEBPACK_IMPORTED_MODULE_13__.Component)({
+HomePage = (0,tslib__WEBPACK_IMPORTED_MODULE_11__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_14__.Component)({
         selector: 'app-home',
         template: _raw_loader_home_page_html__WEBPACK_IMPORTED_MODULE_0__.default,
         styles: [_home_page_scss__WEBPACK_IMPORTED_MODULE_1__.default]
@@ -14327,7 +14353,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("<!-- <ion-header>\r\n  <ion-toolbar>\r\n    <ion-title>home</ion-title>\r\n  </ion-toolbar>\r\n</ion-header> -->\r\n\r\n<ion-content>\r\n  <div class=\"homemain\" style=\"padding-top: 50px;padding-bottom: 70px;\">\r\n    <div style=\"padding-left: 40px;padding-right: 50px;\">\r\n      <div style=\"display: inline-block; width: 70%;\">\r\n        <ion-img src=\"../../assets/icon/sisper.png\" class=\"iconsisper\"></ion-img>\r\n      </div>\r\n      <div *ngIf=\"role == 1\" style=\"display: inline-block;width: 30%;text-align: right;\">\r\n        <ion-img *ngIf=\"noti==true\" src=\"../../assets/icon/noti.png\" class=\"iconnoti\" (click)=\"notis()\"></ion-img>\r\n        <ion-img *ngIf=\"noti==false\" src=\"../../assets/icon/notifalse.png\" class=\"iconnotifalse\"\r\n          (click)=\"notis()\"></ion-img>\r\n      </div>\r\n      <!-- <div *ngIf=\"role == 2\" style=\"display: inline-block;width: 30%;text-align: right;\"> -->\r\n      <ion-img *ngIf=\"role == 2\" src=\"../../assets/icon/adminmenu.png\" style=\"position: absolute;top: 50px;right: 25px;\"\r\n        class=\"iconnoti\" (click)=\"adminmenu()\"></ion-img>\r\n      <!-- </div> -->\r\n      <div>\r\n        <div style=\"display: inline-block; width: 70%;\" class=\"selamat\">{{ 'home.selamat' | translate }}, <br>\r\n          <span class=\"inline name\">{{username}}</span>\r\n        </div>\r\n        <div style=\"display: inline-block;width: 30%;text-align: right;\">\r\n          <ion-img src=\"../../assets/icon/ketengah.png\" class=\"iconketengah\"></ion-img>\r\n        </div>\r\n      </div>\r\n      <div *ngIf=\"role == 1\">\r\n        <div style=\"display: inline-block;width: 70%;padding-top: 30px;\">\r\n          <span class=\"akaunsaya\">{{ 'home.akaun-saya' | translate }}</span>\r\n        </div>\r\n        <div style=\"display: inline-block;width: 30%;text-align: right;\">\r\n          <button ion-button class=\"buttontambah\" (click)=\"tambah()\">\r\n            <ion-icon name=\"add-outline\" style=\"align-items: baseline;\"></ion-icon>\r\n            <span style=\"padding-left: 5px;\">{{ 'home.tambah' | translate }}</span>\r\n          </button>\r\n          <button ion-button class=\"buttontambah\" (click)=\"tambah()\">\r\n\r\n            <span style=\"padding-left: 5px;\"> - hapus</span>\r\n          </button>\r\n\r\n        </div>\r\n      </div>\r\n\r\n    </div>\r\n  </div>\r\n  <div class=\"homemaintwo\">\r\n    <div class=\"container2\">\r\n      <div *ngIf=\"role == 1\">\r\n        <ion-card class=\"card\">\r\n          <ion-card-content>\r\n            <div *ngIf=\"showmore == 0\">\r\n              <div *ngIf=\"rumah != ''\">\r\n                <table (click)=\"detail(rumah[0])\">\r\n                  <colgroup>\r\n                    <col style=\"width: 68%;padding: 10px;\">\r\n                    <col style=\"width: 32%;padding: 10px;\">\r\n                  </colgroup>\r\n                  <tr>\r\n                    <td class=\"nama\">{{rumah[0].nama}}</td>\r\n                    <td class=\"tunggakan\">RM {{rumah[0].jumlahbyr}}</td>\r\n                  </tr>\r\n                  <tr>\r\n                    <td rowspan=\"2\" class=\"noakaun\">{{rumah[0].no_akaun_rumah}}</td>\r\n                    <td class=\"byrsblm\">{{ 'home.byrsebelum' | translate }}</td>\r\n                  </tr>\r\n                  <tr>\r\n                    <td class=\"byrsblm\" style=\"font-weight: 600;\" *ngIf=\"rumah[0].tarikh_tamat_perjanjian != ''\"\r\n                      {{rumah[0].tarikh_tamat_perjanjian}}></td>\r\n                    <td class=\"byrsblm\" style=\"font-weight: 600;\" *ngIf=\"rumah[0].tarikh_tamat_perjanjian == ''\">-</td>\r\n                  </tr>\r\n                </table>\r\n              </div>\r\n              <div *ngIf=\"premis != ''\">\r\n                <table (click)=\"detail(premis[0])\">\r\n                  <colgroup>\r\n                    <col style=\"width: 68%;padding: 10px;\">\r\n                    <col style=\"width: 32%;padding: 10px;\">\r\n                  </colgroup>\r\n                  <tr>\r\n                    <td class=\"nama\">{{premis[0].nama}}</td>\r\n                    <td class=\"tunggakan\">RM {{premis[0].jumlahbyr}}</td>\r\n                  </tr>\r\n                  <tr>\r\n                    <td rowspan=\"2\" class=\"noakaun\">{{premis[0].no_akaun_premis}}</td>\r\n                    <td class=\"byrsblm\">{{ 'home.byrsebelum' | translate }}</td>\r\n                  </tr>\r\n                  <tr>\r\n                    <td class=\"byrsblm\" style=\"font-weight: 600;\" *ngIf=\"premis[0].tarikh_tamat_perjanjian != ''\"\r\n                      {{premis[0].tarikh_tamat_perjanjian}}></td>\r\n                    <td class=\"byrsblm\" style=\"font-weight: 600;\" *ngIf=\"premis[0].tarikh_tamat_perjanjian == ''\">-</td>\r\n                  </tr>\r\n                </table>\r\n              </div>\r\n            </div>\r\n            <div *ngIf=\"showmore == 1\">\r\n              <div *ngIf=\"rumah != ''\">\r\n                <table *ngFor=\"let item of rumah\" (click)=\"detail(item)\">\r\n                  <colgroup>\r\n                    <col style=\"width: 68%;padding: 10px;\">\r\n                    <col style=\"width: 32%;padding: 10px;\">\r\n                  </colgroup>\r\n                  <tr>\r\n                    <td class=\"nama\">{{item.nama}}</td>\r\n                    <td class=\"tunggakan\">RM {{item.jumlahbyr}}</td>\r\n                  </tr>\r\n                  <tr>\r\n                    <td rowspan=\"2\" class=\"noakaun\">{{item.no_akaun_rumah}}</td>\r\n                    <td class=\"byrsblm\">{{ 'home.byrsebelum' | translate }}</td>\r\n                  </tr>\r\n                  <tr>\r\n                    <td class=\"byrsblm\" style=\"font-weight: 600;\" *ngIf=\"item.tarikh_tamat_perjanjian != ''\"\r\n                      {{item.tarikh_tamat_perjanjian}}></td>\r\n                    <td class=\"byrsblm\" style=\"font-weight: 600;\" *ngIf=\"item.tarikh_tamat_perjanjian == ''\">-</td>\r\n                  </tr>\r\n                </table>\r\n              </div>\r\n              <div *ngIf=\"premis != ''\">\r\n                <table *ngFor=\"let item of premis\" (click)=\"detail(item)\">\r\n                  <colgroup>\r\n                    <col style=\"width: 68%;padding: 10px;\">\r\n                    <col style=\"width: 32%;padding: 10px;\">\r\n                  </colgroup>\r\n                  <tr>\r\n                    <td class=\"nama\">{{item.nama}}</td>\r\n                    <td class=\"tunggakan\">RM {{item.jumlahbyr}}</td>\r\n                  </tr>\r\n                  <tr>\r\n                    <td rowspan=\"2\" class=\"noakaun\">{{item.no_akaun_premis}}</td>\r\n                    <td class=\"byrsblm\">{{ 'home.byrsebelum' | translate }}</td>\r\n                  </tr>\r\n                  <tr>\r\n                    <td class=\"byrsblm\" style=\"font-weight: 600;\" *ngIf=\"item.tarikh_tamat_perjanjian != ''\"\r\n                      {{item.tarikh_tamat_perjanjian}}></td>\r\n                    <td class=\"byrsblm\" style=\"font-weight: 600;\" *ngIf=\"item.tarikh_tamat_perjanjian == ''\">-</td>\r\n                  </tr>\r\n                </table>\r\n              </div>\r\n            </div>\r\n            <div *ngIf=\"showmore == 0\" style=\"text-align: center;margin: auto;padding-top: 20px;\" (click)=\"more(0)\">\r\n              <ion-img src=\"../../assets/icon/showakaun.png\" class=\"showmore\"></ion-img>\r\n            </div>\r\n            <div *ngIf=\"showmore == 1\" style=\"text-align: center;margin: auto;padding-top: 20px;\" (click)=\"more(1)\">\r\n              <ion-img src=\"../../assets/icon/showakaun.png\" class=\"showmore\"\r\n                style=\"-ms-transform: rotate(180deg);transform: rotate(180deg);\"></ion-img>\r\n            </div>\r\n\r\n          </ion-card-content>\r\n        </ion-card>\r\n        <table style=\"width: 100%;padding-right: 20px;\">\r\n          <colgroup>\r\n            <col style=\"width: 11%;\">\r\n            <col style=\"width: 33%;\">\r\n            <col style=\"width: 33%;\">\r\n            <col style=\"width: 11%;\">\r\n          </colgroup>\r\n          <tr>\r\n            <td></td>\r\n            <td>\r\n              <ion-card class=\"card2\" (click)=\"Sewa();\">\r\n                <ion-img class=\"cardimg\" style=\"width:56px;height:50px;\" src=\"../../assets/icon/main1.png\"></ion-img>\r\n                <div class=\"cardname\">{{ 'home.bayar-sewa' | translate }}</div>\r\n              </ion-card>\r\n            </td>\r\n            <td>\r\n              <ion-card class=\"card2\" (click)=\"Lejar();\">\r\n                <ion-img class=\"cardimg\" style=\"width: 43px;height: 50px;\" src=\"../../assets/icon/main2.png\"></ion-img>\r\n                <div class=\"cardname\">{{ 'home.lejar' | translate }}</div>\r\n              </ion-card>\r\n            </td>\r\n            <td></td>\r\n            <!-- <td>\r\n                <ion-card class=\"card2\" (click)=\"Tender();\">\r\n                  <ion-img class=\"cardimg\" style=\"width: 45px;height: 50px;\" src=\"../../assets/icon/main3.png\"></ion-img>\r\n                  <div class=\"cardname\">{{ 'home.tender' | translate }}</div>\r\n                </ion-card>\r\n              </td> -->\r\n          </tr>\r\n        </table>\r\n        <table style=\"width: 100%;padding-right: 20px;\">\r\n          <colgroup>\r\n            <col style=\"width: 33%;\">\r\n            <col style=\"width: 33%;\">\r\n            <col style=\"width: 33%;\">\r\n          </colgroup>\r\n          <tr>\r\n            <td>\r\n              <ion-card class=\"card2\" (click)=\"TempahKemudahan();\">\r\n                <ion-img class=\"cardimg\" style=\"width: 50px;height: 50px;\" src=\"../../assets/icon/main4.png\"></ion-img>\r\n                <div class=\"cardname\">{{ 'home.tempahkemudahan' | translate }}</div>\r\n              </ion-card>\r\n            </td>\r\n            <td>\r\n              <ion-card class=\"card2\" (click)=\"Aduan();\">\r\n                <ion-img class=\"cardimg\" style=\"width: 49.76px;height: 50px;\"\r\n                  src=\"../../assets/icon/main5.png\"></ion-img>\r\n                <div class=\"cardname\">{{ 'home.aduandan' | translate }}</div>\r\n              </ion-card>\r\n            </td>\r\n            <td>\r\n              <ion-card class=\"card2\" (click)=\"Lain();\">\r\n                <ion-img class=\"cardimg\" style=\"width: 53px;height: 50px;\" src=\"../../assets/icon/main6.png\"></ion-img>\r\n                <div class=\"cardname\">{{ 'home.lain' | translate }}</div>\r\n              </ion-card>\r\n            </td>\r\n          </tr>\r\n        </table>\r\n        <ion-slides pager=\"true\" [options]=\"slideOpts\">\r\n          <ion-slide *ngFor=\"let item of pengumumanlist\" class=\"slider\">\r\n            <table style=\"width: 100%;\">\r\n              <tr>\r\n                <td style=\"padding:30px 0px 10px 0px;\">\r\n                  <div class=\"headerslide\">{{item.tajuk}}</div>\r\n                </td>\r\n              </tr>\r\n              <tr>\r\n                <td>{{item.keterangan}}</td>\r\n              </tr>\r\n            </table>\r\n          </ion-slide>\r\n          <!-- <ion-slide class=\"slider\">\r\n              <ion-img src=\"../../assets/icon/ketengah.png\"></ion-img>\r\n            </ion-slide>\r\n            <ion-slide class=\"slider\">\r\n              <ion-img src=\"../../assets/icon/ketengah.png\"></ion-img>\r\n            </ion-slide> -->\r\n        </ion-slides>\r\n      </div>\r\n      <div *ngIf=\"role == 2\">\r\n        <table style=\"width: 100%;padding-right: 20px;\">\r\n          <colgroup>\r\n            <col style=\"width: 33%;\">\r\n            <col style=\"width: 33%;\">\r\n            <col style=\"width: 33%;\">\r\n          </colgroup>\r\n          <tr>\r\n            <td>\r\n              <ion-card class=\"card2\" (click)=\"notisadmin()\">\r\n                <ion-img class=\"cardimg\" style=\"width:46px;height:42px;\"\r\n                  src=\"../../assets/icon/adminnotis.png\"></ion-img>\r\n                <div class=\"cardname\">{{ 'home.notis' | translate }}</div>\r\n              </ion-card>\r\n            </td>\r\n            <td>\r\n              <ion-card class=\"card2\" (click)=\"pengumumanadmin()\">\r\n                <ion-img class=\"cardimg\" style=\"width: 48px;height: 38px;\"\r\n                  src=\"../../assets/icon/adminpengumuman.png\"></ion-img>\r\n                <div class=\"cardname\">{{ 'home.pengumuman' | translate }}</div>\r\n              </ion-card>\r\n            </td>\r\n            <td>\r\n              <ion-card class=\"card2\" (click)=\"penggunaadmin()\">\r\n                <ion-img class=\"cardimg\" style=\"width: 42px;height: 42px;\"\r\n                  src=\"../../assets/icon/adminpengguna.png\"></ion-img>\r\n                <div class=\"cardname\">{{ 'home.pengguna' | translate }}</div>\r\n              </ion-card>\r\n            </td>\r\n          </tr>\r\n          <tr>\r\n            <td>\r\n              <ion-card class=\"card2\" (click)=\"penghargaanadmin()\">\r\n                <ion-img class=\"cardimg\" style=\"width: 40px;height: 40px;\"\r\n                  src=\"../../assets/icon/adminpenghargaan.png\"></ion-img>\r\n                <div class=\"cardname\">{{ 'home.penghargaan' | translate }}</div>\r\n              </ion-card>\r\n            </td>\r\n            <td>\r\n              <ion-card class=\"card2\" (click)=\"sekatanadmin()\">\r\n                <ion-img class=\"cardimg\" style=\"width: 41px;height: 42px;\"\r\n                  src=\"../../assets/icon/admintarikh.png\"></ion-img>\r\n                <div class=\"cardname\">{{ 'home.tarikh' | translate }}</div>\r\n              </ion-card>\r\n            </td>\r\n            <td>\r\n              <ion-card class=\"card2\" (click)=\"aduanadmin();\">\r\n                <ion-img class=\"cardimg\" style=\"width: 49.76px;height: 40px;\"\r\n                  src=\"../../assets/icon/main5.png\"></ion-img>\r\n                <div class=\"cardname\">{{ 'home.aduan' | translate }}</div>\r\n              </ion-card>\r\n            </td>\r\n          </tr>\r\n        </table>\r\n        <div style=\"padding-top: 30px;\">\r\n          <button class=\"buttunchart\" (click)=\"displaychart()\" *ngIf=\"showchart==0\">{{ 'home.tunjuk' | translate\r\n            }}</button>\r\n          <button class=\"buttunchart\" (click)=\"downloadchart()\" *ngIf=\"showchart==1\">{{ 'home.muatturun' | translate\r\n            }}</button>\r\n        </div>\r\n        <div>\r\n          <canvas #chartCanvas></canvas>\r\n        </div>\r\n        <div style=\"display: none;\" id=\"pdf\">\r\n          <table style=\"width: 100%;border: 1 pt solid black;font-size: 14px;color: black;\">\r\n            <colgroup>\r\n              <col style=\"width: 21%;\">\r\n              <col style=\"width: 21%;\">\r\n              <col style=\"width: 18%;\">\r\n              <col style=\"width: 27%;\">\r\n              <col style=\"width: 13%;\">\r\n            </colgroup>\r\n            <tr style=\"border-bottom:1pt solid black;\">\r\n              <td>Tarikh Mula</td>\r\n              <td>Tarikh Akhir</td>\r\n              <td>Jenis</td>\r\n              <td>Lokasi</td>\r\n              <td>Hari</td>\r\n            </tr>\r\n            <tr *ngFor=\"let item of bookdtl\">\r\n              <td>{{item.date_from}}</td>\r\n              <td>{{item.date_to}}</td>\r\n              <td>{{item.jenis}}</td>\r\n              <td>{{item.tempat}}</td>\r\n              <td>{{item.days}}</td>\r\n            </tr>\r\n          </table>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n</ion-content>\r\n");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("<!-- <ion-header>\r\n  <ion-toolbar>\r\n    <ion-title>home</ion-title>\r\n  </ion-toolbar>\r\n</ion-header> -->\r\n\r\n<ion-content>\r\n  <div class=\"homemain\" style=\"padding-top: 50px;padding-bottom: 70px;\">\r\n    <div style=\"padding-left: 40px;padding-right: 50px;\">\r\n      <div style=\"display: inline-block; width: 70%;\">\r\n        <ion-img src=\"../../assets/icon/sisper.png\" class=\"iconsisper\"></ion-img>\r\n      </div>\r\n      <div *ngIf=\"role == 1\" style=\"display: inline-block;width: 30%;text-align: right;\">\r\n        <ion-img *ngIf=\"noti==true\" src=\"../../assets/icon/noti.png\" class=\"iconnoti\" (click)=\"notis()\"></ion-img>\r\n        <ion-img *ngIf=\"noti==false\" src=\"../../assets/icon/notifalse.png\" class=\"iconnotifalse\"\r\n          (click)=\"notis()\"></ion-img>\r\n      </div>\r\n      <!-- <div *ngIf=\"role == 2\" style=\"display: inline-block;width: 30%;text-align: right;\"> -->\r\n      <ion-img *ngIf=\"role == 2\" src=\"../../assets/icon/adminmenu.png\" style=\"position: absolute;top: 50px;right: 25px;\"\r\n        class=\"iconnoti\" (click)=\"adminmenu()\"></ion-img>\r\n      <!-- </div> -->\r\n      <div>\r\n        <div style=\"display: inline-block; width: 70%;\" class=\"selamat\">{{ 'home.selamat' | translate }}, <br>\r\n          <span class=\"inline name\">{{username}}</span>\r\n        </div>\r\n        <div style=\"display: inline-block;width: 30%;text-align: right;\">\r\n          <ion-img src=\"../../assets/icon/ketengah.png\" class=\"iconketengah\"></ion-img>\r\n        </div>\r\n      </div>\r\n      <div *ngIf=\"role == 1\">\r\n        <div style=\"display: inline-block;width: 70%;padding-top: 30px;\">\r\n          <span class=\"akaunsaya\">{{ 'home.akaun-saya' | translate }}</span>\r\n        </div>\r\n        <div style=\"display: inline-block;width: 30%;text-align: right;\">\r\n          <div style=\"display: flex; gap: 2px;\">\r\n            <button ion-button class=\"buttontambah\" (click)=\"tambah()\">\r\n              <ion-icon name=\"add-outline\" style=\"align-items: baseline;\"></ion-icon>\r\n              <span style=\"padding-left: 5px;\">{{ 'home.tambah' | translate }}</span>\r\n            </button>\r\n            <button ion-button class=\"buttontambah\" (click)=\"tambah()\"\r\n              style=\"width: fit-content; background-color: orange;\">\r\n\r\n              <span style=\"padding-left: 5px;\"> - Hapus</span>\r\n            </button>\r\n          </div>\r\n\r\n        </div>\r\n      </div>\r\n\r\n    </div>\r\n  </div>\r\n  <div class=\"homemaintwo\">\r\n    <div class=\"container2\">\r\n      <div *ngIf=\"role == 1\">\r\n        <ion-card class=\"card\">\r\n          <ion-card-content>\r\n            <div *ngIf=\"showmore == 0\">\r\n              <div *ngIf=\"rumah != ''\">\r\n                <table (click)=\"detail(rumah[0])\">\r\n                  <colgroup>\r\n                    <col style=\"width: 68%;padding: 10px;\">\r\n                    <col style=\"width: 32%;padding: 10px;\">\r\n                  </colgroup>\r\n                  <tr>\r\n                    <td class=\"nama\">{{rumah[0].nama}}</td>\r\n                    <td class=\"tunggakan\">RM {{rumah[0].jumlahbyr}}</td>\r\n                  </tr>\r\n                  <tr>\r\n                    <td rowspan=\"2\" class=\"noakaun\">{{rumah[0].no_akaun_rumah}}</td>\r\n                    <td class=\"byrsblm\">{{ 'home.byrsebelum' | translate }}</td>\r\n                  </tr>\r\n                  <tr>\r\n                    <td class=\"byrsblm\" style=\"font-weight: 600;\" *ngIf=\"rumah[0].tarikh_tamat_perjanjian != ''\"\r\n                      {{rumah[0].tarikh_tamat_perjanjian}}></td>\r\n                    <td class=\"byrsblm\" style=\"font-weight: 600;\" *ngIf=\"rumah[0].tarikh_tamat_perjanjian == ''\">-</td>\r\n                  </tr>\r\n                </table>\r\n              </div>\r\n              <div *ngIf=\"premis != ''\">\r\n                <table (click)=\"detail(premis[0])\">\r\n                  <colgroup>\r\n                    <col style=\"width: 68%;padding: 10px;\">\r\n                    <col style=\"width: 32%;padding: 10px;\">\r\n                  </colgroup>\r\n                  <tr>\r\n                    <td class=\"nama\">{{premis[0].nama}}</td>\r\n                    <td class=\"tunggakan\">RM {{premis[0].jumlahbyr}}</td>\r\n                  </tr>\r\n                  <tr>\r\n                    <td rowspan=\"2\" class=\"noakaun\">{{premis[0].no_akaun_premis}}</td>\r\n                    <td class=\"byrsblm\">{{ 'home.byrsebelum' | translate }}</td>\r\n                  </tr>\r\n                  <tr>\r\n                    <td class=\"byrsblm\" style=\"font-weight: 600;\" *ngIf=\"premis[0].tarikh_tamat_perjanjian != ''\"\r\n                      {{premis[0].tarikh_tamat_perjanjian}}></td>\r\n                    <td class=\"byrsblm\" style=\"font-weight: 600;\" *ngIf=\"premis[0].tarikh_tamat_perjanjian == ''\">-</td>\r\n                  </tr>\r\n                </table>\r\n              </div>\r\n            </div>\r\n            <div *ngIf=\"showmore == 1\">\r\n              <div *ngIf=\"rumah != ''\">\r\n                <table *ngFor=\"let item of rumah\" (click)=\"detail(item)\">\r\n                  <colgroup>\r\n                    <col style=\"width: 68%;padding: 10px;\">\r\n                    <col style=\"width: 32%;padding: 10px;\">\r\n                  </colgroup>\r\n                  <tr>\r\n                    <td class=\"nama\">{{item.nama}}</td>\r\n                    <td class=\"tunggakan\">RM {{item.jumlahbyr}}</td>\r\n                  </tr>\r\n                  <tr>\r\n                    <td rowspan=\"2\" class=\"noakaun\">{{item.no_akaun_rumah}}</td>\r\n                    <td class=\"byrsblm\">{{ 'home.byrsebelum' | translate }}</td>\r\n                  </tr>\r\n                  <tr>\r\n                    <td class=\"byrsblm\" style=\"font-weight: 600;\" *ngIf=\"item.tarikh_tamat_perjanjian != ''\"\r\n                      {{item.tarikh_tamat_perjanjian}}></td>\r\n                    <td class=\"byrsblm\" style=\"font-weight: 600;\" *ngIf=\"item.tarikh_tamat_perjanjian == ''\">-</td>\r\n                  </tr>\r\n                </table>\r\n              </div>\r\n              <div *ngIf=\"premis != ''\">\r\n                <table *ngFor=\"let item of premis\" (click)=\"detail(item)\">\r\n                  <colgroup>\r\n                    <col style=\"width: 68%;padding: 10px;\">\r\n                    <col style=\"width: 32%;padding: 10px;\">\r\n                  </colgroup>\r\n                  <tr>\r\n                    <td class=\"nama\">{{item.nama}}</td>\r\n                    <td class=\"tunggakan\">RM {{item.jumlahbyr}}</td>\r\n                  </tr>\r\n                  <tr>\r\n                    <td rowspan=\"2\" class=\"noakaun\">{{item.no_akaun_premis}}</td>\r\n                    <td class=\"byrsblm\">{{ 'home.byrsebelum' | translate }}</td>\r\n                  </tr>\r\n                  <tr>\r\n                    <td class=\"byrsblm\" style=\"font-weight: 600;\" *ngIf=\"item.tarikh_tamat_perjanjian != ''\"\r\n                      {{item.tarikh_tamat_perjanjian}}></td>\r\n                    <td class=\"byrsblm\" style=\"font-weight: 600;\" *ngIf=\"item.tarikh_tamat_perjanjian == ''\">-</td>\r\n                  </tr>\r\n                </table>\r\n              </div>\r\n            </div>\r\n            <div *ngIf=\"showmore == 0\" style=\"text-align: center;margin: auto;padding-top: 20px;\" (click)=\"more(0)\">\r\n              <ion-img src=\"../../assets/icon/showakaun.png\" class=\"showmore\"></ion-img>\r\n            </div>\r\n            <div *ngIf=\"showmore == 1\" style=\"text-align: center;margin: auto;padding-top: 20px;\" (click)=\"more(1)\">\r\n              <ion-img src=\"../../assets/icon/showakaun.png\" class=\"showmore\"\r\n                style=\"-ms-transform: rotate(180deg);transform: rotate(180deg);\"></ion-img>\r\n            </div>\r\n\r\n          </ion-card-content>\r\n        </ion-card>\r\n        <table style=\"width: 100%;padding-right: 20px;\">\r\n          <colgroup>\r\n            <col style=\"width: 11%;\">\r\n            <col style=\"width: 33%;\">\r\n            <col style=\"width: 33%;\">\r\n            <col style=\"width: 11%;\">\r\n          </colgroup>\r\n          <tr>\r\n            <td></td>\r\n            <td>\r\n              <ion-card class=\"card2\" (click)=\"Sewa();\">\r\n                <ion-img class=\"cardimg\" style=\"width:56px;height:50px;\" src=\"../../assets/icon/main1.png\"></ion-img>\r\n                <div class=\"cardname\">{{ 'home.bayar-sewa' | translate }}</div>\r\n              </ion-card>\r\n            </td>\r\n            <td>\r\n              <ion-card class=\"card2\" (click)=\"Lejar();\">\r\n                <ion-img class=\"cardimg\" style=\"width: 43px;height: 50px;\" src=\"../../assets/icon/main2.png\"></ion-img>\r\n                <div class=\"cardname\">{{ 'home.lejar' | translate }}</div>\r\n              </ion-card>\r\n            </td>\r\n            <td></td>\r\n            <!-- <td>\r\n                <ion-card class=\"card2\" (click)=\"Tender();\">\r\n                  <ion-img class=\"cardimg\" style=\"width: 45px;height: 50px;\" src=\"../../assets/icon/main3.png\"></ion-img>\r\n                  <div class=\"cardname\">{{ 'home.tender' | translate }}</div>\r\n                </ion-card>\r\n              </td> -->\r\n          </tr>\r\n        </table>\r\n        <table style=\"width: 100%;padding-right: 20px;\">\r\n          <colgroup>\r\n            <col style=\"width: 33%;\">\r\n            <col style=\"width: 33%;\">\r\n            <col style=\"width: 33%;\">\r\n          </colgroup>\r\n          <tr>\r\n            <td>\r\n              <ion-card class=\"card2\" (click)=\"TempahKemudahan();\">\r\n                <ion-img class=\"cardimg\" style=\"width: 50px;height: 50px;\" src=\"../../assets/icon/main4.png\"></ion-img>\r\n                <div class=\"cardname\">{{ 'home.tempahkemudahan' | translate }}</div>\r\n              </ion-card>\r\n            </td>\r\n            <td>\r\n              <ion-card class=\"card2\" (click)=\"Aduan();\">\r\n                <ion-img class=\"cardimg\" style=\"width: 49.76px;height: 50px;\"\r\n                  src=\"../../assets/icon/main5.png\"></ion-img>\r\n                <div class=\"cardname\">{{ 'home.aduandan' | translate }}</div>\r\n              </ion-card>\r\n            </td>\r\n            <td>\r\n              <ion-card class=\"card2\" (click)=\"Lain();\">\r\n                <ion-img class=\"cardimg\" style=\"width: 53px;height: 50px;\" src=\"../../assets/icon/main6.png\"></ion-img>\r\n                <div class=\"cardname\">{{ 'home.lain' | translate }}</div>\r\n              </ion-card>\r\n            </td>\r\n          </tr>\r\n        </table>\r\n        <ion-slides pager=\"true\" [options]=\"slideOpts\">\r\n          <ion-slide *ngFor=\"let item of pengumumanlist\" class=\"slider\">\r\n            <table style=\"width: 100%;\">\r\n              <tr>\r\n                <td style=\"padding:30px 0px 10px 0px;\">\r\n                  <div class=\"headerslide\">{{item.tajuk}}</div>\r\n                </td>\r\n              </tr>\r\n              <tr>\r\n                <td>{{item.keterangan}}</td>\r\n              </tr>\r\n            </table>\r\n          </ion-slide>\r\n          <!-- <ion-slide class=\"slider\">\r\n              <ion-img src=\"../../assets/icon/ketengah.png\"></ion-img>\r\n            </ion-slide>\r\n            <ion-slide class=\"slider\">\r\n              <ion-img src=\"../../assets/icon/ketengah.png\"></ion-img>\r\n            </ion-slide> -->\r\n        </ion-slides>\r\n      </div>\r\n      <div *ngIf=\"role == 2\">\r\n        <table style=\"width: 100%;padding-right: 20px;\">\r\n          <colgroup>\r\n            <col style=\"width: 33%;\">\r\n            <col style=\"width: 33%;\">\r\n            <col style=\"width: 33%;\">\r\n          </colgroup>\r\n          <tr>\r\n            <td>\r\n              <ion-card class=\"card2\" (click)=\"notisadmin()\">\r\n                <ion-img class=\"cardimg\" style=\"width:46px;height:42px;\"\r\n                  src=\"../../assets/icon/adminnotis.png\"></ion-img>\r\n                <div class=\"cardname\">{{ 'home.notis' | translate }}</div>\r\n              </ion-card>\r\n            </td>\r\n            <td>\r\n              <ion-card class=\"card2\" (click)=\"pengumumanadmin()\">\r\n                <ion-img class=\"cardimg\" style=\"width: 48px;height: 38px;\"\r\n                  src=\"../../assets/icon/adminpengumuman.png\"></ion-img>\r\n                <div class=\"cardname\">{{ 'home.pengumuman' | translate }}</div>\r\n              </ion-card>\r\n            </td>\r\n            <td>\r\n              <ion-card class=\"card2\" (click)=\"penggunaadmin()\">\r\n                <ion-img class=\"cardimg\" style=\"width: 42px;height: 42px;\"\r\n                  src=\"../../assets/icon/adminpengguna.png\"></ion-img>\r\n                <div class=\"cardname\">{{ 'home.pengguna' | translate }}</div>\r\n              </ion-card>\r\n            </td>\r\n          </tr>\r\n          <tr>\r\n            <td>\r\n              <ion-card class=\"card2\" (click)=\"penghargaanadmin()\">\r\n                <ion-img class=\"cardimg\" style=\"width: 40px;height: 40px;\"\r\n                  src=\"../../assets/icon/adminpenghargaan.png\"></ion-img>\r\n                <div class=\"cardname\">{{ 'home.penghargaan' | translate }}</div>\r\n              </ion-card>\r\n            </td>\r\n            <td>\r\n              <ion-card class=\"card2\" (click)=\"sekatanadmin()\">\r\n                <ion-img class=\"cardimg\" style=\"width: 41px;height: 42px;\"\r\n                  src=\"../../assets/icon/admintarikh.png\"></ion-img>\r\n                <div class=\"cardname\">{{ 'home.tarikh' | translate }}</div>\r\n              </ion-card>\r\n            </td>\r\n            <td>\r\n              <ion-card class=\"card2\" (click)=\"aduanadmin();\">\r\n                <ion-img class=\"cardimg\" style=\"width: 49.76px;height: 40px;\"\r\n                  src=\"../../assets/icon/main5.png\"></ion-img>\r\n                <div class=\"cardname\">{{ 'home.aduan' | translate }}</div>\r\n              </ion-card>\r\n            </td>\r\n          </tr>\r\n        </table>\r\n        <div style=\"padding-top: 30px;\">\r\n          <button class=\"buttunchart\" (click)=\"displaychart()\" *ngIf=\"showchart==0\">{{ 'home.tunjuk' | translate\r\n            }}</button>\r\n          <button class=\"buttunchart\" (click)=\"downloadchart()\" *ngIf=\"showchart==1\">{{ 'home.muatturun' | translate\r\n            }}</button>\r\n        </div>\r\n        <div>\r\n          <canvas #chartCanvas></canvas>\r\n        </div>\r\n        <div style=\"display: none;\" id=\"pdf\">\r\n          <table style=\"width: 100%;border: 1 pt solid black;font-size: 14px;color: black;\">\r\n            <colgroup>\r\n              <col style=\"width: 21%;\">\r\n              <col style=\"width: 21%;\">\r\n              <col style=\"width: 18%;\">\r\n              <col style=\"width: 27%;\">\r\n              <col style=\"width: 13%;\">\r\n            </colgroup>\r\n            <tr style=\"border-bottom:1pt solid black;\">\r\n              <td>Tarikh Mula</td>\r\n              <td>Tarikh Akhir</td>\r\n              <td>Jenis</td>\r\n              <td>Lokasi</td>\r\n              <td>Hari</td>\r\n            </tr>\r\n            <tr *ngFor=\"let item of bookdtl\">\r\n              <td>{{item.date_from}}</td>\r\n              <td>{{item.date_to}}</td>\r\n              <td>{{item.jenis}}</td>\r\n              <td>{{item.tempat}}</td>\r\n              <td>{{item.days}}</td>\r\n            </tr>\r\n          </table>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n</ion-content>");
 
 /***/ }),
 

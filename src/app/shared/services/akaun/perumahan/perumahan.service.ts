@@ -14,8 +14,13 @@ export class PerumahanService {
 
   ) { }
 
-  add(data:any): Observable<any> {
+  add(data: any): Observable<any> {
     var AddURL = environment.baseUrl + "perumahan";
     return this.http.post<any>(AddURL, data);
+  }
+
+  deleteAkaun(id: any): Observable<any> {
+    var DeleteURL = environment.baseUrl + "perumahan/" + id;
+    return this.http.delete<any>(DeleteURL);
   }
 }

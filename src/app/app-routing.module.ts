@@ -162,7 +162,11 @@ const routes: Routes = [
   {
     path: 'pay',
     loadChildren: () => import('./pay/pay.module').then(m => m.PayPageModule)
+  },  {
+    path: 'sebutharga',
+    loadChildren: () => import('./sebutharga/sebutharga.module').then( m => m.SebuthargaPageModule)
   }
+
 ];
 
 @NgModule({

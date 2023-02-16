@@ -703,14 +703,17 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let LejardPage = class LejardPage {
-    constructor(pdfGenerator, navParams) {
+    constructor(pdfGenerator, navParams, modalController, toastController) {
         this.pdfGenerator = pdfGenerator;
         this.navParams = navParams;
+        this.modalController = modalController;
+        this.toastController = toastController;
     }
     ngOnInit() {
         console.table(this.navParams);
         var data = this.navParams.data.data;
         this.selectedakaun = data.akaun;
+        console.log(this.selectedakaun);
         this.lejardtl = data.lejar;
         this.src = data.src;
         console.log(data);
@@ -732,13 +735,27 @@ let LejardPage = class LejardPage {
             }).catch((error) => {
                 document.getElementById('tr1').style.display = "none";
                 console.log('error', error);
+                this.modalController.dismiss();
+                this.presentToast('Fail to generate PDF', 'danger');
             });
+        });
+    }
+    presentToast(message, color) {
+        return (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__awaiter)(this, void 0, void 0, function* () {
+            const toast = yield this.toastController.create({
+                message,
+                color,
+                duration: 2000
+            });
+            toast.present();
         });
     }
 };
 LejardPage.ctorParameters = () => [
     { type: _ionic_native_pdf_generator_ngx__WEBPACK_IMPORTED_MODULE_2__.PDFGenerator },
-    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__.NavParams }
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__.NavParams },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__.ModalController },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__.ToastController }
 ];
 LejardPage = (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__decorate)([
     (0,_angular_core__WEBPACK_IMPORTED_MODULE_5__.Component)({
@@ -948,6 +965,51 @@ AduanService = (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__decorate)([
 
 /***/ }),
 
+/***/ 96082:
+/*!**********************************************************************!*\
+  !*** ./src/app/shared/services/akaun/perumahan/perumahan.service.ts ***!
+  \**********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "PerumahanService": () => (/* binding */ PerumahanService)
+/* harmony export */ });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! tslib */ 64762);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 37716);
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ 91841);
+/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! src/environments/environment */ 92340);
+
+
+
+
+let PerumahanService = class PerumahanService {
+    constructor(http) {
+        this.http = http;
+    }
+    add(data) {
+        var AddURL = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.baseUrl + "perumahan";
+        return this.http.post(AddURL, data);
+    }
+    deleteAkaun(id) {
+        var DeleteURL = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.baseUrl + "perumahan/" + id;
+        return this.http.delete(DeleteURL);
+    }
+};
+PerumahanService.ctorParameters = () => [
+    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpClient }
+];
+PerumahanService = (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_3__.Injectable)({
+        providedIn: 'root'
+    })
+], PerumahanService);
+
+
+
+/***/ }),
+
 /***/ 76290:
 /*!********************************************************************!*\
   !*** ./src/app/shared/services/bayaran/bayaran/bayaran.service.ts ***!
@@ -992,6 +1054,51 @@ BayaranService = (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__decorate)([
         providedIn: 'root'
     })
 ], BayaranService);
+
+
+
+/***/ }),
+
+/***/ 62803:
+/*!******************************************************!*\
+  !*** ./src/app/shared/services/lain/lain.service.ts ***!
+  \******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "LainService": () => (/* binding */ LainService)
+/* harmony export */ });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! tslib */ 64762);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 37716);
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ 91841);
+/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! src/environments/environment */ 92340);
+
+
+
+
+let LainService = class LainService {
+    constructor(http) {
+        this.http = http;
+    }
+    add(data) {
+        var AddlainURL = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.baseUrl + "lain";
+        return this.http.post(AddlainURL, data);
+    }
+    getdd() {
+        var UrusanURL = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.baseUrl + "laindd";
+        return this.http.get(UrusanURL);
+    }
+};
+LainService.ctorParameters = () => [
+    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpClient }
+];
+LainService = (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_3__.Injectable)({
+        providedIn: 'root'
+    })
+], LainService);
 
 
 
@@ -1176,6 +1283,13 @@ let UserService = class UserService {
         var updateURL = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.baseUrl + "user/" + id;
         return this.http.patch(updateURL, { type, data });
     }
+    checkFirstTimeLogin(id, data) {
+        var updateURL = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.baseUrl + "ForgotPass/" + id;
+        return this.http.post(updateURL, data);
+    }
+    getAllUsers() {
+        return this.http.get(src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.baseUrl + "allusers");
+    }
 };
 UserService.ctorParameters = () => [
     { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpClient }
@@ -1291,7 +1405,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("<ion-content>\r\n  <div style=\"padding: 20px;background-color: white;height: 100%;width: 100%;\">\r\n    <div id=\"pdf\">\r\n      <table style=\"width: 100%;border: 1 pt solid black;font-size: 14px;color: black;\">\r\n        <colgroup>\r\n          <col style=\"width: 15%;\">\r\n          <col style=\"width: 15%;\">\r\n          <col style=\"width: 10%;\">\r\n          <col style=\"width: 25%;\">\r\n          <col style=\"width: 10%;\">\r\n          <col style=\"width: 25%;\">\r\n        </colgroup>\r\n        <tr>\r\n          <td colspan=\"6\">Lejar <span *ngIf=\"src == 1\">Rumah</span><span *ngIf=\"src == 2\">Premis</span> : {{selectedakaun.nama}}</td>\r\n        </tr>\r\n        <tr>\r\n          <td colspan=\"6\">Nombor Akaun : <span *ngIf=\"src == 1\">{{selectedakaun.no_akaun_rumah}}</span><span *ngIf=\"src == 2\">{{selectedakaun.no_akaun_premis}}</span></td>\r\n        </tr>\r\n        <tr>\r\n          <td colspan=\"6\">Nombor Kad Pengenalan : {{selectedakaun.no_kad_pengenalan}}</td>\r\n        </tr>\r\n        <tr>\r\n          <td colspan=\"6\" style=\"height: 50px;\"></td>\r\n        </tr>\r\n      </table>\r\n      <table style=\"width: 100%;border: 1 pt solid black;font-size: 14px;color: black;display: none;\" id=\"tr1\">\r\n        <colgroup>\r\n          <col style=\"width: 15%;\">\r\n          <col style=\"width: 15%;\">\r\n          <col style=\"width: 10%;\">\r\n          <col style=\"width: 25%;\">\r\n          <col style=\"width: 10%;\">\r\n          <col style=\"width: 25%;\">\r\n        </colgroup>\r\n        <tr style=\"border-bottom:1pt solid black;\">\r\n          <td>Tarikh</td>\r\n          <td>Rujukan</td>\r\n          <td>Debit</td>\r\n          <td>Urusan</td>\r\n          <td>Kredit</td>\r\n          <td>Urusan</td>\r\n        </tr>\r\n        <tr *ngFor=\"let item of lejardtl\">\r\n          <td>{{item.tarikh}}</td>\r\n          <td>{{item.rujukan}}</td>\r\n          <td>{{item.debit}}</td>\r\n          <td style=\"border-right:1pt solid black;\"><span *ngIf=\"item.debit != ''\">{{item.urusan}}</span></td>\r\n          <td>{{item.kredit}}</td>\r\n          <td><span *ngIf=\"item.kredit != ''\">{{item.urusan}}</span></td>\r\n        </tr>\r\n      </table>\r\n    </div>\r\n    <div style=\"padding: 50px 0px;\">\r\n      <button ion-button class=\"button\" (click)=\"download()\">Cetak</button>\r\n    </div>\r\n  </div>\r\n</ion-content>\r\n");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("<ion-content>\r\n  <div style=\"padding: 20px;background-color: white;height: 100%;width: 100%;\">\r\n    <div id=\"pdf\">\r\n      <table style=\"width: 100%;border: 1 pt solid black;font-size: 14px;color: black;\">\r\n        <colgroup>\r\n          <col style=\"width: 15%;\">\r\n          <col style=\"width: 15%;\">\r\n          <col style=\"width: 10%;\">\r\n          <col style=\"width: 25%;\">\r\n          <col style=\"width: 10%;\">\r\n          <col style=\"width: 25%;\">\r\n        </colgroup>\r\n        <tr>\r\n          <td colspan=\"6\">Lejar <span *ngIf=\"src == 1\">Rumah</span><span *ngIf=\"src == 2\">Premis</span> :\r\n            {{selectedakaun.nama}}</td>\r\n        </tr>\r\n        <tr>\r\n          <td colspan=\"6\">Nombor Akaun : <span>{{selectedakaun.no_akaun_rumah}}</span><span\r\n              *ngIf=\"src == 2\">{{selectedakaun.no_akaun_premis}}</span></td>\r\n        </tr>\r\n        <tr>\r\n          <td colspan=\"6\">Nombor Kad Pengenalan : {{selectedakaun.no_kad_pengenalan}}</td>\r\n        </tr>\r\n        <tr>\r\n          <td colspan=\"6\" style=\"height: 50px;\"></td>\r\n        </tr>\r\n      </table>\r\n      <table style=\"width: 100%;border: 1 pt solid black;font-size: 14px;color: black;display: none;\" id=\"tr1\">\r\n        <colgroup>\r\n          <col style=\"width: 15%;\">\r\n          <col style=\"width: 15%;\">\r\n          <col style=\"width: 10%;\">\r\n          <col style=\"width: 25%;\">\r\n          <col style=\"width: 10%;\">\r\n          <col style=\"width: 25%;\">\r\n        </colgroup>\r\n        <tr style=\"border-bottom:1pt solid black;\">\r\n          <td>Tarikh</td>\r\n          <td>Rujukan</td>\r\n          <td>Debit</td>\r\n          <td>Urusan</td>\r\n          <td>Kredit</td>\r\n          <td>Urusan</td>\r\n        </tr>\r\n        <tr *ngFor=\"let item of lejardtl\">\r\n          <td>{{item.tarikh}}</td>\r\n          <td>{{item.rujukan}}</td>\r\n          <td>{{item.debit}}</td>\r\n          <td style=\"border-right:1pt solid black;\"><span *ngIf=\"item.debit != ''\">{{item.urusan}}</span></td>\r\n          <td>{{item.kredit}}</td>\r\n          <td><span *ngIf=\"item.kredit != ''\">{{item.urusan}}</span></td>\r\n        </tr>\r\n      </table>\r\n    </div>\r\n    <div style=\"padding: 50px 0px;\">\r\n      <button ion-button class=\"button\" (click)=\"download()\">Cetak</button>\r\n    </div>\r\n  </div>\r\n</ion-content>\r\n");
 
 /***/ }),
 

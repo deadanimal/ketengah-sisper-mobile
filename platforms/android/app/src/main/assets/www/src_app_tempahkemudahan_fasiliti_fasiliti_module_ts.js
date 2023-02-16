@@ -64,10 +64,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "FasilitiService": () => (/* binding */ FasilitiService)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! tslib */ 64762);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 37716);
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ 91841);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! tslib */ 64762);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/core */ 37716);
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ 91841);
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs */ 26215);
 /* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! src/environments/environment */ 92340);
+
 
 
 
@@ -75,6 +77,7 @@ __webpack_require__.r(__webpack_exports__);
 let FasilitiService = class FasilitiService {
     constructor(http) {
         this.http = http;
+        this.rates = new rxjs__WEBPACK_IMPORTED_MODULE_1__.BehaviorSubject(null);
     }
     getfutsal() {
         var AlatanURL = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.baseUrl + "futsal";
@@ -84,12 +87,16 @@ let FasilitiService = class FasilitiService {
         var AlatanURL = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.baseUrl + "badminton";
         return this.http.get(AlatanURL);
     }
+    getFasilities() {
+        const url = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.baseUrl + "fasiliti";
+        return this.http.get(url);
+    }
 };
 FasilitiService.ctorParameters = () => [
-    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpClient }
+    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__.HttpClient }
 ];
-FasilitiService = (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__decorate)([
-    (0,_angular_core__WEBPACK_IMPORTED_MODULE_3__.Injectable)({
+FasilitiService = (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_4__.Injectable)({
         providedIn: 'root'
     })
 ], FasilitiService);
@@ -301,6 +308,10 @@ let FasilitiPage = class FasilitiPage {
     }
     ngOnInit() {
         return (0,tslib__WEBPACK_IMPORTED_MODULE_6__.__awaiter)(this, void 0, void 0, function* () {
+            this.fasilitiService.getFasilities().subscribe(data => {
+                console.log(data);
+                this.fasilities = data;
+            });
             this.TarikhVal = new Date();
             this.TarikhVal = this.TarikhVal.toISOString().split('T')[0];
             //set current to this date
@@ -383,36 +394,37 @@ let FasilitiPage = class FasilitiPage {
         });
     }
     ChangeDDLokasi() {
-        if (this.Lokasi == 1) {
-            this.ddFasiliti = [
-                {
-                    id: "1",
-                    nama: "Futsal"
-                },
-                {
-                    id: "2",
-                    nama: "Badminton"
-                }
-            ];
-            this.lokasiread = false;
-        }
-        else {
-            this.ddFasiliti = [
-                {
-                    id: "2",
-                    nama: "Badminton"
-                }
-            ];
-            this.lokasiread = false;
-        }
-        ;
-        this.Fasiliti = '';
-        this.Gelanggang = '';
-        this.gelanggangread = true;
-        this.tarikhread = true;
+        // if (this.Lokasi == 1) {
+        //   this.ddFasiliti = [
+        //     {
+        //       id: "1",
+        //       nama: "Futsal"
+        //     },
+        //     {
+        //       id: "2",
+        //       nama: "Badminton"
+        //     }
+        //   ];
+        //   this.lokasiread = false;
+        // } else {
+        //   this.ddFasiliti = [
+        //     {
+        //       id: "2",
+        //       nama: "Badminton"
+        //     }
+        //   ];
+        //   this.lokasiread = false;
+        // };
+        // this.Fasiliti = '';
+        // this.Gelanggang = '';
+        // this.gelanggangread = true;
+        // this.tarikhread = true;
+        this.filterFasiliti();
     }
     ChangeDDFasiliti() {
         return (0,tslib__WEBPACK_IMPORTED_MODULE_6__.__awaiter)(this, void 0, void 0, function* () {
+            console.log("inside event handler");
+            console.log(this.Lokasi);
             this.gelanggangread = false;
             this.tarikhread = false;
             if (this.Fasiliti == 1) {
@@ -500,7 +512,7 @@ let FasilitiPage = class FasilitiPage {
     }
     pilihcal() {
         console.log(this.date);
-        if (this.cal == true) {
+        if (this.cal === true) {
             this.cal = false;
         }
         else {
@@ -509,7 +521,24 @@ let FasilitiPage = class FasilitiPage {
         const fromdate = new Date(this.date);
         this.masablock = true;
         this.days = 1;
-        this.TarikhVal = fromdate.getDate() + '/' + fromdate.getMonth() + '/' + fromdate.getFullYear();
+        let date;
+        // this.TarikhVal = fromdate.getDate() + '/' + fromdate.getMonth() + '/' + fromdate.getFullYear();
+        //if date or month is single digit, add 0 in front
+        if (fromdate.getDate() < 10) {
+            date = '0' + fromdate.getDate();
+        }
+        else {
+            date = fromdate.getDate();
+        }
+        let month;
+        if (fromdate.getMonth() < 10) {
+            month = '0' + fromdate.getMonth();
+        }
+        else {
+            month = fromdate.getMonth();
+        }
+        const year = fromdate.getFullYear();
+        this.TarikhVal = year + '/' + month + '/' + date;
         this.ChangeDDTarikh();
     }
     ChangeDDTarikh() {
@@ -598,6 +627,7 @@ let FasilitiPage = class FasilitiPage {
     }
     hantar() {
         return (0,tslib__WEBPACK_IMPORTED_MODULE_6__.__awaiter)(this, void 0, void 0, function* () {
+            console.table(this.Fasiliti);
             const loading = yield this.loadingController.create();
             yield loading.present();
             var harga = 0;
@@ -675,10 +705,12 @@ let FasilitiPage = class FasilitiPage {
                 else if (this.Fasiliti == 2) {
                     var kod = "BD" + res.id;
                 }
+                const rate = this.fasilities.find(f => f.id === this.Fasiliti).kadar_per_jam;
                 akaun = {
-                    "id": '',
-                    "amaun": this.amaun,
-                    "kodbayaran": kod,
+                    src: 2,
+                    kadar_per_jam: rate,
+                    akaun: arr,
+                    jumcount: 1
                 };
                 arr.push(akaun);
                 var data = {
@@ -687,11 +719,17 @@ let FasilitiPage = class FasilitiPage {
                     "jumcount": 1,
                     "akaun": arr
                 };
-                let navigationExtras = {
+                const navigationExtras = {
                     state: {
-                        data: data
+                        data: {
+                            src: 2,
+                            kadar_per_jam: rate,
+                            akaun: arr,
+                            jumcount: 1
+                        }
                     }
                 };
+                this.fasilitiService.rates.next(this.Fasiliti.kadar_per_jam);
                 this.router.navigate(['main/tabs/bayaran'], navigationExtras);
             }), (res) => (0,tslib__WEBPACK_IMPORTED_MODULE_6__.__awaiter)(this, void 0, void 0, function* () {
                 console.log(res);
@@ -723,6 +761,13 @@ let FasilitiPage = class FasilitiPage {
         this.date = '';
         this.masablock = false;
         this.timecheck = [];
+    }
+    filterFasiliti() {
+        // console.log('inside the evnet', this.Lokasi, this.fasilities);
+        // // let bandar = this.ddLokasi.find(b => b.bandar == ).bandar;
+        // this.fasilities = this.ddLokasi.filter(f => f.bandar.toLowerCase() == this.Lokasi.toLowerCase());
+        // console.log("comparing", this.fasilities[1].nama, this.Lokasi)
+        // console.log(this.fasilities)
     }
 };
 FasilitiPage.ctorParameters = () => [
@@ -773,7 +818,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("<ion-content>\r\n  <div class=\"main\">\r\n    <div class=\"container\">\r\n      <div class=\"header\">\r\n        <ion-icon name=\"chevron-back-outline\" style=\"float: left;\" (click)=\"back()\"></ion-icon>\r\n        <span class=\"headertxt\">\r\n          <div style=\"width:100px;margin: auto;\">\r\n            {{ 'dewan.tempah' | translate }}<br>({{ 'fasiliti.fasiliti' | translate }})</div>\r\n        </span>\r\n      </div>\r\n      <div style=\"padding-top: 40px;\">\r\n        <ion-img src=\"../../assets/icon/fasilitiHead.png\" class=\"icontetapan\"></ion-img>\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <div class=\"main2\">\r\n    <div class=\"container2\">\r\n      <div style=\"padding:0px 40px;\">\r\n        <div class=\"label\">{{ 'dewan.lokasi' | translate }}.</div>\r\n        <ion-select okText=\"{{ 'semak.ok' | translate }}\" cancelText=\"{{ 'semak.cancel' | translate }}\" class=\"select\"\r\n          placeholder=\"{{ 'dewan.placelokasi' | translate }}\" [(ngModel)]=\"Lokasi\" (ionChange)=\"ChangeDDLokasi()\">\r\n          <ion-select-option *ngFor=\"let lokasi of ddLokasi; let i = index\" [value]=\"lokasi.id\">\r\n            {{lokasi.nama === 'AMBS (HQ)'? 'Al Muktafi Billah Shah' : lokasi.nama}}\r\n          </ion-select-option>\r\n        </ion-select>\r\n        <div style=\"height: 10px;\"></div>\r\n        <div class=\"label\">{{ 'fasiliti.fasiliti' | translate }}.</div>\r\n        <ion-select okText=\"{{ 'semak.ok' | translate }}\" cancelText=\"{{ 'semak.cancel' | translate }}\" class=\"select\"\r\n          placeholder=\"{{ 'fasiliti.placefasiliti' | translate }}\" [(ngModel)]=\"Fasiliti\"\r\n          (ionChange)=\"ChangeDDFasiliti()\" [disabled]=\"lokasiread\">\r\n          <ion-select-option *ngFor=\"let fasiliti of ddFasiliti; let i = index\" [value]=\"fasiliti.id\">\r\n            {{fasiliti.nama}}\r\n          </ion-select-option>\r\n        </ion-select>\r\n        <div style=\"height: 10px;\"></div>\r\n        <div class=\"label\">{{ 'fasiliti.gelanggang' | translate }}.</div>\r\n        <ion-select okText=\"{{ 'semak.ok' | translate }}\" cancelText=\"{{ 'semak.cancel' | translate }}\" class=\"select\"\r\n          placeholder=\"{{ 'fasiliti.placegelanggang' | translate }}\" [(ngModel)]=\"Gelanggang\"\r\n          (ionChange)=\"ChangeDDGelanggang()\" [disabled]=\"gelanggangread\">\r\n          <ion-select-option *ngFor=\"let gelanggang of ddGelanggang; let i = index\" [value]=\"gelanggang.id\">\r\n            {{gelanggang.nama_gelanggang}}\r\n          </ion-select-option>\r\n        </ion-select>\r\n        <div style=\"height: 10px;\"></div>\r\n        <div class=\"label\">{{ 'dewan.tarikh' | translate }}.</div>\r\n        <input [value]=\"date |date: 'yyyy-MM-dd ' \" class=\"select\" (click)=\"opencal()\" (ionChange)=\"ChangeDDTarikh()\"\r\n          [(ngModel)]=\"TarikhVal\">\r\n        <div *ngIf=\"cal==true\" style=\"text-align: center;padding-top: 10px;\">\r\n          <ion-calendar [options]=\"caloption\" type=\"string\" [(ngModel)]=\"date\"></ion-calendar>\r\n          <button class=\"button\" style=\"width:60%\" (click)=\"pilihcal()\">Pilih</button>\r\n        </div>\r\n        <div style=\"height: 10px;\"></div>\r\n        <div *ngIf=\"masablock == true\" class=\"label\">{{ 'dewan.masa' | translate }}.</div>\r\n      </div>\r\n      <div *ngIf=\"masablock == true\">\r\n        <ul class=\"ks-cboxtags\" id=\"boxfrom\">\r\n          <li *ngFor=\"let item of timecheck\">\r\n            <input type=\"checkbox\" id=\"box{{item.val}}\" value=\"{{item.val}}\" name=\"boxtime\"\r\n              [(ngModel)]=\"item.check\"><label for=\"box{{item.val}}\">{{item.text}}</label>\r\n          </li>\r\n        </ul>\r\n      </div>\r\n      <div style=\"height: 40px;\"></div>\r\n      <div style=\"padding:0px 40px 30px 40px;\">\r\n        <button ion-button class=\"button\" (click)=\"hantar()\">{{ 'hantar' | translate }}</button>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n</ion-content>\r\n");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("<ion-content>\r\n  <div class=\"main\">\r\n    <div class=\"container\">\r\n      <div class=\"header\">\r\n        <ion-icon name=\"chevron-back-outline\" style=\"float: left;\" (click)=\"back()\"></ion-icon>\r\n        <span class=\"headertxt\">\r\n          <div style=\"width:100px;margin: auto;\">\r\n            {{ 'dewan.tempah' | translate }}<br>({{ 'fasiliti.fasiliti' | translate }})</div>\r\n        </span>\r\n      </div>\r\n      <div style=\"padding-top: 40px;\">\r\n        <ion-img src=\"../../assets/icon/fasilitiHead.png\" class=\"icontetapan\"></ion-img>\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <div class=\"main2\">\r\n    <div class=\"container2\">\r\n      <div style=\"padding:0px 40px;\">\r\n        <div class=\"label\">{{ 'dewan.lokasi' | translate }}.</div>\r\n        <ion-select (ionChange)=\"filterFasiliti($event)\" okText=\"{{ 'semak.ok' | translate }}\"\r\n          cancelText=\"{{ 'semak.cancel' | translate }}\" class=\"select\"\r\n          placeholder=\"{{ 'dewan.placelokasi' | translate }}\" [(ngModel)]=\"Lokasi\">\r\n          <ion-select-option *ngFor=\"let lokasi of ddLokasi; let i = index\" [value]=\"lokasi.id\">\r\n            {{lokasi.nama === 'AMBS (HQ)'? 'Al Muktafi Billah Shah' : lokasi.nama}}\r\n          </ion-select-option>\r\n        </ion-select>\r\n        <div style=\"height: 10px;\"></div>\r\n        <div class=\"label\">{{ 'fasiliti.fasiliti' | translate }}.</div>\r\n        <ion-select okText=\"{{ 'semak.ok' | translate }}\" cancelText=\"{{ 'semak.cancel' | translate }}\" class=\"select\"\r\n          placeholder=\"{{ 'fasiliti.placefasiliti' | translate }}\" [(ngModel)]=\"Fasiliti\"\r\n          (ionChange)=\"ChangeDDFasiliti()\" [disabled]=\"lokasiread\">\r\n          <ion-select-option *ngFor=\"let fasiliti of fasilities\" [value]=\"fasiliti.id\">\r\n            {{fasiliti.fasiliti}} {{\" \"}} - {{\" \"}} {{fasiliti.kadar_per_jam}}\r\n          </ion-select-option>\r\n        </ion-select>\r\n        <div style=\"height: 10px;\"></div>\r\n        <div class=\"label\">{{ 'fasiliti.gelanggang' | translate }}.</div>\r\n        <ion-select okText=\"{{ 'semak.ok' | translate }}\" cancelText=\"{{ 'semak.cancel' | translate }}\" class=\"select\"\r\n          placeholder=\"{{ 'fasiliti.placegelanggang' | translate }}\" [(ngModel)]=\"Gelanggang\"\r\n          (ionChange)=\"ChangeDDGelanggang()\" [disabled]=\"gelanggangread\">\r\n          <ion-select-option *ngFor=\"let gelanggang of ddGelanggang; let i = index\" [value]=\"gelanggang.id\">\r\n            {{gelanggang.nama_gelanggang}}\r\n          </ion-select-option>\r\n        </ion-select>\r\n        <div style=\"height: 10px;\"></div>\r\n        <div class=\"label\">{{ 'dewan.tarikh' | translate }}.</div>\r\n        <input [value]=\"date |date: 'yyyy-MM-dd ' \" class=\"select\" (click)=\"opencal()\" (ionChange)=\"ChangeDDTarikh()\"\r\n          [(ngModel)]=\"TarikhVal\">\r\n        <div *ngIf=\"cal==true\" style=\"text-align: center;padding-top: 10px;\">\r\n          <ion-calendar [options]=\"caloption\" type=\"string\" [(ngModel)]=\"date\"></ion-calendar>\r\n          <button class=\"button\" style=\"width:60%\" (click)=\"pilihcal()\">Pilih</button>\r\n        </div>\r\n        <div style=\"height: 10px;\"></div>\r\n        <div *ngIf=\"masablock == true\" class=\"label\">{{ 'dewan.masa' | translate }}.</div>\r\n      </div>\r\n      <div *ngIf=\"masablock == true\">\r\n        <ul class=\"ks-cboxtags\" id=\"boxfrom\">\r\n          <li *ngFor=\"let item of timecheck\">\r\n            <input type=\"checkbox\" id=\"box{{item.val}}\" value=\"{{item.val}}\" name=\"boxtime\"\r\n              [(ngModel)]=\"item.check\"><label for=\"box{{item.val}}\">{{item.text}}</label>\r\n          </li>\r\n        </ul>\r\n      </div>\r\n      <div style=\"height: 40px;\"></div>\r\n      <div style=\"padding:0px 40px 30px 40px;\">\r\n        <button ion-button class=\"button\" (click)=\"hantar()\">{{ 'hantar' | translate }}</button>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n</ion-content>");
 
 /***/ })
 

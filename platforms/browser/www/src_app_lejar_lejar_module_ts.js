@@ -26,11 +26,11 @@ const routes = [
     },
     {
         path: 'sewarumah',
-        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_app_shared_modals_lejard_lejard_page_ts"), __webpack_require__.e("common"), __webpack_require__.e("src_app_lejar_sewarumah_sewarumah_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./sewarumah/sewarumah.module */ 11598)).then(m => m.SewarumahPageModule)
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("common"), __webpack_require__.e("src_app_lejar_sewarumah_sewarumah_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./sewarumah/sewarumah.module */ 11598)).then(m => m.SewarumahPageModule)
     },
     {
         path: 'sewapremis',
-        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_app_shared_modals_lejard_lejard_page_ts"), __webpack_require__.e("common"), __webpack_require__.e("src_app_lejar_sewapremis_sewapremis_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./sewapremis/sewapremis.module */ 21251)).then(m => m.SewapremisPageModule)
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("common"), __webpack_require__.e("src_app_lejar_sewapremis_sewapremis_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./sewapremis/sewapremis.module */ 21251)).then(m => m.SewapremisPageModule)
     }
 ];
 let LejarPageRoutingModule = class LejarPageRoutingModule {

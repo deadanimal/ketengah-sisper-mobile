@@ -17,8 +17,9 @@
     <div class="container2">
       <div style="padding:0px 40px;">
         <div class="label">{{ 'dewan.lokasi' | translate }}.</div>
-        <ion-select okText="{{ 'semak.ok' | translate }}" cancelText="{{ 'semak.cancel' | translate }}" class="select"
-          placeholder="{{ 'dewan.placelokasi' | translate }}" [(ngModel)]="Lokasi" (ionChange)="ChangeDDLokasi()">
+        <ion-select (ionChange)="filterFasiliti($event)" okText="{{ 'semak.ok' | translate }}"
+          cancelText="{{ 'semak.cancel' | translate }}" class="select"
+          placeholder="{{ 'dewan.placelokasi' | translate }}" [(ngModel)]="Lokasi">
           <ion-select-option *ngFor="let lokasi of ddLokasi; let i = index" [value]="lokasi.id">
             {{lokasi.nama === 'AMBS (HQ)'? 'Al Muktafi Billah Shah' : lokasi.nama}}
           </ion-select-option>

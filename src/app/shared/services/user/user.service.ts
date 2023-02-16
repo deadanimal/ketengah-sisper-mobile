@@ -20,7 +20,7 @@ export class UserService {
   }
 
   checkFirstTimeLogin(id: string, data: any) {
-    var updateURL = environment.baseUrl + "FirstLoginChangePassword/" + id;
+    var updateURL = environment.baseUrl + "ForgotPass/" + id;
     return this.http.post(updateURL, data);
   }
 

@@ -127,7 +127,7 @@ const routes = [
     },
     {
         path: 'lainlain',
-        loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_lain-lain_lain-lain_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./lain-lain/lain-lain.module */ 84785)).then(m => m.LainLainPageModule)
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("common"), __webpack_require__.e("src_app_lain-lain_lain-lain_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./lain-lain/lain-lain.module */ 84785)).then(m => m.LainLainPageModule)
     },
     {
         path: 'lejar',
@@ -167,7 +167,7 @@ const routes = [
     },
     {
         path: 'pengguna',
-        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_app_shared_modals_adminmenu_adminmenu_page_ts"), __webpack_require__.e("src_app_admin_pengguna_pengguna_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./admin/pengguna/pengguna.module */ 33219)).then(m => m.PenggunaPageModule)
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_app_shared_modals_adminmenu_adminmenu_page_ts"), __webpack_require__.e("common"), __webpack_require__.e("src_app_admin_pengguna_pengguna_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./admin/pengguna/pengguna.module */ 33219)).then(m => m.PenggunaPageModule)
     },
     {
         path: 'sekatan',
@@ -183,7 +183,7 @@ const routes = [
     },
     {
         path: 'maklumat',
-        loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_akaun_maklumat_maklumat_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./akaun/maklumat/maklumat.module */ 10778)).then(m => m.MaklumatPageModule)
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("common"), __webpack_require__.e("src_app_akaun_maklumat_maklumat_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./akaun/maklumat/maklumat.module */ 10778)).then(m => m.MaklumatPageModule)
     },
     {
         path: 'kaedah',
@@ -200,6 +200,10 @@ const routes = [
     {
         path: 'pay',
         loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_app_pay_pay_page_ts"), __webpack_require__.e("src_app_pay_pay_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pay/pay.module */ 59485)).then(m => m.PayPageModule)
+    },
+    {
+        path: 'sebutharga',
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_app_pay_pay_page_ts"), __webpack_require__.e("common"), __webpack_require__.e("src_app_sebutharga_sebutharga_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./sebutharga/sebutharga.module */ 53024)).then(m => m.SebuthargaPageModule)
     }
 ];
 let AppRoutingModule = class AppRoutingModule {

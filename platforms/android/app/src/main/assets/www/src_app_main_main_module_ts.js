@@ -49,7 +49,7 @@ const routes = [
                             },
                             {
                                 path: 'form',
-                                loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_akaun_perumahan_form_form_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ../akaun/perumahan/form/form.module */ 76578)).then(m => m.FormPageModule)
+                                loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("common"), __webpack_require__.e("src_app_akaun_perumahan_form_form_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ../akaun/perumahan/form/form.module */ 76578)).then(m => m.FormPageModule)
                             }
                         ]
                     },
@@ -59,7 +59,7 @@ const routes = [
                     },
                     {
                         path: 'maklumat',
-                        loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_akaun_maklumat_maklumat_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ../akaun/maklumat/maklumat.module */ 10778)).then(m => m.MaklumatPageModule)
+                        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("common"), __webpack_require__.e("src_app_akaun_maklumat_maklumat_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ../akaun/maklumat/maklumat.module */ 10778)).then(m => m.MaklumatPageModule)
                     }
                 ]
             },
@@ -212,7 +212,7 @@ const routes = [
                 children: [
                     {
                         path: '',
-                        loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_lain-lain_lain-lain_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ../lain-lain/lain-lain.module */ 84785)).then(m => m.LainLainPageModule)
+                        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("common"), __webpack_require__.e("src_app_lain-lain_lain-lain_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ../lain-lain/lain-lain.module */ 84785)).then(m => m.LainLainPageModule)
                     }
                 ]
             },
@@ -292,7 +292,7 @@ const routes = [
                 children: [
                     {
                         path: '',
-                        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_app_shared_modals_adminmenu_adminmenu_page_ts"), __webpack_require__.e("src_app_admin_pengguna_pengguna_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ../admin/pengguna/pengguna.module */ 33219)).then(m => m.PenggunaPageModule)
+                        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_app_shared_modals_adminmenu_adminmenu_page_ts"), __webpack_require__.e("common"), __webpack_require__.e("src_app_admin_pengguna_pengguna_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ../admin/pengguna/pengguna.module */ 33219)).then(m => m.PenggunaPageModule)
                     }
                 ]
             },

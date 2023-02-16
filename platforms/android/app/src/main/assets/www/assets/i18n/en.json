@@ -175,7 +175,8 @@
   "pengguna": {
     "pengguna": "User",
     "senarai": "List of Users",
-    "notel": "Telefon Number"
+    "notel": "Telefon Number",
+    "nama": "Name"
   },
   "sekatan": {
     "tarikh": "Block Date",

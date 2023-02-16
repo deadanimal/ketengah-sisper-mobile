@@ -81,22 +81,6 @@ export class HomePage implements OnInit {
         user_id = data.value.user_id;
         const formData = new FormData()
         formData.append('password', data.value.password)
-        this.userService.checkFirstTimeLogin(user_id, formData).subscribe(async (res: any) => {
-
-          console.log("check for password", res)
-
-          if (res.recurring === 0) {
-
-            const alert = await this.alertController.create({
-              header: 'Salamat Datang',
-              message: 'Sila Kemasikini Kata Laluan Anda',
-              buttons: ['OK'],
-            });
-
-            alert.present();
-          }
-
-        })
 
 
 
@@ -134,7 +118,18 @@ export class HomePage implements OnInit {
     await loading.present();
     this.showmore = 0;
     await this.nativeStorage.getItem('user').then(
-      data => {
+      async data => {
+        let user_id = data.value.user_id;
+        const formData = new FormData()
+        formData.append('password', data.value.password)
+        this.userService.checkFirstTimeLogin(user_id, formData).subscribe(async (res: any) => {
+
+          console.log("check for password", res)
+
+
+
+        })
+
         console.log(data)
         this.username = data.value.name;
         this.user = data.value;
@@ -179,6 +174,16 @@ export class HomePage implements OnInit {
         console.log('premis', this.premis);
         this.nativeStorage.setItem('user', { value: this.user });
         console.log(this.user);
+        if (this.user.recurring === 0) {
+          console.log("the recurring is zero show alert ")
+          const alert = await this.alertController.create({
+            header: 'Salamat Datang',
+            message: 'Sila Kemasikini Kata Laluan Anda',
+            buttons: ['OK'],
+          });
+
+          alert.present();
+        }
       },
       error => console.error(error)
     );

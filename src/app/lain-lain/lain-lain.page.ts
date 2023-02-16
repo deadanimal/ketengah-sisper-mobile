@@ -12,11 +12,11 @@ import { NativeStorage } from '@awesome-cordova-plugins/native-storage/ngx';
   styleUrls: ['./lain-lain.page.scss'],
 })
 export class LainLainPage implements OnInit {
-
+  showDetails = false;
   lainform: FormGroup;
   ddUrusan: any;
   jumlah: any;
-  user : any;
+  user: any;
 
   constructor(
     private location: Location,
@@ -53,13 +53,13 @@ export class LainLainPage implements OnInit {
           message: res.message,
           buttons: ['OK'],
         });
- 
+
         await alert.present();
       }
     );
   }
 
-  ionViewWillEnter () {
+  ionViewWillEnter() {
     this.lainform = this.fb.group({
       kod_urusan: ['', [Validators.required]],
       urusan: ['', [Validators.required, Validators.minLength(4)]],
@@ -67,34 +67,34 @@ export class LainLainPage implements OnInit {
     });
   }
 
-  back(){
+  back() {
     this.location.back();
   }
 
-  async hantar(){
+  async hantar() {
     const loading = await this.loadingController.create();
     await loading.present();
     var arr = [];
     var akaun = {};
-    
+
     await this.lainService.add(this.lainform.value).subscribe(
       async (res) => {
         console.log(res);
         this.jumlah = res.jumlah_bayar;
         akaun = {
-          "id":res.id,
-          "amaun":this.jumlah,
-          "kodbayaran":'LL'+res.kod_urusan,
+          "id": res.id,
+          "amaun": this.jumlah,
+          "kodbayaran": 'LL' + res.kod_urusan,
         }
         arr.push(akaun);
-        var data = 
-          {
-            "src": 2,
-            "jumlah": this.jumlah,
-            "jumcount":1,
-            "akaun":arr
-          };
-        
+        var data =
+        {
+          "src": 2,
+          "jumlah": this.jumlah,
+          "jumcount": 1,
+          "akaun": arr
+        };
+
         let navigationExtras: NavigationExtras = {
           state: {
             data: data
@@ -111,20 +111,38 @@ export class LainLainPage implements OnInit {
           message: res.message,
           buttons: ['OK'],
         });
- 
+
         await alert.present();
       }
     );
   }
 
-  Check(val){
+  Check(val) {
+    if (val.target.value === 8) {
+
+      this.showDetails = true;
+
+    }
+
+    else {
+      this.showDetails = false;
+    }
+
+    console.log("the value is " + val.target.value);
+
     console.log(this.user.tender);
-    if(val.detail.value == 8){
-      if(this.user.tender == 0){
+    if (val.detail.value == 8) {
+      if (this.user.tender == 0) {
         this.router.navigate(['main/tabs/tender']);
-      }else if(this.user.tender == 1){
+      } else if (this.user.tender == 1) {
         this.router.navigate(['main/tabs/tender/tenderDetail']);
       }
     }
+  }
+
+  send() {
+
+    this.router.navigateByUrl('sebutharga')
+
   }
 }

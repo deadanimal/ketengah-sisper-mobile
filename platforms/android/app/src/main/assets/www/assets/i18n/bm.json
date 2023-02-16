@@ -81,7 +81,7 @@
   },
   "penghargaan": {
     "penghargaan": "Penghargaan",
-    "silaisi": "Sila Isi Penghargaan Anda"
+    "silaisi": "Sila Tulis penghargaan anda kepada kepada pihak KETENGAH"
   },
   "pengumuman": {
     "tajukpengumuman": "Tajuk Pengumuman",
@@ -175,7 +175,8 @@
   "pengguna": {
     "pengguna": "Pengguna",
     "senarai": "Senarai Pengguna",
-    "notel": "Nombor Telefon"
+    "notel": "Nombor Telefon",
+    "nama": "Nama"
   },
   "sekatan": {
     "tarikh": "Sekatan Tarikh",

@@ -17,21 +17,56 @@
           <form *ngIf="lainform" [formGroup]="lainform">
             <div class="label">{{ 'lain.urusan' | translate }}</div>
             <div style="height: 10px;"></div>
-            <ion-select okText="{{ 'semak.ok' | translate }}" cancelText="{{ 'semak.cancel' | translate }}" class="select" formControlName="kod_urusan" (ionChange)="Check($event);">
+            <ion-select okText="{{ 'semak.ok' | translate }}" cancelText="{{ 'semak.cancel' | translate }}"
+              class="select" formControlName="kod_urusan" (ionChange)="Check($event);">
               <ion-select-option *ngFor="let urusan of ddUrusan; let i = index" [value]="urusan.id">
                 {{urusan.urusan}}
               </ion-select-option>
             </ion-select>
-            <div style="height: 30px;"></div>
-            <div class="label1">{{ 'lain.catatan' | translate }}</div>
-            <div style="height: 10px;"></div>
-            <textarea class="textarea" rows="7" cols="50" formControlName="urusan"></textarea>
-            <div style="height: 30px;"></div>
-            <div class="label1">{{ 'lain.jumlah' | translate }} (RM)</div>
-            <div style="height: 10px;"></div>
-            <input type="number" class="bayaran" placeholder="00.00" formControlName="jumlah_bayar">
-            <div style="height: 30px;"></div>
-            <button ion-button class="button" (click)="hantar()">{{ 'bayar' | translate }}</button>
+            <div *ngIf="!showDetails">
+              <div style="height: 30px;"></div>
+              <div class="label1">{{ 'lain.catatan' | translate }}</div>
+              <div style="height: 10px;"></div>
+              <textarea class="textarea" rows="7" cols="50" formControlName="urusan"></textarea>
+              <div style="height: 30px;"></div>
+              <div class="label1">{{ 'lain.jumlah' | translate }} (RM)</div>
+              <div style="height: 10px;"></div>
+              <input type="number" class="bayaran" placeholder="00.00" formControlName="jumlah_bayar">
+              <div style="height: 30px;"></div>
+              <button ion-button class="button" (click)="hantar()">{{ 'bayar' | translate }}</button>
+            </div>
+
+            <div *ngIf="showDetails">
+              <div style="height: 30px;"></div>
+              <div class="label1">Nama Syankat /Pembali</div>
+              <input type="text" class="selects">
+
+              <div style="height: 30px;"></div>
+              <div class="label1">Nombor something byankat</div>
+              <input type="text" class="selects">
+
+              <div style="height: 30px;"></div>
+              <div class="label1">Alamat</div>
+              <input type="text" class="selects">
+
+              <div style="height: 30px;"></div>
+              <div class="label1">Poskod</div>
+              <input type="number" class="selects">
+
+              <div style="height: 30px;"></div>
+              <div class="label1">Bandar</div>
+              <input type="text" class="selects">
+
+              <div style="height: 30px;"></div>
+              <div class="label1">Negeri</div>
+              <input type="text" class="selects">
+
+              <div style="height: 30px;"></div>
+              <button ion-button class="button" (click)="send()">{{ 'hantar' | translate }}</button>
+
+
+
+            </div>
           </form>
         </div>
       </div>

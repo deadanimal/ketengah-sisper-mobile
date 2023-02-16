@@ -4,6 +4,23 @@
   text-align: left;
 }
 
+.selects {
+  width: 100%;
+  height: 45px;
+  background: #FFFFFF;
+  border: 1px solid #3D2C7C;
+  box-sizing: border-box;
+  border-radius: 9px;
+  --placeholder-color:#494949 !important;
+  box-shadow: inset -4px -4px 9px rgba(255, 255, 255, 0.6), inset 4px 4px 14px #C5D7EE;
+  padding: 0px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: left;
+  color: black;
+}
+
 .cardaduan {
   background: #FFFFFF;
   border: 1px solid #F7FAFD;
