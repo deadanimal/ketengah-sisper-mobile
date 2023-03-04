@@ -217,6 +217,10 @@ const routes = [
                 ]
             },
             {
+                path: 'butiran-pembayaran',
+                loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_tampahkemudahan_butiran-pembayaran_butiran-pembayaran_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./../tampahkemudahan/butiran-pembayaran/butiran-pembayaran.module */ 93285)).then(m => m.ButiranPembayaranPageModule)
+            },
+            {
                 path: 'bayaran',
                 children: [
                     {

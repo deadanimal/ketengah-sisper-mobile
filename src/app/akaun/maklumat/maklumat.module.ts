@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
@@ -8,7 +8,7 @@ import { MaklumatPageRoutingModule } from './maklumat-routing.module';
 
 import { MaklumatPage } from './maklumat.page';
 
-import {  HttpClient } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
@@ -30,8 +30,10 @@ export function createTranslateLoader(http: HttpClient) {
         useFactory: createTranslateLoader,
         deps: [HttpClient]
       }
-    })
+    }),
+    FormsModule,
+    ReactiveFormsModule
   ],
   declarations: [MaklumatPage]
 })
-export class MaklumatPageModule {}
+export class MaklumatPageModule { }

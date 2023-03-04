@@ -1,0 +1,52 @@
+<ion-content>
+  <ion-content>
+    <div class="main">
+      <div class="container">
+        <div class="header">
+          <ion-icon name="chevron-back-outline" style="float: left;" (click)="back()"></ion-icon>
+          <span class="headertxt">
+            <div style="width:fit-content;margin: auto;">
+              Butiran Pembayaran</div>
+          </span>
+        </div>
+        <div style="padding-top: 40px;">
+          <ion-img src="../../assets/icon/fasilitiHead.png" class="icontetapan"></ion-img>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="info">
+
+      <div>
+        <label style="margin-bottom: 12px; font-size: 12px;">Tempahan</label><br>
+        <span style="margin-bottom: 18px; ">{{data.fasiliti}} - {{data.gelanggang}}</span><br>
+        <label style="margin-bottom: 12px; font-size: 12px;" for="">Tarikh</label><br>
+        <span style="margin-bottom: 18px">{{data.tarikh}}</span><br>
+        <label for="" style="margin-bottom: 8px; font-size: 12px;">Masa</label><br>
+        <span style="margin-bottom: 30px; ">{{data.masa.split(',')[0] }}:00 -
+          {{data.masa.split(',')[data.masa.split(',').length -1] }}:00</span><br>
+
+
+      </div>
+
+
+
+    </div>
+
+    <div style="marign-top: 50px; margin-left: 50px;">
+
+      <span style="font-size: 11px; color: black;">JUMLAH KESELURUHAN (RM)</span>
+
+      <span style="font-size: 30px; font-weight: bolder; color: #D23330;">
+        {{data.rate * data.masa.split(',').length}}</span>
+
+
+    </div>
+
+    <div style="display :flex; justify-content: center; align-items: center">
+      <button style="margin-top: 50px; width: 250px; " ion-button class=" button" (click)="bayar()">Bayar (1)</button>
+    </div>
+
+
+  </ion-content>

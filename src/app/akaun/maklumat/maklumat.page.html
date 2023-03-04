@@ -11,7 +11,8 @@
 
   <div class="main2">
     <div class="delete">
-      <button style="height: 50px; width: 100px; background-color: rgb(108, 31, 108); margin-right: 10px;">
+      <button (click)="kemaskini()"
+        style="height: 50px; width: 100px; background-color: rgb(108, 31, 108); margin-right: 10px;">
         Kemaskini
       </button>
       <button (click)="hapus()" style="height: 50px; width: 100px">
@@ -68,59 +69,59 @@
         </div>
         <div class="boxwhite" style="border-bottom: 0.7px solid #E8E8E8">
           {{ 'akaun.nama' | translate }} <br>
-          <ion-input type="text" class="input" readonly [value]="data.nama_pemilik"></ion-input>
+          <ion-input [(ngModel)]="nama" type="text" class="input"></ion-input>
         </div>
         <div class="boxwhite" style="border-bottom: 0.7px solid #E8E8E8">
           {{ 'akaun.bandar' | translate }} <br>
-          <ion-input type="text" class="input" readonly [value]="data.bandar"></ion-input>
+          <ion-input type="text" class="input" [value]="data.bandar"></ion-input>
         </div>
         <div class="boxwhite" style="border-bottom: 0.7px solid #E8E8E8">
           {{ 'akaun.nokp2' | translate }} <br>
-          <ion-input type="text" class="input" readonly [value]="data.no_kad_pengenalan"></ion-input>
+          <ion-input type="text" [(ngModel)]="no_ic" class="input" [value]="data.no_kad_pengenalan"></ion-input>
         </div>
         <div class="boxwhite" style="border-bottom: 0.7px solid #E8E8E8">
-          {{ 'akaun.norumah' | translate }} <br>
-          <ion-input type="text" class="input" readonly [value]="data.no_rumah"></ion-input>
+          {{ 'akaun.noru mah' | translate }} <br>
+          <ion-input type="text" class="input" [value]="data.no_rumah"></ion-input>
         </div>
         <div class="boxwhite" style="border-bottom: 0.7px solid #E8E8E8">
           {{ 'akaun.taman' | translate }} <br>
-          <ion-input type="text" class="input" readonly [value]="data.taman"></ion-input>
+          <ion-input type="text" class="input" [value]="data.taman"></ion-input>
         </div>
         <div class="boxwhite" style="border-bottom: 0.7px solid #E8E8E8">
           {{ 'akaun.kate' | translate }} <br>
-          <ion-input type="text" class="input" readonly [value]="data.kategori"></ion-input>
+          <ion-input type="text" [(ngModel)]="kategori" class="input" [value]="data.kategori"></ion-input>
         </div>
         <div class="boxwhite" style="border-bottom: 0.7px solid #E8E8E8">
           {{ 'akaun.kadarsewa' | translate }} <br>
-          <ion-input type="text" class="input" readonly [value]="data.kadar_sewa"></ion-input>
+          <ion-input type="text" class="input" [value]="data.kadar_sewa"></ion-input>
         </div>
         <div class="boxwhite" style="border-bottom: 0.7px solid #E8E8E8">
           {{ 'akaun.jenisrumah' | translate }} <br>
-          <ion-input type="text" class="input" readonly [value]="data.jenis_rumah"></ion-input>
+          <ion-input type="text" class="input" [value]="data.jenis_rumah"></ion-input>
         </div>
         <div class="boxwhite" style="border-bottom: 0.7px solid #E8E8E8">
           {{ 'akaun.tlhbayar' | translate }} <br>
-          <ion-input type="text" class="input" readonly [value]="data.jumlah_telah_bayar"></ion-input>
+          <ion-input type="text" class="input" [value]="data.jumlah_telah_bayar"></ion-input>
         </div>
         <div class="boxwhite" style="border-bottom: 0.7px solid #E8E8E8">
           {{ 'akaun.pinjaman' | translate }} <br>
-          <ion-input type="text" class="input" readonly [value]="data.jumlah_pinjaman"></ion-input>
+          <ion-input type="text" class="input" [value]="data.jumlah_pinjaman"></ion-input>
         </div>
         <div class="boxwhite" style="border-bottom: 0.7px solid #E8E8E8">
           {{ 'akaun.tunggakan' | translate }} <br>
-          <ion-input type="text" class="input" readonly [value]="data.jumlah_tunggakan"></ion-input>
+          <ion-input type="text" class="input" [value]="data.jumlah_tunggakan"></ion-input>
         </div>
         <div class="boxwhite" style="border-bottom: 0.7px solid #E8E8E8">
           {{ 'akaun.mulaperjanjian' | translate }} <br>
-          <ion-input type="text" class="input" readonly [value]="data.tarikh_mula_perjanjian"></ion-input>
+          <ion-input type="text" class="input" [value]="data.tarikh_mula_perjanjian"></ion-input>
         </div>
         <div class="boxwhite" style="border-bottom: 0.7px solid #E8E8E8">
           {{ 'akaun.tamatperjanjian' | translate }} <br>
-          <ion-input type="text" class="input" readonly [value]="data.tarikh_tamat_perjanjian"></ion-input>
+          <ion-input type="text" class="input" [value]="data.tarikh_tamat_perjanjian"></ion-input>
         </div>
         <div class="boxwhite" style="border-bottom: 0.7px solid #E8E8E8">
           {{ 'akaun.baki' | translate }} <br>
-          <ion-input type="text" class="input" readonly [value]="data.jumlah_baki"></ion-input>
+          <ion-input type="text" class="input" [value]="data.jumlah_baki"></ion-input>
         </div>
         <div style="padding:60px 0px 20px 0px;text-align: center;">
           <button ion-button class="button" (click)="bayar()">{{ 'bayar' | translate }}(1)</button>

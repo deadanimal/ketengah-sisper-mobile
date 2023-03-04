@@ -1281,6 +1281,7 @@ let UserService = class UserService {
     update(type, data, id) {
         console.log(id);
         var updateURL = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.baseUrl + "user/" + id;
+        console.log(updateURL);
         return this.http.patch(updateURL, { type, data });
     }
     checkFirstTimeLogin(id, data) {

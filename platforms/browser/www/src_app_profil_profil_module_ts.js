@@ -344,6 +344,7 @@ let AuthenticationService = class AuthenticationService {
     }
     forgetpass(phone) {
         var forgetpassURL = src_environments_environment__WEBPACK_IMPORTED_MODULE_1__.environment.baseUrl + "ForgotPass";
+        console.log(forgetpassURL);
         return this.http.post(forgetpassURL, { phone });
     }
 };

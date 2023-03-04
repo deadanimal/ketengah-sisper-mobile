@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Location } from "@angular/common";
 import { ActivatedRoute, Router, NavigationExtras } from '@angular/router';
 import { PerumahanService } from 'src/app/shared/services/akaun/perumahan/perumahan.service';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-maklumat',
@@ -14,12 +15,16 @@ export class MaklumatPage implements OnInit {
   jumlah: any;
   jumexist = false;
   bayarsblm: any;
-
+  nama;
+  no_ic;
+  kategori;
+  jenis_rumah;
   constructor(
     private location: Location,
     private route: ActivatedRoute,
     private router: Router,
-    private perumahanService: PerumahanService
+    private perumahanService: PerumahanService,
+    private alertController: AlertController
   ) {
     this.route.queryParams.subscribe(async params => {
       if (this.router.getCurrentNavigation().extras.state) {
@@ -93,6 +98,47 @@ export class MaklumatPage implements OnInit {
         console.log('error', error);
       }
     );
+  }
+
+  async kemaskini() {
+    const formData = new FormData();
+    if (this.nama) {
+      formData.append('nama', this.nama)
+
+
+
+    }
+    if (this.jenis_rumah) {
+      formData.append('jenis_rumah', this.nama)
+
+
+    }
+
+    if (this.kategori) {
+      formData.append('kategori', this.nama)
+
+    }
+
+    if (this.no_ic) {
+      formData.append('no_kad_pengenalan', this.nama)
+
+    }
+
+
+    this.perumahanService.kemaskini(this.data.id, formData).subscribe(async res => {
+      console.log('res', res);
+      const alert = await this.alertController.create({
+        header: 'Kemaskini',
+        message: 'Adakah anda pasti untuk kemaskini?',
+      });
+      await alert.present();
+
+      this.back()
+    })
+
+
+
+
   }
 
 }

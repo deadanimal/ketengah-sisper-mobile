@@ -13,11 +13,11 @@ const routes: Routes = [
         children: [
           {
             path: '',
-            loadChildren: () => import('../home/home.module').then( m => m.HomePageModule)
+            loadChildren: () => import('../home/home.module').then(m => m.HomePageModule)
           },
           {
             path: 'notis',
-            loadChildren: () => import('../home/notis/notis.module').then( m => m.NotisPageModule)
+            loadChildren: () => import('../home/notis/notis.module').then(m => m.NotisPageModule)
           }
         ]
       },
@@ -29,21 +29,21 @@ const routes: Routes = [
             children: [
               {
                 path: '',
-                loadChildren: () => import('../akaun/perumahan/perumahan.module').then( m => m.PerumahanPageModule) 
+                loadChildren: () => import('../akaun/perumahan/perumahan.module').then(m => m.PerumahanPageModule)
               },
               {
                 path: 'form',
-                loadChildren: () => import('../akaun/perumahan/form/form.module').then( m => m.FormPageModule) 
+                loadChildren: () => import('../akaun/perumahan/form/form.module').then(m => m.FormPageModule)
               }
             ]
           },
           {
             path: 'premis',
-            loadChildren: () => import('../akaun/premis/premis.module').then( m => m.PremisPageModule)
+            loadChildren: () => import('../akaun/premis/premis.module').then(m => m.PremisPageModule)
           },
           {
             path: 'maklumat',
-            loadChildren: () => import('../akaun/maklumat/maklumat.module').then( m => m.MaklumatPageModule)
+            loadChildren: () => import('../akaun/maklumat/maklumat.module').then(m => m.MaklumatPageModule)
           }
         ]
       },
@@ -52,7 +52,7 @@ const routes: Routes = [
         children: [
           {
             path: '',
-            loadChildren: () => import('../profil/profil.module').then( m => m.ProfilPageModule)
+            loadChildren: () => import('../profil/profil.module').then(m => m.ProfilPageModule)
           }
         ]
       },
@@ -61,7 +61,7 @@ const routes: Routes = [
         children: [
           {
             path: '',
-            loadChildren: () => import('../semakbayaran/semakbayaran.module').then( m => m.SemakbayaranPageModule)
+            loadChildren: () => import('../semakbayaran/semakbayaran.module').then(m => m.SemakbayaranPageModule)
           }
         ]
       },
@@ -70,7 +70,7 @@ const routes: Routes = [
         children: [
           {
             path: '',
-            loadChildren: () => import('../setting/setting.module').then( m => m.SettingPageModule)
+            loadChildren: () => import('../setting/setting.module').then(m => m.SettingPageModule)
           }
         ]
       },
@@ -84,7 +84,7 @@ const routes: Routes = [
         children: [
           {
             path: '',
-            loadChildren: () => import('../bayarsewa/bayarsewa.module').then( m => m.BayarsewaPageModule)
+            loadChildren: () => import('../bayarsewa/bayarsewa.module').then(m => m.BayarsewaPageModule)
           }
         ]
       },
@@ -93,15 +93,15 @@ const routes: Routes = [
         children: [
           {
             path: '',
-            loadChildren: () => import('../lejar/lejar.module').then( m => m.LejarPageModule)
+            loadChildren: () => import('../lejar/lejar.module').then(m => m.LejarPageModule)
           },
           {
             path: 'sewapremis',
-            loadChildren: () => import('../lejar/sewapremis/sewapremis.module').then( m => m.SewapremisPageModule)
+            loadChildren: () => import('../lejar/sewapremis/sewapremis.module').then(m => m.SewapremisPageModule)
           },
           {
             path: 'sewarumah',
-            loadChildren: () => import('../lejar/sewarumah/sewarumah.module').then( m => m.SewarumahPageModule)
+            loadChildren: () => import('../lejar/sewarumah/sewarumah.module').then(m => m.SewarumahPageModule)
           }
         ]
       },
@@ -110,11 +110,11 @@ const routes: Routes = [
         children: [
           {
             path: '',
-            loadChildren: () => import('../tender/tender.module').then( m => m.TenderPageModule)
+            loadChildren: () => import('../tender/tender.module').then(m => m.TenderPageModule)
           },
           {
             path: 'tenderDetail',
-            loadChildren: () => import('../tender/tenderdetail/tenderdetail.module').then( m => m.TenderdetailPageModule)
+            loadChildren: () => import('../tender/tenderdetail/tenderdetail.module').then(m => m.TenderdetailPageModule)
           }
         ]
       },
@@ -123,33 +123,33 @@ const routes: Routes = [
         children: [
           {
             path: '',
-            loadChildren: () => import('../tempahkemudahan/tempahkemudahan.module').then( m => m.TempahkemudahanPageModule)
+            loadChildren: () => import('../tempahkemudahan/tempahkemudahan.module').then(m => m.TempahkemudahanPageModule)
           },
           {
             path: 'dewan',
-            loadChildren: () => import('../tempahkemudahan/dewan/dewan.module').then( m => m.DewanPageModule)
+            loadChildren: () => import('../tempahkemudahan/dewan/dewan.module').then(m => m.DewanPageModule)
           },
           {
             path: 'alatan',
-            loadChildren: () => import('../tempahkemudahan/alatan/alatan.module').then( m => m.AlatanPageModule)
+            loadChildren: () => import('../tempahkemudahan/alatan/alatan.module').then(m => m.AlatanPageModule)
           },
           {
             path: 'fasiliti',
-            loadChildren: () => import('../tempahkemudahan/fasiliti/fasiliti.module').then( m => m.FasilitiPageModule)
+            loadChildren: () => import('../tempahkemudahan/fasiliti/fasiliti.module').then(m => m.FasilitiPageModule)
           },
           {
             path: 'sejarah',
             children: [
               {
                 path: '',
-                loadChildren: () => import('../tempahkemudahan/sejarah/sejarah.module').then( m => m.SejarahPageModule)
+                loadChildren: () => import('../tempahkemudahan/sejarah/sejarah.module').then(m => m.SejarahPageModule)
               },
               {
                 path: 'view',
-                loadChildren: () => import('../tempahkemudahan/sejarah/view/view.module').then( m => m.ViewPageModule)
+                loadChildren: () => import('../tempahkemudahan/sejarah/view/view.module').then(m => m.ViewPageModule)
               }
             ]
-            
+
           }
         ]
       },
@@ -158,26 +158,26 @@ const routes: Routes = [
         children: [
           {
             path: '',
-            loadChildren: () => import('../aduan/aduan.module').then( m => m.AduanPageModule)
+            loadChildren: () => import('../aduan/aduan.module').then(m => m.AduanPageModule)
           },
           {
             path: 'aduanmain',
             children: [
               {
                 path: '',
-                loadChildren: () => import('../aduan/aduanmain/aduanmain.module').then( m => m.AduanmainPageModule)
+                loadChildren: () => import('../aduan/aduanmain/aduanmain.module').then(m => m.AduanmainPageModule)
               },
               {
                 path: 'tambah',
-                loadChildren: () => import('../aduan/aduanmain/tambahaduan/tambahaduan.module').then( m => m.TambahaduanPageModule)
+                loadChildren: () => import('../aduan/aduanmain/tambahaduan/tambahaduan.module').then(m => m.TambahaduanPageModule)
               },
               {
                 path: 'senarai',
-                loadChildren: () => import('../aduan/aduanmain/senaraiaduan/senaraiaduan.module').then( m => m.SenaraiaduanPageModule)
+                loadChildren: () => import('../aduan/aduanmain/senaraiaduan/senaraiaduan.module').then(m => m.SenaraiaduanPageModule)
               },
               {
                 path: 'view',
-                loadChildren: () => import('../aduan/aduanmain/aduanview/aduanview.module').then( m => m.AduanviewPageModule)
+                loadChildren: () => import('../aduan/aduanmain/aduanview/aduanview.module').then(m => m.AduanviewPageModule)
               }
             ]
           },
@@ -186,7 +186,7 @@ const routes: Routes = [
             children: [
               {
                 path: '',
-                loadChildren: () => import('../aduan/penghargaanmain/penghargaanmain.module').then( m => m.PenghargaanmainPageModule)
+                loadChildren: () => import('../aduan/penghargaanmain/penghargaanmain.module').then(m => m.PenghargaanmainPageModule)
               }
             ]
           }
@@ -197,20 +197,24 @@ const routes: Routes = [
         children: [
           {
             path: '',
-            loadChildren: () => import('../lain-lain/lain-lain.module').then( m => m.LainLainPageModule)
+            loadChildren: () => import('../lain-lain/lain-lain.module').then(m => m.LainLainPageModule)
           }
         ]
+      },
+      {
+        path: 'butiran-pembayaran',
+        loadChildren: () => import('./../tampahkemudahan/butiran-pembayaran/butiran-pembayaran.module').then(m => m.ButiranPembayaranPageModule)
       },
       {
         path: 'bayaran',
         children: [
           {
             path: '',
-            loadChildren: () => import('../bayaran/kaedah/kaedah.module').then( m => m.KaedahPageModule)
+            loadChildren: () => import('../bayaran/kaedah/kaedah.module').then(m => m.KaedahPageModule)
           },
           {
             path: 'resit',
-            loadChildren: () => import('../bayaran/resit/resit.module').then( m => m.ResitPageModule)
+            loadChildren: () => import('../bayaran/resit/resit.module').then(m => m.ResitPageModule)
           }
         ]
       }
@@ -226,14 +230,14 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        loadChildren: () => import('../home/home.module').then( m => m.HomePageModule)
+        loadChildren: () => import('../home/home.module').then(m => m.HomePageModule)
       },
       {
         path: 'notis',
         children: [
           {
             path: '',
-            loadChildren: () => import('../admin/notis/notis.module').then( m => m.NotisPageModule)
+            loadChildren: () => import('../admin/notis/notis.module').then(m => m.NotisPageModule)
           }
         ]
       },
@@ -242,7 +246,7 @@ const routes: Routes = [
         children: [
           {
             path: '',
-            loadChildren: () => import('../admin/pengumuman/pengumuman.module').then( m => m.PengumumanPageModule)
+            loadChildren: () => import('../admin/pengumuman/pengumuman.module').then(m => m.PengumumanPageModule)
           }
         ]
       },
@@ -251,7 +255,7 @@ const routes: Routes = [
         children: [
           {
             path: '',
-            loadChildren: () => import('../admin/penghargaan/penghargaan.module').then( m => m.PenghargaanPageModule)
+            loadChildren: () => import('../admin/penghargaan/penghargaan.module').then(m => m.PenghargaanPageModule)
           }
         ]
       },
@@ -260,15 +264,15 @@ const routes: Routes = [
         children: [
           {
             path: '',
-            loadChildren: () => import('../admin/aduan/aduan.module').then( m => m.AduanPageModule)
+            loadChildren: () => import('../admin/aduan/aduan.module').then(m => m.AduanPageModule)
           },
           {
             path: 'aduanlist',
-            loadChildren: () => import('../admin/aduan/aduanlist/aduanlist.module').then( m => m.AduanlistPageModule)
+            loadChildren: () => import('../admin/aduan/aduanlist/aduanlist.module').then(m => m.AduanlistPageModule)
           },
           {
             path: 'aduanview',
-            loadChildren: () => import('../admin/aduan/aduanview/aduanview.module').then( m => m.AduanviewPageModule)
+            loadChildren: () => import('../admin/aduan/aduanview/aduanview.module').then(m => m.AduanviewPageModule)
           }
         ]
       },
@@ -277,7 +281,7 @@ const routes: Routes = [
         children: [
           {
             path: '',
-            loadChildren: () => import('../admin/pengguna/pengguna.module').then( m => m.PenggunaPageModule)
+            loadChildren: () => import('../admin/pengguna/pengguna.module').then(m => m.PenggunaPageModule)
           }
         ]
       },
@@ -286,11 +290,11 @@ const routes: Routes = [
         children: [
           {
             path: '',
-            loadChildren: () => import('../admin/sekatan/sekatan.module').then( m => m.SekatanPageModule)
+            loadChildren: () => import('../admin/sekatan/sekatan.module').then(m => m.SekatanPageModule)
           },
           {
             path: 'form',
-            loadChildren: () => import('../admin/sekatan/form/form.module').then( m => m.FormPageModule)
+            loadChildren: () => import('../admin/sekatan/form/form.module').then(m => m.FormPageModule)
           }
         ]
       }
@@ -302,4 +306,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class MainPageRoutingModule {}
+export class MainPageRoutingModule { }

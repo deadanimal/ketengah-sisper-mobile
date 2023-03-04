@@ -204,7 +204,7 @@ const routes = [
     {
         path: 'sebutharga',
         loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_app_pay_pay_page_ts"), __webpack_require__.e("common"), __webpack_require__.e("src_app_sebutharga_sebutharga_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./sebutharga/sebutharga.module */ 53024)).then(m => m.SebuthargaPageModule)
-    }
+    },
 ];
 let AppRoutingModule = class AppRoutingModule {
 };

@@ -14,7 +14,7 @@ import { timelist } from '../../shared/model/timelist.model';
   styleUrls: ['./fasiliti.page.scss'],
 })
 export class FasilitiPage implements OnInit {
-  fasilities: any;
+  courtId: string;
   ddLokasi: any;
   Lokasi: any;
   Fasiliti: any;
@@ -42,7 +42,7 @@ export class FasilitiPage implements OnInit {
   ddGelanggang: any;
   user: any;
   timecheck = [];
-  current: any;
+  bookingDate;
 
   constructor(
     private location: Location,
@@ -56,16 +56,6 @@ export class FasilitiPage implements OnInit {
   ) { }
 
   async ngOnInit() {
-
-    this.fasilitiService.getFasilities().subscribe(data => {
-      console.log(data);
-      this.fasilities = data;
-    })
-    this.TarikhVal = new Date()
-    this.TarikhVal = this.TarikhVal.toISOString().split('T')[0];
-
-    //set current to this date
-
     this.ddFasiliti = [
       {
         id: "1",
@@ -166,38 +156,34 @@ export class FasilitiPage implements OnInit {
   }
 
   ChangeDDLokasi() {
-    // if (this.Lokasi == 1) {
-    //   this.ddFasiliti = [
-    //     {
-    //       id: "1",
-    //       nama: "Futsal"
-    //     },
-    //     {
-    //       id: "2",
-    //       nama: "Badminton"
-    //     }
-    //   ];
-    //   this.lokasiread = false;
-    // } else {
-    //   this.ddFasiliti = [
-    //     {
-    //       id: "2",
-    //       nama: "Badminton"
-    //     }
-    //   ];
-    //   this.lokasiread = false;
-    // };
-    // this.Fasiliti = '';
-    // this.Gelanggang = '';
-    // this.gelanggangread = true;
-    // this.tarikhread = true;
-
-    this.filterFasiliti();
+    if (this.Lokasi == 1) {
+      this.ddFasiliti = [
+        {
+          id: "1",
+          nama: "Futsal"
+        },
+        {
+          id: "2",
+          nama: "Badminton"
+        }
+      ];
+      this.lokasiread = false;
+    } else {
+      this.ddFasiliti = [
+        {
+          id: "2",
+          nama: "Badminton"
+        }
+      ];
+      this.lokasiread = false;
+    };
+    this.Fasiliti = '';
+    this.Gelanggang = '';
+    this.gelanggangread = true;
+    this.tarikhread = true;
   }
 
   async ChangeDDFasiliti() {
-    console.log("inside event handler")
-    console.log(this.Lokasi)
     this.gelanggangread = false;
     this.tarikhread = false;
     if (this.Fasiliti == 1) {
@@ -219,6 +205,7 @@ export class FasilitiPage implements OnInit {
   async ChangeDDGelanggang() {
     this.tarikhread = false;
     var opt = [];
+    this.courtId = this.Gelanggang;
     var gelanggang = this.Gelanggang;
     var fasiliti = this.Fasiliti;
     await this.listbooking.forEach(function (value) {
@@ -285,8 +272,9 @@ export class FasilitiPage implements OnInit {
   }
 
   pilihcal() {
+    this.bookingDate = this.date;
     console.log(this.date);
-    if (this.cal === true) {
+    if (this.cal == true) {
       this.cal = false;
     } else {
       this.cal = true;
@@ -295,26 +283,7 @@ export class FasilitiPage implements OnInit {
     const fromdate = new Date(this.date);
     this.masablock = true;
     this.days = 1;
-    let date;
-    // this.TarikhVal = fromdate.getDate() + '/' + fromdate.getMonth() + '/' + fromdate.getFullYear();
-
-    //if date or month is single digit, add 0 in front
-    if (fromdate.getDate() < 10) {
-      date = '0' + fromdate.getDate();
-    } else {
-      date = fromdate.getDate();
-    }
-    let month;
-
-    if (fromdate.getMonth() < 10) {
-      month = '0' + fromdate.getMonth();
-    } else {
-      month = fromdate.getMonth();
-    }
-
-    const year = fromdate.getFullYear();
-
-    this.TarikhVal = year + '/' + month + '/' + date;
+    this.TarikhVal = fromdate.getDate() + '/' + fromdate.getMonth() + '/' + fromdate.getFullYear();
 
     this.ChangeDDTarikh();
   }
@@ -322,8 +291,11 @@ export class FasilitiPage implements OnInit {
   async ChangeDDTarikh() {
     if (this.Fasiliti == 1) {
       var court = this.Gelanggang;
+      this.courtId = this.Gelanggang;
     } else if (this.Fasiliti == 2) {
       var court = this.Gelanggang;
+      this.courtId = this.Gelanggang;
+
     }
 
     var fasiliti = this.Fasiliti;
@@ -401,8 +373,6 @@ export class FasilitiPage implements OnInit {
   }
 
   async hantar() {
-
-    console.table(this.Fasiliti)
     const loading = await this.loadingController.create();
     await loading.present();
     var harga = 0;
@@ -488,41 +458,37 @@ export class FasilitiPage implements OnInit {
         } else if (this.Fasiliti == 2) {
           var kod = "BD" + res.id;
         }
-        const rate = this.fasilities.find(f => f.id === this.Fasiliti).kadar_per_jam
-
-
 
         akaun = {
-          src: 2,
-          kadar_per_jam: rate,
-          akaun: arr,
-          jumcount: 1
-        };
+          "id": '',
+          "amaun": this.amaun,
+          "kodbayaran": kod,
+        }
         arr.push(akaun);
+        const fasiliti = this.Fasiliti === 1 ? 'Gelanggag Futsal' : 'Gelanggag Badminton';
 
         var data =
         {
           "src": 2,
           "jumlah": this.amaun,
           "jumcount": 1,
-          "akaun": arr
-        };
+          "akaun": arr,
+          "fasiliti": fasiliti,
+          "tarikh": this.bookingDate,
+          "masa": this.masa,
+          "rate": 10,
+          "gelanggang": this.courtId,
 
+        };
 
         const navigationExtras: NavigationExtras = {
           state: {
-            data: {
-              src: 2,
-              kadar_per_jam: rate,
-              akaun: arr,
-              jumcount: 1
-            }
+            data
           }
         };
 
-        this.fasilitiService.rates.next(this.Fasiliti.kadar_per_jam)
 
-        this.router.navigate(['main/tabs/bayaran'], navigationExtras);
+        this.router.navigate(['main/tabs/butiran-pembayaran'], navigationExtras);
       },
       async (res) => {
         console.log(res);
@@ -558,13 +524,33 @@ export class FasilitiPage implements OnInit {
     this.timecheck = [];
   }
 
-  filterFasiliti() {
+  getRates(lokasId: number, fasiliti: string) {
 
-    // console.log('inside the evnet', this.Lokasi, this.fasilities);
-    // // let bandar = this.ddLokasi.find(b => b.bandar == ).bandar;
-    // this.fasilities = this.ddLokasi.filter(f => f.bandar.toLowerCase() == this.Lokasi.toLowerCase());
-    // console.log("comparing", this.fasilities[1].nama, this.Lokasi)
-    // console.log(this.fasilities)
+    const lokasi = this.ddLokasi.filter(x => x.id === this.Lokasi)[0].nama;
+
+    if ((lokasi.toLowerCase() === 'AMBS (HQ)'.toLowerCase()) && fasiliti === '2') {
+      return 10;
+    }
+
+    else if ((lokasi.toLowerCase() === 'AMBS (HQ)'.toLowerCase()) && fasiliti === '1') {
+      return 30;
+
+    }
+
+    else if ((lokasi.toLowerCase() === 'Ceneh Baharu'.toLowerCase()) && fasiliti === '2') {
+      return 6;
+    }
+
+    else if ((lokasi.toLowerCase() === 'Ketengah Jaya'.toLowerCase()) && fasiliti === '2') {
+      return 5;
+    }
+
+    else if ((lokasi.toLowerCase() === 'Bukit Besi'.toLowerCase()) && fasiliti === '2') {
+      return 5;
+    }
+
+
+
 
   }
 }

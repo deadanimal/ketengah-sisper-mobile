@@ -16,6 +16,7 @@ export class UserService {
   update(type, data, id): Observable<any> {
     console.log(id);
     var updateURL = environment.baseUrl + "user/" + id;
+    console.log(updateURL)
     return this.http.patch<any>(updateURL, { type, data });
   }
 
@@ -27,4 +28,6 @@ export class UserService {
   getAllUsers() {
     return this.http.get(environment.baseUrl + "allusers");
   }
+
+
 }

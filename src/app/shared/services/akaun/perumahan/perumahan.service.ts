@@ -23,4 +23,8 @@ export class PerumahanService {
     var DeleteURL = environment.baseUrl + "perumahan/" + id;
     return this.http.delete<any>(DeleteURL);
   }
+
+  kemaskini(id: string, data: FormData) {
+    return this.http.put(environment.baseUrl + "perumahan/" + id, data)
+  }
 }

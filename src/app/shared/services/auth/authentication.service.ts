@@ -54,6 +54,7 @@ export class AuthenticationService {
 
   forgetpass(phone: any): Observable<any> {
     var forgetpassURL = environment.baseUrl + "ForgotPass";
+    console.log(forgetpassURL);
     return this.http.post<any>(forgetpassURL, { phone });
   }
 }

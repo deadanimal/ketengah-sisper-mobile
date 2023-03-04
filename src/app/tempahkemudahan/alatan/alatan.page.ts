@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Location } from '@angular/common';
+import { Location } from "@angular/common";
 import { AlertController, LoadingController } from '@ionic/angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BookingService } from 'src/app/shared/services/booking/booking.service';
@@ -13,7 +13,7 @@ import { NativeStorage } from '@awesome-cordova-plugins/native-storage/ngx';
   styleUrls: ['./alatan.page.scss'],
 })
 export class AlatanPage implements OnInit {
-  masablock = false;
+
   ddAlatan: any;
   Alatan: any;
   QtyVal: any;
@@ -22,7 +22,7 @@ export class AlatanPage implements OnInit {
   caloption = {
     pickMode: 'range',
     title: 'RANGE',
-    daysConfig: [],
+    daysConfig: []
   };
   days: any;
   TarikhVal: any;
@@ -41,16 +41,14 @@ export class AlatanPage implements OnInit {
   ) { }
 
   async ngOnInit() {
-    this.TarikhVal = new Date();
-    this.TarikhVal = this.TarikhVal.toISOString().split('T')[0];
     const loading = await this.loadingController.create();
     await loading.present();
 
     await this.nativeStorage.getItem('user').then(
-      (data) => {
-        this.user = data.value;
+      data => {
+        this.user = data.value;;
       },
-      (error) => console.error(error)
+      error => console.error(error)
     );
 
     await loading.dismiss();
@@ -85,7 +83,7 @@ export class AlatanPage implements OnInit {
     this.location.back();
   }
 
-  openCal() {
+  opencal() {
     if (this.cal == true) {
       this.cal = false;
     } else {
@@ -93,44 +91,25 @@ export class AlatanPage implements OnInit {
     }
   }
 
-  pilihCal() {
+  pilihcal() {
     console.log(this.date);
-    if (this.cal === true) {
+    if (this.cal == true) {
       this.cal = false;
     } else {
       this.cal = true;
     }
 
-    const fromdate = new Date(this.date);
-    this.masablock = true;
-    this.days = 1;
-    let date;
-    // this.TarikhVal = fromdate.getDate() + '/' + fromdate.getMonth() + '/' + fromdate.getFullYear();
-
-    //if date or month is single digit, add 0 in front
-    if (fromdate.getDate() < 10) {
-      console.log(date)
-      date = '0' + fromdate.getDate();
+    const fromdate = new Date(this.date.from);
+    const todate = new Date(this.date.to);
+    if (fromdate.getTime() == todate.getTime()) {
+      this.days = 1;
     } else {
-      date = fromdate.getDate();
+      var diff = Math.abs(todate.getTime() - fromdate.getTime());
+      this.days = Math.ceil(diff / (1000 * 3600 * 24)) + 1;
     }
-    let month;
-
-    if (fromdate.getMonth() < 10) {
-      month = '0' + fromdate.getMonth();
-    } else {
-      month = fromdate.getMonth();
-    }
-
-    const year = fromdate.getFullYear();
-
-    this.TarikhVal = year + '/' + month + '/' + date;
-
-    console.log(this.TarikhVal);
+    this.TarikhVal = fromdate.getDate() + '/' + fromdate.getMonth() + '/' + fromdate.getFullYear() + ' - ' + todate.getDate() + '/' + todate.getMonth() + '/' + todate.getFullYear();
 
   }
-
-
 
   increment() {
     this.QtyVal++;
@@ -177,23 +156,24 @@ export class AlatanPage implements OnInit {
         console.log(res);
 
         akaun = {
-          id: '',
-          amaun: this.amaun,
-          kodbayaran: 'ALT' + res.id,
-        };
+          "id": '',
+          "amaun": this.amaun,
+          "kodbayaran": "ALT" + res.id,
+        }
         arr.push(akaun);
 
-        var data = {
-          src: 2,
-          jumlah: this.amaun,
-          jumcount: 1,
-          akaun: arr,
+        var data =
+        {
+          "src": 2,
+          "jumlah": this.amaun,
+          "jumcount": 1,
+          "akaun": arr
         };
 
         let navigationExtras: NavigationExtras = {
           state: {
-            data: data,
-          },
+            data: data
+          }
         };
 
         this.router.navigate(['main/tabs/bayaran'], navigationExtras);
@@ -227,13 +207,5 @@ export class AlatanPage implements OnInit {
     });
 
     await alert.present();
-  }
-
-  appendChar(num: any) {
-    if (num < 10) {
-      return `0${num}`;
-    } else {
-      return num;
-    }
   }
 }

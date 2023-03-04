@@ -95,6 +95,7 @@ export class TambahaduanPage implements OnInit {
     formData.append('catatan', this.CatatanVal);
     formData.append('jenis_akaun', this.pilih_jenis);
 
+
     await this.aduanService.add(formData).subscribe(
       async (res) => {
         console.log(res);

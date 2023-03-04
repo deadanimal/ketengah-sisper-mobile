@@ -17,20 +17,28 @@
     <div class="container2">
       <div style="padding:0px 40px;">
         <div class="label">{{ 'dewan.lokasi' | translate }}.</div>
-        <ion-select (ionChange)="filterFasiliti($event)" okText="{{ 'semak.ok' | translate }}"
-          cancelText="{{ 'semak.cancel' | translate }}" class="select"
-          placeholder="{{ 'dewan.placelokasi' | translate }}" [(ngModel)]="Lokasi">
-          <ion-select-option *ngFor="let lokasi of ddLokasi; let i = index" [value]="lokasi.id">
-            {{lokasi.nama === 'AMBS (HQ)'? 'Al Muktafi Billah Shah' : lokasi.nama}}
-          </ion-select-option>
+        <ion-select okText="{{ 'semak.ok' | translate }}" cancelText="{{ 'semak.cancel' | translate }}" class="select"
+          placeholder="{{ 'dewan.placelokasi' | translate }}" [(ngModel)]="Lokasi" (ionChange)="ChangeDDLokasi()">
+
+          <ng-container *ngFor="let lokasi of ddLokasi; let i = index">
+            <ion-select-option [value]="lokasi.id" *ngIf="lokasi.nama !== 'AMBS (HQ)'">
+              {{lokasi.nama}}
+            </ion-select-option>
+            <ion-select-option [value]="lokasi.id" *ngIf="lokasi.nama === 'AMBS (HQ)'">
+              Al Mukhtafi Billal Shah
+            </ion-select-option>
+          </ng-container>
+
+
+
         </ion-select>
         <div style="height: 10px;"></div>
         <div class="label">{{ 'fasiliti.fasiliti' | translate }}.</div>
         <ion-select okText="{{ 'semak.ok' | translate }}" cancelText="{{ 'semak.cancel' | translate }}" class="select"
           placeholder="{{ 'fasiliti.placefasiliti' | translate }}" [(ngModel)]="Fasiliti"
           (ionChange)="ChangeDDFasiliti()" [disabled]="lokasiread">
-          <ion-select-option *ngFor="let fasiliti of fasilities" [value]="fasiliti.id">
-            {{fasiliti.fasiliti}} {{" "}} - {{" "}} {{fasiliti.kadar_per_jam}}
+          <ion-select-option *ngFor="let fasiliti of ddFasiliti; let i = index" [value]="fasiliti.id">
+            {{fasiliti.nama}} {{Lokasi? getRates(Lokasi, fasiliti.id) : null}} RM
           </ion-select-option>
         </ion-select>
         <div style="height: 10px;"></div>
@@ -44,8 +52,8 @@
         </ion-select>
         <div style="height: 10px;"></div>
         <div class="label">{{ 'dewan.tarikh' | translate }}.</div>
-        <input [value]="date |date: 'yyyy-MM-dd ' " class="select" (click)="opencal()" (ionChange)="ChangeDDTarikh()"
-          [(ngModel)]="TarikhVal">
+        <input class="select" placeholder="00/00/0000 - 00/00/0000" (click)="opencal()" (ionChange)="ChangeDDTarikh()"
+          [(ngModel)]="TarikhVal" [disabled]="tarikhread">
         <div *ngIf="cal==true" style="text-align: center;padding-top: 10px;">
           <ion-calendar [options]="caloption" type="string" [(ngModel)]="date"></ion-calendar>
           <button class="button" style="width:60%" (click)="pilihcal()">Pilih</button>

@@ -62,8 +62,6 @@ export class DewanPage implements OnInit {
   ) { }
 
   async ngOnInit() {
-    this.TarikhVal = new Date()
-    this.TarikhVal = this.TarikhVal.toISOString().split('T')[0];
     const loading = await this.loadingController.create();
     await loading.present();
 

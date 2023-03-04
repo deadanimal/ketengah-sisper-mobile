@@ -174,7 +174,7 @@ export class HomePage implements OnInit {
         console.log('premis', this.premis);
         this.nativeStorage.setItem('user', { value: this.user });
         console.log(this.user);
-        if (this.user.recurring === 0) {
+        if (this.user.recurring === 1) {
           console.log("the recurring is zero show alert ")
           const alert = await this.alertController.create({
             header: 'Salamat Datang',
@@ -226,7 +226,7 @@ export class HomePage implements OnInit {
                   buttons: ['OK'],
                 });
 
-                await alert.present();
+                // await alert.present();
               }
             );
           },
