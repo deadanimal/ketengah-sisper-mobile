@@ -625,6 +625,251 @@ AduanlistPage = (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__decorate)([
 
 /***/ }),
 
+/***/ 67030:
+/*!******************************************************!*\
+  !*** ./src/app/confirm-pay/confirm-pay.component.ts ***!
+  \******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "ConfirmPayComponent": () => (/* binding */ ConfirmPayComponent)
+/* harmony export */ });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! tslib */ 64762);
+/* harmony import */ var _raw_loader_confirm_pay_component_html__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !raw-loader!./confirm-pay.component.html */ 6546);
+/* harmony import */ var _confirm_pay_component_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./confirm-pay.component.scss */ 43064);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/core */ 37716);
+/* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/platform-browser */ 39075);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic/angular */ 80476);
+
+
+
+
+
+
+let ConfirmPayComponent = class ConfirmPayComponent {
+    constructor(sanitizer, modalController) {
+        this.sanitizer = sanitizer;
+        this.modalController = modalController;
+    }
+    ngOnInit() {
+        this.transformHtml(this.page);
+    }
+    transformHtml(htmlTextWithStyle) {
+        this.sanitizer.bypassSecurityTrustHtml(htmlTextWithStyle);
+        this.sanitizer.bypassSecurityTrustScript(htmlTextWithStyle);
+    }
+    ngAfterViewInit() {
+        const doc = this.iframe.nativeElement.contentDocument ||
+            this.iframe.nativeElement.contentWindow;
+        doc.open();
+        doc.write(this.page);
+        doc.close();
+    }
+    close() {
+        this.modalController.dismiss();
+    }
+};
+ConfirmPayComponent.ctorParameters = () => [
+    { type: _angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__.DomSanitizer },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__.ModalController }
+];
+ConfirmPayComponent.propDecorators = {
+    iframe: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_4__.ViewChild, args: ['iframe',] }]
+};
+ConfirmPayComponent = (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_4__.Component)({
+        selector: 'app-confirm-pay',
+        template: _raw_loader_confirm_pay_component_html__WEBPACK_IMPORTED_MODULE_0__.default,
+        styles: [_confirm_pay_component_scss__WEBPACK_IMPORTED_MODULE_1__.default]
+    })
+], ConfirmPayComponent);
+
+
+
+/***/ }),
+
+/***/ 15809:
+/*!********************************!*\
+  !*** ./src/app/pay.service.ts ***!
+  \********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "PaymentService": () => (/* binding */ PaymentService)
+/* harmony export */ });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! tslib */ 64762);
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ 91841);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 37716);
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! rxjs */ 26215);
+
+/* eslint-disable @typescript-eslint/naming-convention */
+
+
+
+let PaymentService = class PaymentService {
+    constructor(http) {
+        this.http = http;
+        this.reciept = new rxjs__WEBPACK_IMPORTED_MODULE_0__.BehaviorSubject({});
+        this.refId = new rxjs__WEBPACK_IMPORTED_MODULE_0__.BehaviorSubject('');
+        this.url = 'https://ketengah-api.prototype.com.my/fpx/initiate/payment/app/test';
+    }
+    submitPayment(paymentDetails) {
+        console.log(paymentDetails, 'success');
+        this.refId.next(paymentDetails.referenceId);
+        return this.http.get(this.url, {
+            params: {
+                reference_id: paymentDetails.referenceId,
+                customer_email: paymentDetails.customerEmail,
+                amount: paymentDetails.amount,
+                additional_params: paymentDetails.additionalInfo,
+                remark: paymentDetails.remark,
+                customer_name: paymentDetails.customerName,
+            },
+        });
+    }
+};
+PaymentService.ctorParameters = () => [
+    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpClient }
+];
+PaymentService = (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_3__.Injectable)({
+        providedIn: 'root',
+    })
+], PaymentService);
+
+
+
+/***/ }),
+
+/***/ 48941:
+/*!*********************************!*\
+  !*** ./src/app/pay/pay.page.ts ***!
+  \*********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "PayPage": () => (/* binding */ PayPage)
+/* harmony export */ });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! tslib */ 64762);
+/* harmony import */ var _raw_loader_pay_page_html__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !raw-loader!./pay.page.html */ 57068);
+/* harmony import */ var _pay_page_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./pay.page.scss */ 50101);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/core */ 37716);
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/forms */ 3679);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @ionic/angular */ 80476);
+/* harmony import */ var _confirm_pay_confirm_pay_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../confirm-pay/confirm-pay.component */ 67030);
+/* harmony import */ var _pay_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../pay.service */ 15809);
+/* harmony import */ var _ionic_native_in_app_browser_ngx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic-native/in-app-browser/ngx */ 53760);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/router */ 39895);
+/* harmony import */ var _awesome_cordova_plugins_native_storage_ngx__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @awesome-cordova-plugins/native-storage/ngx */ 34113);
+
+
+
+/* eslint-disable max-len */
+
+
+
+
+
+
+
+
+let PayPage = class PayPage {
+    constructor(formBuilder, paymentService, modalController, iab, router, nativeStorage, ngZone) {
+        this.formBuilder = formBuilder;
+        this.paymentService = paymentService;
+        this.modalController = modalController;
+        this.iab = iab;
+        this.router = router;
+        this.nativeStorage = nativeStorage;
+        this.ngZone = ngZone;
+        this.paymentRequested = false;
+    }
+    ngOnInit() {
+        this.paymentForm = this.formBuilder.group({
+            referenceId: ['',],
+            customerName: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_6__.Validators.required],
+            amount: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_6__.Validators.required],
+            remark: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_6__.Validators.required],
+            customerEmail: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_6__.Validators.required],
+            additionalInfo: [''],
+        });
+        // this.paymentForm.patchValue({
+        //   referenceId: '123',
+        //   customerName: 'John Doe',
+        //   amount: 100,
+        //   remark: 'Test',
+        //   customerEmail: 'ak@gmail.com',
+        //   additionalInfo: 'Test',
+        // });
+    }
+    pay() {
+        return (0,tslib__WEBPACK_IMPORTED_MODULE_7__.__awaiter)(this, void 0, void 0, function* () {
+            const data = this.paymentForm.value;
+            let ref;
+            let browser;
+            let navigationExtras;
+            // eslint-disable-next-line max-len
+            this.nativeStorage.getItem('user').then((u) => {
+                ref = u.value.user_id + Date.now().toString();
+                this.paymentService.refId.next(ref);
+                console.log('referenceeeeee', ref);
+                console.log('subjecttt', this.paymentService.refId.value);
+                console.log("referenceee");
+                console.log(u.value);
+                const url = `https://ketengah-api.prototype.com.my/fpx/initiate/payment/app/?reference_id=${ref}&customer_email=${data.customerEmail}&amount=${data.amount}&remark=${data.remark}&additional_params=${data.additionalInfo}&customer_name=${data.customerName}`;
+                browser = this.iab.create(url, '_blank');
+                browser.on('loadstop').subscribe((event) => {
+                    console.log(event);
+                    if (event.url.endsWith('callback')) {
+                        // browser.executeScript({ code: 'document.getElementsByTagName("html")[0].innerHTML' }).then(html => { console.log(html); browser.close(); });
+                        browser.close();
+                        this.modalController.dismiss();
+                        this.router.navigate(['main/tabs/bayaran/resit'], navigationExtras);
+                    }
+                });
+            });
+        });
+    }
+    presentModal() {
+        return (0,tslib__WEBPACK_IMPORTED_MODULE_7__.__awaiter)(this, void 0, void 0, function* () {
+            const modal = yield this.modalController.create({
+                component: _confirm_pay_confirm_pay_component__WEBPACK_IMPORTED_MODULE_2__.ConfirmPayComponent,
+                componentProps: { value: 123, page: this.responsePage },
+            });
+            yield modal.present();
+        });
+    }
+    close() {
+        this.modalController.dismiss();
+    }
+};
+PayPage.ctorParameters = () => [
+    { type: _angular_forms__WEBPACK_IMPORTED_MODULE_6__.FormBuilder },
+    { type: _pay_service__WEBPACK_IMPORTED_MODULE_3__.PaymentService },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_8__.ModalController },
+    { type: _ionic_native_in_app_browser_ngx__WEBPACK_IMPORTED_MODULE_4__.InAppBrowser },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_9__.Router },
+    { type: _awesome_cordova_plugins_native_storage_ngx__WEBPACK_IMPORTED_MODULE_5__.NativeStorage },
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_10__.NgZone }
+];
+PayPage = (0,tslib__WEBPACK_IMPORTED_MODULE_7__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_10__.Component)({
+        selector: 'app-pay',
+        template: _raw_loader_pay_page_html__WEBPACK_IMPORTED_MODULE_0__.default,
+        styles: [_pay_page_scss__WEBPACK_IMPORTED_MODULE_1__.default]
+    })
+], PayPage);
+
+
+
+/***/ }),
+
 /***/ 53680:
 /*!*********************************************************!*\
   !*** ./src/app/shared/modals/calendar/calendar.page.ts ***!
@@ -1281,7 +1526,6 @@ let UserService = class UserService {
     update(type, data, id) {
         console.log(id);
         var updateURL = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.baseUrl + "user/" + id;
-        console.log(updateURL);
         return this.http.patch(updateURL, { type, data });
     }
     checkFirstTimeLogin(id, data) {
@@ -1316,7 +1560,37 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (".container2 {\n  padding-top: 50px;\n  padding: 50px 25px 20px 10px;\n  height: 180px;\n}\n\n.container3 {\n  padding: 30px 10px 20px 10px;\n  height: 700px;\n}\n\n.headerbox {\n  padding: 0px 40px 30px 40px;\n}\n\n.label {\n  font-style: normal;\n  font-weight: 500;\n  font-size: 19px;\n  line-height: 28px;\n  color: #3D2C7C;\n  padding-bottom: 20px;\n}\n\n.cardaduan2 {\n  background: #FFFFFF;\n  border: 1px solid #F7FAFD;\n  box-sizing: border-box;\n  box-shadow: 0px 4px 8px rgba(73, 87, 184, 0.2);\n  border-radius: 10px;\n  width: 100%;\n  height: 171px;\n  display: inline-block;\n  padding: 10px 30px;\n}\n\n.cardhead {\n  font-style: normal;\n  font-weight: 500;\n  font-size: 15px;\n  letter-spacing: -0.165px;\n  color: #494949;\n  text-align: left;\n  padding: 9px 0px;\n}\n\n.carddetail {\n  font-style: normal;\n  font-weight: 600;\n  font-size: 16px;\n  letter-spacing: -0.165px;\n  color: #3D2C7C;\n  text-align: left;\n  padding: 9px 0px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImFkdWFubGlzdC5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxpQkFBQTtFQUNBLDRCQUFBO0VBQ0EsYUFBQTtBQUNKOztBQUVBO0VBQ0ksNEJBQUE7RUFDQSxhQUFBO0FBQ0o7O0FBRUE7RUFDSSwyQkFBQTtBQUNKOztBQUVBO0VBQ0ksa0JBQUE7RUFDQSxnQkFBQTtFQUNBLGVBQUE7RUFDQSxpQkFBQTtFQUNBLGNBQUE7RUFDQSxvQkFBQTtBQUNKOztBQUVBO0VBQ0ksbUJBQUE7RUFDQSx5QkFBQTtFQUNBLHNCQUFBO0VBQ0EsOENBQUE7RUFDQSxtQkFBQTtFQUNBLFdBQUE7RUFDQSxhQUFBO0VBQ0EscUJBQUE7RUFDQSxrQkFBQTtBQUNKOztBQUVBO0VBQ0ksa0JBQUE7RUFDQSxnQkFBQTtFQUNBLGVBQUE7RUFDQSx3QkFBQTtFQUNBLGNBQUE7RUFDQSxnQkFBQTtFQUNBLGdCQUFBO0FBQ0o7O0FBRUE7RUFDSSxrQkFBQTtFQUNBLGdCQUFBO0VBQ0EsZUFBQTtFQUNBLHdCQUFBO0VBQ0EsY0FBQTtFQUNBLGdCQUFBO0VBQ0EsZ0JBQUE7QUFDSiIsImZpbGUiOiJhZHVhbmxpc3QucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmNvbnRhaW5lcjIge1xyXG4gICAgcGFkZGluZy10b3A6IDUwcHg7XHJcbiAgICBwYWRkaW5nOiA1MHB4IDI1cHggMjBweCAxMHB4O1xyXG4gICAgaGVpZ2h0OiAxODBweDtcclxufVxyXG5cclxuLmNvbnRhaW5lcjMge1xyXG4gICAgcGFkZGluZzogMzBweCAxMHB4IDIwcHggMTBweDtcclxuICAgIGhlaWdodDogNzAwcHg7XHJcbn1cclxuXHJcbi5oZWFkZXJib3gge1xyXG4gICAgcGFkZGluZzogMHB4IDQwcHggMzBweCA0MHB4O1xyXG59XHJcblxyXG4ubGFiZWwge1xyXG4gICAgZm9udC1zdHlsZTogbm9ybWFsO1xyXG4gICAgZm9udC13ZWlnaHQ6IDUwMDtcclxuICAgIGZvbnQtc2l6ZTogMTlweDtcclxuICAgIGxpbmUtaGVpZ2h0OiAyOHB4O1xyXG4gICAgY29sb3I6ICMzRDJDN0M7XHJcbiAgICBwYWRkaW5nLWJvdHRvbTogMjBweDtcclxufVxyXG5cclxuLmNhcmRhZHVhbjIge1xyXG4gICAgYmFja2dyb3VuZDogI0ZGRkZGRjtcclxuICAgIGJvcmRlcjogMXB4IHNvbGlkICNGN0ZBRkQ7XHJcbiAgICBib3gtc2l6aW5nOiBib3JkZXItYm94O1xyXG4gICAgYm94LXNoYWRvdzogMHB4IDRweCA4cHggcmdiYSg3MywgODcsIDE4NCwgMC4yKTtcclxuICAgIGJvcmRlci1yYWRpdXM6IDEwcHg7XHJcbiAgICB3aWR0aDogMTAwJTtcclxuICAgIGhlaWdodDogMTcxcHg7XHJcbiAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XHJcbiAgICBwYWRkaW5nOiAxMHB4IDMwcHg7XHJcbn1cclxuXHJcbi5jYXJkaGVhZCB7XHJcbiAgICBmb250LXN0eWxlOiBub3JtYWw7XHJcbiAgICBmb250LXdlaWdodDogNTAwO1xyXG4gICAgZm9udC1zaXplOiAxNXB4O1xyXG4gICAgbGV0dGVyLXNwYWNpbmc6IC0wLjE2NXB4O1xyXG4gICAgY29sb3I6ICM0OTQ5NDk7XHJcbiAgICB0ZXh0LWFsaWduOiBsZWZ0O1xyXG4gICAgcGFkZGluZzogOXB4IDBweDtcclxufVxyXG5cclxuLmNhcmRkZXRhaWwge1xyXG4gICAgZm9udC1zdHlsZTogbm9ybWFsO1xyXG4gICAgZm9udC13ZWlnaHQ6IDYwMDtcclxuICAgIGZvbnQtc2l6ZTogMTZweDtcclxuICAgIGxldHRlci1zcGFjaW5nOiAtMC4xNjVweDtcclxuICAgIGNvbG9yOiAjM0QyQzdDO1xyXG4gICAgdGV4dC1hbGlnbjogbGVmdDtcclxuICAgIHBhZGRpbmc6IDlweCAwcHg7XHJcbn0iXX0= */");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (".container2 {\n  padding-top: 50px;\n  padding: 50px 25px 20px 10px;\n  height: 180px;\n}\n\n.container3 {\n  padding: 30px 10px 20px 10px;\n  height: 700px;\n}\n\n.headerbox {\n  padding: 0px 40px 30px 40px;\n}\n\n.label {\n  font-style: normal;\n  font-weight: 500;\n  font-size: 19px;\n  line-height: 28px;\n  color: #3D2C7C;\n  padding-bottom: 20px;\n}\n\n.cardaduan2 {\n  background: #FFFFFF;\n  border: 1px solid #F7FAFD;\n  box-sizing: border-box;\n  box-shadow: 0px 4px 8px rgba(73, 87, 184, 0.2);\n  border-radius: 10px;\n  width: 100%;\n  height: 171px;\n  display: inline-block;\n  padding: 10px 30px;\n}\n\n.cardhead {\n  font-style: normal;\n  font-weight: 500;\n  font-size: 15px;\n  letter-spacing: -0.165px;\n  color: #494949;\n  text-align: left;\n  padding: 9px 0px;\n}\n\n.carddetail {\n  font-style: normal;\n  font-weight: 600;\n  font-size: 16px;\n  letter-spacing: -0.165px;\n  color: #3D2C7C;\n  text-align: left;\n  padding: 9px 0px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImFkdWFubGlzdC5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxpQkFBQTtFQUNBLDRCQUFBO0VBQ0EsYUFBQTtBQUNKOztBQUVBO0VBQ0ksNEJBQUE7RUFDQSxhQUFBO0FBQ0o7O0FBRUE7RUFDSSwyQkFBQTtBQUNKOztBQUVBO0VBQ0ksa0JBQUE7RUFDQSxnQkFBQTtFQUNBLGVBQUE7RUFDQSxpQkFBQTtFQUNBLGNBQUE7RUFDQSxvQkFBQTtBQUNKOztBQUVBO0VBQ0ksbUJBQUE7RUFDQSx5QkFBQTtFQUNBLHNCQUFBO0VBQ0EsOENBQUE7RUFDQSxtQkFBQTtFQUNBLFdBQUE7RUFDQSxhQUFBO0VBQ0EscUJBQUE7RUFDQSxrQkFBQTtBQUNKOztBQUVBO0VBQ0ksa0JBQUE7RUFDQSxnQkFBQTtFQUNBLGVBQUE7RUFDQSx3QkFBQTtFQUNBLGNBQUE7RUFDQSxnQkFBQTtFQUNBLGdCQUFBO0FBQ0o7O0FBRUE7RUFDSSxrQkFBQTtFQUNBLGdCQUFBO0VBQ0EsZUFBQTtFQUNBLHdCQUFBO0VBQ0EsY0FBQTtFQUNBLGdCQUFBO0VBQ0EsZ0JBQUE7QUFDSiIsImZpbGUiOiJhZHVhbmxpc3QucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmNvbnRhaW5lcjIge1xuICAgIHBhZGRpbmctdG9wOiA1MHB4O1xuICAgIHBhZGRpbmc6IDUwcHggMjVweCAyMHB4IDEwcHg7XG4gICAgaGVpZ2h0OiAxODBweDtcbn1cblxuLmNvbnRhaW5lcjMge1xuICAgIHBhZGRpbmc6IDMwcHggMTBweCAyMHB4IDEwcHg7XG4gICAgaGVpZ2h0OiA3MDBweDtcbn1cblxuLmhlYWRlcmJveCB7XG4gICAgcGFkZGluZzogMHB4IDQwcHggMzBweCA0MHB4O1xufVxuXG4ubGFiZWwge1xuICAgIGZvbnQtc3R5bGU6IG5vcm1hbDtcbiAgICBmb250LXdlaWdodDogNTAwO1xuICAgIGZvbnQtc2l6ZTogMTlweDtcbiAgICBsaW5lLWhlaWdodDogMjhweDtcbiAgICBjb2xvcjogIzNEMkM3QztcbiAgICBwYWRkaW5nLWJvdHRvbTogMjBweDtcbn1cblxuLmNhcmRhZHVhbjIge1xuICAgIGJhY2tncm91bmQ6ICNGRkZGRkY7XG4gICAgYm9yZGVyOiAxcHggc29saWQgI0Y3RkFGRDtcbiAgICBib3gtc2l6aW5nOiBib3JkZXItYm94O1xuICAgIGJveC1zaGFkb3c6IDBweCA0cHggOHB4IHJnYmEoNzMsIDg3LCAxODQsIDAuMik7XG4gICAgYm9yZGVyLXJhZGl1czogMTBweDtcbiAgICB3aWR0aDogMTAwJTtcbiAgICBoZWlnaHQ6IDE3MXB4O1xuICAgIGRpc3BsYXk6IGlubGluZS1ibG9jaztcbiAgICBwYWRkaW5nOiAxMHB4IDMwcHg7XG59XG5cbi5jYXJkaGVhZCB7XG4gICAgZm9udC1zdHlsZTogbm9ybWFsO1xuICAgIGZvbnQtd2VpZ2h0OiA1MDA7XG4gICAgZm9udC1zaXplOiAxNXB4O1xuICAgIGxldHRlci1zcGFjaW5nOiAtMC4xNjVweDtcbiAgICBjb2xvcjogIzQ5NDk0OTtcbiAgICB0ZXh0LWFsaWduOiBsZWZ0O1xuICAgIHBhZGRpbmc6IDlweCAwcHg7XG59XG5cbi5jYXJkZGV0YWlsIHtcbiAgICBmb250LXN0eWxlOiBub3JtYWw7XG4gICAgZm9udC13ZWlnaHQ6IDYwMDtcbiAgICBmb250LXNpemU6IDE2cHg7XG4gICAgbGV0dGVyLXNwYWNpbmc6IC0wLjE2NXB4O1xuICAgIGNvbG9yOiAjM0QyQzdDO1xuICAgIHRleHQtYWxpZ246IGxlZnQ7XG4gICAgcGFkZGluZzogOXB4IDBweDtcbn0iXX0= */");
+
+/***/ }),
+
+/***/ 43064:
+/*!********************************************************!*\
+  !*** ./src/app/confirm-pay/confirm-pay.component.scss ***!
+  \********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJjb25maXJtLXBheS5jb21wb25lbnQuc2NzcyJ9 */");
+
+/***/ }),
+
+/***/ 50101:
+/*!***********************************!*\
+  !*** ./src/app/pay/pay.page.scss ***!
+  \***********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("form {\n  margin-top: 0.5rem;\n}\n\n.boxwhite {\n  color: #3D2C7C;\n  padding: 25px 0px 0px 0px;\n  font-size: 16px;\n  width: 80%;\n  margin: auto;\n}\n\n.input {\n  color: black;\n  display: inline-block;\n  width: 100%;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInBheS5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBRUE7RUFDRSxrQkFBQTtBQURGOztBQUlBO0VBQ0UsY0FBQTtFQUNBLHlCQUFBO0VBQ0EsZUFBQTtFQUNBLFVBQUE7RUFDQSxZQUFBO0FBREY7O0FBSUE7RUFDRSxZQUFBO0VBQ0EscUJBQUE7RUFDQSxXQUFBO0FBREYiLCJmaWxlIjoicGF5LnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIlxuXG5mb3JtIHtcbiAgbWFyZ2luLXRvcDogMC41cmVtO1xufVxuXG4uYm94d2hpdGUge1xuICBjb2xvcjogIzNEMkM3QztcbiAgcGFkZGluZzogMjVweCAwcHggMHB4IDBweDtcbiAgZm9udC1zaXplOiAxNnB4O1xuICB3aWR0aDogODAlO1xuICBtYXJnaW46YXV0bztcbn1cblxuLmlucHV0IHtcbiAgY29sb3I6IGJsYWNrO1xuICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIHdpZHRoOiAxMDAlO1xufVxuIl19 */");
 
 /***/ }),
 
@@ -1331,7 +1605,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (".button {\n  width: 134px;\n  height: 49px;\n  font-style: normal;\n  font-weight: 600;\n  font-size: 14px;\n  line-height: 21px;\n  text-align: center;\n  align-items: center;\n  color: #FFFFFF;\n  background: #3D2C7C;\n  border-radius: 10px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImNhbGVuZGFyLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLFlBQUE7RUFDQSxZQUFBO0VBQ0Esa0JBQUE7RUFDQSxnQkFBQTtFQUNBLGVBQUE7RUFDQSxpQkFBQTtFQUNBLGtCQUFBO0VBQ0EsbUJBQUE7RUFDQSxjQUFBO0VBQ0EsbUJBQUE7RUFDQSxtQkFBQTtBQUNKIiwiZmlsZSI6ImNhbGVuZGFyLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5idXR0b24ge1xyXG4gICAgd2lkdGg6IDEzNHB4O1xyXG4gICAgaGVpZ2h0OiA0OXB4O1xyXG4gICAgZm9udC1zdHlsZTogbm9ybWFsO1xyXG4gICAgZm9udC13ZWlnaHQ6IDYwMDtcclxuICAgIGZvbnQtc2l6ZTogMTRweDtcclxuICAgIGxpbmUtaGVpZ2h0OiAyMXB4O1xyXG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG4gICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcclxuICAgIGNvbG9yOiAjRkZGRkZGO1xyXG4gICAgYmFja2dyb3VuZDogIzNEMkM3QztcclxuICAgIGJvcmRlci1yYWRpdXM6IDEwcHg7XHJcbn0iXX0= */");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (".button {\n  width: 134px;\n  height: 49px;\n  font-style: normal;\n  font-weight: 600;\n  font-size: 14px;\n  line-height: 21px;\n  text-align: center;\n  align-items: center;\n  color: #FFFFFF;\n  background: #3D2C7C;\n  border-radius: 10px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImNhbGVuZGFyLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLFlBQUE7RUFDQSxZQUFBO0VBQ0Esa0JBQUE7RUFDQSxnQkFBQTtFQUNBLGVBQUE7RUFDQSxpQkFBQTtFQUNBLGtCQUFBO0VBQ0EsbUJBQUE7RUFDQSxjQUFBO0VBQ0EsbUJBQUE7RUFDQSxtQkFBQTtBQUNKIiwiZmlsZSI6ImNhbGVuZGFyLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5idXR0b24ge1xuICAgIHdpZHRoOiAxMzRweDtcbiAgICBoZWlnaHQ6IDQ5cHg7XG4gICAgZm9udC1zdHlsZTogbm9ybWFsO1xuICAgIGZvbnQtd2VpZ2h0OiA2MDA7XG4gICAgZm9udC1zaXplOiAxNHB4O1xuICAgIGxpbmUtaGVpZ2h0OiAyMXB4O1xuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgIGNvbG9yOiAjRkZGRkZGO1xuICAgIGJhY2tncm91bmQ6ICMzRDJDN0M7XG4gICAgYm9yZGVyLXJhZGl1czogMTBweDtcbn0iXX0= */");
 
 /***/ }),
 
@@ -1346,7 +1620,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (".button {\n  background-color: #3D2C7C;\n  height: 48px;\n  width: 100%;\n  border-radius: 10px;\n  margin: auto;\n  font-style: normal;\n  font-weight: 700;\n  font-size: 14px;\n  line-height: 21px;\n  color: white;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImxlamFyZC5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSx5QkFBQTtFQUNBLFlBQUE7RUFDQSxXQUFBO0VBQ0EsbUJBQUE7RUFDQSxZQUFBO0VBQ0Esa0JBQUE7RUFDQSxnQkFBQTtFQUNBLGVBQUE7RUFDQSxpQkFBQTtFQUNBLFlBQUE7QUFDSiIsImZpbGUiOiJsZWphcmQucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmJ1dHRvbiB7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjM0QyQzdDO1xyXG4gICAgaGVpZ2h0OiA0OHB4O1xyXG4gICAgd2lkdGg6IDEwMCU7XHJcbiAgICBib3JkZXItcmFkaXVzOiAxMHB4O1xyXG4gICAgbWFyZ2luOmF1dG87XHJcbiAgICBmb250LXN0eWxlOiBub3JtYWw7XHJcbiAgICBmb250LXdlaWdodDogNzAwO1xyXG4gICAgZm9udC1zaXplOiAxNHB4O1xyXG4gICAgbGluZS1oZWlnaHQ6IDIxcHg7XHJcbiAgICBjb2xvcjogd2hpdGU7XHJcbn0iXX0= */");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (".button {\n  background-color: #3D2C7C;\n  height: 48px;\n  width: 100%;\n  border-radius: 10px;\n  margin: auto;\n  font-style: normal;\n  font-weight: 700;\n  font-size: 14px;\n  line-height: 21px;\n  color: white;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImxlamFyZC5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSx5QkFBQTtFQUNBLFlBQUE7RUFDQSxXQUFBO0VBQ0EsbUJBQUE7RUFDQSxZQUFBO0VBQ0Esa0JBQUE7RUFDQSxnQkFBQTtFQUNBLGVBQUE7RUFDQSxpQkFBQTtFQUNBLFlBQUE7QUFDSiIsImZpbGUiOiJsZWphcmQucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmJ1dHRvbiB7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogIzNEMkM3QztcbiAgICBoZWlnaHQ6IDQ4cHg7XG4gICAgd2lkdGg6IDEwMCU7XG4gICAgYm9yZGVyLXJhZGl1czogMTBweDtcbiAgICBtYXJnaW46YXV0bztcbiAgICBmb250LXN0eWxlOiBub3JtYWw7XG4gICAgZm9udC13ZWlnaHQ6IDcwMDtcbiAgICBmb250LXNpemU6IDE0cHg7XG4gICAgbGluZS1oZWlnaHQ6IDIxcHg7XG4gICAgY29sb3I6IHdoaXRlO1xufSJdfQ== */");
 
 /***/ }),
 
@@ -1361,7 +1635,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (".card {\n  background: #FFFFFF;\n  border: 1px solid #F7FAFD;\n  box-sizing: border-box;\n  box-shadow: 0px 4px 8px rgba(73, 87, 184, 0.2);\n  border-radius: 10px;\n  padding: 35px 25px;\n  height: 230px;\n}\n\n.header {\n  font-style: normal;\n  font-weight: 600;\n  font-size: 18px;\n  line-height: 27px;\n  letter-spacing: -0.165px;\n  color: #3D2C7C;\n  text-align: left;\n}\n\n.body {\n  font-style: normal;\n  font-weight: 400;\n  font-size: 18px;\n  line-height: 27px;\n  letter-spacing: -0.165px;\n  color: #3D2C7C;\n  text-align: left;\n}\n\n.button {\n  width: 134px;\n  height: 49px;\n  font-style: normal;\n  font-weight: 600;\n  font-size: 14px;\n  line-height: 21px;\n  text-align: center;\n  align-items: center;\n  color: #FFFFFF;\n  background: #3D2C7C;\n  border-radius: 10px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInZpZXdub3Rpcy5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxtQkFBQTtFQUNBLHlCQUFBO0VBQ0Esc0JBQUE7RUFDQSw4Q0FBQTtFQUNBLG1CQUFBO0VBQ0Esa0JBQUE7RUFDQSxhQUFBO0FBQ0o7O0FBRUE7RUFDSSxrQkFBQTtFQUNBLGdCQUFBO0VBQ0EsZUFBQTtFQUNBLGlCQUFBO0VBQ0Esd0JBQUE7RUFDQSxjQUFBO0VBQ0EsZ0JBQUE7QUFDSjs7QUFFQTtFQUNJLGtCQUFBO0VBQ0EsZ0JBQUE7RUFDQSxlQUFBO0VBQ0EsaUJBQUE7RUFDQSx3QkFBQTtFQUNBLGNBQUE7RUFDQSxnQkFBQTtBQUNKOztBQUVBO0VBQ0ksWUFBQTtFQUNBLFlBQUE7RUFDQSxrQkFBQTtFQUNBLGdCQUFBO0VBQ0EsZUFBQTtFQUNBLGlCQUFBO0VBQ0Esa0JBQUE7RUFDQSxtQkFBQTtFQUNBLGNBQUE7RUFDQSxtQkFBQTtFQUNBLG1CQUFBO0FBQ0oiLCJmaWxlIjoidmlld25vdGlzLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5jYXJkIHtcclxuICAgIGJhY2tncm91bmQ6ICNGRkZGRkY7XHJcbiAgICBib3JkZXI6IDFweCBzb2xpZCAjRjdGQUZEO1xyXG4gICAgYm94LXNpemluZzogYm9yZGVyLWJveDtcclxuICAgIGJveC1zaGFkb3c6IDBweCA0cHggOHB4IHJnYmEoNzMsIDg3LCAxODQsIDAuMik7XHJcbiAgICBib3JkZXItcmFkaXVzOiAxMHB4O1xyXG4gICAgcGFkZGluZzogMzVweCAyNXB4O1xyXG4gICAgaGVpZ2h0OiAyMzBweDtcclxufVxyXG5cclxuLmhlYWRlciB7XHJcbiAgICBmb250LXN0eWxlOiBub3JtYWw7XHJcbiAgICBmb250LXdlaWdodDogNjAwO1xyXG4gICAgZm9udC1zaXplOiAxOHB4O1xyXG4gICAgbGluZS1oZWlnaHQ6IDI3cHg7XHJcbiAgICBsZXR0ZXItc3BhY2luZzogLTAuMTY1cHg7XHJcbiAgICBjb2xvcjogIzNEMkM3QztcclxuICAgIHRleHQtYWxpZ246IGxlZnQ7XHJcbn1cclxuXHJcbi5ib2R5IHtcclxuICAgIGZvbnQtc3R5bGU6IG5vcm1hbDtcclxuICAgIGZvbnQtd2VpZ2h0OiA0MDA7XHJcbiAgICBmb250LXNpemU6IDE4cHg7XHJcbiAgICBsaW5lLWhlaWdodDogMjdweDtcclxuICAgIGxldHRlci1zcGFjaW5nOiAtMC4xNjVweDtcclxuICAgIGNvbG9yOiAjM0QyQzdDO1xyXG4gICAgdGV4dC1hbGlnbjogbGVmdDtcclxufVxyXG5cclxuLmJ1dHRvbiB7XHJcbiAgICB3aWR0aDogMTM0cHg7XHJcbiAgICBoZWlnaHQ6IDQ5cHg7XHJcbiAgICBmb250LXN0eWxlOiBub3JtYWw7XHJcbiAgICBmb250LXdlaWdodDogNjAwO1xyXG4gICAgZm9udC1zaXplOiAxNHB4O1xyXG4gICAgbGluZS1oZWlnaHQ6IDIxcHg7XHJcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbiAgICBhbGlnbi1pdGVtczogY2VudGVyO1xyXG4gICAgY29sb3I6ICNGRkZGRkY7XHJcbiAgICBiYWNrZ3JvdW5kOiAjM0QyQzdDO1xyXG4gICAgYm9yZGVyLXJhZGl1czogMTBweDtcclxufSJdfQ== */");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (".card {\n  background: #FFFFFF;\n  border: 1px solid #F7FAFD;\n  box-sizing: border-box;\n  box-shadow: 0px 4px 8px rgba(73, 87, 184, 0.2);\n  border-radius: 10px;\n  padding: 35px 25px;\n  height: 230px;\n}\n\n.header {\n  font-style: normal;\n  font-weight: 600;\n  font-size: 18px;\n  line-height: 27px;\n  letter-spacing: -0.165px;\n  color: #3D2C7C;\n  text-align: left;\n}\n\n.body {\n  font-style: normal;\n  font-weight: 400;\n  font-size: 18px;\n  line-height: 27px;\n  letter-spacing: -0.165px;\n  color: #3D2C7C;\n  text-align: left;\n}\n\n.button {\n  width: 134px;\n  height: 49px;\n  font-style: normal;\n  font-weight: 600;\n  font-size: 14px;\n  line-height: 21px;\n  text-align: center;\n  align-items: center;\n  color: #FFFFFF;\n  background: #3D2C7C;\n  border-radius: 10px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInZpZXdub3Rpcy5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxtQkFBQTtFQUNBLHlCQUFBO0VBQ0Esc0JBQUE7RUFDQSw4Q0FBQTtFQUNBLG1CQUFBO0VBQ0Esa0JBQUE7RUFDQSxhQUFBO0FBQ0o7O0FBRUE7RUFDSSxrQkFBQTtFQUNBLGdCQUFBO0VBQ0EsZUFBQTtFQUNBLGlCQUFBO0VBQ0Esd0JBQUE7RUFDQSxjQUFBO0VBQ0EsZ0JBQUE7QUFDSjs7QUFFQTtFQUNJLGtCQUFBO0VBQ0EsZ0JBQUE7RUFDQSxlQUFBO0VBQ0EsaUJBQUE7RUFDQSx3QkFBQTtFQUNBLGNBQUE7RUFDQSxnQkFBQTtBQUNKOztBQUVBO0VBQ0ksWUFBQTtFQUNBLFlBQUE7RUFDQSxrQkFBQTtFQUNBLGdCQUFBO0VBQ0EsZUFBQTtFQUNBLGlCQUFBO0VBQ0Esa0JBQUE7RUFDQSxtQkFBQTtFQUNBLGNBQUE7RUFDQSxtQkFBQTtFQUNBLG1CQUFBO0FBQ0oiLCJmaWxlIjoidmlld25vdGlzLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5jYXJkIHtcbiAgICBiYWNrZ3JvdW5kOiAjRkZGRkZGO1xuICAgIGJvcmRlcjogMXB4IHNvbGlkICNGN0ZBRkQ7XG4gICAgYm94LXNpemluZzogYm9yZGVyLWJveDtcbiAgICBib3gtc2hhZG93OiAwcHggNHB4IDhweCByZ2JhKDczLCA4NywgMTg0LCAwLjIpO1xuICAgIGJvcmRlci1yYWRpdXM6IDEwcHg7XG4gICAgcGFkZGluZzogMzVweCAyNXB4O1xuICAgIGhlaWdodDogMjMwcHg7XG59XG5cbi5oZWFkZXIge1xuICAgIGZvbnQtc3R5bGU6IG5vcm1hbDtcbiAgICBmb250LXdlaWdodDogNjAwO1xuICAgIGZvbnQtc2l6ZTogMThweDtcbiAgICBsaW5lLWhlaWdodDogMjdweDtcbiAgICBsZXR0ZXItc3BhY2luZzogLTAuMTY1cHg7XG4gICAgY29sb3I6ICMzRDJDN0M7XG4gICAgdGV4dC1hbGlnbjogbGVmdDtcbn1cblxuLmJvZHkge1xuICAgIGZvbnQtc3R5bGU6IG5vcm1hbDtcbiAgICBmb250LXdlaWdodDogNDAwO1xuICAgIGZvbnQtc2l6ZTogMThweDtcbiAgICBsaW5lLWhlaWdodDogMjdweDtcbiAgICBsZXR0ZXItc3BhY2luZzogLTAuMTY1cHg7XG4gICAgY29sb3I6ICMzRDJDN0M7XG4gICAgdGV4dC1hbGlnbjogbGVmdDtcbn1cblxuLmJ1dHRvbiB7XG4gICAgd2lkdGg6IDEzNHB4O1xuICAgIGhlaWdodDogNDlweDtcbiAgICBmb250LXN0eWxlOiBub3JtYWw7XG4gICAgZm9udC13ZWlnaHQ6IDYwMDtcbiAgICBmb250LXNpemU6IDE0cHg7XG4gICAgbGluZS1oZWlnaHQ6IDIxcHg7XG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xuICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gICAgY29sb3I6ICNGRkZGRkY7XG4gICAgYmFja2dyb3VuZDogIzNEMkM3QztcbiAgICBib3JkZXItcmFkaXVzOiAxMHB4O1xufSJdfQ== */");
 
 /***/ }),
 
@@ -1376,7 +1650,37 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("<ion-content>\r\n  <div class=\"main\">\r\n    <div class=\"container2\">\r\n      <div class=\"header\">\r\n        <ion-icon\r\n          name=\"chevron-back-outline\"\r\n          style=\"float: left\"\r\n          (click)=\"back()\"\r\n        ></ion-icon>\r\n        <span class=\"headertxt\">{{ 'aduan.senarai' | translate }}</span>\r\n        <ion-img\r\n          src=\"../../assets/icon/adminmenu.png\"\r\n          style=\"position: absolute; top: 50px; right: 20px\"\r\n          class=\"iconnoti\"\r\n          (click)=\"adminmenu()\"\r\n        ></ion-img>\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <div class=\"main2\">\r\n    <div class=\"container3\">\r\n      <div class=\"headerbox\">\r\n        <div class=\"label\">{{ 'aduan.senarai' | translate }}</div>\r\n        <div *ngFor=\"let item of AduanList\">\r\n          <div class=\"cardaduan2\" (click)=\"viewaduan(item)\">\r\n            <div class=\"cardhead\">{{ 'aduan.tarikh' | translate }}</div>\r\n            <div class=\"carddetail\">{{item.date}}</div>\r\n            <div class=\"cardhead\">{{ 'aduan.kategori' | translate }}</div>\r\n            <div class=\"carddetail\">\r\n              {{item.kategori}} - {{ item.katedet ? item.katedet.kategori\r\n              :''}}<span style=\"float: right\">></span>\r\n            </div>\r\n          </div>\r\n          <div style=\"height: 10px\"></div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</ion-content>\r\n");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("<ion-content>\n  <div class=\"main\">\n    <div class=\"container2\">\n      <div class=\"header\">\n        <ion-icon\n          name=\"chevron-back-outline\"\n          style=\"float: left\"\n          (click)=\"back()\"\n        ></ion-icon>\n        <span class=\"headertxt\">{{ 'aduan.senarai' | translate }}</span>\n        <ion-img\n          src=\"../../assets/icon/adminmenu.png\"\n          style=\"position: absolute; top: 50px; right: 20px\"\n          class=\"iconnoti\"\n          (click)=\"adminmenu()\"\n        ></ion-img>\n      </div>\n    </div>\n  </div>\n  <div class=\"main2\">\n    <div class=\"container3\">\n      <div class=\"headerbox\">\n        <div class=\"label\">{{ 'aduan.senarai' | translate }}</div>\n        <div *ngFor=\"let item of AduanList\">\n          <div class=\"cardaduan2\" (click)=\"viewaduan(item)\">\n            <div class=\"cardhead\">{{ 'aduan.tarikh' | translate }}</div>\n            <div class=\"carddetail\">{{item.date}}</div>\n            <div class=\"cardhead\">{{ 'aduan.kategori' | translate }}</div>\n            <div class=\"carddetail\">\n              {{item.kategori}} - {{ item.katedet ? item.katedet.kategori\n              :''}}<span style=\"float: right\">></span>\n            </div>\n          </div>\n          <div style=\"height: 10px\"></div>\n        </div>\n      </div>\n    </div>\n  </div>\n</ion-content>\n");
+
+/***/ }),
+
+/***/ 6546:
+/*!**********************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/confirm-pay/confirm-pay.component.html ***!
+  \**********************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"secondary\">\n      <ion-button (click)=\"close()\">\n        <ion-icon slot=\"start\" name=\"close\"></ion-icon>\n        close\n      </ion-button>\n    </ion-buttons>\n    <ion-title>Confirm payment</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <iframe #iframe height=\"100%\" width=\"100%\" frameborder=\"0\"></iframe>\n</ion-content>\n");
+
+/***/ }),
+
+/***/ 57068:
+/*!*************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/pay/pay.page.html ***!
+  \*************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-button (click)=\"close()\">\n        <ion-icon slot=\"start\" name=\"close\"></ion-icon>\n        Close\n      </ion-button>\n    </ion-buttons>\n    <ion-title>pay</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <form [formGroup]=\"paymentForm\" (ngSubmit)=\"pay()\">\n    <!-- create ionic form with referene number, customer name,  email, amount  ,remark , additional params  -->\n\n\n    <div class=\"boxwhite\" style=\"border-bottom: 0.7px solid #E8E8E8\">\n      Customer Name<br>\n      <ion-input formControlName=\"customerName\" type=\"text\" class=\"input\"></ion-input>\n    </div>\n\n    <div class=\"boxwhite\" style=\"border-bottom: 0.7px solid #E8E8E8\">\n      Customer Email<br>\n      <ion-input formControlName=\"customerEmail\" type=\"text\" class=\"input\"></ion-input>\n    </div>\n\n    <div class=\"boxwhite\" style=\"border-bottom: 0.7px solid #E8E8E8\">\n      Amount<br>\n      <ion-input formControlName=\"amount\" type=\"text\" class=\"input\"></ion-input>\n    </div>\n\n    <div class=\"boxwhite\" style=\"border-bottom: 0.7px solid #E8E8E8\">\n      Remark<br>\n      <ion-input formControlName=\"remark\" type=\"text\" class=\"input\"></ion-input>\n    </div>\n\n\n\n    <ion-button expand=\"block\" type=\"submit\" [disabled]=\"!paymentForm.valid\">Pay</ion-button>\n  </form>\n</ion-content>\n");
 
 /***/ }),
 
@@ -1391,7 +1695,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("<ion-content class=\"ion-padding\">\r\n  <div style=\"padding:10px 10px; text-align: center;\">\r\n    <ion-calendar [(ngModel)]=\"date\" [options]=\"option\" type=\"string\" [format]=\"'YYYY-MM-DD'\"></ion-calendar>\r\n    <div style=\"height: 15px;\"></div>\r\n    <button class=\"button\" (click)=\"closeModal()\">Tutup</button>\r\n  </div>\r\n</ion-content>\r\n");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("<ion-content class=\"ion-padding\">\n  <div style=\"padding:10px 10px; text-align: center;\">\n    <ion-calendar [(ngModel)]=\"date\" [options]=\"option\" type=\"string\" [format]=\"'YYYY-MM-DD'\"></ion-calendar>\n    <div style=\"height: 15px;\"></div>\n    <button class=\"button\" (click)=\"closeModal()\">Tutup</button>\n  </div>\n</ion-content>\n");
 
 /***/ }),
 
@@ -1406,7 +1710,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("<ion-content>\r\n  <div style=\"padding: 20px;background-color: white;height: 100%;width: 100%;\">\r\n    <div id=\"pdf\">\r\n      <table style=\"width: 100%;border: 1 pt solid black;font-size: 14px;color: black;\">\r\n        <colgroup>\r\n          <col style=\"width: 15%;\">\r\n          <col style=\"width: 15%;\">\r\n          <col style=\"width: 10%;\">\r\n          <col style=\"width: 25%;\">\r\n          <col style=\"width: 10%;\">\r\n          <col style=\"width: 25%;\">\r\n        </colgroup>\r\n        <tr>\r\n          <td colspan=\"6\">Lejar <span *ngIf=\"src == 1\">Rumah</span><span *ngIf=\"src == 2\">Premis</span> :\r\n            {{selectedakaun.nama}}</td>\r\n        </tr>\r\n        <tr>\r\n          <td colspan=\"6\">Nombor Akaun : <span>{{selectedakaun.no_akaun_rumah}}</span><span\r\n              *ngIf=\"src == 2\">{{selectedakaun.no_akaun_premis}}</span></td>\r\n        </tr>\r\n        <tr>\r\n          <td colspan=\"6\">Nombor Kad Pengenalan : {{selectedakaun.no_kad_pengenalan}}</td>\r\n        </tr>\r\n        <tr>\r\n          <td colspan=\"6\" style=\"height: 50px;\"></td>\r\n        </tr>\r\n      </table>\r\n      <table style=\"width: 100%;border: 1 pt solid black;font-size: 14px;color: black;display: none;\" id=\"tr1\">\r\n        <colgroup>\r\n          <col style=\"width: 15%;\">\r\n          <col style=\"width: 15%;\">\r\n          <col style=\"width: 10%;\">\r\n          <col style=\"width: 25%;\">\r\n          <col style=\"width: 10%;\">\r\n          <col style=\"width: 25%;\">\r\n        </colgroup>\r\n        <tr style=\"border-bottom:1pt solid black;\">\r\n          <td>Tarikh</td>\r\n          <td>Rujukan</td>\r\n          <td>Debit</td>\r\n          <td>Urusan</td>\r\n          <td>Kredit</td>\r\n          <td>Urusan</td>\r\n        </tr>\r\n        <tr *ngFor=\"let item of lejardtl\">\r\n          <td>{{item.tarikh}}</td>\r\n          <td>{{item.rujukan}}</td>\r\n          <td>{{item.debit}}</td>\r\n          <td style=\"border-right:1pt solid black;\"><span *ngIf=\"item.debit != ''\">{{item.urusan}}</span></td>\r\n          <td>{{item.kredit}}</td>\r\n          <td><span *ngIf=\"item.kredit != ''\">{{item.urusan}}</span></td>\r\n        </tr>\r\n      </table>\r\n    </div>\r\n    <div style=\"padding: 50px 0px;\">\r\n      <button ion-button class=\"button\" (click)=\"download()\">Cetak</button>\r\n    </div>\r\n  </div>\r\n</ion-content>\r\n");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("<ion-content>\n  <div style=\"padding: 20px;background-color: white;height: 100%;width: 100%;\">\n    <div id=\"pdf\">\n      <table style=\"width: 100%;border: 1 pt solid black;font-size: 14px;color: black;\">\n        <colgroup>\n          <col style=\"width: 15%;\">\n          <col style=\"width: 15%;\">\n          <col style=\"width: 10%;\">\n          <col style=\"width: 25%;\">\n          <col style=\"width: 10%;\">\n          <col style=\"width: 25%;\">\n        </colgroup>\n        <tr>\n          <td colspan=\"6\">Lejar <span *ngIf=\"src == 1\">Rumah</span><span *ngIf=\"src == 2\">Premis</span> :\n            {{selectedakaun.nama}}</td>\n        </tr>\n        <tr>\n          <td colspan=\"6\">Nombor Akaun : <span>{{selectedakaun.no_akaun_rumah}}</span><span\n              *ngIf=\"src == 2\">{{selectedakaun.no_akaun_premis}}</span></td>\n        </tr>\n        <tr>\n          <td colspan=\"6\">Nombor Kad Pengenalan : {{selectedakaun.no_kad_pengenalan}}</td>\n        </tr>\n        <tr>\n          <td colspan=\"6\" style=\"height: 50px;\"></td>\n        </tr>\n      </table>\n      <table style=\"width: 100%;border: 1 pt solid black;font-size: 14px;color: black;display: none;\" id=\"tr1\">\n        <colgroup>\n          <col style=\"width: 15%;\">\n          <col style=\"width: 15%;\">\n          <col style=\"width: 10%;\">\n          <col style=\"width: 25%;\">\n          <col style=\"width: 10%;\">\n          <col style=\"width: 25%;\">\n        </colgroup>\n        <tr style=\"border-bottom:1pt solid black;\">\n          <td>Tarikh</td>\n          <td>Rujukan</td>\n          <td>Debit</td>\n          <td>Urusan</td>\n          <td>Kredit</td>\n          <td>Urusan</td>\n        </tr>\n        <tr *ngFor=\"let item of lejardtl\">\n          <td>{{item.tarikh}}</td>\n          <td>{{item.rujukan}}</td>\n          <td>{{item.debit}}</td>\n          <td style=\"border-right:1pt solid black;\"><span *ngIf=\"item.debit != ''\">{{item.urusan}}</span></td>\n          <td>{{item.kredit}}</td>\n          <td><span *ngIf=\"item.kredit != ''\">{{item.urusan}}</span></td>\n        </tr>\n      </table>\n    </div>\n    <div style=\"padding: 50px 0px;\">\n      <button ion-button class=\"button\" (click)=\"download()\">Cetak</button>\n    </div>\n  </div>\n</ion-content>\n");
 
 /***/ }),
 
@@ -1421,7 +1725,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("<ion-content class=\"ion-padding\">\r\n  <div style=\"padding:10px 10px; text-align: center;\">\r\n    <div class=\"card\">\r\n      <div class=\"header\">\r\n        {{header}}\r\n      </div>\r\n      <div class=\"body\">\r\n        {{body}}\r\n      </div>\r\n    </div>\r\n    <div style=\"height: 15px;\"></div>\r\n    <button class=\"button\" (click)=\"closeModal()\">Tutup</button>\r\n  </div>\r\n</ion-content>\r\n");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("<ion-content class=\"ion-padding\">\n  <div style=\"padding:10px 10px; text-align: center;\">\n    <div class=\"card\">\n      <div class=\"header\">\n        {{header}}\n      </div>\n      <div class=\"body\">\n        {{body}}\n      </div>\n    </div>\n    <div style=\"height: 15px;\"></div>\n    <button class=\"button\" (click)=\"closeModal()\">Tutup</button>\n  </div>\n</ion-content>\n");
 
 /***/ })
 

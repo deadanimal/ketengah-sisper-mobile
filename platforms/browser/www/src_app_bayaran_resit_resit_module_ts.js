@@ -202,61 +202,6 @@ ResitPage = (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__decorate)([
 
 /***/ }),
 
-/***/ 15809:
-/*!********************************!*\
-  !*** ./src/app/pay.service.ts ***!
-  \********************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "PaymentService": () => (/* binding */ PaymentService)
-/* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! tslib */ 64762);
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ 91841);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 37716);
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! rxjs */ 26215);
-
-/* eslint-disable @typescript-eslint/naming-convention */
-
-
-
-let PaymentService = class PaymentService {
-    constructor(http) {
-        this.http = http;
-        this.reciept = new rxjs__WEBPACK_IMPORTED_MODULE_0__.BehaviorSubject({});
-        this.refId = new rxjs__WEBPACK_IMPORTED_MODULE_0__.BehaviorSubject('');
-        this.url = 'https://ketengah-api.prototype.com.my/fpx/initiate/payment/app/test';
-    }
-    submitPayment(paymentDetails) {
-        console.log(paymentDetails, 'success');
-        this.refId.next(paymentDetails.referenceId);
-        return this.http.get(this.url, {
-            params: {
-                reference_id: paymentDetails.referenceId,
-                customer_email: paymentDetails.customerEmail,
-                amount: paymentDetails.amount,
-                additional_params: paymentDetails.additionalInfo,
-                remark: paymentDetails.remark,
-                customer_name: paymentDetails.customerName,
-            },
-        });
-    }
-};
-PaymentService.ctorParameters = () => [
-    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpClient }
-];
-PaymentService = (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__decorate)([
-    (0,_angular_core__WEBPACK_IMPORTED_MODULE_3__.Injectable)({
-        providedIn: 'root',
-    })
-], PaymentService);
-
-
-
-/***/ }),
-
 /***/ 25737:
 /*!***********************************************!*\
   !*** ./src/app/bayaran/resit/resit.page.scss ***!
@@ -268,7 +213,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (".container2 {\n  padding-top: 50px;\n  padding: 50px 25px 20px 10px;\n  height: 180px;\n}\n\n.container3 {\n  padding: 30px 20px;\n  height: 700px;\n}\n\n.headresit {\n  color: black;\n}\n\nspan {\n  color: #3e4d3e;\n}\n\n.card {\n  background: #FFFFFF;\n  box-shadow: 4px 0px 8px rgba(73, 87, 184, 0.2), 0px 4px 8px rgba(73, 87, 184, 0.2);\n  border-radius: 10px;\n  height: 300px;\n  color: black;\n  padding: 20px;\n}\n\n.button {\n  background-color: #3D2C7C;\n  height: 40px;\n  width: 100%;\n  border-radius: 10px;\n  margin: auto;\n  font-style: normal;\n  font-weight: 700;\n  font-size: 14px;\n  line-height: 21px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInJlc2l0LnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLGlCQUFBO0VBQ0EsNEJBQUE7RUFDQSxhQUFBO0FBQ0o7O0FBRUE7RUFDSSxrQkFBQTtFQUNBLGFBQUE7QUFDSjs7QUFFQTtFQUNJLFlBQUE7QUFDSjs7QUFDQTtFQUNFLGNBQUE7QUFFRjs7QUFDQTtFQUNJLG1CQUFBO0VBQ0Esa0ZBQUE7RUFDQSxtQkFBQTtFQUNBLGFBQUE7RUFDQSxZQUFBO0VBQ0EsYUFBQTtBQUVKOztBQUNBO0VBQ0kseUJBQUE7RUFDQSxZQUFBO0VBQ0EsV0FBQTtFQUNBLG1CQUFBO0VBQ0EsWUFBQTtFQUNBLGtCQUFBO0VBQ0EsZ0JBQUE7RUFDQSxlQUFBO0VBQ0EsaUJBQUE7QUFFSiIsImZpbGUiOiJyZXNpdC5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuY29udGFpbmVyMiB7XHJcbiAgICBwYWRkaW5nLXRvcDogNTBweDtcclxuICAgIHBhZGRpbmc6IDUwcHggMjVweCAyMHB4IDEwcHg7XHJcbiAgICBoZWlnaHQ6IDE4MHB4O1xyXG59XHJcblxyXG4uY29udGFpbmVyMyB7XHJcbiAgICBwYWRkaW5nOiAzMHB4IDIwcHg7XHJcbiAgICBoZWlnaHQ6IDcwMHB4O1xyXG59XHJcblxyXG4uaGVhZHJlc2l0IHtcclxuICAgIGNvbG9yOiBibGFjaztcclxufVxyXG5zcGFue1xyXG4gIGNvbG9yOiByZ2IoNjIsIDc3LCA2Mik7XHJcbn1cclxuXHJcbi5jYXJkIHtcclxuICAgIGJhY2tncm91bmQ6ICNGRkZGRkY7XHJcbiAgICBib3gtc2hhZG93OiA0cHggMHB4IDhweCByZ2JhKDczLCA4NywgMTg0LCAwLjIpLCAwcHggNHB4IDhweCByZ2JhKDczLCA4NywgMTg0LCAwLjIpO1xyXG4gICAgYm9yZGVyLXJhZGl1czogMTBweDtcclxuICAgIGhlaWdodDogMzAwcHg7XHJcbiAgICBjb2xvcjogYmxhY2s7XHJcbiAgICBwYWRkaW5nOiAyMHB4O1xyXG59XHJcblxyXG4uYnV0dG9uIHtcclxuICAgIGJhY2tncm91bmQtY29sb3I6ICMzRDJDN0M7XHJcbiAgICBoZWlnaHQ6IDQwcHg7XHJcbiAgICB3aWR0aDogMTAwJTtcclxuICAgIGJvcmRlci1yYWRpdXM6IDEwcHg7XHJcbiAgICBtYXJnaW46YXV0bztcclxuICAgIGZvbnQtc3R5bGU6IG5vcm1hbDtcclxuICAgIGZvbnQtd2VpZ2h0OiA3MDA7XHJcbiAgICBmb250LXNpemU6IDE0cHg7XHJcbiAgICBsaW5lLWhlaWdodDogMjFweDtcclxufVxyXG4iXX0= */");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (".container2 {\n  padding-top: 50px;\n  padding: 50px 25px 20px 10px;\n  height: 180px;\n}\n\n.container3 {\n  padding: 30px 20px;\n  height: 700px;\n}\n\n.headresit {\n  color: black;\n}\n\nspan {\n  color: #3e4d3e;\n}\n\n.card {\n  background: #FFFFFF;\n  box-shadow: 4px 0px 8px rgba(73, 87, 184, 0.2), 0px 4px 8px rgba(73, 87, 184, 0.2);\n  border-radius: 10px;\n  height: 300px;\n  color: black;\n  padding: 20px;\n}\n\n.button {\n  background-color: #3D2C7C;\n  height: 40px;\n  width: 100%;\n  border-radius: 10px;\n  margin: auto;\n  font-style: normal;\n  font-weight: 700;\n  font-size: 14px;\n  line-height: 21px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInJlc2l0LnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLGlCQUFBO0VBQ0EsNEJBQUE7RUFDQSxhQUFBO0FBQ0o7O0FBRUE7RUFDSSxrQkFBQTtFQUNBLGFBQUE7QUFDSjs7QUFFQTtFQUNJLFlBQUE7QUFDSjs7QUFDQTtFQUNFLGNBQUE7QUFFRjs7QUFDQTtFQUNJLG1CQUFBO0VBQ0Esa0ZBQUE7RUFDQSxtQkFBQTtFQUNBLGFBQUE7RUFDQSxZQUFBO0VBQ0EsYUFBQTtBQUVKOztBQUNBO0VBQ0kseUJBQUE7RUFDQSxZQUFBO0VBQ0EsV0FBQTtFQUNBLG1CQUFBO0VBQ0EsWUFBQTtFQUNBLGtCQUFBO0VBQ0EsZ0JBQUE7RUFDQSxlQUFBO0VBQ0EsaUJBQUE7QUFFSiIsImZpbGUiOiJyZXNpdC5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuY29udGFpbmVyMiB7XG4gICAgcGFkZGluZy10b3A6IDUwcHg7XG4gICAgcGFkZGluZzogNTBweCAyNXB4IDIwcHggMTBweDtcbiAgICBoZWlnaHQ6IDE4MHB4O1xufVxuXG4uY29udGFpbmVyMyB7XG4gICAgcGFkZGluZzogMzBweCAyMHB4O1xuICAgIGhlaWdodDogNzAwcHg7XG59XG5cbi5oZWFkcmVzaXQge1xuICAgIGNvbG9yOiBibGFjaztcbn1cbnNwYW57XG4gIGNvbG9yOiByZ2IoNjIsIDc3LCA2Mik7XG59XG5cbi5jYXJkIHtcbiAgICBiYWNrZ3JvdW5kOiAjRkZGRkZGO1xuICAgIGJveC1zaGFkb3c6IDRweCAwcHggOHB4IHJnYmEoNzMsIDg3LCAxODQsIDAuMiksIDBweCA0cHggOHB4IHJnYmEoNzMsIDg3LCAxODQsIDAuMik7XG4gICAgYm9yZGVyLXJhZGl1czogMTBweDtcbiAgICBoZWlnaHQ6IDMwMHB4O1xuICAgIGNvbG9yOiBibGFjaztcbiAgICBwYWRkaW5nOiAyMHB4O1xufVxuXG4uYnV0dG9uIHtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjM0QyQzdDO1xuICAgIGhlaWdodDogNDBweDtcbiAgICB3aWR0aDogMTAwJTtcbiAgICBib3JkZXItcmFkaXVzOiAxMHB4O1xuICAgIG1hcmdpbjphdXRvO1xuICAgIGZvbnQtc3R5bGU6IG5vcm1hbDtcbiAgICBmb250LXdlaWdodDogNzAwO1xuICAgIGZvbnQtc2l6ZTogMTRweDtcbiAgICBsaW5lLWhlaWdodDogMjFweDtcbn1cbiJdfQ== */");
 
 /***/ }),
 
@@ -283,7 +228,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("<ion-content>\r\n  <div class=\"main\">\r\n    <div class=\"container2\">\r\n      <div class=\"header\">\r\n        <ion-icon name=\"chevron-back-outline\" style=\"float: left;\" (click)=\"back()\"></ion-icon>\r\n        <span class=\"headertxt\" style=\"width:70%;margin: auto;display: inline-block;\">{{ 'bayaran.resit' | translate\r\n          }}</span>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n  <div class=\"headresit\">\r\n    <span>Thank You,</span><br>\r\n    <span>Here's your receipt.</span>\r\n  </div>\r\n\r\n\r\n  <ng-container *ngIf=\"reciept\">\r\n    <ion-grid fixed>\r\n\r\n      <ion-row>\r\n        <ion-col size=\"6\"><span>Status</span></ion-col>\r\n        <ion-col size=\"6\"> <span>{{reciept.message}}</span> </ion-col>\r\n      </ion-row>\r\n      <ion-row>\r\n        <ion-col size=\"6\"> <span>Transaction ID</span></ion-col>\r\n        <ion-col size=\"6\"><span>{{reciept.transaction_id}}</span></ion-col>\r\n      </ion-row>\r\n      <ion-row>\r\n        <ion-col size=\"6\"><span>Reference ID:</span></ion-col>\r\n        <ion-col size=\"6\"><span>{{reciept.reference_id}}</span></ion-col>\r\n      </ion-row>\r\n      <ion-row>\r\n        <ion-col size=\"6\"><span>Amount</span></ion-col>\r\n        <ion-col size=\"6\"><span style=\"color: red;\">{{reciept.amount}}</span></ion-col>\r\n      </ion-row>\r\n\r\n      <ion-row>\r\n        <ion-col size=\"6\"><span>Timestamp:</span></ion-col>\r\n        <ion-col size=\"6\"><span>{{reciept.transaction_timestamp}}</span></ion-col>\r\n      </ion-row>\r\n\r\n      <ion-row>\r\n        <ion-col size=\"6\"><span>Buyer Bank Name:</span></ion-col>\r\n        <ion-col size=\"6\"><span>{{reciept.buyer_bank_name}}</span></ion-col>\r\n      </ion-row>\r\n\r\n\r\n    </ion-grid>\r\n\r\n  </ng-container>\r\n\r\n  <ng-container *ngIf=\"paymentService.reciept.value !== {}\">\r\n\r\n    <p>{{paymentService.reciept.value |json}}</p>\r\n\r\n  </ng-container>\r\n\r\n  <h1>Doneeeeeee</h1>\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n</ion-content>\r\n");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("<ion-content>\n  <div class=\"main\">\n    <div class=\"container2\">\n      <div class=\"header\">\n        <ion-icon name=\"chevron-back-outline\" style=\"float: left;\" (click)=\"back()\"></ion-icon>\n        <span class=\"headertxt\" style=\"width:70%;margin: auto;display: inline-block;\">{{ 'bayaran.resit' | translate\n          }}</span>\n      </div>\n    </div>\n  </div>\n\n  <div class=\"headresit\">\n    <span>Thank You,</span><br>\n    <span>Here's your receipt.</span>\n  </div>\n\n\n  <ng-container *ngIf=\"reciept\">\n    <ion-grid fixed>\n\n      <ion-row>\n        <ion-col size=\"6\"><span>Status</span></ion-col>\n        <ion-col size=\"6\"> <span>{{reciept.message}}</span> </ion-col>\n      </ion-row>\n      <ion-row>\n        <ion-col size=\"6\"> <span>Transaction ID</span></ion-col>\n        <ion-col size=\"6\"><span>{{reciept.transaction_id}}</span></ion-col>\n      </ion-row>\n      <ion-row>\n        <ion-col size=\"6\"><span>Reference ID:</span></ion-col>\n        <ion-col size=\"6\"><span>{{reciept.reference_id}}</span></ion-col>\n      </ion-row>\n      <ion-row>\n        <ion-col size=\"6\"><span>Amount</span></ion-col>\n        <ion-col size=\"6\"><span style=\"color: red;\">{{reciept.amount}}</span></ion-col>\n      </ion-row>\n\n      <ion-row>\n        <ion-col size=\"6\"><span>Timestamp:</span></ion-col>\n        <ion-col size=\"6\"><span>{{reciept.transaction_timestamp}}</span></ion-col>\n      </ion-row>\n\n      <ion-row>\n        <ion-col size=\"6\"><span>Buyer Bank Name:</span></ion-col>\n        <ion-col size=\"6\"><span>{{reciept.buyer_bank_name}}</span></ion-col>\n      </ion-row>\n\n\n    </ion-grid>\n\n  </ng-container>\n\n  <ng-container *ngIf=\"paymentService.reciept.value !== {}\">\n\n    <p>{{paymentService.reciept.value |json}}</p>\n\n  </ng-container>\n\n  <h1>Doneeeeeee</h1>\n\n\n\n\n\n\n\n\n</ion-content>\n");
 
 /***/ })
 

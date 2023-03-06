@@ -217,19 +217,15 @@ const routes = [
                 ]
             },
             {
-                path: 'butiran-pembayaran',
-                loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_tampahkemudahan_butiran-pembayaran_butiran-pembayaran_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./../tampahkemudahan/butiran-pembayaran/butiran-pembayaran.module */ 93285)).then(m => m.ButiranPembayaranPageModule)
-            },
-            {
                 path: 'bayaran',
                 children: [
                     {
                         path: '',
-                        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_app_pay_pay_page_ts"), __webpack_require__.e("common"), __webpack_require__.e("src_app_bayaran_kaedah_kaedah_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ../bayaran/kaedah/kaedah.module */ 16728)).then(m => m.KaedahPageModule)
+                        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("common"), __webpack_require__.e("src_app_bayaran_kaedah_kaedah_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ../bayaran/kaedah/kaedah.module */ 16728)).then(m => m.KaedahPageModule)
                     },
                     {
                         path: 'resit',
-                        loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_bayaran_resit_resit_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ../bayaran/resit/resit.module */ 74870)).then(m => m.ResitPageModule)
+                        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("common"), __webpack_require__.e("src_app_bayaran_resit_resit_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ../bayaran/resit/resit.module */ 74870)).then(m => m.ResitPageModule)
                     }
                 ]
             }
@@ -429,7 +425,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (".tab {\n  padding: 10px 10px 10px 10px;\n  background-color: #3D2C7C;\n}\n\n.tabbar {\n  height: 91px;\n  border-radius: 20px 20px 0px 0px;\n}\n\n.tabicon {\n  height: 25px;\n  width: 25px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIm1haW4ucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksNEJBQUE7RUFDQSx5QkFBQTtBQUNKOztBQUVBO0VBQ0ksWUFBQTtFQUNBLGdDQUFBO0FBQ0o7O0FBRUE7RUFDSSxZQUFBO0VBQ0EsV0FBQTtBQUNKIiwiZmlsZSI6Im1haW4ucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLnRhYiB7XHJcbiAgICBwYWRkaW5nOjEwcHggMTBweCAxMHB4IDEwcHg7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjM0QyQzdDO1xyXG59XHJcblxyXG4udGFiYmFyIHtcclxuICAgIGhlaWdodDo5MXB4O1xyXG4gICAgYm9yZGVyLXJhZGl1czogMjBweCAyMHB4IDBweCAwcHg7XHJcbn1cclxuXHJcbi50YWJpY29ue1xyXG4gICAgaGVpZ2h0OiAyNXB4O1xyXG4gICAgd2lkdGg6IDI1cHg7XHJcbn0iXX0= */");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (".tab {\n  padding: 10px 10px 10px 10px;\n  background-color: #3D2C7C;\n}\n\n.tabbar {\n  height: 91px;\n  border-radius: 20px 20px 0px 0px;\n}\n\n.tabicon {\n  height: 25px;\n  width: 25px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIm1haW4ucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksNEJBQUE7RUFDQSx5QkFBQTtBQUNKOztBQUVBO0VBQ0ksWUFBQTtFQUNBLGdDQUFBO0FBQ0o7O0FBRUE7RUFDSSxZQUFBO0VBQ0EsV0FBQTtBQUNKIiwiZmlsZSI6Im1haW4ucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLnRhYiB7XG4gICAgcGFkZGluZzoxMHB4IDEwcHggMTBweCAxMHB4O1xuICAgIGJhY2tncm91bmQtY29sb3I6ICMzRDJDN0M7XG59XG5cbi50YWJiYXIge1xuICAgIGhlaWdodDo5MXB4O1xuICAgIGJvcmRlci1yYWRpdXM6IDIwcHggMjBweCAwcHggMHB4O1xufVxuXG4udGFiaWNvbntcbiAgICBoZWlnaHQ6IDI1cHg7XG4gICAgd2lkdGg6IDI1cHg7XG59Il19 */");
 
 /***/ }),
 
@@ -444,7 +440,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("<ion-tabs style=\"background-color: white;\">\r\n  <ion-tab-bar slot=\"bottom\" class=\"tabbar\">\r\n    <ion-tab-button tab=\"home\" class=\"tab\">\r\n      <ion-img src=\"../../assets/icon/home.png\" class=\"tabicon\"></ion-img>\r\n    </ion-tab-button>\r\n\r\n    <ion-tab-button tab=\"profil\" class=\"tab\">\r\n      <ion-img src=\"../../assets/icon/profil.png\" class=\"tabicon\"></ion-img>\r\n    </ion-tab-button>\r\n\r\n    <ion-tab-button tab=\"doc\" class=\"tab\">\r\n      <ion-img src=\"../../assets/icon/doc.png\" class=\"tabicon\"></ion-img>\r\n    </ion-tab-button>\r\n\r\n    <ion-tab-button tab=\"setting\" class=\"tab\">\r\n      <ion-img src=\"../../assets/icon/setting.png\" class=\"tabicon\"></ion-img>\r\n    </ion-tab-button>\r\n  </ion-tab-bar>\r\n</ion-tabs>\r\n");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("<ion-tabs style=\"background-color: white;\">\n  <ion-tab-bar slot=\"bottom\" class=\"tabbar\">\n    <ion-tab-button tab=\"home\" class=\"tab\">\n      <ion-img src=\"../../assets/icon/home.png\" class=\"tabicon\"></ion-img>\n    </ion-tab-button>\n\n    <ion-tab-button tab=\"profil\" class=\"tab\">\n      <ion-img src=\"../../assets/icon/profil.png\" class=\"tabicon\"></ion-img>\n    </ion-tab-button>\n\n    <ion-tab-button tab=\"doc\" class=\"tab\">\n      <ion-img src=\"../../assets/icon/doc.png\" class=\"tabicon\"></ion-img>\n    </ion-tab-button>\n\n    <ion-tab-button tab=\"setting\" class=\"tab\">\n      <ion-img src=\"../../assets/icon/setting.png\" class=\"tabicon\"></ion-img>\n    </ion-tab-button>\n  </ion-tab-bar>\n</ion-tabs>\n");
 
 /***/ })
 
