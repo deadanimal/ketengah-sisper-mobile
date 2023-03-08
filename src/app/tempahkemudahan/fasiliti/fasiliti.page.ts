@@ -43,7 +43,7 @@ export class FasilitiPage implements OnInit {
   user: any;
   timecheck = [];
   bookingDate;
-
+  lokasiId: number;
   constructor(
     private location: Location,
     private loadingController: LoadingController,
@@ -192,6 +192,7 @@ export class FasilitiPage implements OnInit {
       this.ddGelanggang = [];
       var array = []
       var val = this.Lokasi;
+      this.lokasiId = this.Lokasi
       console.log(val);
       await this.listbadminton.forEach(function (value) {
         if (value.lokasi == val) {
@@ -447,6 +448,7 @@ export class FasilitiPage implements OnInit {
     await this.bookingService.add(formData).subscribe(
       async (res) => {
         console.log(res);
+        this.lokasiId = this.Lokasi;
         this.clearform();
         await loading.dismiss();
         var arr = [];
@@ -476,7 +478,7 @@ export class FasilitiPage implements OnInit {
           "fasiliti": fasiliti,
           "tarikh": this.bookingDate,
           "masa": this.masa,
-          "rate": 10,
+          "rate": this.getRates(this.lokasiId, fasiliti),
           "gelanggang": this.courtId,
 
         };
