@@ -21,7 +21,7 @@ export class TambahaduanPage implements OnInit {
   RosakVal: any;
   CatatanVal: any;
   pilih_jenis: any;
-
+  dropdown;
   constructor(
     private location: Location,
     private router: Router,
@@ -30,12 +30,31 @@ export class TambahaduanPage implements OnInit {
     private loadingController: LoadingController,
     private formBuilder: FormBuilder,
     private nativeStorage: NativeStorage,
+  
   ) { }
+  
 
   async ngOnInit() {
+    await this.nativeStorage.getItem('user').then(
+      data => {
+        this.userid = data.value.user_id;
+      },
+      error => console.error(error)
+    );
     const loading = await this.loadingController.create();
     await loading.present();
+    this.aduanService.getDropdown().subscribe(data=>{
+      console.log(data[0].perumahan);
+      this.dropdown = data;
 
+      // data.forEach(el=>{
+      //   this.dropdown.push({
+      //     id: el.perumahan.id, 
+      //     no_akaun_rumah: el.perumahan.no_akaun_rumah
+      //   })
+      // })
+
+    })
     await this.nativeStorage.getItem('user').then(
       data => {
         this.userid = data.value.user_id;
@@ -93,16 +112,13 @@ export class TambahaduanPage implements OnInit {
     formData.append('kategori', this.KateVal);
     formData.append('rosak', this.RosakVal);
     formData.append('catatan', this.CatatanVal);
-    formData.append('jenis_akaun', this.pilih_jenis);
+    formData.append('perumahan_id', this.pilih_jenis);
 
 
     await this.aduanService.add(formData).subscribe(
       async (res) => {
         console.log(res);
         await loading.dismiss();
-
-
-
 
         this.router.navigate(['/main/tabs/aduan/aduanmain']);
       },

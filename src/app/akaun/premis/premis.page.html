@@ -13,8 +13,10 @@
   <div class="main2">
     <div class="container2">
       <div style="padding:0px 60px;">
+        <div class="label">{{ 'No. Kad Pengenalan' | translate }}</div>
+        <input class="select" [(ngModel)]="no_ic">
         <div class="label">{{ 'akaun.noakaun' | translate }}</div>
-        <input class="select" [(ngModel)]="noakaun">
+        <input class="select" placeholder="Ex. S/E/99/07/1KS08A/102" [(ngModel)]="noakaun">
         <div style="height: 20px;"></div>
         <div class="label">{{ 'akaun.namaakaun' | translate }}</div>
         <input class="select" [(ngModel)]="namaakaun">

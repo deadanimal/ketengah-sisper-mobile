@@ -14,6 +14,7 @@ export class PremisPage implements OnInit {
   
   noakaun: any;
   namaakaun: any;
+  no_ic:any;
   user: any;
 
   constructor(
@@ -52,7 +53,8 @@ export class PremisPage implements OnInit {
     formData.append('user_id', this.user.user_id);
     formData.append('no_akaun_premis', this.noakaun);
     formData.append('nama_akaun', this.namaakaun);
-    formData.append('no_ic', this.user.no_ic);
+    formData.append('no_ic', this.no_ic);
+    // formData.append('no_ic', this.user.no_ic);
 
     await this.premisService.add(formData).subscribe(
       async (res) => {
@@ -86,6 +88,7 @@ export class PremisPage implements OnInit {
   clearform(){
     this.noakaun = '';
     this.namaakaun = '';
+    this.no_ic ='';
   }
 
   async alerterror(msg){

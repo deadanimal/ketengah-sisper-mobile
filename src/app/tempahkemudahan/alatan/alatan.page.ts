@@ -107,7 +107,7 @@ export class AlatanPage implements OnInit {
       var diff = Math.abs(todate.getTime() - fromdate.getTime());
       this.days = Math.ceil(diff / (1000 * 3600 * 24)) + 1;
     }
-    this.TarikhVal = fromdate.getDate() + '/' + fromdate.getMonth() + '/' + fromdate.getFullYear() + ' - ' + todate.getDate() + '/' + todate.getMonth() + '/' + todate.getFullYear();
+    this.TarikhVal = fromdate.getDate() + '/' + (fromdate.getMonth()+1) + '/' + fromdate.getFullYear() + ' - ' + todate.getDate() + '/' + (todate.getMonth()+1) + '/' + todate.getFullYear();
 
   }
 

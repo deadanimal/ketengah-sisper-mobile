@@ -39,6 +39,11 @@ export class AduanService {
     return this.http.get<any>(AlladuanURL);
   }
 
+  getDropdown(){
+    var accounts = environment.baseUrl + "aduan?user_id=1";
+    return this.http.get<any>(accounts);
+  }
+
   updateStat(data:any): Observable<any> {
     var aduanstatURL = environment.baseUrl + "aduanStatus";
     return this.http.post<any>(aduanstatURL, data);

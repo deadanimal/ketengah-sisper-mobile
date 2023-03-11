@@ -9,11 +9,12 @@ import { environment } from "src/environments/environment";
 })
 export class FasilitiService {
   rates: BehaviorSubject<number> = new BehaviorSubject(null);
+  currentCourt = new BehaviorSubject<string>('none');
 
   constructor(
     private http: HttpClient
   ) { }
-
+''
   getfutsal(): Observable<any> {
     var AlatanURL = environment.baseUrl + "futsal";
     return this.http.get<any>(AlatanURL);

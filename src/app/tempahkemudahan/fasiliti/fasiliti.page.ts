@@ -16,6 +16,7 @@ import { timelist } from '../../shared/model/timelist.model';
 export class FasilitiPage implements OnInit {
   courtId: string;
   ddLokasi: any;
+  rate:any;
   Lokasi: any;
   Fasiliti: any;
   ddFasiliti: any;
@@ -203,7 +204,9 @@ export class FasilitiPage implements OnInit {
     }
   }
 
-  async ChangeDDGelanggang() {
+  async ChangeDDGelanggang(event?: any) {
+    console.table(event.target)
+    this.fasilitiService.currentCourt.next(this.Gelanggang);
     this.tarikhread = false;
     var opt = [];
     this.courtId = this.Gelanggang;
@@ -284,7 +287,7 @@ export class FasilitiPage implements OnInit {
     const fromdate = new Date(this.date);
     this.masablock = true;
     this.days = 1;
-    this.TarikhVal = fromdate.getDate() + '/' + fromdate.getMonth() + '/' + fromdate.getFullYear();
+    this.TarikhVal = fromdate.getDate() + '/' + (fromdate.getMonth()+1) + '/' + fromdate.getFullYear();
 
     this.ChangeDDTarikh();
   }
@@ -468,7 +471,6 @@ export class FasilitiPage implements OnInit {
         }
         arr.push(akaun);
         const fasiliti = this.Fasiliti === 1 ? 'Gelanggag Futsal' : 'Gelanggag Badminton';
-
         var data =
         {
           "src": 2,
@@ -478,11 +480,11 @@ export class FasilitiPage implements OnInit {
           "fasiliti": fasiliti,
           "tarikh": this.bookingDate,
           "masa": this.masa,
-          "rate": this.getRates(this.lokasiId, fasiliti),
+          "rate": 10,
+          //  "rate": this.getRates(this.Lokasi, fasiliti),
           "gelanggang": this.courtId,
 
         };
-
         const navigationExtras: NavigationExtras = {
           state: {
             data
@@ -550,9 +552,5 @@ export class FasilitiPage implements OnInit {
     else if ((lokasi.toLowerCase() === 'Bukit Besi'.toLowerCase()) && fasiliti === '2') {
       return 5;
     }
-
-
-
-
   }
 }
