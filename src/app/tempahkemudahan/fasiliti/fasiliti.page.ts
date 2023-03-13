@@ -45,6 +45,7 @@ export class FasilitiPage implements OnInit {
   timecheck = [];
   bookingDate;
   lokasiId: number;
+  
   constructor(
     private location: Location,
     private loadingController: LoadingController,
@@ -79,7 +80,7 @@ export class FasilitiPage implements OnInit {
 
     await loading.dismiss();
   }
-
+ 
   async ionViewDidEnter() {
     const loading = await this.loadingController.create();
     await loading.present();
@@ -179,7 +180,7 @@ export class FasilitiPage implements OnInit {
       this.lokasiread = false;
     };
     this.Fasiliti = '';
-    this.Gelanggang = '';
+    // this.Gelanggang = '';
     this.gelanggangread = true;
     this.tarikhread = true;
   }
@@ -452,7 +453,7 @@ export class FasilitiPage implements OnInit {
       async (res) => {
         console.log(res);
         this.lokasiId = this.Lokasi;
-        this.clearform();
+        // this.clearform();
         await loading.dismiss();
         var arr = [];
         var akaun = {};
@@ -480,9 +481,9 @@ export class FasilitiPage implements OnInit {
           "fasiliti": fasiliti,
           "tarikh": this.bookingDate,
           "masa": this.masa,
-          "rate": 10,
+          "rate": this.getRates(this.Lokasi, this.Fasiliti),
           //  "rate": this.getRates(this.Lokasi, fasiliti),
-          "gelanggang": this.courtId,
+          "gelanggang": this.Gelanggang,
 
         };
         const navigationExtras: NavigationExtras = {
@@ -529,6 +530,11 @@ export class FasilitiPage implements OnInit {
   }
 
   getRates(lokasId: number, fasiliti: string) {
+    console.table({
+      location: lokasId,
+      fasiliti: fasiliti 
+
+    })
 
     const lokasi = this.ddLokasi.filter(x => x.id === this.Lokasi)[0].nama;
 
